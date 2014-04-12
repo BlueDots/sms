@@ -1,5 +1,6 @@
 package jxau.sms.anping.po;
 
+<<<<<<< HEAD
 
 /**
  * 部门表
@@ -8,6 +9,8 @@ package jxau.sms.anping.po;
  * TODO
  */
 
+=======
+>>>>>>> 8d8d2977042d9d526df80c7778c551acdf596f7f
 public class DepInfo {
 
 	private String departNo;//部门编号

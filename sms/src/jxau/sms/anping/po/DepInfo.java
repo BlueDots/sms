@@ -1,5 +1,10 @@
 package jxau.sms.anping.po;
-
+/**
+ * 部门类
+ * @author anping
+ * 2014-4-12
+ * TODO
+ */
 public class DepInfo {
 
 	private String departNo;//部门编号

@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<!-- 
+	配置每个模块角色与审核的关系
+	role 1:学生  2：班主任 3：院级工作人员 4：校级工作人员 6:活动负责人
+	operation 1:审核通过 2:审核不通过 3:录入
+	
+	table：模块需要操作的数据表名称
+	id :表的主键，column:主键的列名
+	column:需要操作的数据表的字段名
+	verify:property :表示审核状态，column：对应的数据库列名
+	remarks :表示备注信息，column：对应的数据库列名		
+ -->
+<modules>
+	<!-- 学生基本信息模块 -->
+	<module id="01" table="stu_basic_info">
+		<id column="studentNo"/>
+		<verify column="exameState"/><!-- 审核需要修改的数据表的字段名 -->
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStuBasicInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="2">
+				<operation id="3">2</operation>
+			</role>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">院级审核中</operation>
+				<waitverify>院级审核中</waitverify><!-- 待审核 -->
+			</role>
+		</roles>
+	</module>
+ 	<!-- 教师基本信息模块 -->
+ 	<module id="02" table="tec_basic_info">
+		<id column="teacherNo"/>
+		<verify column="exameState"/><!-- 审核需要修改的数据表的字段名 -->
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfTecBasicInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="3">校级审核中</operation>		
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->	
+			</role>		
+		</roles>		
+	</module>	
+	<!-- 学生参与活动模块 -->
+	<module id="03" table="stu_act_participate">
+		<id column="id"/>
+		<verify column="exameState"/>
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStuActParticipate</procedure><!--存储过程  -->	
+		<roles>
+			<role id="6">
+				<operation id="31">院级审核中</operation><!-- 录入院级活动 -->
+				<operation id="32">校级审核中</operation><!-- 录入校级活动 -->
+			</role>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">院级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>院级审核中</waitverify><!-- 待审核 -->		
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->		
+			</role>		
+		</roles>
+	</module>
+	<!-- 活动管理模块 -->
+	<module id="04" table="act_info">
+		<id column="actNo"/>
+		<verify column="exameState"/>
+		<remarks column="remarks"/>	
+		<procedure>verifyNumsOfActInfo</procedure><!--存储过程  -->	
+		<roles>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="3">校级审核中</operation><!-- 录入院级活动 -->
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->	
+			</role>	
+		</roles>	
+	</module>	
+	<!-- 评优评先模块 -->
+	<module id="05" table="stu_adv_info">
+		<id column="awardNo"/>
+		<verify column="exameState"/><!-- 审核需要修改的数据表的字段名 -->
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStuAdvInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="2"><!--班主任 -->
+				<operation id="3">院级审核中</operation>
+			</role>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="1">校级审核中</operation>
+				<operation id="2">院级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>院级审核中</waitverify><!-- 待审核 -->	
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->	
+			</role>		
+		</roles>		
+	</module>
+	
+	<!-- 奖助学金模块 -->
+	<module id="06" table="stu_grant_info">
+		<id column="awardNo"/>
+		<verify column="exameState"/><!-- 审核需要修改的数据表的字段名 -->
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStuGrantInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="2"><!--班主任 -->
+				<operation id="3">院级审核中</operation>
+			</role>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="1">校级审核中</operation>
+				<operation id="2">院级未通过</operation>
+				<operation id="3">通过</operation>		
+				<waitverify>院级审核中</waitverify><!-- 待审核 -->
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>		
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->
+			</role>		
+		</roles>		
+	</module>		
+	<!--奖学金评定  -->
+	<module id="07" table="stu_class_grant">
+		<id column="studentNo"/>
+		<verify column="exameState"/>
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStuClassGrant</procedure><!--存储过程  -->
+		<roles>
+			<role id="2"><!--班主任 -->
+				<operation id="3">院级审核中</operation>
+			</role>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="1">校级审核中</operation>
+				<operation id="2">院级未通过</operation>
+				<operation id="3">通过</operation>		
+				<waitverify>院级审核中</waitverify><!-- 待审核 -->
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->	
+			</role>		
+		</roles>				
+	</module> 
+	<!-- 处分信息管理模块 -->
+	<module id="08" table="dis_info">
+		<id column="id"/>
+		<verify column="exameState"/>
+		<remarks column="remarks"/>	
+		<procedure>verifyNumsOfDisInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="3">校级审核中</operation>	
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->									
+			</role>	
+		</roles>	
+	</module>
+	<!-- 学籍变动信息模块 -->
+	<module id="09" table="sta_change_info">
+		<id column="studentNo"/>
+		<verify column="exameState"/><!-- 审核需要修改的数据表的字段名 -->
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStaChangeInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="3">校级审核中</operation>	
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->		
+			</role>	
+		</roles>		
+	</module>	
+	<!-- 贫困生建档模块 -->
+	<module id="10" table="stu_des_info">
+		<id column="awardNo"/>
+		<verify column="exameState"/><!-- 审核需要修改的数据表的字段名 -->
+		<remarks column="remarks"/>
+		<procedure>verifyNumsOfStuDesInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="2"><!--班主任 -->
+				<operation id="3">院级审核中</operation>
+			</role>
+			<role id="3"><!--院级工作人员  -->
+				<operation id="1">校级审核中</operation>
+				<operation id="2">院级未通过</operation>
+				<operation id="3">通过</operation>
+				<waitverify>院级审核中</waitverify><!-- 待审核 -->		
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->		
+			</role>		
+		</roles>		
+	</module>			
+	<!-- 医保模块 -->
+	<module id="11" table="hos_insurance_info">
+		<id column="no"/>
+		<verify column="veritystate"/>
+		<remarks column="stateRemark"/>
+		<procedure>verifyNumsOfHosInsuranceInfo</procedure><!--存储过程  -->
+		<roles>
+			<role id="1"><!--学生 -->
+				<operation id="3">校级审核中</operation>
+			</role>
+			<role id="4"><!--校级工作人员  -->
+				<operation id="1">通过</operation>
+				<operation id="2">校级未通过</operation>
+				<operation id="3">通过</operation>	
+				<waitverify>校级审核中</waitverify><!-- 待审核 -->	
+			</role>		
+		</roles>		
+	</module>	
+</modules>

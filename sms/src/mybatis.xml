@@ -11,12 +11,18 @@
 <setting name="aggressiveLazyLoading" value="false"/>
 </settings>
     <typeAliases>  
+		<typeAlias alias="StuBasicInfo" type = "jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo"/>
+		<typeAlias alias="StuBasicInfoVO" type = "jxau.sms.chenjiang.stuBasicInfo.vo.StuBasicInfoVO"/>
+		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.activityManage.po.ActInfo"/>
+		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.activityManage.vo.ActInfoVO"/>
+		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.activityManage.po.ActHold"/>
+		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.activityManage.vo.ActHoldVO"/>		    
     </typeAliases>  
      
      <mappers>  
- 
-         
+		<mapper resource="jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml"/>
+        <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml"/>
+        <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml"/>
         <mapper resource="jxau/sms/anping/student/dao/studentMapper.xml"/>
-   
     </mappers>
 </configuration>

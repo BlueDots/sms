@@ -135,7 +135,7 @@ create table ins_state
 create table class_award_info(
 	awardNo int primary key auto_increment,
 	awardLevel varchar(21),
-	awardState tinyint default 1
+	awardState tinyint default 0
 )engine=MYISAM;
 
 ##创建的是班级奖学金表9
@@ -168,7 +168,7 @@ create table stu_class_grant(
 	rank tinyint,
 	remarks varchar(150),
 	exameState varchar(30),
-	classGrantState int default 1,
+	classGrantState int default 0,
 	primary key(studentNo,term)
 )engine=innodb;
 alter table stu_class_grant
@@ -186,7 +186,7 @@ on delete no action on update cascade;
  	sopNumber int default 0 ,
  	junNumber int default 0 ,
  	senNumber int default 0,
- 	depState tinyint default 1	
+ 	depState tinyint default 0
  )engine=innodb;
 ##创建院级奖学金统计表11
 create table dep_statistical(
@@ -208,7 +208,7 @@ on delete no action on update cascade;
       departNo char(4),
       majorInfo varchar(150),
       majorNumber int default 0,
-      majorState tinyint default 1
+      majorState tinyint default 0
  )engine = innodb;
  ##添加外键和外键索引
 alter table major_info 
@@ -226,7 +226,7 @@ on  delete no action on update  cascade;
       girlNumber int default 0 ,
       schoolDate date,
       studyTime tinyint ,
-      classState tinyint default 1,
+      classState tinyint default 0,
      
        foreign key  (majorNo) references major_info(majorNo)
       on delete no action on update cascade

@@ -2,6 +2,7 @@ package jxau.sms.globaldao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -26,12 +27,12 @@ public class EntityDao implements Dao {
 	}
 
 	@Override
-	public <T>  T selectOne(String mapperId, HashMap<String, Object> params) {
+	public <T>  T selectOne(String mapperId, Map<String, Object> params) {
 		 return session.selectOne(mapperId, params);
 	}
 
 	@Override
-	public <T> List<T> select(String mapperId, HashMap<String, Object> params) {
+	public <T> List<T> select(String mapperId, Map<String, Object> params) {
 		 return session.selectList(mapperId,params);
 	}
 

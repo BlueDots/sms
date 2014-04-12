@@ -1,0 +1,39 @@
+!SESSION 2014-04-12 09:44:07.692 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=zh_CN
+Command-line arguments:  -data /home/anping/sms -os linux -ws gtk -arch x86
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.582
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/jsp/struts_tiles_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.617
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/jsp/jsf_f_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.655
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/jsp/struts_bean_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.688
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/jsp/jsf_h_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.721
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/jsp/struts_html_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.754
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/jsp/struts_logic_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.794
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/html/forms_lists_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.829
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/html/css_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.885
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/html/javascript_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.910
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/html/htmlform_snippets.xml
+
+!ENTRY com.genuitec.eclipse.wizards 1 0 2014-04-12 09:44:20.971
+!MESSAGE Installed snippet library: /home/anping/sofeware/myeclipse/MyEclipse 10/configuration/org.eclipse.osgi/bundles/132/1/.cp/snippets/html/html_snippets.xml

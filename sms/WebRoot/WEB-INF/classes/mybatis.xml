@@ -11,13 +11,11 @@
 <setting name="aggressiveLazyLoading" value="false"/>
 </settings>
     <typeAliases>  
+		<typeAlias alias="StuBasicInfo" type = "jxau.sms.stuBasicInfo.po.StuBasicInfo"/>
+		<typeAlias alias="StuBasicInfoVO" type = "jxau.sms.stuBasicInfo.vo.StuBasicInfoVO"/>    
     </typeAliases>  
      
      <mappers>  
-        <mapper resource="com/sms/li/dao/demoMapper.xml"/>
-          <mapper resource="com/sms/li/dao/useSecondLevelCache.xml"/>
-         
-        <mapper resource="com/sms/anping/dao/studentMapper.xml"/>
-   
+		<mapper resource="jxau/sms/stuBasicInfo/dao/StuBasicInfoMapper.xml"/>
     </mappers>
 </configuration>

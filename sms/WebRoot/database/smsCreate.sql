@@ -127,7 +127,7 @@ create table ins_state
 (
 	insNo tinyint primary key,
 	insType varchar(30)
-)type=MyISAM;
+)engine=MyISAM;
 
 ##熊安平
 

@@ -1,0 +1,11 @@
+package jxau.sms.lyx.purviewManage.po;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-12
+ * TODO
+ */
+public class TeacherRole {
+
+}

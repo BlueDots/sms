@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+tomcat7Server.sms.IEARProjectName=
+tomcat7Server.sms.altContextRoot=
+tomcat7Server.sms.contextRoot=/sms
+tomcat7Server.sms.deployIsOverProject=false
+tomcat7Server.sms.deploymentPath=G\:\\Tomcat\\tomcat\\webapps\\sms
+tomcat7Server.sms.isDeployed=true
+tomcat7Server.sms.isExploded=true
+tomcat7Server.sms.isUptoDate=true
+tomcat7Server.sms.noFileCopy=false
+tomcat7Server.sms.shouldBackup=false
+tomcat7Server.sms.shouldOverwrite=false
+tomcat7Server.sms.type=WebDeployment

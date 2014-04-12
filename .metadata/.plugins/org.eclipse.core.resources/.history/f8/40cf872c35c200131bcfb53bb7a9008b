@@ -1,0 +1,16 @@
+package jxau.sms.lyx.purviewManage.po;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-12
+ * TODO
+ */
+public class PurviewInfo {
+
+		private int id;					//编号
+		private int pid;					//上级权限编号
+		private String purviewName;	//权限名称
+		private String purviewUrl;		//权限请求
+
+}

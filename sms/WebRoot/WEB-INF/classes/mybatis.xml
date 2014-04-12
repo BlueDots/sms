@@ -14,10 +14,9 @@
     </typeAliases>  
      
      <mappers>  
-        <mapper resource="com/sms/li/dao/demoMapper.xml"/>
-          <mapper resource="com/sms/li/dao/useSecondLevelCache.xml"/>
+ 
          
-        <mapper resource="com/sms/anping/dao/studentMapper.xml"/>
+        <mapper resource="jxau/sms/student/dao/studentMapper.xml"/>
    
     </mappers>
 </configuration>

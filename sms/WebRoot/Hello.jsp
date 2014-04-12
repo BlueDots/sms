@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h1 style="color:#aabbff;">欢迎使用struts2。。。</h1> 
+    <h1 style="color:#aabbff;">测试成功。</h1> 
   </body>
 </html>

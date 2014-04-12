@@ -517,7 +517,7 @@ create table sta_category(
 	staNo tinyint primary key auto_increment,
 	staContent varchar(10) not null,
 	staState tinyint
-);
+)ENGINE = MyISAM;
 alter table sta_change_info add constraint Fk_0 foreign key (studentNo) references stu_info(studentNo) on delete cascade;
 ##活动类别表35
 create table act_category
@@ -525,14 +525,14 @@ create table act_category
 actNo int primary key auto_increment,
 actType varchar(30) not null,
 actState tinyint default 0
-);
+)ENGINE = MyISAM;
 ##处分类型表36
 create table dis_category
 (
 disNo int primary key auto_increment,
 disContent varchar(30) not null,
 disState tinyint default 0
-);
+)ENGINE = MyISAM;
 ##学生干部职务表37
 create table stu_carder
 (
@@ -548,12 +548,12 @@ create table award_level(
 	awardNo int primary key,
 	awardLevel	varchar(15),
 	awardState tinyint default 1
-);
+)ENGINE = MyISAM;
 ##政治面貌表39
 create table political_status(
 	studentNo tinyint primary key,
 	politicalName varchar(24)
-);
+)ENGINE = MyISAM;
 ##学生处分信息表40
 create table stu_dis_info(
 

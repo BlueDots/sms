@@ -11,7 +11,6 @@
 <setting name="aggressiveLazyLoading" value="false"/>
 </settings>
     <typeAliases>  
-<<<<<<< HEAD
 		<typeAlias alias="StuBasicInfo" type = "jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo"/>
 		<typeAlias alias="StuBasicInfoVO" type = "jxau.sms.chenjiang.stuBasicInfo.vo.StuBasicInfoVO"/>
 		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.activityManage.po.ActInfo"/>
@@ -29,7 +28,6 @@
 		<typeAlias alias="MajorInfo" type="jxau.sms.anping.po.MajorInfo"/>
 		<typeAlias alias="ScholarShip" type="jxau.sms.anping.po.ScholarShip"/>
 		<!--  熊安平部分结束-->    
-=======
 		<typeAlias alias="StuBasicInfo" type = "jxau.sms.chenjiang.po.StuBasicInfo"/>
 		<typeAlias alias="StuBasicInfoVO" type = "jxau.sms.chenjiang.vo.StuBasicInfoVO"/>
 		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.po.ActInfo"/>
@@ -37,7 +35,7 @@
 		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.po.ActHold"/>
 		<typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.TeacherInfo.po.TecBasicInfo"/>
 		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>		    
->>>>>>> 8d8d2977042d9d526df80c7778c551acdf596f7f
+
     </typeAliases>  
      
      <mappers>  

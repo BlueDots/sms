@@ -1,6 +1,8 @@
 package jxau.sms.anping.po;
 
-import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
+import jxau.sms.chenjiang.po.StuBasicInfo;
+
+
 /**
  * 班级奖学金实体表
  * @author anping

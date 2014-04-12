@@ -2,7 +2,7 @@ package jxau.sms.anping.po;
 
 import java.util.Date;
 
-import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
+import jxau.sms.chenjiang.po.StuBasicInfo;
 
 public class HosInsuranceInfo {
 	private int no;//编号

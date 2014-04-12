@@ -1,8 +1,8 @@
-package jxau.sms.chenjiang.activityManage.vo;
+package jxau.sms.chenjiang.vo;
 
 import java.util.Date;
 
-import jxau.sms.chenjiang.activityManage.po.ActHold;
+import jxau.sms.chenjiang.po.ActHold;
 
 
 /**

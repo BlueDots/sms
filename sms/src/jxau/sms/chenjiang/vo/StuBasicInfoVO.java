@@ -1,6 +1,6 @@
-package jxau.sms.chenjiang.stuBasicInfo.vo;
+package jxau.sms.chenjiang.vo;
 
-import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
+import jxau.sms.chenjiang.po.StuBasicInfo;
 
 
 

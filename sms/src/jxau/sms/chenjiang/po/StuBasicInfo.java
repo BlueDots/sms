@@ -1,4 +1,4 @@
-package jxau.sms.chenjiang.stuBasicInfo.po;
+package jxau.sms.chenjiang.po;
 
 import java.sql.Date;
 

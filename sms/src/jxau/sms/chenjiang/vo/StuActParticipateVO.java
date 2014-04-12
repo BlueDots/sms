@@ -1,4 +1,4 @@
-package jxau.sms.chenjiang.stuActParticipate.vo;
+package jxau.sms.chenjiang.vo;
 
 import java.util.Date;
 

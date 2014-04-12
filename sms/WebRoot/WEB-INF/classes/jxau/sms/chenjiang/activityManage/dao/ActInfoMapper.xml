@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sms.chenjiang.activityManage.dao.ActInfoDao">
+<mapper namespace="jxau.sms.chenjiang.activityManage.ActInfo.dao">
 	<resultMap type="ActInfoVO" id="ActivityInfoVOResultMap">
 		<id property="id" column="actNo"/>
 		<association property="actInfo" javaType="ActInfo">
@@ -22,10 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 	
+	
 	<select id="selectTecBasicInfo" resultType="TecBasicInfo" parameterType="TecBasicInfo">
 		select * from tec_basic_info where teacherNo = #{teacherNo}
-	</select>		
-
+	</select>	
+		
+	<!--一般查询 -->
 	<select id="query" parameterType="map" resultMap="ActivityInfoVOResultMap">
 		select * from act_info where 1=1
 		<if test="organize != null">
@@ -36,23 +38,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>	
 	
+	<!--增加  -->
 	<insert id="add" parameterType="ActInfo" useGeneratedKeys="true" keyProperty="actNo">
 		insert into act_info(actNo,activityName,activityType,activityLevel,sponsor,organize,teacherNo,studentName,createTime,info,exameState,remarks,actState)
 			values(#{actNo},#{activityName},#{activityType},#{activityLevel},#{sponsor},#{organize},#{tecBasicInfo.teacherNo},#{studentName},curdate(),#{info},#{exameState},#{remarks},#{actState});
 	</insert>
-	<update id="verify" parameterType="ActInfo">
-		update act_info
-		<set>
-			<if test="exameState != null">
-				exameState = #{exameState},
-			</if>
-			<if test="remarks != null">
-				remarks = #{remarks}
-			</if>
-		</set>
-		where actNo = #{actNo}
-	</update>
-	<update id="edit" parameterType="ActInfo">
+	
+	<!--批量增加  -->
+	<insert id="batchAdd" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="actNo">
+		insert into act_info(actNo,activityName,activityType,activityLevel,sponsor,organize,teacherNo,studentName,createTime,info,exameState)
+			values
+			<foreach collection="list" item="item" index="index" separator="," >  
+				(#{item.actNo},#{item.activityName},#{item.activityType},#{item.activityLevel},
+					#{item.sponsor},#{item.organize},#{item.tecBasicInfo.teacherNo},#{item.studentName},curdate(),#{item.info},#{item.exameState})
+			</foreach>
+	</insert>
+
+	<!--  更新	-->
+	<update id="update" parameterType="ActInfo">
 		update act_info 
 		<set>
 			<if test="activityName != null">
@@ -77,17 +80,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where actNo = #{actNo}
 	</update>
 	
-	<update id="delete" parameterType="ActInfo">
-		update act_info
-		<set>
-			<if test="actState != null">
-				actState = #{actState},
-			</if>
-			<if test="remarks != null">
-				remarks = #{remarks}
-			</if>
-		</set>
-		where actNo=#{actNo}
-	</update>
 </mapper>
 

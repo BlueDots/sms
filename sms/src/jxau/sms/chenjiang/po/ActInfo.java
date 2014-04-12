@@ -1,4 +1,4 @@
-package jxau.sms.chenjiang.activityManage.po;
+package jxau.sms.chenjiang.po;
 
 import java.util.Date;
 

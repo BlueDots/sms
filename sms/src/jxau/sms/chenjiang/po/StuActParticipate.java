@@ -1,9 +1,7 @@
-package jxau.sms.chenjiang.stuActParticipate.po;
+package jxau.sms.chenjiang.po;
 
 import java.util.Date;
 
-import jxau.sms.chenjiang.activityManage.po.ActInfo;
-import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
 
 
 public class StuActParticipate {

@@ -1,4 +1,4 @@
-package jxau.sms.chenjiang.stuBasicInfo.test;
+package jxau.sms.chenjiang.test;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -8,99 +8,67 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
+import jxau.sms.chenjiang.po.ActInfo;
+import jxau.sms.chenjiang.po.StuBasicInfo;
 import jxau.sms.globaldao.Dao;
+import jxau.sms.lyx.TeacherInfo.po.TecBasicInfo;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-public class Test1 {
+
+public class TestActInfo {
 	
 	@Test
 	public void testAdd() {
    	 ApplicationContext  applicationContext  = new ClassPathXmlApplicationContext("applicationContext.xml");
    	 Dao  dao  = (Dao) applicationContext.getBean("dao");
-   	 StuBasicInfo stuBasicInfo = new StuBasicInfo();
-	 stuBasicInfo.setStudentNo("20111635");
-	 stuBasicInfo.setStudentName("陈江");
-	 stuBasicInfo.setBirthday(Date.valueOf("1993-03-26"));
-	 stuBasicInfo.setClassName("软件1107");
-	 stuBasicInfo.setMajor("数字媒体");
-	 stuBasicInfo.setCollege("软件学院");
-	 stuBasicInfo.setSex(1);
-	 stuBasicInfo.setNation("汉族");
-	 stuBasicInfo.setHometown("天朝");
-	 stuBasicInfo.setPolitical("群众");
-	 stuBasicInfo.setIdCard("111111111111111111");  
-	 dao.add("jxau.sms.stuBasicInfo.dao.add", stuBasicInfo);
-	 System.out.println(stuBasicInfo.getStudentNo());
+   	 ActInfo aInfo1 = new ActInfo();
+   	 aInfo1.setActivityName("网页设计大赛");
+   	 aInfo1.setActivityType("学术科技类");
+   	 aInfo1.setActivityLevel("院级");
+   	 aInfo1.setSponsor("软件学院");
+   	 aInfo1.setOrganize("软件学院");
+   	 TecBasicInfo teacher = new TecBasicInfo();
+   	 teacher.setTeacherNo("4611");
+   	 aInfo1.setTecBasicInfo(teacher);
+   	 aInfo1.setStudentName("嘎啦");  
+	 dao.add("jxau.sms.chenjiang.activityManage.ActInfo.dao.add", aInfo1);
+	 System.out.println(aInfo1.getActNo());
 	}
 	
 	@Test
 	public void testBatchAdd() {
 	   	 ApplicationContext  applicationContext  = new ClassPathXmlApplicationContext("applicationContext.xml");
 	   	 Dao  dao  = (Dao) applicationContext.getBean("dao");
-	   	 
-	   	 List<StuBasicInfo> lists = new ArrayList<StuBasicInfo>();
-	   	   	 StuBasicInfo s1 = new StuBasicInfo();
-	   		 s1.setStudentNo("20111636");
-	   		 s1.setStudentName("易伟");
-	   		 s1.setBirthday(Date.valueOf("1993-03-26"));
-	   		 s1.setClassName("软件1107");
-	   		 s1.setMajor("数字媒体");
-	   		 s1.setCollege("软件学院");
-	   		 s1.setSex(1);
-	   		 s1.setNation("汉族");
-	   		 s1.setHometown("天朝");
-	   		 s1.setPolitical("群众");
-	   		 s1.setIdCard("111111111111111111");   
-	   		 
-	   	   	 StuBasicInfo s2 = new StuBasicInfo();
-	   		 s2.setStudentNo("20111367");
-	   		 s2.setStudentName("李轶翔");
-	   		 s2.setBirthday(Date.valueOf("1993-05-24"));
-	   		 s2.setClassName("软件1101");
-	   		 s2.setMajor("软件开发");
-	   		 s2.setCollege("软件学院");
-	   		 s2.setSex(1);
-	   		 s2.setNation("汉族");
-	   		 s2.setHometown("天朝");
-	   		 s2.setPolitical("群众");
-	   		 s2.setIdCard("111111111111111111");  
-	   		 
-	   	   	 StuBasicInfo s3 = new StuBasicInfo();
-	   		 s3.setStudentNo("20111826");
-	   		 s3.setStudentName("赖辉强");
-	   		 s3.setBirthday(Date.valueOf("1992-07-22"));
-	   		 s3.setClassName("软件1111");
-	   		 s3.setMajor("软件+英语");
-	   		 s3.setCollege("软件学院");
-	   		 s3.setSex(1);
-	   		 s3.setNation("汉族");
-	   		 s3.setHometown("天朝");
-	   		 s3.setPolitical("群众");
-	   		 s3.setIdCard("111111111111111111");  
-	   		 
-	   	   	 StuBasicInfo s4 = new StuBasicInfo();
-	   		 s4.setStudentNo("20111429");
-	   		 s4.setStudentName("嘎啦");
-	   		 s4.setBirthday(Date.valueOf("1992-07-22"));
-	   		 s4.setClassName("软件1111");
-	   		 s4.setMajor("软件开发");
-	   		 s4.setCollege("软件学院");
-	   		 s4.setSex(1);
-	   		 s4.setNation("汉族");
-	   		 s4.setHometown("天朝");
-	   		 s4.setPolitical("群众");
-	   		 s4.setIdCard("111111111111111111"); 
-	   		 
-	   		 lists.add(s1);
-	   		lists.add(s2);
-	   		lists.add(s3);
-	   		lists.add(s4);
-	   		dao.batchAdd("jxau.sms.stuBasicInfo.dao.batchAdd", lists);
+	   	 List<ActInfo> lists = new ArrayList<ActInfo>();
+	   	 ActInfo a1 = new ActInfo();
+	   	a1.setActivityName("aaa");
+	   	a1.setActivityType("实践创新类");
+	   	a1.setActivityLevel("院级");
+	   	a1.setSponsor("软件学院");
+	   	a1.setOrganize("软件学院");
+	   	 TecBasicInfo t1 = new TecBasicInfo();
+	   	 t1.setTeacherNo("4611");
+	   	a1.setTecBasicInfo(t1);
+	   	
+	   	 ActInfo a2 = new ActInfo();
+	   	a2.setActivityName("bbb");
+	   	a2.setActivityType("实践创新类");
+	   	a2.setActivityLevel("院级");
+	   	a2.setSponsor("软件学院");
+	   	a2.setOrganize("软件学院");
+	   	 TecBasicInfo t2 = new TecBasicInfo();
+	   	 t2.setTeacherNo("4611");
+	   	a2.setTecBasicInfo(t2);
+	   	
+	   	lists.add(a1);
+	   	lists.add(a2);
+	   	
+
+	   		dao.batchAdd("jxau.sms.chenjiang.activityManage.ActInfo.dao.batchAdd", lists);
 	   		
 	   		System.out.println(lists.size());
 	   		 

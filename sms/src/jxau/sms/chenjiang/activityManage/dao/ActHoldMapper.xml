@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sms.chenjiang.activityManage.dao.ActHoldDao">
+<mapper namespace="jxau.sms.chenjiang.activityManage.ActHold.dao">
 	<insert id="add" parameterType="ActHold" useGeneratedKeys="true" keyProperty="id">
 		insert into act_hold(id,actNo,sessionYear,startTime,endTime,holdPlace)
 		 values(#{id},#{actInfo.actNo},#{sessionYear},#{startTime},#{endTime},#{holdPlace}); 

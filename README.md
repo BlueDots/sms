@@ -7,7 +7,7 @@ sms
 
 git使用回忆：
 
-1.第一次下载项目需要使用git clone url https://github.com/BlueDots/sms.git
+1.第一次下载项目需要使用git clone https://github.com/BlueDots/sms.git
       克隆到自己的myeclispe工作空间也行，自己修改工作空间
       
 

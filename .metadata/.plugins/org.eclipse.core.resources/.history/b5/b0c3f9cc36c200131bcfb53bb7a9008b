@@ -9,8 +9,8 @@ package jxau.sms.lyx.TeacherInfo.po;
  */
 public class DepTeacher {
 
-	private String teacherNo;
-	private String departNo;
+	 private String teacherNo;
+	 private String departNo;
 	 
 	public String getTeacherNo() {
 		return teacherNo;

@@ -16,6 +16,7 @@
 		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.activityManage.po.ActInfo"/>
 		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.activityManage.vo.ActInfoVO"/>
 		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.activityManage.po.ActHold"/>
+		<typeAlias alias="TecBasicInfo" type = "jxau.sms.li.tecBasicInfo.po.TecBasicInfo"/>
 		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.activityManage.vo.ActHoldVO"/>		    
     </typeAliases>  
      

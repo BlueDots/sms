@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
  
-import jxau.sms.anping.student.service.UserService;
 
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Scope("prototype")
 public class HelloAction extends ActionSupport implements ServletResponseAware {
     
-    private UserService userService;
-    
-	@Resource(name="userSerivce")  
-	 public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-
+   
 	private static final long serialVersionUID = -6493858961444458651L; 
 	 
 	 private HttpServletResponse response;  
@@ -44,7 +37,7 @@ public class HelloAction extends ActionSupport implements ServletResponseAware {
 	        System.out.println("HelloAction.say is executing....");  
 	    
 	        System.out.println("---------成共进入action----------------");
-	        userService.findUser();
+	       
 			return SUCCESS;
    
 	   }  

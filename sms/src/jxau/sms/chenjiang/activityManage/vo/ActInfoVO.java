@@ -2,7 +2,8 @@ package jxau.sms.chenjiang.activityManage.vo;
 
 import java.util.Date;
 
-import com.sms.chenjiang.activityManage.po.ActInfo;
+import jxau.sms.chenjiang.activityManage.po.ActInfo;
+
 /**
  * 
  * @author 江

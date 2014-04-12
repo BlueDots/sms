@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
  
-import jxau.sms.student.service.UserService;
+import jxau.sms.anping.student.service.UserService;
 
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.beans.factory.annotation.Autowired;

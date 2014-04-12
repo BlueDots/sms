@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sms.chenjiang.stuActParticipate.dao.StuActParticipateDao">
+	<resultMap type="StuActParticipateVO" id="StuActParticipateVOResultMap">
+		<id property="id" column="sapId"/>
+		<result property="studentNo" column="sbiStudentNo"/>
+		<result property="className" column="className"/>
+		<result property="studentName" column="sbiStudentName"/>
+		<result property="sex" column="sex"/>
+		<result property="major" column="major"/>
+		<result property="college" column="college"/>
+		<result property="activityName" column="activityName"/>
+		<result property="sessionYear" column="sessionYear"/>
+		<result property="awardTime" column="awardTime"/>
+		<result property="activityType" column="activityType"/>
+		<result property="activityLevel" column="activityLevel"/>
+		<result property="activityRating" column="sapActivityRating"/>
+		<result property="studentPost" column="studentPost"/>
+		<result property="workingTime" column="workingTime"/>
+		<result property="awardScore" column="awardScore"/>
+		<result property="innovationScore" column="innovationScore"/>
+		<result property="awardAmount" column="awardAmount"/>
+		<result property="exameState" column="sbiExameState"/>
+		<result property="remarks" column="sbiRemarks"/>
+		<result property="stuState" column="stuState"/>
+		<result property="stuActState" column="stuActState"/>
+	</resultMap>		
+
+	<select id="queryStuActParticipate" parameterType="map" resultMap="StuActParticipateVOResultMap">
+		select sbi.studentNo as sbiStudentNo,
+			   sbi.studentName as sbiStudentName,
+			   sbi.birthday as birthday,
+			   sbi.className as className,
+			   sbi.major as major,
+			   sbi.college as college,
+			   sbi.sex as sex,
+			   sbi.nation as nation,
+			   sbi.birthPlace as birthPlace,
+			   sbi.political as political,
+			   sbi.idcard as idCard,
+			   sbi.telephone as telephone,
+			   sbi.email as email,
+			   sbi.emailOnly as emailOnly,
+			   sbi.family as family,
+			   sbi.address as address,
+			   sbi.fphone as fphone,
+			   sbi.photo as photo,
+			   sbi.eduBackground as eduBackground,
+			   sbi.englishlevel as englishlevel,
+			   sbi.bankcard as bankCard,
+			   sbi.innovationScore as sbiInnovationScore,
+			   sbi.creativeScore as creativeScore,
+			   sbi.remarks as sbiRemarks,
+			   sbi.exameState as sbiExameState,
+			   sbi.stuState as stuState,
+			   ai.actNo as aiActNo,
+			   ai.activityName as activityName,
+			   ai.activityType as activityType,
+			   ai.activityLevel as activityLevel,
+			   ai.sponsor as sponsor,
+			   ai.organize as organize,
+			   ai.teacherNo as teacherNo,
+			   ai.studentName as aiStudentName,
+			   ai.createTime as createTime,
+			   ai.info as info,
+			   ai.exameState as aiExameState,
+			   ai.remarks as aiRemarks,
+			   ai.actState as actState,
+			   sap.id as sapId,
+			   sap.studentNo as sapStudentNo,
+			   sap.actNo as sapActNo,
+			   sap.sessionYear as sessionYear,
+			   sap.awardTime as awardTime,
+			   sap.activityRating as sapActivityRating,
+			   sap.studentPost as studentPost,
+			   sap.workingTime as workingTime,
+			   sap.exameState as sapExameState,
+			   sap.remarks as sapRemarks,
+			   sap.stuActState as stuActState,
+			   ac.id as acId,
+			   ac.actno as acActno,
+			   ac.department as department,
+			   ac.activityRating as acActivityRating,
+			   ac.awardScore as acAwardScore,
+			   ac.innovationScore as acInnovationScore,
+			   ac.awardAmount as acAwardAmount
+		from stu_basic_info sbi, act_info ai, stu_act_participate sap, act_credit ac
+        where sbi.studentNo=sap.studentNo and sap.actno=ai.actno and ai.actno=ac.actno
+        	and sap.activityRating = ac.activityRating
+        	and ai.organize = ac.department
+        	<if test="college != null">
+        		and sbi.college=#{college}
+        	</if>
+        	<if test="major != null">
+        		and sbi.major=#{major}
+        	</if>
+        	<if test="className != null">
+        		and sbi.className=#{className}
+        	</if>
+        	<if test="stuNoOrName != null">
+        		and (sbi.studentName=#{stuNoOrName} or sbi.studentNo=#{stuNoOrName})
+        	</if>
+        	 limit #{start},#{end};
+	</select>
+	
+	<insert id="addStuActParticipate" parameterType="StuActParticipate" useGeneratedKeys="true" keyProperty="id">
+		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime)
+		 values(#{id},#{stuBasicInfo.studentNo},#{actInfo.actNo},#{sessionYear},#{awardTime,jdbcType=TIMESTAMP},#{activityRating},#{studentPost},#{workingTime,jdbcType=TIMESTAMP}); 
+	</insert>
+	<update id="verifyStuActParticipate" parameterType="StuActParticipate">
+		update stu_act_participate
+		<set>
+			<if test="exameState != null">
+				exameState = #{exameState},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks}
+			</if>
+		</set>
+		where id = #{id};
+	</update>
+	<update id="editStuActParticipate" parameterType="StuActParticipate">
+		update stu_act_participate
+		<set>
+			<if test="stuBasicInfo != null">
+				studentNo = #{stuBasicInfo.studentNo},
+			</if>
+			<if test="actInfo != null">
+				actNo = #{actInfo.actNo},
+			</if>
+			<if test="sessionYear != null">
+				sessionYear = #{sessionYear},
+			</if>
+			<if test="awardTime != null">
+				awardTime = #{awardTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="activityRating != null">
+				activityRating = #{activityRating},
+			</if>
+			<if test="studentPost != null">
+				studentPost = #{studentPost},
+			</if>
+			<if test="workingTime != null">
+				workingTime = #{workingTime,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+		where id = #{id};
+	</update>
+	
+	<update id="deleteStuActParticipate" parameterType="StuActParticipate">
+		update stu_act_participate
+		<set>
+			<if test="stuActState != null">
+				stuActState = #{stuActState},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks}
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+</mapper>
+

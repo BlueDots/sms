@@ -174,6 +174,8 @@ public class Test1 {
 	   		System.out.println(lists.get(i));
 	}
 	
+	
+	
 	@Test
 	public void testAdvancedQuery() {
 		ApplicationContext  applicationContext  = new ClassPathXmlApplicationContext("applicationContext.xml");

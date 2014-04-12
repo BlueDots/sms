@@ -1,0 +1,15 @@
+package jxau.sms.lyx.purviewManage.po;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-12
+ * TODO:
+ * 		中间表，教师角色表
+ */
+public class TeacherRole {
+
+		private String teacherNo;				//教师编号
+		private int roleNo;							//角色编号
+
+}

@@ -16,7 +16,7 @@
      <mappers>  
  
          
-        <mapper resource="jxau/sms/student/dao/studentMapper.xml"/>
+        <mapper resource="jxau/sms/anping/student/dao/studentMapper.xml"/>
    
     </mappers>
 </configuration>

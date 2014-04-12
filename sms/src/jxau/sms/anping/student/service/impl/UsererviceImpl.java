@@ -1,4 +1,4 @@
-package jxau.sms.student.service.impl;
+package jxau.sms.anping.student.service.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -6,8 +6,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
  
+import jxau.sms.anping.student.service.UserService;
 import jxau.sms.globaldao.Dao;
-import jxau.sms.student.service.UserService;
 
  
 import org.springframework.stereotype.Service;

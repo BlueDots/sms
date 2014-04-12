@@ -1,4 +1,4 @@
-package jxau.sms.student.service;
+package jxau.sms.anping.student.service;
 
 import java.util.List;
 

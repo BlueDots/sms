@@ -67,6 +67,15 @@ public class UsererviceImpl  implements UserService  {
 		return 0;
 	}
  
+	/**
+	 * 
+	 * anping
+	 * TODO
+	 * 下午3:50:45
+	 */
+	public  void justDoIt(){
+		
+	}
 	
 
 }

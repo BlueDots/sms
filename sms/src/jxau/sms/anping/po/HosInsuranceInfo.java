@@ -7,7 +7,7 @@ import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
 public class HosInsuranceInfo {
 	private int no;//编号
 	private StuBasicInfo student;//学号
-	private int sex;//性别
+
 	private String type;//类型
 	private String hospitaladdress;//住院地址
 	private Date hospitalDate;//住院日期
@@ -48,12 +48,7 @@ public class HosInsuranceInfo {
 	public void setStudent(StuBasicInfo student) {
 		this.student = student;
 	}
-	public int getSex() {
-		return sex;
-	}
-	public void setSex(int sex) {
-		this.sex = sex;
-	}
+	
 	public String getType() {
 		return type;
 	}

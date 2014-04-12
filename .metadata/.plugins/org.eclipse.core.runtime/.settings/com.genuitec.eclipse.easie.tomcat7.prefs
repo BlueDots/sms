@@ -1,0 +1,5 @@
+SERVER_ENABLEMENT=true
+TOMCAT_BASE=G\:\\Tomcat\\tomcat
+TOMCAT_HOME=G\:\\Tomcat\\tomcat
+TOMCAT_TEMP=G\:\\Tomcat\\tomcat\\temp
+eclipse.preferences.version=1

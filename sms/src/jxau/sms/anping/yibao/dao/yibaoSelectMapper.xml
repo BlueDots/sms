@@ -4,20 +4,16 @@
 <mapper namespace="jxau.sms.anping.yibao.dao">
 
    <!-- 医保的结果集 --> 
-	<resultMap id="yibaoResultMap" type="HosInsuranceInfo">
-	   <association property="student" javaType="Author">
-			<id property="id" column="author_id" />
-			<result property="username" column="author_username" />
-			<result property="password" column="author_password" />
-			<result property="email" column="author_email" />
-			<result property="bio" column="author_bio" />
-			<result property="favouriteSection" column="author_favourite_section" />
+	<resultMap id="yibaoResultMap" type="HosInsuranceInfo"  >
+	   <association property="student" javaType="StuBasicInfo">
+			<id property="studentNo" column="studentNo" />
 		</association>
 	</resultMap>
 
 
-	<select id="findYiBaoById" resultType="">
-
+	<select id="findYiBaoById" parameterType="java.lang.String" resultType="HosInsuranceInfo">
+		select * from hos_insurance_info 
+		where studentNo=#{studentNo}
 	</select>
 
 	<!-- <select id="findStudent" resultMap="StudentList"> select * from t_student; 

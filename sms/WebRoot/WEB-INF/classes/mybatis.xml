@@ -11,14 +11,7 @@
 <setting name="aggressiveLazyLoading" value="false"/>
 </settings>
     <typeAliases>  
-		<typeAlias alias="StuBasicInfo" type = "jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo"/>
-		<typeAlias alias="StuBasicInfoVO" type = "jxau.sms.chenjiang.stuBasicInfo.vo.StuBasicInfoVO"/>
-		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.activityManage.po.ActInfo"/>
-		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.activityManage.vo.ActInfoVO"/>
-		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.activityManage.po.ActHold"/>
-		<typeAlias alias="TecBasicInfo" type = "jxau.sms.li.tecBasicInfo.po.TecBasicInfo"/>
-		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.activityManage.vo.ActHoldVO"/>	
-		<!-- 熊安平部分 开始-->
+	  <!-- 熊安平部分 开始-->
 		<typeAlias alias="ClassAwardInfo" type="jxau.sms.anping.po.ClassAwardInfo"/>	
 		<typeAlias alias="ClassInfo" type="jxau.sms.anping.po.ClassInfo"/>
 		<typeAlias alias="ClassStatistical" type="jxau.sms.anping.po.ClassStatistical"/>
@@ -33,9 +26,10 @@
 		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.po.ActInfo"/>
 		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.vo.ActInfoVO"/>
 		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.po.ActHold"/>
-		<typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.TeacherInfo.po.TecBasicInfo"/>
 		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>		    
-
+        
+        <typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.po.TecBasicInfo"/>		    
+        
     </typeAliases>  
      
      <mappers>  

@@ -2,7 +2,7 @@ package jxau.sms.chenjiang.activityManage.po;
 
 import java.util.Date;
 
-import jxau.sms.lyx.po.TecBasicInfo;
+import jxau.sms.lyx.TeacherInfo.po.TecBasicInfo;
 
 /**
  * 

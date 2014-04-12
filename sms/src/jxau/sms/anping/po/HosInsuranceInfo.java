@@ -2,10 +2,11 @@ package jxau.sms.anping.po;
 
 import java.util.Date;
 
+import jxau.sms.chenjiang.stuBasicInfo.po.StuBasicInfo;
+
 public class HosInsuranceInfo {
 	private int no;//编号
-	private String studentNo;//学号
-	private String studentName;//学名
+	private StuBasicInfo student;//学号
 	private int sex;//性别
 	private String type;//类型
 	private String hospitaladdress;//住院地址
@@ -40,17 +41,12 @@ public class HosInsuranceInfo {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getStudentNo() {
-		return studentNo;
+
+	public StuBasicInfo getStudent() {
+		return student;
 	}
-	public void setStudentNo(String studentNo) {
-		this.studentNo = studentNo;
-	}
-	public String getStudentName() {
-		return studentName;
-	}
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
+	public void setStudent(StuBasicInfo student) {
+		this.student = student;
 	}
 	public int getSex() {
 		return sex;

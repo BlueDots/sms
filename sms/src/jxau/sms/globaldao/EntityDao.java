@@ -63,5 +63,17 @@ public class EntityDao implements Dao {
 		  }
 		 }
 
+	@Override
+	public <T> void batchAdd(String mapperId, Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		session.insert(mapperId, params);
+	}
+
+	@Override
+	public <T> void batchDelete(String mapperId, Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		session.delete(mapperId, params);
+	}
+
 }
  

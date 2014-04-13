@@ -297,3 +297,623 @@ java.lang.NullPointerException
 	at org.eclipse.wst.validation.internal.ValBuilderJob.runInWorkspace(ValBuilderJob.java:126)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2014-04-13 08:56:09.467 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_13
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.osgi 2 0 2014-04-13 08:57:26.787
+!MESSAGE While loading class "org.eclipse.wst.jsdt.internal.core.JavaModelManager$16", thread "Thread[Worker-5,5,main]" timed out waiting (5007ms) for thread "Thread[Worker-10,5,main]" to finish starting bundle "org.eclipse.wst.jsdt.core_1.1.100.me201207241813 [985]". To avoid deadlock, thread "Thread[Worker-5,5,main]" is proceeding but "org.eclipse.wst.jsdt.internal.core.JavaModelManager$16" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:/G:/myeclipse/Common/plugins/org.eclipse.wst.jsdt.core_1.1.100.me201207241813.jar" by thread "Worker-10".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1087)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:297)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:268)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:463)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:400)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:252)
+	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:320)
+	at org.eclipse.wst.jsdt.internal.core.JavaModelManager$15.run(JavaModelManager.java:4182)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 16 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1087)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:297)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:268)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:463)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:400)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:252)
+	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:320)
+	at org.eclipse.wst.jsdt.internal.core.JavaModelManager$15.run(JavaModelManager.java:4182)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.630
+!MESSAGE Error processing query: insert into t_role_info values(0,'校级管理员',now(),'校级管理员角色,默认所有系统权限')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.632
+!MESSAGE Error processing query:  
+insert into t_role_info values(1,'学生',now(),'学生角色，固定权限')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.634
+!MESSAGE Error processing query:  
+insert into t_role_info values(2,'班主任',now(),'班主任角色')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.635
+!MESSAGE Error processing query:  
+insert into t_role_info values(3,'院级工作人员',now(),'院级工作人员角色')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.637
+!MESSAGE Error processing query:  
+insert into t_role_info values(4,'校级工作人员',now(),'校级工作人员角色')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.639
+!MESSAGE Error processing query:  
+insert into t_role_info values(5,'院级管理员',now(),'院级管理员角色')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:46:43.641
+!MESSAGE Error processing query:  
+insert into t_role_info values(6,'活动负责人',now(),'活动管理中的特殊角色')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_role_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:51:55.621
+!MESSAGE Error processing query: insert into tec_basic_info values('1234','jack',0,null,'江西',null,'离职',null,'2011-1-1',now(),'本科','无')
+!STACK 0
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1075)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:51:55.674
+!MESSAGE Error processing query:  
+insert into tec_basic_info values('8765','arron',1,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','无')
+!STACK 0
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1075)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:51:55.676
+!MESSAGE Error processing query:  
+insert into tec_basic_info values('4321','tom',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','无')
+!STACK 0
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1075)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 09:51:55.679
+!MESSAGE Error processing query:  
+insert into tec_basic_info values('0000','admin',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','无')
+!STACK 0
+java.sql.SQLException: Column count doesn't match value count at row 1
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1075)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.100
+!MESSAGE Error processing query: insert into t_purview_info values(5,1,'奖助学金信息模块','/grantInfo.jsp')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.105
+!MESSAGE Error processing query:  
+insert into t_purview_info values(6,1,'活动管理模块','/activityInfo.jsp')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.109
+!MESSAGE Error processing query:  
+insert into t_purview_info values(7,1,'学生参与活动模块','/studentActivity.jsp')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.113
+!MESSAGE Error processing query:  
+insert into t_purview_info values(8,6,'活动信息列表','/activityList')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.118
+!MESSAGE Error processing query:  
+insert into t_purview_info values(9,6,'手动录入活动信息','/addActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.122
+!MESSAGE Error processing query:  
+insert into t_purview_info values(10,6,'编辑活动信息','/editActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.126
+!MESSAGE Error processing query:  
+insert into t_purview_info values(11,6,'删除活动','/deleteActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.128
+!MESSAGE Error processing query:  
+insert into t_purview_info values(12,6,'导入活动','/importActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.130
+!MESSAGE Error processing query:  
+insert into t_purview_info values(13,6,'导出活动','/exportActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.132
+!MESSAGE Error processing query:  
+insert into t_purview_info values(14,6,'活动启动','/startActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.133
+!MESSAGE Error processing query:  
+insert into t_purview_info values(15,6,'高级搜索','/searchActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.135
+!MESSAGE Error processing query:  
+insert into t_purview_info values(16,6,'排序','/sortActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.137
+!MESSAGE Error processing query:  
+insert into t_purview_info values(17,6,'审核活动信息','/auditActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY com.genuitec.eclipse.sqlexplorer 4 4 2014-04-13 10:00:18.140
+!MESSAGE Error processing query:  
+insert into t_purview_info values(18,6,'活动学分比例信息','/ScoreActivity')
+!STACK 0
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'sms.t_purview_info' doesn't exist
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:409)
+	at com.mysql.jdbc.Util.getInstance(Util.java:384)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1054)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3566)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3498)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1959)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2113)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2562)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2512)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:781)
+	at com.mysql.jdbc.StatementImpl.execute(StatementImpl.java:624)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.processQuery(SqlExecProgress.java:234)
+	at com.genuitec.eclipse.sqlexplorer.views.SqlExecProgress.run(SqlExecProgress.java:184)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)

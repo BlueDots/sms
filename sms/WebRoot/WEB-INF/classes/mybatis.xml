@@ -27,9 +27,15 @@
 		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.vo.ActInfoVO"/>
 		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.po.ActHold"/>
 		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>		    
-        
-        <typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.po.TecBasicInfo"/>		    
-        
+         <!-- 李轶翔部分 开始-->
+        <typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.po.TecBasicInfo"/>	
+        <typeAlias alias="DepTeacher" type = "jxau.sms.lyx.po.DepTeacher"/>
+        <typeAlias alias="PurviewInfo" type = "jxau.sms.lyx.po.PurviewInfo"/>
+        <typeAlias alias="RoleInfo" type = "jxau.sms.lyx.po.RoleInfo"/>
+        <typeAlias alias="TeacherPurview" type = "jxau.sms.lyx.po.TeacherPurview"/>
+        <typeAlias alias="TeacherRole" type = "jxau.sms.lyx.po.TeacherRole"/>	    
+        <typeAlias alias="RolePurview" type = "jxau.sms.lyx.po.RolePurview"/>	  
+         <!-- 李轶翔部分 结束-->
     </typeAliases>  
      
      <mappers>  

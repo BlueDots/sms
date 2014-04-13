@@ -4,15 +4,14 @@
 <mapper namespace="jxau.sms.anping.yibao.dao">
 
 	<!-- 校级工作人员修改医保申请的状态 -->
-	<insert id="applyYiBao" parameterType="HosInsuranceInfo"
-		keyProperty="hosNo" keyColumn="hosNo" useGeneratedKeys="true">
-		insert into
-		hos_insurance_info(studentNo,bankcardID,hosType,hospitalAddress,hospitalDate,leaveDate,hosDate,localCity,conditon,cost,applyTime,hosState)
-		values(#{student.studentNo},#{bankcardID},#{hosType},#{hospitalAddress},#{hospitalDate},#{leaveDate},#{hosDate},#{localCity},#{conditon},#{cost},now(),'未审核');
-
+	<insert id="modifyYiBaoStatus" parameterType="java.lang.String">
+	
 	</insert>
 	
 	
-	
+	<!-- 录入并修改受理结果-->
+	<!-- 录入并修改已报销名单-->
+	<!-- 录入并修改商业保险-->
+	 	
 
 </mapper>

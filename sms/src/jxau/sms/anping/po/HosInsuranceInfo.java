@@ -1,65 +1,65 @@
 package jxau.sms.anping.po;
 
-import java.util.Date;
+
+
+import java.sql.Date;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
 
 public class HosInsuranceInfo {
-	private int no;//编号
+	private int hosNo;//编号
 	private StuBasicInfo student;//学号
 
-	private String type;//类型
-	private String hospitaladdress;//住院地址
+	private String hosType;//类型
+	private String hospitalAddress;//住院地址
 	private Date hospitalDate;//住院日期
-	private Date leavedate;//出院日期
-	private int date;//住院天数
-	private int localcity;//本市还是转外
+	private Date leaveDate;//出院日期
+	private int hosDate;//住院天数
+	private int localCity;//本市还是转外
 	private String conditon;//病情
 	private double cost;//总费用
-	private Date applytime;//申请时间
+	private Date applyTime;//申请时间
 	private int accept;//是否受理
 	private int collarCard;//是否领卡
-	private Date submittime;//递交案子时间
-	private Date refusereason;//未受理原因
-	private String result;//处理结果
+	private Date submitTime;//递交案子时间
+	private String refuseReason;//未受理原因
+	private String resultDeal;//处理结果
 	private String companyRemark;//商业保险备注
-	private double reimbursementamount;//医保处已报金额
+	private double reimbursementAmount;//医保处已报金额
 	private int bill;//是否有结算单
-	private Date getcardtime;//领卡时间
+	private Date getcardTime;//领卡时间
 	private String jumingRemark;//居民医保备注
 	private String bankcardID;//银行卡号
 	private int complete;//除结算单材料是否齐全
-	private Date insurertime;//保险公司接案子的时间
-	private String notinsurerreason;//没有结算的原因
+	private Date insurerTime;//保险公司接案子的时间
+	private String notinsurerReason;//没有结算的原因
 	private String baoxiaoRemark;//已报销备注
 	private String stateRemark;//审核状态备注
 	private String returnMark;//返回消息备注
 	private int hosState;//审核状态
-	public int getNo() {
-		return no;
+	public int getHosNo() {
+		return hosNo;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setHosNo(int hosNo) {
+		this.hosNo = hosNo;
 	}
-
 	public StuBasicInfo getStudent() {
 		return student;
 	}
 	public void setStudent(StuBasicInfo student) {
 		this.student = student;
 	}
-	
-	public String getType() {
-		return type;
+	public String getHosType() {
+		return hosType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setHosType(String hosType) {
+		this.hosType = hosType;
 	}
-	public String getHospitaladdress() {
-		return hospitaladdress;
+	public String getHospitalAddress() {
+		return hospitalAddress;
 	}
-	public void setHospitaladdress(String hospitaladdress) {
-		this.hospitaladdress = hospitaladdress;
+	public void setHospitalAddress(String hospitalAddress) {
+		this.hospitalAddress = hospitalAddress;
 	}
 	public Date getHospitalDate() {
 		return hospitalDate;
@@ -67,23 +67,23 @@ public class HosInsuranceInfo {
 	public void setHospitalDate(Date hospitalDate) {
 		this.hospitalDate = hospitalDate;
 	}
-	public Date getLeavedate() {
-		return leavedate;
+	public Date getLeaveDate() {
+		return leaveDate;
 	}
-	public void setLeavedate(Date leavedate) {
-		this.leavedate = leavedate;
+	public void setLeaveDate(Date leaveDate) {
+		this.leaveDate = leaveDate;
 	}
-	public int getDate() {
-		return date;
+	public int getHosDate() {
+		return hosDate;
 	}
-	public void setDate(int date) {
-		this.date = date;
+	public void setHosDate(int hosDate) {
+		this.hosDate = hosDate;
 	}
-	public int getLocalcity() {
-		return localcity;
+	public int getLocalCity() {
+		return localCity;
 	}
-	public void setLocalcity(int localcity) {
-		this.localcity = localcity;
+	public void setLocalCity(int localCity) {
+		this.localCity = localCity;
 	}
 	public String getConditon() {
 		return conditon;
@@ -97,11 +97,11 @@ public class HosInsuranceInfo {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	public Date getApplytime() {
-		return applytime;
+	public Date getApplyTime() {
+		return applyTime;
 	}
-	public void setApplytime(Date applytime) {
-		this.applytime = applytime;
+	public void setApplyTime(Date applyTime) {
+		this.applyTime = applyTime;
 	}
 	public int getAccept() {
 		return accept;
@@ -115,23 +115,24 @@ public class HosInsuranceInfo {
 	public void setCollarCard(int collarCard) {
 		this.collarCard = collarCard;
 	}
-	public Date getSubmittime() {
-		return submittime;
+	public Date getSubmitTime() {
+		return submitTime;
 	}
-	public void setSubmittime(Date submittime) {
-		this.submittime = submittime;
+	public void setSubmitTime(Date submitTime) {
+		this.submitTime = submitTime;
 	}
-	public Date getRefusereason() {
-		return refusereason;
+	
+	public String getRefuseReason() {
+		return refuseReason;
 	}
-	public void setRefusereason(Date refusereason) {
-		this.refusereason = refusereason;
+	public void setRefuseReason(String refuseReason) {
+		this.refuseReason = refuseReason;
 	}
-	public String getResult() {
-		return result;
+	public String getResultDeal() {
+		return resultDeal;
 	}
-	public void setResult(String result) {
-		this.result = result;
+	public void setResultDeal(String resultDeal) {
+		this.resultDeal = resultDeal;
 	}
 	public String getCompanyRemark() {
 		return companyRemark;
@@ -139,11 +140,11 @@ public class HosInsuranceInfo {
 	public void setCompanyRemark(String companyRemark) {
 		this.companyRemark = companyRemark;
 	}
-	public double getReimbursementamount() {
-		return reimbursementamount;
+	public double getReimbursementAmount() {
+		return reimbursementAmount;
 	}
-	public void setReimbursementamount(double reimbursementamount) {
-		this.reimbursementamount = reimbursementamount;
+	public void setReimbursementAmount(double reimbursementAmount) {
+		this.reimbursementAmount = reimbursementAmount;
 	}
 	public int getBill() {
 		return bill;
@@ -151,11 +152,11 @@ public class HosInsuranceInfo {
 	public void setBill(int bill) {
 		this.bill = bill;
 	}
-	public Date getGetcardtime() {
-		return getcardtime;
+	public Date getGetcardTime() {
+		return getcardTime;
 	}
-	public void setGetcardtime(Date getcardtime) {
-		this.getcardtime = getcardtime;
+	public void setGetcardTime(Date getcardTime) {
+		this.getcardTime = getcardTime;
 	}
 	public String getJumingRemark() {
 		return jumingRemark;
@@ -175,17 +176,17 @@ public class HosInsuranceInfo {
 	public void setComplete(int complete) {
 		this.complete = complete;
 	}
-	public Date getInsurertime() {
-		return insurertime;
+	public Date getInsurerTime() {
+		return insurerTime;
 	}
-	public void setInsurertime(Date insurertime) {
-		this.insurertime = insurertime;
+	public void setInsurerTime(Date insurerTime) {
+		this.insurerTime = insurerTime;
 	}
-	public String getNotinsurerreason() {
-		return notinsurerreason;
+	public String getNotinsurerReason() {
+		return notinsurerReason;
 	}
-	public void setNotinsurerreason(String notinsurerreason) {
-		this.notinsurerreason = notinsurerreason;
+	public void setNotinsurerReason(String notinsurerReason) {
+		this.notinsurerReason = notinsurerReason;
 	}
 	public String getBaoxiaoRemark() {
 		return baoxiaoRemark;
@@ -211,7 +212,5 @@ public class HosInsuranceInfo {
 	public void setHosState(int hosState) {
 		this.hosState = hosState;
 	}
-	
-	
-	
+		
 }

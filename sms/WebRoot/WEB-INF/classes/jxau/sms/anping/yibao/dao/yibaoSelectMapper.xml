@@ -3,18 +3,31 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jxau.sms.anping.yibao.dao">
 
-   <!-- 医保的结果集 --> 
-	<resultMap id="yibaoResultMap" type="HosInsuranceInfo"  >
-	   <association property="student" javaType="StuBasicInfo">
+	<!-- 医保的结果集 在po和table 对应上之后使用自动映射，省去配置过程-->
+	<resultMap id="yibaoResultMap" type="HosInsuranceInfo"
+		autoMapping="true">
+		<!-- 需要配置hosNo,才知道返回多少条数据，并且不合并相同数据 -->
+		<id column="hosNo" property="hosNo"></id>
+		<!-- 配置学生 -->
+		<association property="student" javaType="StuBasicInfo">
 			<id property="studentNo" column="studentNo" />
+			<result column="studentName" property="studentName" />
+			<result column="sex" property="sex" />
 		</association>
 	</resultMap>
 
 
-	<select id="findYiBaoById" parameterType="java.lang.String" resultType="HosInsuranceInfo">
-		select * from hos_insurance_info 
-		where studentNo=#{studentNo}
+	<!-- 查找学生部分信息和所有的医保 -->
+	<select id="findYiBaoById" parameterType="java.util.HashMap"
+		resultMap="yibaoResultMap">
+		select insurance.* ,student.studentName,student.sex from
+		hos_insurance_info insurance,stu_basic_info student
+		where
+		insurance.studentNo=#{studentNo} and student.studentNo=#{studentNo}
+		and insurance.studentNo=student.studentNo;
 	</select>
+
+
 
 	<!-- <select id="findStudent" resultMap="StudentList"> select * from t_student; 
 		</select> <resultMap type="com.sms.li.po.Student" id="StudentList"> <id column="studentId" 

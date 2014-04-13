@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--说明:(配置模块中范围最大的VO)
+	1.view的id属性由模块号+视图编号,type属性是对应的vo名，用于导入导出使用；
+	2.column用于高级查询使用，其中name是数据库中字段名，value属于高级查询的选项名或者是导出的项目名称；
+	  mutiply表示是否是多值属性,用于高级查询,ture表示是高级查询的条件，反之，false则不是；
+	3.property中value表示该字段的多值属性；
+-->
+<mapping>
+	<view id="0101" type="HosInsuranceInfoVo">
+		<column name="studentNo" value="学号" multiply="false">
+		 
+		</column>
+		<column name="studentName" value="姓名" multiply="false">
+	 
+		</column>
+		<column name="sex" value="性别"  multiply="true" >
+			<property value="男"  type="1"/> 
+			<property value="女"  type="0"/> 	
+	 	</column>
+	 	
+	 	<column name="type" value="类型"  multiply="true" >
+			<property value="在校居民医保"  /> 
+			<property value="已刷卡" />
+			<property value="报新农合" />
+			<property value="意外伤害门诊" /> 	
+	 	</column>
+	 	
+	 	<column name="hospitaladdress" value="住院地址" multiply="false" >
+			 	
+	 	</column>
+	 	
+	 	<column name="hospitalDate" value="住院日期"  multiply="true" >
+			 	
+	 	</column>
+	 	
+	  <column name="leavedate" value="出院日期"  multiply="true" >
+	  </column>
+	  
+	   <column name="date" value="住院日期"  multiply="true" >
+	  </column>
+	  
+	  <column name="localcity" value="本市或转外"  multiply="true" >
+	    	<property value="本市"  type="1"/>
+	    	<property value="转外"  type="0"/>
+	  </column>
+	  
+	  <column name="conditon" value="病情"  multiply="false" >
+	  </column>
+		
+		
+	  <column name="cost" value="总费用"  multiply="false" >
+	  </column>
+	  
+	 <column name="applytime" value="申请时间"  multiply="true" >
+	  </column>
+		
+    <column name="accept" value="是否受理"  multiply="true" >
+	    	<property value="是"  type="0"/>
+	    	<property value="否"  type="1"/>
+	 </column>
+		
+	 <column name="collarCard" value="是否领卡"  multiply="false" >
+	    	<property value="是"  type="0"/>
+	    	<property value="否"  type="1"/>
+	 </column>
+	 
+	  <column name="submittime" value="递交案子时间"  multiply="true" >
+	     
+	 </column>
+	 
+	  <column name="refusereson" value="未受理时间"  multiply="false" >
+	     
+	 </column>
+	 
+	  <column name="result" value="处理结果"  multiply="false" >
+	     
+	 </column>
+		
+	<column name="remarkAboutCom" value="商业保险备注"  multiply="false" >
+	  </column>
+	  
+	  <column name="reimbursementamount" value="医保处已报金额"  multiply="false" >
+	  </column>
+	  
+	    <column name="bill" value="是否有结算单"  multiply="true" >
+	    <property value="是"  type="1"/>
+	     <property value="否"  type="0"/>
+	  </column>
+	  
+	    <column name="getcardtime" value="领卡时间"  multiply="false" >
+	  </column>
+		
+		 <column name="remark" value="居民医保备注"  multiply="false" >
+	  </column>
+	  
+	   <column name="bankcardID" value="银行卡号"  multiply="false" >
+	   </column>
+	   
+	    <column name="complete" value="除结算单材料是否齐全"  multiply="true" >
+	      <property value="是"  type="1"/>
+	     <property value="否"  type="0"/>
+	  </column>
+	  
+	   <column name="insurertime" value="保险公司接案子的时间"  multiply="false" >
+ 
+	  </column>
+	  
+	   <column name="notinsurerreason" value="没有结算的原因"  multiply="false" >
+ 
+	  </column>
+	  
+	    <column name="remarkAboutBaoXiao" value="已报销备注"  multiply="false" >
+	    
+	    </column>
+	       <column name="stateRemark" value="审核备注"  multiply="false" >
+ 
+	  </column>
+	  
+	    <column name="returnMark" value="返回消息备注"  multiply="false" >
+ 
+	  </column>
+	  
+	   <column name="state" value="审核状态"  multiply="true" >
+       <property value="未提交 "  type="1"/>
+	     <property value="院级审核中 "  type="2"/>
+	      <property value="校级审核中 "  type="3"/>
+	       <property value="院级未通过"  type="4"/>
+	        <property value="校级未通过"  type="5"/>
+	         <property value="通过"  type="6"/>
+	  </column>
+	</view>
+</mapping>

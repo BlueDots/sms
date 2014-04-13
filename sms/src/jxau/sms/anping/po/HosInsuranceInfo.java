@@ -36,7 +36,7 @@ public class HosInsuranceInfo {
 	private String baoxiaoRemark;//已报销备注
 	private String stateRemark;//审核状态备注
 	private String returnMark;//返回消息备注
-	private int hosState;//审核状态
+	private String hosState;//审核状态
 	public int getHosNo() {
 		return hosNo;
 	}
@@ -206,10 +206,10 @@ public class HosInsuranceInfo {
 	public void setReturnMark(String returnMark) {
 		this.returnMark = returnMark;
 	}
-	public int getHosState() {
+	public String getHosState() {
 		return hosState;
 	}
-	public void setHosState(int hosState) {
+	public void setHosState(String hosState) {
 		this.hosState = hosState;
 	}
 		

@@ -45,6 +45,7 @@ public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 	@Override
 	public <T> int add(Class T, Object object) {
 		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

@@ -1,0 +1,14 @@
+package jxau.sms.lyx.purview.dao.test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestOne {
+
+	@Test
+	public void test() {
+		
+	}
+
+}

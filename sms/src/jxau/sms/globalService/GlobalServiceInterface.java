@@ -1,10 +1,20 @@
 package jxau.sms.globalService;
 
+import java.util.List;
 import java.util.Map;
  
 
 public interface GlobalServiceInterface {
  
+	/**
+	 * 查询集合
+	 * @param param  传入的是你的查询条件 如 (studentNo , 20111429)
+     * @param status  是状态，如禁用启用
+     * @return 返回的是一个List集合
+	 */
+	public <T> List<T>  searchListByAccurate(Map<String,Object> param,int status);
+	
+	
     /**
      * 精确查询
      * @param param  传入的是你的查询条件 如 (studentNo , 20111429)

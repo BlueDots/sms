@@ -14,17 +14,32 @@
 		        <result column="purviewUrl" property="purviewUrl" />
   		 </resultMap>
   		
-  	<select id="findPurviewByRoleNo" resultMap="PurviewList">
-		select id,pid,purviewName,purviewUrl 
-		from t_purview_info p,t_role_purview rp
-		where p.id=rp.purviewNo and rp.roleNo=#{roleNo}; 
+  	<select id="findPurviewByCondition" resultMap="PurviewList">
+  	
+  		<if test=' roleNo!= null'>
+			select id,pid,purviewName,purviewUrl from 
+			purview_info p,role_purview rp
+			where p.id=rp.purviewNo and rp.roleNo=#{roleNo}; 
+		</if>
+		
+		<if test=' teacherNo!= null'>	
+			select tp.teacherNo,p.id,p.pid,p.purviewName,p.purviewUrl 
+			from teacher_purview tp,purview_info p
+			where tp.purviewNo=p.id
+			and tp.teacherNo=#{teacherNo} union
+			select tr.teacherNo,p.id,p.pid,p.purviewName,p.purviewUrl  
+			from teacher_role tr,role_purview rp,purview_info p
+			where tr.roleNo= rp.roleNo and rp.purviewNo =  p.id
+			and teacherNo=#{teacherNo};
+		</if>
+		
 	</select>	
 	
 	<insert id="addPurview" useGeneratedKeys="false" parameterType="java.util.Map">  	      
 	    insert into 
 	    
 		    <if test='addTeacherPurviewList != null'>
-		    	 t_teacher_purview (teacherNo,purviewNo)   
+		    	 teacher_purview (teacherNo,purviewNo)   
 		    	values  
 			    <foreach collection="addTeacherPurviewList" item="item" index="index" separator="," >  
 			        (#{item.teacherNo},#{item.purviewNo})  
@@ -32,7 +47,7 @@
 		    </if>
 	   
 	        <if test='addRolePurviewList != null'>
-		    	 t_role_purview (roleNo,purviewNo)   
+		    	 role_purview (roleNo,purviewNo)   
 		    	 values  
 			     <foreach collection="addRolePurviewList" item="item" index="index" separator="," >  
 			         (#{item.roleNo},#{item.purviewNo})  
@@ -45,7 +60,7 @@
 		delete from 
 		
 		<if test='delTeacherPurviewList != null'>
-			t_teacher_purview
+			teacher_purview
 			where teacherNo in
 			<foreach collection="delTeacherPurviewList" item="item" open="(" separator="," close=")"> 
 	      			#{ item.teacherNo} 
@@ -58,7 +73,7 @@
 	    </if>
 	    
 	    <if test='delRolePurviewList != null'>
-			t_role_purview
+			role_purview
 			where roleNo in
 			<foreach collection="delRolePurviewList" item="item" open="(" separator="," close=")"> 
 	      			#{ item.roleNo} 

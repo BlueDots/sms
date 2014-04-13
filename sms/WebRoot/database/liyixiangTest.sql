@@ -1,11 +1,16 @@
---select
+--drop 
+drop table if exists teacher_purview;
+drop table if exists role_purview;
+drop table if exists purview_info;
 
+--select
 select * from tec_basic_info;
 select * from purview_info;
 select * from role_info;
 select * from teacher_purview;
 select * from teacher_role;
 select * from role_purview;
+
 
 --insert 
 --测试发现 default约束是指插入固定字段时而不插入有default约束的字段，该
@@ -30,41 +35,40 @@ insert into role_info values(6,'活动负责人',now(),'活动管理中的特殊
 insert into purview_info values(1,null,'功能模块','null');
 insert into purview_info values(2,1,'学生基本信息模块','/studentInfo.jsp');
 insert into purview_info values(3,1,'教师基本信息模块','/teacherInfo.jsp');
-insert into purview_info values(4,1,'评优评先信息模块','/awardInfo.jsp');
-insert into purview_info values(14,1,'贫困生信息模块','/poorStudentInfo.jsp');
-insert into purview_info values(15,1,'医保信息模块','/MedicareInfo.jsp');
-insert into purview_info values(16,1,'班级奖学金信息模块','/classAwardInfo.jsp');
-insert into purview_info values(17,1,'角色管理','/roleManager.jsp');
-insert into purview_info values(18,1,'分配权限管理','/allocationPurview.jsp');
-insert into purview_info values(19,1,'分配角色管理','/allocationRole.jsp');
-insert into purview_info values(20,1,'院系班级专业管理','/collegeClass.jsp');
+insert into purview_info values(4,1,'学生参与活动模块','/stuActivity.jsp');
+insert into purview_info values(5,1,'活动管理信息模块','/ActivityManage.jsp');
+insert into purview_info values(6,1,'班级奖学金信息模块','/classAward.jsp');
+insert into purview_info values(7,1,'个人简历模块','/personInfo.jsp');
+insert into purview_info values(8,1,'评优评先信息模块','/awardInfo.jsp');
+insert into purview_info values(9,1,'奖助学金信息模块','/grantInfo.jsp');
+insert into purview_info values(10,1,'贫困生建档模块','/activityInfo.jsp');
+insert into purview_info values(11,1,'医保信息模块','/activityInfo.jsp');
+insert into purview_info values(12,1,'角色管理','/roleManager.jsp');
+insert into purview_info values(13,1,'分配权限管理','/allocationPurview.jsp');
+insert into purview_info values(14,1,'分配角色管理','/allocationRole.jsp');
+insert into purview_info values(15,1,'院系班级专业管理','/collegeClass.jsp');
 
+insert into purview_info values(16,5,'活动信息列表','/activityList');
+insert into purview_info values(17,5,'手动录入活动信息','/addActivity');
+insert into purview_info values(18,5,'编辑活动信息','/editActivity');
+insert into purview_info values(19,5,'删除活动','/deleteActivity');
+insert into purview_info values(20,5,'导入活动','/importActivity');
+insert into purview_info values(21,5,'导出活动','/exportActivity');
+insert into purview_info values(22,5,'活动启动','/startActivity');
+insert into purview_info values(23,5,'高级搜索','/searchActivity');
+insert into purview_info values(24,5,'排序','/sortActivity');
+insert into purview_info values(25,5,'审核活动信息','/auditActivity');
+insert into purview_info values(26,5,'活动学分比例信息','/ScoreActivity');
 --
-insert into purview_info values(5,1,'奖助学金信息模块','/grantInfo.jsp');
-insert into purview_info values(6,1,'活动管理模块','/activityInfo.jsp');
-insert into purview_info values(7,1,'学生参与活动模块','/studentActivity.jsp');
-insert into purview_info values(8,6,'活动信息列表','/activityList');
-insert into purview_info values(9,6,'手动录入活动信息','/addActivity');
-insert into purview_info values(10,6,'编辑活动信息','/editActivity');
-insert into purview_info values(11,6,'删除活动','/deleteActivity');
-insert into purview_info values(12,6,'导入活动','/importActivity');
-insert into purview_info values(13,6,'导出活动','/exportActivity');
-insert into purview_info values(14,6,'活动启动','/startActivity');
-insert into purview_info values(15,6,'高级搜索','/searchActivity');
-insert into purview_info values(16,6,'排序','/sortActivity');
-insert into purview_info values(17,6,'审核活动信息','/auditActivity');
-insert into purview_info values(18,6,'活动学分比例信息','/ScoreActivity');
---
-
-insert into t_purview_info values(5,3,'查询教师基本信息','/showTeacherInfo');
-insert into t_purview_info values(6,3,'编辑教师基本信息','/editTeacherInfo');
-insert into t_purview_info values(7,3,'教师基本信息排序','/sortTeacherInfo');
-insert into t_purview_info values(8,3,'教师基本信息高级搜索','/searchTeacherInfo');
-insert into t_purview_info values(9,3,'导入教师基本信息','/importTeacherInfo');
-insert into t_purview_info values(10,3,'手动录入教师基本信息','/addTeacherInfo');
-insert into t_purview_info values(11,3,'导出教师基本信息','/exportTeacherInfo');
-insert into t_purview_info values(12,3,'审核教师基本信息','/auditTeacherInfo');
-insert into t_purview_info values(1,3,'教师基本信息列表','/teacherInfoList');
+insert into purview_info values(27,3,'查询教师基本信息','/showTeacherInfo');
+insert into purview_info values(28,3,'编辑教师基本信息','/editTeacherInfo');
+insert into purview_info values(29,3,'教师基本信息排序','/sortTeacherInfo');
+insert into purview_info values(30,3,'教师基本信息高级搜索','/searchTeacherInfo');
+insert into purview_info values(31,3,'导入教师基本信息','/importTeacherInfo');
+insert into purview_info values(32,3,'手动录入教师基本信息','/addTeacherInfo');
+insert into purview_info values(33,3,'导出教师基本信息','/exportTeacherInfo');
+insert into purview_info values(34,3,'审核教师基本信息','/auditTeacherInfo');
+insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoList');
 
 --teacher_role
 insert into teacher_role values('1234',4);
@@ -79,7 +83,21 @@ insert into teacher_role values('0000',0);
 insert into t_teacher_purview values('1234',4);
 
 --role_purview
+insert into role_purview values(4,2);
 insert into role_purview values(4,3);
+insert into role_purview values(4,4);
+insert into role_purview values(4,27);
+insert into role_purview values(4,28);
+insert into role_purview values(4,29);
+insert into role_purview values(4,30);
+insert into role_purview values(4,31);
+
+insert into role_purview values(3,2);
+insert into role_purview values(3,5);
+insert into role_purview values(3,16);
+insert into role_purview values(3,17);
+insert into role_purview values(3,18);
+
 
 --delete
 delete from t_teacher_purview where teacherNo in ('5678') and purviewNo in (2,3);

@@ -41,6 +41,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Window8/MyEclipseWorkSpace/Struts2_Spring3_MyBatis3/WebRoot/lib/dom4j/dom4j-1.6.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Component;
@@ -15,10 +16,16 @@ import org.springframework.stereotype.Component;
 @Component("dXml")
 public class Dom4jXML {
 	//得到文档对象
-	public Document read(String fileName) throws DocumentException {
+	public Document read(String fileName){
 		SAXReader reader = new SAXReader();
 		
-		Document document = reader.read(Dom4jXML.class.getResource("/").getPath()+"/"+fileName);
+		Document document=null;
+		try {
+			document = reader.read(Dom4jXML.class.getResource("/").getPath()+"/"+fileName);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return document;
 	}
 	//得到根节点

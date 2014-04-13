@@ -26,7 +26,11 @@
 		<typeAlias alias="ActInfo" type = "jxau.sms.chenjiang.po.ActInfo"/>
 		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.vo.ActInfoVO"/>
 		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.po.ActHold"/>
-		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>		    
+		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>	
+		<typeAlias alias="StuActParticipate" type = "jxau.sms.chenjiang.po.StuActParticipate"/>	
+		<typeAlias alias="StuActParticipateVO" type = "jxau.sms.chenjiang.vo.StuActParticipateVO"/>	
+		
+			    
          <!-- 李轶翔部分 开始-->
         <typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.po.TecBasicInfo"/>	
         <typeAlias alias="DepTeacher" type = "jxau.sms.lyx.po.DepTeacher"/>
@@ -42,15 +46,14 @@
 		<mapper resource="jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml"/>
-<<<<<<< HEAD
+
         <mapper resource="jxau/sms/chenjiang/stuActParticipate/dao/StuActParticipateMapper.xml"/>
         <mapper resource="jxau/sms/util/chenjiang/roleVerify/ModuleVerifyMapper.xml"/>
         <!-- 陈江部分  结束-->
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
       
-   			
-=======
+
 
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
         <mapper resource="jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
@@ -59,6 +62,5 @@
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
    
 
->>>>>>> 2bcd0bcb3df0a4e13a014f49fb90ea599c9ca0f6
     </mappers>
 </configuration>

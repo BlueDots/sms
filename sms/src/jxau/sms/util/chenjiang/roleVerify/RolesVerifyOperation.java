@@ -10,26 +10,22 @@ import jxau.sms.util.chenjiang.Dom4jXML;
 import jxau.sms.util.chenjiang.exception.*;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
+
 import org.dom4j.Element;
 import org.springframework.stereotype.Component;
-
 
 @Component("rolesVerifyOperation")
 public class RolesVerifyOperation {
 
-	private static Dom4jXML dXml = null;
-	private static Document document = null;
-	
-	static {
-		dXml = new Dom4jXML();
-		//得到文档对象
-		try {
-			document = dXml.read("jxau/sms/chengjiangConfig/roleVerify.xml");
-		} catch (DocumentException e) {
-			e.printStackTrace();
-		}
+	private  Dom4jXML dXml = null;
+	@Resource(name="dXml")
+	public void setdXml(Dom4jXML dXml) {
+		this.dXml = dXml;
+		
 	}
+
+	private  Document document = null;
+	
 	
 	private ModuleVerifyOperation moduleVerifyOperation;
 	
@@ -53,6 +49,8 @@ public class RolesVerifyOperation {
 	 */
 	public  <T>  void  roleVerifyOperation(List<T> ids, String moduleId,String roleId,String operationId,String remarks) {
 		ModuleVerify mVerify = null;
+		
+		document = dXml.read("jxau/sms/chengjiangConfig/roleVerify.xml");
 		
 		//得到得到根节点
 		Element root = dXml.getRootElement(document);
@@ -92,6 +90,8 @@ public class RolesVerifyOperation {
 	public int getRoleWaitForVerifyNums(String moduleId,String roleId) {
 		int num = 0;
 		
+		document = dXml.read("jxau/sms/chengjiangConfig/roleVerify.xml");
+		
 		//得到得到根节点
 		Element root = dXml.getRootElement(document);
 		//得到module节点
@@ -130,6 +130,9 @@ public class RolesVerifyOperation {
 	}
 	
 	public <T> void setExameStateOfEntering(List<T> lists,String moduleId,String roleId) {
+		
+		document = dXml.read("jxau/sms/chengjiangConfig/roleVerify.xml");
+		
 		//得到得到根节点
 		Element root = dXml.getRootElement(document);
 		//得到module节点

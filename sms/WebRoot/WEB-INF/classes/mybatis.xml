@@ -50,10 +50,11 @@
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/stuActParticipate/dao/StuActParticipateMapper.xml"/>
+        <mapper resource="jxau/sms/util/chenjiang/roleVerify/ModuleVerifyMapper.xml"/>
         <!-- 陈江部分  结束-->
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
-        <mapper resource="jxau/sms/anping/student/dao/studentMapper.xml"/>
-   
+      
+   			
     </mappers>
 </configuration>

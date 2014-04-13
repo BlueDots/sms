@@ -18,13 +18,13 @@
 		<remarks column="remarks"/>
 		<procedure>verifyNumsOfStuBasicInfo</procedure><!--存储过程  -->
 		<roles>
-			<role id="2">
-				<operation id="3">2</operation>
+			<role id="2"><!-- 班主任 -->
+				<operation id="3">院级审核中</operation>
 			</role>
 			<role id="3"><!--院级工作人员  -->
 				<operation id="1">通过</operation>
-				<operation id="2">校级未通过</operation>
-				<operation id="3">院级审核中</operation>
+				<operation id="2">院级未通过</operation>
+				<operation id="3">通过</operation>
 				<waitverify>院级审核中</waitverify><!-- 待审核 -->
 			</role>
 		</roles>

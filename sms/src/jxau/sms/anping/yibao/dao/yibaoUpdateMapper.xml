@@ -3,15 +3,64 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jxau.sms.anping.yibao.dao">
 
-	<!-- 校级工作人员修改医保申请的状态 -->
-	<insert id="modifyYiBaoStatus" parameterType="java.lang.String">
-	
-	</insert>
-	
-	
-	<!-- 录入并修改受理结果-->
-	<!-- 录入并修改已报销名单-->
-	<!-- 录入并修改商业保险-->
-	 	
+	<!-- 校级工作人员修改医保申请的状态 需要传入的参数为 HashMap<String,String> exeamState,'校级审核通过/未通过' -->
+	<update id="modifyYiBaoStatus" parameterType="HosInsuranceInfo">
+		update
+		hos_insurance_info
+		set hosState=#{hosState}
+		where hosNo=#{hosNo} ;
+	</update>
+
+
+
+	<!-- 录入并修改受理结果 -->
+
+	<update id="modifyAcceptOrNotResult" parameterType="HosInsuranceInfo">
+		update
+		hos_insurance_info
+		set
+		submitTime=#{submitTime},refuseReason=#{refuseReason},
+		resultDeal=#{resultDeal}
+		where hosNo=#{hosNo};
+	</update>
+
+	<!-- 录入并修改已报销名单 -->
+	<update id="modifyReimburseStudent" parameterType="HosInsuranceInfo">
+		update
+		hos_insurance_info
+		set
+		reimbursementAmount=#{reimbursementAmount},bill=#{bill},
+		getcardTime=#{getcardTime},
+		jumingRemark=#{jumingRemark}
+		where
+		hosNo=#{hosNo};
+	</update>
+
+	<!-- 录入并修改商业保险 -->
+	<update id="modifyCompany" parameterType="HosInsuranceInfo">
+		update
+		hos_insurance_info
+		set complete=#{complete},insurerTime=#{insurerTime},
+		notinsurerReason=#{notinsurerReason},
+
+		companyRemark=#{companyRemark}
+		where hosNo=#{hosNo};
+	</update>
+
+	<update id="modifyCompanyByBatch" parameterType="List">
+		<foreach item="item" index="index" collection="list"  separator=";">
+			update
+			hos_insurance_info
+			<set>
+				complete=#{item.complete},insurerTime=#{item.insurerTime},
+				notinsurerReason=#{item.notinsurerReason},
+
+				companyRemark=#{item.companyRemark}
+			</set>
+			where hosNo=#{item.hosNo};
+		</foreach>
+	</update>
+
+
 
 </mapper>

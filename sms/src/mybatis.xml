@@ -37,5 +37,7 @@
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml"/>
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
+        <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
+   
     </mappers>
 </configuration>

@@ -5,7 +5,12 @@ package jxau.sms.anping.po;
 import java.util.Date;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
-
+/**
+ * 医保
+ * @author anping
+ * 2014-4-13
+ * TODO
+ */
 public class HosInsuranceInfo {
 	private int hosNo;//编号
 	private StuBasicInfo student;//学号

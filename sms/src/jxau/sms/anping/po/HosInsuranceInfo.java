@@ -2,7 +2,7 @@ package jxau.sms.anping.po;
 
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
 

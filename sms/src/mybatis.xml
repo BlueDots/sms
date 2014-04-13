@@ -48,6 +48,7 @@
 
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
+        <mapper resource="jxau/sms/anping/yibao/dao/yibaoAddMapper.xml"/>
    
 
     </mappers>

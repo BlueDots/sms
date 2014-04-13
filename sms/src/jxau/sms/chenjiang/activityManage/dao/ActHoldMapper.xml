@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into act_hold(id,actNo,sessionYear,startTime,endTime,holdPlace)
 		 values(#{id},#{actInfo.actNo},#{sessionYear},#{startTime},#{endTime},#{holdPlace}); 
 	</insert>
-	<update id="edit" parameterType="ActHold">
+	<update id="update" parameterType="ActHold">
 		update act_hold
 		<set>
 			<if test="sessionYear != null">
@@ -39,16 +39,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<result property="startTime" column="startTime"/>
 			<result property="endTime" column="endTime"/>
 			<result property="holdPlace" column="holdPlace"/>
-			<association property="actInfo" column="actNo" select="selectActInfo" javaType="ActInfo"></association>
+			<association property="actInfo" column="actNo" select="selectActInfo" javaType="ActInfo">
+			</association>
 		</association>
 	</resultMap>
 	
-	<select id="selectActInfo" resultType="ActInfo" parameterType="ActInfo">
+	<select id="selectActInfo" resultType="ActInfo">
 		select * from act_info where actNo = #{actNo}
 	</select>		
 
 	<select id="query" parameterType="map" resultMap="ActivityHoldInfoVOResultMap">
 		select * from act_hold where actNo=#{actNo}
+		limit #{start},#{nums}
 	</select>
 	
 </mapper>

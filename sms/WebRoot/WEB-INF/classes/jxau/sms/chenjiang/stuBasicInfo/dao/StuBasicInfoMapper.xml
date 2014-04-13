@@ -48,6 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	<if test="stuNoOrName != null">
         		and (studentName=#{stuNoOrName} or studentNo=#{stuNoOrName})
         	</if>
+        	limit #{start},#{nums}
 	</select>
 	
 	<!--高级查询  -->
@@ -91,6 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             	open="" separator="," close="">
             	#{item}
             </foreach>  
+            limit #{start},#{nums}
 	</select>	
 	
 	
@@ -177,86 +179,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where studentNo = #{studentNo}
 	</update>
 	
-	<!--批量更新  -->
-	<update id="batchUpdate" parameterType="java.util.List">
-		update stu_basic_info 
-		<set>
-			<if test="studentName != null">
-				studentName = #{studentName},
-			</if>
-			<if test="birthday != null">
-				birthday = #{birthday},
-			</if>
-			<if test="className != null">
-				className = #{className},
-			</if>
-			<if test="major != null">
-				major = #{major},
-			</if>
-			<if test="college != null">
-				college = #{college},
-			</if>
-			<if test="sex != null">
-				sex = #{sex},
-			</if>
-			<if test="nation != null">
-				nation = #{nation},
-			</if>
-			<if test="birthday != null">
-				birthday = #{birthday},
-			</if>
-			<if test="political != null">
-				political = #{political},
-			</if>
-			<if test="idCard != null">
-				idCard = #{idCard},
-			</if>
-			<if test="telephone != null">
-				telephone = #{telephone},
-			</if>
-			<if test="email != null">
-				email = #{email},
-			</if>
-			<if test="emailOnly != null">
-				emailOnly = #{emailOnly},
-			</if>
-			<if test="family != null">
-				family = #{family},
-			</if>
-			<if test="address != null">
-				address = #{address},
-			</if>
-			<if test="fphone != null">
-				fphone = #{fphone},
-			</if>
-			<if test="photo != null">
-				photo = #{photo},
-			</if>
-			<if test="eduBackground != null">
-				eduBackground = #{eduBackground},
-			</if>
-			<if test="englishlevel != null">
-				englishlevel = #{englishlevel},
-			</if>
-			<if test="bankCard != null">
-				bankCard = #{bankCard}
-			</if>
-		</set>
-		where studentNo = #{studentNo}
-	</update>
-	
-	
-	<update id="delete" parameterType="StuBasicInfo">
-		update stu_basic_info
-		<set>
-			<if test="stuState != null">
-				stuState = #{stuState},
-			</if>
-			<if test="remarks != null">
-				remarks = #{remarks}
-			</if>
-		</set>
-		where studentNo=#{studentNo}
-	</update>
 </mapper>
 

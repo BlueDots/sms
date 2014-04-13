@@ -17,7 +17,9 @@
 		<typeAlias alias="ActInfoVO" type = "jxau.sms.chenjiang.vo.ActInfoVO"/>
 		<typeAlias alias="ActHold" type = "jxau.sms.chenjiang.po.ActHold"/>
 		<typeAlias alias="TecBasicInfo" type = "jxau.sms.lyx.TeacherInfo.po.TecBasicInfo"/>
-		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>		    
+		<typeAlias alias="ActHoldVO" type = "jxau.sms.chenjiang.vo.ActHoldVO"/>
+		<typeAlias alias="StuActParticipate" type = "jxau.sms.chenjiang.po.StuActParticipate"/>
+		<typeAlias alias="StuActParticipateVO" type = "jxau.sms.chenjiang.vo.StuActParticipateVO"/>		    
     </typeAliases>  
      
      <mappers>  
@@ -25,5 +27,6 @@
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml"/>
         <mapper resource="jxau/sms/anping/student/dao/studentMapper.xml"/>
+        <mapper resource="jxau/sms/chenjiang/stuActParticipate/dao/StuActParticipateMapper.xml"/>
     </mappers>
 </configuration>

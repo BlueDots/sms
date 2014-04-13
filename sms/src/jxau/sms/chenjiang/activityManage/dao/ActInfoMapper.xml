@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	
-	<select id="selectTecBasicInfo" resultType="TecBasicInfo" parameterType="TecBasicInfo">
+	<select id="selectTecBasicInfo" resultType="TecBasicInfo">
 		select * from tec_basic_info where teacherNo = #{teacherNo}
 	</select>	
 		
@@ -36,6 +36,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="actNoOrName != null">
 			and (actNo=#{actNoOrName} or activityName={actNoOrName})
 		</if>
+		limit #{start},#{nums}
+	</select>
+	
+		<!--高级查询 -->
+	<select id="advancedQuery" parameterType="map" resultMap="ActivityInfoVOResultMap">
+		select * from act_info where 1=1
+		<if test="activityLevel != null">
+			and activityLevel = #{activityLevel}
+		</if>
+		<if test="activityType != null">
+			and activityType=#{activityType}
+		</if>
+		<if test="createTime != null">
+			and createTime = #{createTime}
+		</if>
+		<if test="exameState != null">
+			and exameState = #{exameState}
+		</if>
+		<if test="organize != null">
+			and organize =#{organize}
+		</if>
+		<if test="sponsor != null">
+			and sponsor = #{sponsor}
+		</if>
+		<if test="actState != null">
+			and actState=#{actState}
+		</if>
+		<if test="studentName != null">
+			and studentName = #{studentName}
+		</if>
+		<if test="teacherName != null">
+			and teacherName = #{teacherName}
+		</if>
+		order by 
+		<foreach item="item" index="index" collection="order"  
+            	open="" separator="," close="">
+            	#{item}
+        </foreach> 
+		limit #{start},#{nums}
 	</select>	
 	
 	<!--增加  -->
@@ -45,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!--批量增加  -->
-	<insert id="batchAdd" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="actNo">
+	<insert id="batchAdd" parameterType="java.util.List">
 		insert into act_info(actNo,activityName,activityType,activityLevel,sponsor,organize,teacherNo,studentName,createTime,info,exameState)
 			values
 			<foreach collection="list" item="item" index="index" separator="," >  
@@ -61,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="activityName != null">
 				activityName = #{activityName},
 			</if>
-			<if test="activityName != null">
+			<if test="activityType != null">
 				activityType = #{activityType},
 			</if>
 			<if test="activityLevel != null">

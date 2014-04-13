@@ -167,6 +167,8 @@ public class TestStuBasicInfo {
 	   	params.put("major", null);
 	   	params.put("className", null);
 	   	params.put("stuNoOrName", null);
+   	    params.put("start", 0);
+   	    params.put("nums", 3);
 	   	lists = dao.select("jxau.sms.stuBasicInfo.dao.query", params);
 	   	
 	   	System.out.println(lists.size());
@@ -192,6 +194,8 @@ public class TestStuBasicInfo {
 	   	
 	   	
    	    params.put("order", order);
+   	    params.put("start", 0);
+   	    params.put("nums", 5);
    	    System.out.println(params);
 	   	lists = dao.select("jxau.sms.stuBasicInfo.dao.advancedQuery", params);
 	   	

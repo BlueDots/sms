@@ -3,8 +3,8 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="jxau.sms.lyx.purview.dao">
 
-	<select id="findAllPurview" resultMap="PurviewList">
-		select id,pid,purviewName,purviewUrl from t_purview_info;
+	<select id="findAllSysPurview" resultMap="PurviewList">
+		select id,pid,purviewName,purviewUrl from purview_info;
 	</select>
 		
 		 <resultMap type="PurviewInfo" id="PurviewList">

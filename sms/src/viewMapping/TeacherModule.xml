@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--说明:(配置模块中范围最大的VO)
+	1.view的id属性由模块号+视图编号,type属性是对应的vo名，用于导入导出使用；
+	2.column用于高级查询使用，其中name是数据库中字段名，value属于高级查询的选项名或者是导出的项目名称；
+	  mutiply表示是否是多值属性,用于高级查询,ture表示是高级查询的条件，反之，false则不是；
+	3.property中value表示该字段的多值属性；
+-->
+<!-- 教师基本信息模块VO -->
+<mapping>
+	<view id="0101" type="VTeacherInfo">
+		<column name="teacherNo" value="教师工号" multiply="false"></column>
+		<column name="teacherName" value="教师姓名" multiply="false"></column>
+		<column name="sex" value="性别" multiply="true"></column>
+		<column name="nation" value="民族" multiply="false"></column>
+		<column name="hometown" value="籍贯" multiply="false"></column>
+		<column name="political" value="政治面貌" multiply="true">
+				<property value="不详" />	
+				<property value="群众" /> 
+				<property value="共青团员" /> 
+				<property value="中共预备党员" /> 
+				<property value="中共党员" /> 
+				<property value="其他" /> 
+		</column>
+		<column name="department" value="部门" multiply="true"></column>		
+		<column name="workState" value="在岗状态" multiply="true">
+				<property value="在职" />	
+				<property value="离职" /> 
+				<property value="休假" /> 
+		</column>			
+		<column name="teacherTitle" value="教师职称" multiply="true">
+				<property value="不详" />	
+				<property value="教授" /> 
+				<property value="副教授" /> 
+				<property value="讲师" />	
+				<property value="助教" /> 
+				<property value="研究员" />
+				<property value="副研究员" />
+				<property value="高级实验师" />
+				<property value="助理研究员" /> 
+				<property value="助理工程师" />
+		</column>
+		<column name="titleTime" value="评定职称时间" multiply="false"></column>
+		<column name="worktime" value="入职时间" multiply="false"></column>
+		<column name="eduBackground" value="学历" multiply="true">
+				<property value="高中" />
+				<property value="专科" />
+				<property value="本科" />
+				<property value="硕士研究生" /> 
+				<property value="博士研究生" />
+		</column>
+		<column name="remarks" value="备注" multiply="false"></column>			
+	</view>
+</mapping>

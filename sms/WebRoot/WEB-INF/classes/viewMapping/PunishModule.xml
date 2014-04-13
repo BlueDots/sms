@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--说明:(配置模块中范围最大的VO)
+	1.view的id属性由模块号+视图编号,type属性是对应的vo名，用于导入导出使用；
+	2.column用于高级查询使用，其中name是数据库中字段名，value属于高级查询的选项名或者是导出的项目名称；
+	  mutiply表示是否是多值属性,用于高级查询,ture表示是高级查询的条件，反之，false则不是；
+	3.property中value表示该字段的多值属性；
+-->
+<mapping>
+<view id="0101" type="DisInfoVO">
+		<column name="studentNo" value="学生学号" multiply="false"></column>
+		<column name="studentName" value="学生姓名" multiply="false"></column>
+		<column name="major" value="专业方向" multiply="true"></column>
+		<column name="className" value="班级" multiply="false"></column>
+		<column name="sex" value="性别" multiply="true">
+				<property value="男" />	<!-- 男 -->
+				<property value="女" />  <!-- 女 -->
+		</column>
+		<column name="disType" value="处分类型" multiply="true">
+				<property value="通报批评" />	
+				<property value="警告" /> 
+				<property value="严重警告" /> 
+				<property value="记过" />	
+				<property value="留校察看" /> 
+				<property value="开除学籍" />			
+		</column>	
+		<column name="dispoalTime" value="处分时间" multiply="true"></column>			
+		<column name="dispoalReason" value="处分原因" multiply="true"></column>
+		<column name="removeReason" value="解除处分原因" multiply="true"></column>
+		<column name="removeTime" value="解除处分时间" multiply="true"></column>
+		<column name="dispoalState" value="处分状态" multiply="true">
+				<property value="未解除" /> 
+				<property value="解除" />
+		</column>		
+		<column name="exameState" value="审核状态" multiply="true">
+				<property value="未提交 "  type="1"/>
+	     		<property value="院级审核中 "  type="2"/>
+	      		<property value="校级审核中 "  type="3"/>
+	      		<property value="院级未通过"  type="4"/>
+	        	<property value="校级未通过"  type="5"/>
+	         	<property value="通过"  type="6"/>				
+		</column>	
+		<column name="remarks" value="备注" multiply="false"></column>				
+	</view>
+</mapping>

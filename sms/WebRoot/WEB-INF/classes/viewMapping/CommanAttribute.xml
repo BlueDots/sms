@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	说明:
+		1.用途:用于封装多个模块重复使用并且属性导出顺序一致的部分属性字段；
+		2.view中的id表示:需要使用属性的模块号；例如:010405表示学生基本模块、评优评先、奖助学三个模块；
+ -->
+<mapping>
+	<view id="010405">
+		<column name="studentNo" value="学号" multiply="false">
+			<property value="男" />	
+			<property value="女" /> 
+		</column>
+		<column name="name" value="姓名" multiply="false">
+			<property value="男" />	
+			<property value="女" /> 
+		</column>
+		<column name="sex" value="性别" multiply="true">
+			<property value="男" />	
+			<property value="女" /> 
+		</column>
+		<column name="college" value="学院" multiply="false">
+		</column>
+		<column name="professionalDirection" value="专业方向" multiply="false">
+		</column>
+		<column name="stuClass" value="班级" multiply="false"></column>
+	</view>
+</mapping>

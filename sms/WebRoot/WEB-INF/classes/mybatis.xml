@@ -36,6 +36,10 @@
         <typeAlias alias="TeacherRole" type = "jxau.sms.lyx.po.TeacherRole"/>	    
         <typeAlias alias="RolePurview" type = "jxau.sms.lyx.po.RolePurview"/>	  
          <!-- 李轶翔部分 结束-->
+         <!-- 赖辉强部分 开始 -->
+         <typeAlias alias="StuAdvInfo" type = "jxau.sms.thomas.po.StuAdvInfo"/>
+         
+         <!-- 赖辉强部分 结束 -->
     </typeAliases>  
      
      <mappers>  
@@ -48,7 +52,8 @@
 
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
-   
+   		
+   		<mapper resource="jxau/sms/thomas/advanceinfo/dao/AdvanceInfoMapper.xml"/>
 
     </mappers>
 </configuration>

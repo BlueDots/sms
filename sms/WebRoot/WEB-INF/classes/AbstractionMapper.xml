@@ -1,0 +1,8 @@
+<mapping>
+	<view id="0101">
+		<mapper id="searchId" value="" />
+		<mapper id="inputId" value="inputId String" />
+		<mapper id="outputId" value="" />
+		<mapper id="propId" value="" />
+	</view>
+</mapping>

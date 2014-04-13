@@ -42,7 +42,13 @@
 		<mapper resource="jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml"/>
         <mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml"/>
+<<<<<<< HEAD
         <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
         <mapper resource="jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
+=======
+        <mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
+        <mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
+   
+>>>>>>> 166e94251649adfc033ecbced57e12e1349b28eb
     </mappers>
 </configuration>

@@ -22,7 +22,7 @@ values('20111431','熊安平','1992-02-06','1102','软件工程',
 '四级','455555234','999','',0
 );
 
-select * from stu_basic_info;
+select * from stu_basic_info , hos_insurance_info where college='软件学院' and className='1102' and hos_insurance_info.studentNo=stu_basic_info.studentNo;
 
 delete from hos_insurance_info;
  
@@ -45,4 +45,4 @@ null,null,null,null,null,null,null,null,null,null,null
 );
 
 
-select * from hos_insurance_info;
+select * from hos_insurance_info  order    by  hosNo desc limit 0,5  ;

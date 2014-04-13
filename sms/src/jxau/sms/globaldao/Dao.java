@@ -17,5 +17,6 @@ public interface Dao {
 	public <T> void update(String mapperId,T t);
 	public <T> void batchDelete(String mapperId,List<T> t);
 	public <T> void batchUpdate(String mapperId,List<T> t);
-	
+	public <T> void batchAdd(String mapperId,Map<String,Object> params);
+	public <T> void batchDelete(String mapperId,Map<String,Object> params);
 }

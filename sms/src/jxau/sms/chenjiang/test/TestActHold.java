@@ -13,7 +13,8 @@ import jxau.sms.chenjiang.po.ActInfo;
 import jxau.sms.chenjiang.po.StuBasicInfo;
 import jxau.sms.chenjiang.vo.ActInfoVO;
 import jxau.sms.globaldao.Dao;
-import jxau.sms.lyx.TeacherInfo.po.TecBasicInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
+
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

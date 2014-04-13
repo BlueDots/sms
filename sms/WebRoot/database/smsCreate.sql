@@ -248,50 +248,49 @@ on delete no action on update cascade;
 ##创建医保信息表15
 create table hos_insurance_info(
 	
-	hosNo int ,
+	hosNo int primary key auto_increment,
 
 	studentNo char(8),
 
 	hosType varchar(60),
 
-	hospitaladdress varchar(60),
+	hospitalAddress varchar(60),
 
 	hospitalDate date,
 	
-	leavedate date,
+	leaveDate date,
 	
-	hosDate tinyint,
+	hosDate tinyint ,
 
-	localcity tinyint,
+	localCity tinyint default 0,
 	
 	conditon varchar(60),
 
 	cost double,
 	
-	applytime datetime,
+	applyTime date,
 
-	accept tinyint,
+	accept tinyint default 0,
 	
-	collarCard tinyint,
+	collarCard tinyint default 0,
 	
-	submittime datetime,
+	submitTime date,
 	
-	refusereason TINYTEXT,
+	refuseReason TINYTEXT,
 	resultDeal varchar(90),
 	companyRemark TINYTEXT,
-	reimbursementamount double,
+	reimbursementAmount double,
 	bill  tinyint,
-	getcardtime datetime,
+	getcardTime date,
 	jumingRemark TINYTEXT,
 	bankcardID varchar(30),
 	complete  tinyint,
-	insurertime datetime,
+	insurerTime date,
 	notinsurerReason TINYTEXT,
 	baoxiaoRemark TINYTEXT,
 	stateRemark TINYTEXT,
 	returnMark TINYTEXT,
-	hosState varchar(30),
-	primary key(hosNo,studentNo) 
+	hosState varchar(30)
 )ENGINE=innodb;
 alter table hos_insurance_info
 add  foreign key (studentNo) references  stu_basic_info(studentNo)

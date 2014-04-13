@@ -39,7 +39,7 @@ public class ModuleVerifyOperation {
 	 */
 	public int getRoleWaitForVerifyNums(Map<String, Object> params) {
 		int num = -1;
-		dao.add("jxau.sms.util.chenjiang.roleVerify.getVerifyNums", params);
+		dao.selectOne("jxau.sms.util.chenjiang.roleVerify.getVerifyNums", params);
 		
 		num = (Integer)params.get("nums");
 		

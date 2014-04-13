@@ -1,0 +1,23 @@
+package jxau.sms.lyx.purview.dao;
+
+import java.util.List;
+import jxau.sms.lyx.po.PurviewInfo;
+import jxau.sms.lyx.purview.service.impl.SystemPurviewServiceImpl;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class DaoTest {
+
+	@Test
+	public void test() {
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Dao dao = context.getBean("");
+	}
+	
+	@Test
+	public void test2() {
+		
+	}
+
+}

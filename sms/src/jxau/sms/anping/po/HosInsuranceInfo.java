@@ -2,10 +2,15 @@ package jxau.sms.anping.po;
 
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
-
+/**
+ * 医保
+ * @author anping
+ * 2014-4-13
+ * TODO
+ */
 public class HosInsuranceInfo {
 	private int hosNo;//编号
 	private StuBasicInfo student;//学号
@@ -36,7 +41,7 @@ public class HosInsuranceInfo {
 	private String baoxiaoRemark;//已报销备注
 	private String stateRemark;//审核状态备注
 	private String returnMark;//返回消息备注
-	private String hosState;//审核状态
+	private int hosState;//审核状态
 	public int getHosNo() {
 		return hosNo;
 	}
@@ -206,10 +211,10 @@ public class HosInsuranceInfo {
 	public void setReturnMark(String returnMark) {
 		this.returnMark = returnMark;
 	}
-	public String getHosState() {
+	public int getHosState() {
 		return hosState;
 	}
-	public void setHosState(String hosState) {
+	public void setHosState(int hosState) {
 		this.hosState = hosState;
 	}
 		

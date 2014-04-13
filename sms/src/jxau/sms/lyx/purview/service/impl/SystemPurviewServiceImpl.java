@@ -17,7 +17,7 @@ import jxau.sms.lyx.po.PurviewInfo;
  * TODO:
  * 		关于系统权限的业务层实现
  */
-@Service("globalServiceInterface")
+@Service("SystemPurviewServiceImpl")
 public class SystemPurviewServiceImpl implements GlobalServiceInterface {
 
 	private Dao dao;
@@ -60,17 +60,13 @@ public class SystemPurviewServiceImpl implements GlobalServiceInterface {
 
 
 	@Override
-	public <T> List<T> searchListByAccurate(Map<String, Object> param,
+	public <PurviewInfo> List<PurviewInfo> searchListByAccurate(Map<String, Object> param,
 			int status) {
 		// TODO Auto-generated method stub
 		List<PurviewInfo> list = new ArrayList<PurviewInfo>();
-		System.out.println(dao);
-		list = dao.select("findAllSysPurview",null);
-		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i).getPurviewName());
-		}
+		list = dao.select("jxau.sms.lyx.purview.dao.findAllSysPurview",param);
 		
-		return (List<T>) list;
+		return  list;
 	}
 
 }

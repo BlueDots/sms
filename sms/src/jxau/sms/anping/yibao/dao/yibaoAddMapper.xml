@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.anping.yibao.dao">
+
+	<!-- 学生申请医保 -->
+	<insert id="applyYiBao" parameterType="HosInsuranceInfo"
+		keyProperty="hosNo" keyColumn="hosNo" useGeneratedKeys="true">
+		insert into
+		hos_insurance_info(studentNo,bankcardID,hosType,hospitalAddress,hospitalDate,leaveDate,hosDate,localCity,conditon,cost,applyTime,hosState)
+		values(#{student.studentNo},#{bankcardID},#{hosType},#{hospitalAddress},#{hospitalDate},#{leaveDate},#{hosDate},#{localCity},#{conditon},#{cost},now(),'未审核');
+
+	</insert>
+
+</mapper>

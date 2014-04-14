@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--说明:(配置模块中范围最大的VO)
+	1.view的id属性由模块号+视图编号,type属性是对应的vo名，用于导入导出使用；
+	2.column用于高级查询使用，其中name是数据库中字段名，value属于高级查询的选项名或者是导出的项目名称；
+	  mutiply表示是否是多值属性,用于高级查询,ture表示是高级查询的条件，反之，false则不是；
+	3.property中value表示该字段的多值属性；
+-->
+<mapping>
+	<view id="0201" type="StuDesView">
+		<column name="address" value="家庭住址" multiply="true"><!--使用插件-->
+		</column>
+		<column name="economy" value="家庭经济情况" multiply="true">
+			<property value="一般" />	
+			<property value="贫困" /> 
+			<property value="特困" /> 
+		</column>
+		<column name="desLevel" value="认定等级" multiply="true">
+			<property value="甲等" />	
+			<property value="乙等" /> 
+			<property value="丙等" />
+		</column>
+		<column name="term" value="学期" multiply="true"> 
+			<property value="201101" />	
+			<property value="201102" /> 
+			<property value="201103" /> 
+		</column>
+		<column name="examState" value="" multiply="true">
+			<property value="未提交 "  type="1"/>
+	     	<property value="院级审核中 "  type="2"/>
+	      	<property value="校级审核中 "  type="3"/>
+	      	<property value="院级未通过"  type="4"/>
+	        <property value="校级未通过"  type="5"/>
+	         <property value="通过"  type="6"/>		
+		</column>
+		<column name="remarks" value="备注" multiply="false">	
+		</column>
+	</view>
+</mapping>

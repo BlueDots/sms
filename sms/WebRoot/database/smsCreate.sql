@@ -491,7 +491,7 @@ create table stu_info(
 	stuPassword varchar(12) not null,
 	question enum('您父亲的姓名？','您母亲的姓名？','您的爱好是？','您的恋人是？','您的出生地点是？'),
 	answer varchar(30),
-	stuState tinyint
+	stuState tinyint default 0
 );
 ##教师登录信息表32
 create table tec_info(
@@ -499,7 +499,7 @@ create table tec_info(
 	tecPassword varchar(12) not null,
 	question enum('您父亲的姓名？','您母亲的姓名？','您的爱好是？','您的恋人是？','您的出生地点是？'),
 	answer varchar(30),
-	tecState tinyint
+	tecState tinyint default 0
 );
 ##学籍变动信息表33
 create table sta_change_info(
@@ -515,7 +515,7 @@ create table sta_change_info(
 create table sta_category(          
 	staNo tinyint primary key auto_increment,
 	staContent varchar(10) not null,
-	staState tinyint
+	staState tinyint default 0
 )ENGINE = MyISAM;
 alter table sta_change_info add constraint Fk_0 foreign key (studentNo) references stu_info(studentNo) on delete cascade;
 ##活动类别表35
@@ -546,8 +546,9 @@ create table stu_carder
 create table award_level(
 	awardNo int primary key,
 	awardLevel	varchar(15),
-	awardState tinyint default 1
+	awardState tinyint default 0
 )ENGINE = MyISAM;
+
 ##政治面貌表39
 create table political_status(
 	studentNo tinyint primary key,

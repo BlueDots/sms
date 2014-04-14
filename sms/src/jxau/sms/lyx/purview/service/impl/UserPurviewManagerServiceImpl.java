@@ -4,9 +4,14 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+=======
+ 
+import jxau.sms.commom.vo.PageVo;
+>>>>>>> cf2bd8ad8491be8c7ae1ac951c8a75cca736a738
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.PurviewInfo;
@@ -35,14 +40,7 @@ public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public <T> T searchByAccurate(Map<String, Object> param, int currentPage,
-			int pageSize, int status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+ 
 	@Override
 	public <T> int add(Class T, Object object) {
 		// TODO Auto-generated method stub
@@ -70,6 +68,7 @@ public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 	 * 	@param insertMap 某用户或某角色新删除的权限
 	 */
 
+<<<<<<< HEAD
 	public void renewAllocationPurview(Map<String,Object> insertMap,Map<String,Object> deleteMap){
 	
 		if(insertMap.isEmpty()){	
@@ -92,4 +91,15 @@ public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 			
 		}		
 	}
+=======
+	@Override
+	public <T> List<T> searchByAccurate(Map<String, Object> param,
+			PageVo pageVo, int status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	 
+
+>>>>>>> cf2bd8ad8491be8c7ae1ac951c8a75cca736a738
 }

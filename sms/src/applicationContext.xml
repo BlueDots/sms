@@ -54,7 +54,16 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis.xml"></property>
-		<property name="mapperLocations" value="classpath*:jxau/sms/*/*/dao/*.xml" />
+		<property name="mapperLocations"  >
+	 
+		  <list>
+                        <value>classpath:jxau/sms/*/*/dao/*.xml</value>
+                        <value>classpath:jxau/sms/util/*/*/*.xml</value>
+                        
+          </list>
+    
+      
+		</property>
 	</bean>
 
 	<!-- 允许批量处理 -->

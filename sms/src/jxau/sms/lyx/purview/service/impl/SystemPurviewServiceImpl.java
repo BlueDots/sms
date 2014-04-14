@@ -6,6 +6,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import jxau.sms.commom.vo.PageVo;
+ 
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.PurviewInfo;
@@ -33,13 +36,7 @@ public class SystemPurviewServiceImpl implements GlobalServiceInterface {
 		return null;
 	}
 
-	@Override
-	public <T> T searchByAccurate(Map<String, Object> param, int currentPage,
-			int pageSize, int status) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+ 
 	@Override
 	public <T> int add(Class T, Object object) {
 		// TODO Auto-generated method stub
@@ -68,5 +65,14 @@ public class SystemPurviewServiceImpl implements GlobalServiceInterface {
 		
 		return  list;
 	}
+
+	@Override
+	public <T> List<T> searchByAccurate(Map<String, Object> param,
+			PageVo pageVo, int status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	 
 
 }

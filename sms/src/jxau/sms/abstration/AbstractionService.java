@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import jxau.sms.util.chenjiang.moduleStateUpdate.ModuleStateOperation;
+import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.util.chenjiang.roleVerify.RolesVerifyOperation;
 
 public abstract class AbstractionService {

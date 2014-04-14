@@ -1,4 +1,4 @@
-package jxau.sms.anping.yibao.test;
+package jxau.sms.anping.dao.test;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class DaoInsertTest {
+public class YIbaoDaoInsertTest {
 	ApplicationContext app = new ClassPathXmlApplicationContext(
 			"applicationContext.xml");
 	String namespace = "jxau.sms.anping.yibao.dao.";

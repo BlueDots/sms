@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import jxau.sms.commom.vo.PageVo;
+ 
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 
@@ -34,8 +36,7 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 	}
 
 	@Override
-	public <T> T searchByAccurate(Map<String, Object> param, int currentPage,
-			int pageSize, int status) {
+	public <T> List<T> searchByAccurate(Map<String, Object> param, PageVo pageVo ,int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -58,4 +59,5 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 		return 0;
 	}
 
+	 
 }

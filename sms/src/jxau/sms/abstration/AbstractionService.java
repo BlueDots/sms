@@ -1,11 +1,15 @@
 package jxau.sms.abstration;
 
 import java.util.List;
+import java.util.Map;
 
+import jxau.sms.util.chenjiang.moduleStateUpdate.ModuleStateOperation;
+import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.util.chenjiang.roleVerify.RolesVerifyOperation;
 
 public abstract class AbstractionService {
 	private RolesVerifyOperation rolesVerifyOperation;
+	private ModuleStateOperation moduleStateOperation;
 	
 	/**
 	 * 批量审核
@@ -47,5 +51,38 @@ public abstract class AbstractionService {
 	
 	public <T> void setExameStateOfEntering(Class<?> c,List<T> lists,String moduleId,String roleId,String level) {
 		rolesVerifyOperation.setExameStateOfEntering(c, lists, moduleId, roleId ,level);
+	}
+	
+	
+	/**
+	 * 
+	 * 江
+	 * TODO
+	 * 下午8:44:57
+	 * @param moduleId 模块号 
+	 *                 详见jxau/sms/chenjiangConfig/moduleState.xml
+	 * @param ids id集合
+	 * @param moduleState 改变的状态
+	 * @param relatedStates 状态改变级联的属性字段：若没有则写null,
+	 * 				ps只有moduleId为08的模块才不为null，其他模块都写null
+	 * @param remarks 备注 没有备注可以为null
+	 * 
+	 */
+	public <T> void moduleStateUpdate(String moduleId,List<T>  ids,Object moduleState,Map<String, Object> relatedStates,String remarks) {
+		moduleStateOperation.moduleStateUpdate(ids, moduleState, relatedStates, remarks, moduleId);
+	}
+	
+	/**
+	 * 改变子表的状态
+	 * 江
+	 * TODO
+	 * 上午10:15:06
+	 * @param ids 主键集合
+	 * @param subState 要改变的状态
+	 * @param remarks 备注 若无备注 ,为null
+	 * @param subId  子表的编号 如活动类别表的subId为：actCategory ，详见jxau/sms/chenjiangConfig/moduleState.xml
+	 */
+	public <T> void subTableStateUpdate(List<T>  ids,Object subState,String remarks,String subId) {
+		moduleStateOperation.subTableStateUpdate(ids, subState, remarks, subId);
 	}
 }

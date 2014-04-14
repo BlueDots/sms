@@ -51,7 +51,7 @@ public class RolesVerifyOperation {
 		//得到module节点
 		Element moduleElement = dXml.getModuleElementById(root, moduleId);
 		if(moduleElement == null) 
-			throw new ModuleNotFoundException("没有该模块编号:"+moduleId);
+			throw new ModuleNotFoundException("没有该模块编号:\""+moduleId+"\",请查看jxau/sms/chengjiangConfig/roleVerify.xml中的具体配置");
 		//获得ModuleVerify
 		mVerify = ModuleVerifySetUp.createModuleVerify(moduleId, dXml, moduleElement);
 		
@@ -184,7 +184,9 @@ public class RolesVerifyOperation {
 		Method m=null;
 		try {
 			m = c.getMethod(MethodName.toString(), String.class);
-		} catch (NoSuchMethodException | SecurityException e) {
+		} catch ( SecurityException e) {
+			e.printStackTrace();
+		}catch(NoSuchMethodException e){
 			e.printStackTrace();
 		}
 		System.out.println(m);
@@ -192,8 +194,11 @@ public class RolesVerifyOperation {
 			T t = lists.get(i);
 			try {
 				m.invoke(t, exameState);
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e) {
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}catch( IllegalArgumentException e){
+				e.printStackTrace();
+			}catch(InvocationTargetException e){
 				e.printStackTrace();
 			}
 		}

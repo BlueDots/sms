@@ -47,19 +47,7 @@
 		where hosNo=#{hosNo};
 	</update>
 
-	<update id="modifyCompanyByBatch" parameterType="List">
-		<foreach item="item" index="index" collection="list"  separator=";">
-			update
-			hos_insurance_info
-			<set>
-				complete=#{item.complete},insurerTime=#{item.insurerTime},
-				notinsurerReason=#{item.notinsurerReason},
-
-				companyRemark=#{item.companyRemark}
-			</set>
-			where hosNo=#{item.hosNo};
-		</foreach>
-	</update>
+	
 
 
 

@@ -2,6 +2,7 @@ package jxau.sms.abstration;
 
 import java.util.List;
 
+import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.util.chenjiang.roleVerify.RolesVerifyOperation;
 
 public abstract class AbstractionService {

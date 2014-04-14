@@ -2,9 +2,13 @@ package jxau.sms.globalService;
 
 import java.util.List;
 import java.util.Map;
+
+import jxau.sms.commom.vo.PageVo;
  
 
-public interface GlobalServiceInterface {
+public interface GlobalServiceInterface    {
+	
+	
  
 	/**
 	 * 查询集合
@@ -26,12 +30,11 @@ public interface GlobalServiceInterface {
 	/**
 	 * 
 	 * @param param  你需要查询的条件
-	 * @param currentPage  当前的页面
-	 * @param pageSize    一个页面显示多少数据  currentPage和pageSize是用来计算拿取数据的位置和个数的
+	 * @param pageVo  分页封装类　,在该方法中需要调用pageVo.setCount,而在action中需要调用setCurrentPage方法，默认一页显示10条
 	 * @param status  是状态，如禁用启用
-	 * @return    返回的是一个queryResult 
+	 * @return    返回的是一个List<xxx> 并且PageVo分页信息也得到了变化
 	 */
-	public <T> T  searchByAccurate(Map<String,Object> param,int currentPage,int pageSize,int status);
+	public <T> List<T>  searchByAccurate(Map<String, Object> param, PageVo pageVo, int status);
 	
 	/**
 	 * 添加  可以通过插入的对象是单个还是批量在实现的时候

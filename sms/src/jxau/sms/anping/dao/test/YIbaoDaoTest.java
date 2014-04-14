@@ -1,4 +1,4 @@
-package jxau.sms.anping.yibao.test;
+package jxau.sms.anping.dao.test;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class DaoTest {
+public class YIbaoDaoTest {
 
 	ApplicationContext app = new ClassPathXmlApplicationContext(
 			"applicationContext.xml");

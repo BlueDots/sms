@@ -9,17 +9,16 @@ public class PageVo {
 	private long count;
 	// 可以在页面中显示的数量
 	private int pageNum;
-    
+
 	private int firstIndex;
-	
-	
+
 	public int getFirstIndex() {
-	   return 	this.getCurrentPage()*this.getSize();
-	 }
+		return (this.getCurrentPage() - 1) * this.getSize();
+	}
 
 	public int getCurrentPage() {
-		if (this.currentPage < 0) {
-			currentPage = 0;
+		if (this.currentPage <= 0) {
+			currentPage = 1;
 		}
 		return currentPage;
 	}
@@ -37,20 +36,14 @@ public class PageVo {
 	}
 
 	public void setCount(long count) {
+
 		this.count = count;
+		pageNum = (int) (this.count % this.getSize() == 0 ? this.count
+				/ this.getSize() : this.count / this.getSize() + 1);
 	}
 
 	public int getPageNum() {
 		return pageNum;
 	}
-
-	public void setPageNum(int pageNum) {
-		pageNum = (int) (this.count % this.getSize() == 0 ? this.count
-				/ this.getSize() : this.count / this.getSize() + 1);
-	
-		this.pageNum = pageNum;
-	}
-
-	 
 
 }

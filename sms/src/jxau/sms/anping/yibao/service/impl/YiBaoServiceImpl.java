@@ -8,6 +8,8 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.commom.vo.PageVo;
@@ -19,9 +21,10 @@ import jxau.sms.globaldao.Dao;
  * 
  * @author anping 2014-4-14 TODO
  */
+@Service("yiBaoService")
 public class YiBaoServiceImpl implements GlobalServiceInterface {
  
-	private String namespace ="jxau.sms.anping.yibao.dao";
+	private String namespace ="jxau.sms.anping.yibao.dao.";
 	private Dao dao ;
 	@Resource(name="dao")
 	public void setDao(Dao dao) {

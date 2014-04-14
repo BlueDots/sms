@@ -2,13 +2,23 @@ package jxau.sms.qing.login.service;
 
 import java.util.HashMap;
 
+import javax.annotation.Resource;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import jxau.sms.globaldao.Dao;
-@Component
+ @Service("loginService")
 public class LoginService {
-	Dao  dao  = (Dao) new ClassPathXmlApplicationContext("applicationContext.xml").getBean("dao");
+	
+	private  Dao dao ;
+	
+	@Resource(name="dao")
+	public void setDao(Dao dao) {
+		this.dao = dao;
+	}
+
 	public boolean whichUser(String userId,String password){
 		if(userId.length()==8){
 			return this.selectStudent(userId,password);

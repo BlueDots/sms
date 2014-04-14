@@ -28,15 +28,9 @@ public class PurviewServiceImplTest {
 	@Test
 	public void test2() {
 		String number = "1234";		
-		List<Integer> newList = new ArrayList<Integer>();
-
-		List<Integer> oldList = new ArrayList<Integer>();
-		oldList.add(3);
-		
-
 		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
-		UserHandlePurview rhp = (UserHandlePurview)context.getBean("UserHandlePurview");
-		rhp.handleAllocationPurview(number,newList,oldList);
+		PurviewListPackage plp = (PurviewListPackage)context.getBean("PurviewListPackage");
+		plp.containerTransform(number,"2,3,4,5");
 		
 	}
 

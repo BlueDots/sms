@@ -3,4 +3,13 @@
 <fullyQualifiedTypeName name="jxau.sms.lyx.TeacherInfo.po.TecBasicInfo"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="jxau.sms.lyx.po.TecBasicInfo"/>
+<fullyQualifiedTypeName name="org.jboss.weld.context.ApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.po.PurviewInfo"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="jxau.sms.globaldao.Dao"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.exception.MyNumberFormatException"/>
 </qualifiedTypeNameHistroy>

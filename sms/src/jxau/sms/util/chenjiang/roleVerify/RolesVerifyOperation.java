@@ -184,7 +184,9 @@ public class RolesVerifyOperation {
 		Method m=null;
 		try {
 			m = c.getMethod(MethodName.toString(), String.class);
-		} catch (NoSuchMethodException | SecurityException e) {
+		} catch ( SecurityException e) {
+			e.printStackTrace();
+		}catch(NoSuchMethodException e){
 			e.printStackTrace();
 		}
 		System.out.println(m);
@@ -192,8 +194,11 @@ public class RolesVerifyOperation {
 			T t = lists.get(i);
 			try {
 				m.invoke(t, exameState);
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e) {
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}catch( IllegalArgumentException e){
+				e.printStackTrace();
+			}catch(InvocationTargetException e){
 				e.printStackTrace();
 			}
 		}

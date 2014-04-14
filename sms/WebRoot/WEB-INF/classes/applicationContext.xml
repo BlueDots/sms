@@ -57,8 +57,8 @@
 		<property name="mapperLocations"  >
 	 
 		  <list>
-                        <value>classpath*:jxau/sms/*/*/dao/*.xml</value>
-                        <value>classpath*:jxau/sms/util/*/*/*.xml</value>
+                        <value>classpath:jxau/sms/*/*/dao/*.xml</value>
+                        <value>classpath:jxau/sms/util/*/*/*.xml</value>
                         
           </list>
     

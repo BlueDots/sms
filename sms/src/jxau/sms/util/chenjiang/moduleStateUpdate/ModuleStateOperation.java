@@ -55,7 +55,7 @@ public class ModuleStateOperation {
 			for(String key:set) {
 				for(int i=0;i<relatedstates.size();i++) {
 					if(key.equals(relatedstates.get(i))) {
-						cvls.add(new ColumnValue<>(relatedstates.get(i),relatedStates.get(key) ));
+						cvls.add(new ColumnValue<Object>(relatedstates.get(i),relatedStates.get(key) ));
 					}
 				}
 			}

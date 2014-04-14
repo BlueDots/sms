@@ -3,6 +3,9 @@ drop table if exists teacher_purview;
 drop table if exists role_purview;
 drop table if exists purview_info;
 
+--delete
+delete from role_purview;
+
 --select
 select * from tec_basic_info;
 select * from purview_info;

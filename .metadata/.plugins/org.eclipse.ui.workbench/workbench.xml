@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="53" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="744" maximized="true" width="1020" x="491" y="70">
 <fastViewData fastViewLocation="1024"/>
@@ -27,6 +27,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="198" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -48,6 +49,9 @@
 <view id="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" partName="SQL Results">
 <viewState/>
 </view>
+<view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
+<viewState failuresOnly="false" layout="1" orientation="2" ratio="500" scroll="false" time="true"/>
+</view>
 <view id="com.genuitec.eclipse.ui.HTMLView" partName="Web Browser"/>
 <view id="org.eclipse.jdt.ui.TypeHierarchy" partName="Type Hierarchy"/>
 <view id="uky.article.imageviewer.views.ImageView" partName="Image Preview">
@@ -58,13 +62,17 @@
 <viewState/>
 </view>
 <view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" partName="Snippets"/>
-<view id="com.genuitec.eclipse.ast.deploy.core.serverview" partName="Servers"/>
+<view id="com.genuitec.eclipse.ast.deploy.core.serverview" partName="Servers">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
+<category IMemento.internal.id="Warnings (45 items)"/>
+<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="120" org.eclipse.ui.ide.markerType="120" org.eclipse.ui.ide.pathField="160" org.eclipse.ui.ide.resourceField="120" org.eclipse.ui.ide.severityAndDescriptionField="400"/>
@@ -206,19 +214,20 @@
 <perspective_action id="com.genuitec.eclipse.web20.perspective"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.jdt.ui.TypeHierarchy"/>
-<view id="uky.article.imageviewer.views.ImageView"/>
-<view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="com.genuitec.eclipse.sqlexplorer.views.DatabaseView"/>
 <view id="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView"/>
+<view id="org.eclipse.jdt.junit.ResultView"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="com.genuitec.eclipse.ui.HTMLView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="com.genuitec.eclipse.ast.deploy.core.serverview"/>
+<view id="org.eclipse.jdt.ui.PackageExplorer"/>
+<view id="org.eclipse.jdt.ui.TypeHierarchy"/>
+<view id="uky.article.imageviewer.views.ImageView"/>
+<view id="org.eclipse.wst.common.snippets.internal.ui.SnippetsView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -248,10 +257,12 @@
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" label="DB Browser"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" label="SQL Results"/>
+<page content="org.eclipse.jdt.junit.ResultView" label="JUnit"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
@@ -305,6 +316,15 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topleft"/>
+<trimItem IMemento.internal.id="bottomleft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@87281f"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@15b4804"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -312,54 +332,55 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="StuBasicInfoMapper.xml" tooltip="sms/src/jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml">
-<persistable path="/sms/src/jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="liyixiangTest.sql" tooltip="sms/WebRoot/database/liyixiangTest.sql">
+<persistable path="/sms/WebRoot/database/liyixiangTest.sql"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GlobalServiceInterface.java" tooltip="sms/src/jxau/sms/globalService/GlobalServiceInterface.java">
-<persistable path="/sms/src/jxau/sms/globalService/GlobalServiceInterface.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DaoTest.java" tooltip="sms/src/jxau/sms/lyx/purview/dao/DaoTest.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/dao/DaoTest.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="roleVerify.xml" tooltip="sms/src/roleVerify.xml">
-<persistable path="/sms/src/roleVerify.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="purviewMapper.xml" tooltip="sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml">
+<persistable path="/sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="readme.txt" tooltip="sms/src/readme.txt">
-<persistable path="/sms/src/readme.txt"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ContainerConversion.java" tooltip="sms/src/jxau/sms/lyx/util/ContainerConversion.java">
+<persistable path="/sms/src/jxau/sms/lyx/util/ContainerConversion.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="moduleState.xml" tooltip="sms/src/moduleState.xml">
-<persistable path="/sms/src/moduleState.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyNumberFormatException.java" tooltip="sms/src/jxau/sms/lyx/exception/MyNumberFormatException.java">
+<persistable path="/sms/src/jxau/sms/lyx/exception/MyNumberFormatException.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestActInfo.java" tooltip="sms/src/jxau/sms/chenjiang/test/TestActInfo.java">
-<persistable path="/sms/src/jxau/sms/chenjiang/test/TestActInfo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ArrayTypeConversion.java" tooltip="sms/src/jxau/sms/lyx/util/ArrayTypeConversion.java">
+<persistable path="/sms/src/jxau/sms/lyx/util/ArrayTypeConversion.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DepTeacher.java" tooltip="sms/src/jxau/sms/lyx/TeacherInfo/po/DepTeacher.java">
-<persistable path="/sms/src/jxau/sms/lyx/TeacherInfo/po/DepTeacher.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dao.java" tooltip="sms/src/jxau/sms/globaldao/Dao.java">
+<persistable path="/sms/src/jxau/sms/globaldao/Dao.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UsererviceImpl.java" tooltip="sms/src/jxau/sms/anping/student/service/impl/UsererviceImpl.java">
-<persistable path="/sms/src/jxau/sms/anping/student/service/impl/UsererviceImpl.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EntityDao.java" tooltip="sms/src/jxau/sms/globaldao/EntityDao.java">
+<persistable path="/sms/src/jxau/sms/globaldao/EntityDao.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="studentMapper.xml" tooltip="sms/src/jxau/sms/anping/student/dao/studentMapper.xml">
-<persistable path="/sms/src/jxau/sms/anping/student/dao/studentMapper.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserPurviewManagerServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DepInfo.java" tooltip="sms/src/jxau/sms/anping/po/DepInfo.java">
-<persistable path="/sms/src/jxau/sms/anping/po/DepInfo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SystemPurviewServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TeacherRole.java" tooltip="sms/src/jxau/sms/lyx/purviewManage/po/TeacherRole.java">
-<persistable path="/sms/src/jxau/sms/lyx/purviewManage/po/TeacherRole.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BasicInfoVo.java" tooltip="sms/src/jxau/sms/commom/vo/BasicInfoVo.java">
+<persistable path="/sms/src/jxau/sms/commom/vo/BasicInfoVo.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RolePurview.java" tooltip="sms/src/jxau/sms/lyx/purviewManage/po/RolePurview.java">
-<persistable path="/sms/src/jxau/sms/lyx/purviewManage/po/RolePurview.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="smsCreate.sql" tooltip="sms/WebRoot/database/smsCreate.sql">
+<persistable path="/sms/WebRoot/database/smsCreate.sql"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewInfo.java" tooltip="sms/src/jxau/sms/lyx/purviewManage/po/PurviewInfo.java">
-<persistable path="/sms/src/jxau/sms/lyx/purviewManage/po/PurviewInfo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.editor.webapp30" name="web.xml" tooltip="sms/WebRoot/WEB-INF/web.xml">
+<persistable path="/sms/WebRoot/WEB-INF/web.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TeacherPurview.java" tooltip="sms/src/jxau/sms/lyx/purviewManage/po/TeacherPurview.java">
-<persistable path="/sms/src/jxau/sms/lyx/purviewManage/po/TeacherPurview.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DaoTest.java" tooltip="sms/src/jxau/sms/anping/yibao/test/DaoTest.java">
+<persistable path="/sms/src/jxau/sms/anping/yibao/test/DaoTest.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleInfo.java" tooltip="sms/src/jxau/sms/lyx/purviewManage/po/RoleInfo.java">
-<persistable path="/sms/src/jxau/sms/lyx/purviewManage/po/RoleInfo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestOne.java" tooltip="sms/jxau.sms.lyx.junit/jxau/sms/lyx/purview/dao/test/TestOne.java">
+<persistable path="/sms/jxau.sms.lyx.junit/jxau/sms/lyx/purview/dao/test/TestOne.java"/>
 </file>
 </mruList>
 </workbench>

@@ -1,0 +1,38 @@
+package jxau.sms.lyx.purview.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import jxau.sms.lyx.po.PurviewInfo;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-14
+ * TODO:
+ * 		该类用于用户或角色分配权限模块
+ * 		从action获取页面数据后进行集合增删处理操作
+ */
+@Service("PurviewListPackage")
+public class PurviewListPackage {
+
+	private UserPurviewManagerServiceImpl upms;
+	
+	@Resource(name="UserPurviewManagerServiceImpl")
+	public void setUpms(UserPurviewManagerServiceImpl upms) {
+		this.upms = upms;
+	}
+	
+	/**
+	 * 该方法返回某用户或某角色的所有权限
+	 * 
+	 */
+	public List<PurviewInfo> receiveNewList(Map<String,Object> mapCondition,int status){
+		
+		return upms.searchListByAccurate(mapCondition, status);		
+	}
+}

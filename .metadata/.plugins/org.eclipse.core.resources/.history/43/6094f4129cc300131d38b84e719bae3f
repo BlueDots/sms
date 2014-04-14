@@ -1,0 +1,14 @@
+package jxau.sms.lyx.purview.service.impl;
+
+import java.util.List;
+
+public class RoleHandlePurview implements AllocationPurviewStandard {
+
+	@Override
+	public void handleAllocationPurview(String number, List<Integer> newList,
+			List<Integer> oldList) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -80,4 +80,55 @@
 		<remarks column="stateRemark"/>
 	</module>	
 	
+	<!-- 禁用或启用子表的状态 -->
+	<!--评优评先项目表评优评先项目表  -->
+	<sub id="advItem" table="adv_item">
+		<id column="advNo"/>
+		<state column="advState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</sub>
+	
+	<!-- 奖助学项目表 -->
+	<sub id="grantItem" table="grant_item">
+		<id column="grantNo"/>
+		<state column="grantState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</sub>	
+
+	<!-- 班级奖学金等级表 -->
+	<sub id="classAwardInfo" table="class_award_info">
+		<id column="awardNo"/>
+		<state column="awardState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>		
+	
+	<!-- 级别表 -->
+	<sub id="awardLevel" table="award_level">
+		<id column="awardNo"/>
+		<state column="awardState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>
+	
+	<!-- 活动类别表 -->
+	<sub id="actCategory" table="act_category">
+		<id column="actNo"/>
+		<state column="actState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>	
+
+	<!-- 处分类型表-->
+	<sub id="disCategory" table="dis_category">
+		<id column="disNo"/>
+		<state column="disState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>	
+	
+	<!-- 贫困生等级表-->
+	<sub id="desItem" table="des_item">
+		<id column="povertyId"/>
+		<state column="desState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>
+	
+	<!-- 学籍变动类型表-->
+	<sub id="staCategory" table="sta_category">
+		<id column="staNo"/>
+		<state column="staState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>				
+	
 </modules>

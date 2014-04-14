@@ -51,7 +51,7 @@ public class RolesVerifyOperation {
 		//得到module节点
 		Element moduleElement = dXml.getModuleElementById(root, moduleId);
 		if(moduleElement == null) 
-			throw new ModuleNotFoundException("没有该模块编号:"+moduleId);
+			throw new ModuleNotFoundException("没有该模块编号:\""+moduleId+"\",请查看jxau/sms/chengjiangConfig/roleVerify.xml中的具体配置");
 		//获得ModuleVerify
 		mVerify = ModuleVerifySetUp.createModuleVerify(moduleId, dXml, moduleElement);
 		

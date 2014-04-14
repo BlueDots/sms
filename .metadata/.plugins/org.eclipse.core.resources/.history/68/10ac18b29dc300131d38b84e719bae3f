@@ -1,0 +1,22 @@
+package jxau.sms.lyx.purview.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jxau.sms.lyx.po.RolePurview;
+
+public class RoleHandlePurview implements AllocationPurviewStandard {
+
+	@Override
+	public void handleAllocationPurview(String number, List<Integer> newList,
+			List<Integer> oldList) {
+		// TODO Auto-generated method stub
+		
+		List<RolePurview> insertRolePurview = new ArrayList<RolePurview>();
+		List<RolePurview> deleteRolePurview = new ArrayList<RolePurview>();
+		
+		ContainerConversion.logicJudgment(insertRolePurview,deleteRolePurview);
+		
+	}
+
+}

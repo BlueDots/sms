@@ -1,0 +1,71 @@
+package jxau.sms.lyx.purview.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import jxau.sms.lyx.po.RolePurview;
+
+public class RoleHandlePurview implements AllocationPurviewStandard {
+
+	@Override
+	public void handleAllocationPurview(String number, List<Integer> newList,
+			List<Integer> oldList) {
+		// TODO Auto-generated method stub
+		
+		List<RolePurview> insertRolePurview = new ArrayList<RolePurview>();
+		List<RolePurview> deleteRolePurview = new ArrayList<RolePurview>();
+		
+		logicJudgment(RolePurview.class,insertRolePurview,deleteRolePurview,newList,oldList,number);
+		
+	}
+
+	@SuppressWarnings("hiding")
+	@Override
+	public <RolePurview> void logicJudgment(Class RolePurview,List<RolePurview> insertList, List<RolePurview> deleteList,List<Integer> newList,List<Integer> oldList,String number){
+		// TODO Auto-generated method stub
+		
+		if(newList.size()!=0){			
+				for(int i=0;i<newList.size();i++){
+					jxau.sms.lyx.po.RolePurview rp;
+					try {
+						rp = (jxau.sms.lyx.po.RolePurview) RolePurview.newInstance();
+						rp.setRoleNo(Integer.parseInt(number));
+						rp.setPurviewNo(newList.get(i));
+						insertList.add((RolePurview) rp);
+					} catch (InstantiationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}			
+				}	
+		}
+			
+		System.out.println("---------------------");
+		
+		if(oldList.size()!=0){
+		
+			for(int i=0;i<oldList.size();i++){
+				jxau.sms.lyx.po.RolePurview rp;
+				try {
+					rp = (jxau.sms.lyx.po.RolePurview) RolePurview.newInstance();
+					rp.setRoleNo(Integer.parseInt(number));
+					rp.setPurviewNo(newList.get(i));
+					deleteList.add((RolePurview) rp);
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}
+		
+		}
+		
+	}
+	
+	public void 
+	
+
+}

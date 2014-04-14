@@ -1,0 +1,5 @@
+package jxau.sms.lyx.purview.service.impl;
+
+public class PurviewListPackage {
+
+}

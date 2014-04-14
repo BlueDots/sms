@@ -217,5 +217,6 @@ public class HosInsuranceInfo {
 	public void setHosState(String hosState) {
 		this.hosState = hosState;
 	}
+	
 		
 }

@@ -5,11 +5,14 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import jxau.sms.util.chenjiang.moduleStateUpdate.ModuleStateOperation;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.util.chenjiang.roleVerify.RolesVerifyOperation;
 
+@Transactional
 public abstract class AbstractionService {
 	private RolesVerifyOperation rolesVerifyOperation;
 	private ModuleStateOperation moduleStateOperation;

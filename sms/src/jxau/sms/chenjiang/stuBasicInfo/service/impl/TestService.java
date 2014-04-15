@@ -147,4 +147,25 @@ public class TestService {
 	public void testGetWaitingVerifyNums() {
 		System.out.println(abstractionService.getWaitingVerifyNums("01", "3"));
 	}
+	
+	@Test
+	public void testVerify() {
+		List<String> ids = new ArrayList<String>();
+		ids.add("20111367");
+		ids.add("20111429");
+		ids.add("20111635");
+		
+		abstractionService.verify(ids, "01", "3", "1", null);
+		
+	}
+	
+	@Test
+	public void testModuleStateUpdate() {
+		List<String> ids = new ArrayList<String>();
+		ids.add("20111367");
+		ids.add("20111429");
+		ids.add("20111635");
+		abstractionService.moduleStateUpdate("01", ids, 0, null, null);
+	}
+	
 }

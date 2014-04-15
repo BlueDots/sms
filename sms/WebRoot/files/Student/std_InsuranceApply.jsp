@@ -59,13 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td width="50%"><div align="right"><strong>联系电话</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="telephone" value="默认从基本信息中拿取" />
+      <input type="text" name="telephone" value="1827271" />
     </label></td>
   </tr>
    <tr>
     <td width="50%"><div align="right"><strong>银行卡号</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="bankCard" value="默认从基本信息中拿取"/>
+      <input type="text" name="bankcardID" value="128289"/>
     </label></td>
   </tr>
   <tr>
@@ -77,13 +77,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td width="50%"><div align="right"><strong>住院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="02/16/12"/> 
+     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="2012-02-11"/> 
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>出院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="02/16/12"/>  
+     <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="2013-09-19"/>  
     </label></td>
   </tr>
     

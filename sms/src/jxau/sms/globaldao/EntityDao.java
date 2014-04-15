@@ -42,7 +42,6 @@ public class EntityDao implements Dao {
 		return session.selectOne(mapperId, params);
 	}
 
-	@Transactional(readOnly=true)
 	@Override
 	public <T> List<T> select(String mapperId, Map<String, Object> params) {
 		return session.selectList(mapperId, params);

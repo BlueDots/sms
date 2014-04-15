@@ -200,10 +200,10 @@ function link() {
 																				角色信息表</td>
 																		</tr>
 																		<tr bgcolor="#EEEEEE">
-																		  <td ><input type="checkbox" name="delid" />全选</td>
-																			<td >角色编号</td>
-																			<td >角色名称</td>
-																			<td >创建时间</td>
+																		  	<td><input type="checkbox" name="delid" />全选</td>
+																			<td>角色编号</td>
+																			<td>角色名称</td>
+																			<td>创建时间</td>
 																			<td>角色描述</td>
 																		 </tr>
 		
@@ -214,7 +214,7 @@ function link() {
 																		<tr bgcolor="#FFFFFF">
 																			<td><input type="checkbox" name="delid2" /></td>
 																			<td><s:property value="#roleInfoList.roleNo"></s:property>		</td>
-																			<td><a href="files/college_admin/admin_rolePurview.jsp"><s:property value="#roleInfoList.roleName"></s:property></a></td>
+																			<td><a href="Purview/purview!showPurviewByCondition?roleNo=<s:property value="#roleInfoList.roleNo"></s:property>"><s:property value="#roleInfoList.roleName"></s:property></a></td>
 																			<td><s:property value="#roleInfoList.createTime"></s:property></td>
 																			<td><s:property value="#roleInfoList.roleDescription"></s:property></td>
 																		</tr>	

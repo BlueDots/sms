@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import jxau.sms.lyx.po.RolePurview;
 
@@ -15,6 +17,7 @@ import jxau.sms.lyx.po.RolePurview;
  * TODO:
  * 		 对角色分配权限的处理
  */
+
 @Service("RoleHandlePurview")
 public class RoleHandlePurview implements AllocationPurviewStandard {
 

@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import jxau.sms.lyx.po.PurviewInfo;
 import jxau.sms.lyx.util.ArrayTypeConversion;
 
@@ -18,6 +21,7 @@ import jxau.sms.lyx.util.ArrayTypeConversion;
  * 		该类用于用户或角色分配权限模块
  * 		从action获取页面数据后进行集合增删处理操作
  */
+
 @Service("PurviewListPackage")
 public class PurviewListPackage {
 

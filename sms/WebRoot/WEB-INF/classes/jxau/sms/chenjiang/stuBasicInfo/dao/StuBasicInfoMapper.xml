@@ -147,6 +147,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    <if test="exameState != null">
         		and exameState=#{exameState}
         	</if>
+        	limit #{start},#{nums}
+	</select>	
+	
+	<!--查询待审核班级数量  -->
+	<select id="verifyQueryOfClassNums" parameterType="map" resultType="java.lang.Long">
+		select count(distinct className)  from stu_basic_info where 1=1
+		    <if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
 	</select>	
 	
 	

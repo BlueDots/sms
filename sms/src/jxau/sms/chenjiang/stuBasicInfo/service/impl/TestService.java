@@ -111,4 +111,17 @@ public class TestService {
 		int a = globalServiceInterface.add(StuBasicInfo.class, lists);
 		System.out.println(a);
 	}
+	
+	@Test
+	public void testGetWaitForClassName() {
+		Map<String, Object> params = new HashMap<String,Object>();
+		PageVo pageVo = new PageVo();
+		pageVo.setCurrentPage(1);
+		params.put("exameState", "院级审核中");
+		params.put("start", pageVo.getFirstIndex());
+		params.put("nums", pageVo.getSize());
+		List<String> lists = ((StuBasicInfoServiceImpl)globalServiceInterface).getWaitForClassName(params);
+		System.out.println(lists);
+	}
+	
 }

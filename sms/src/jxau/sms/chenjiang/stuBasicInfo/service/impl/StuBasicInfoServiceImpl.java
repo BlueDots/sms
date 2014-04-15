@@ -117,5 +117,20 @@ public class StuBasicInfoServiceImpl implements GlobalServiceInterface{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+	/**
+	 * 得到待审核班级
+	 * 江
+	 * TODO
+	 * 下午11:13:52
+	 * params 一定要包含 分页信息
+	 * @return
+	 */
+	public List<String> getWaitForClassName(Map<String, Object> params) {
+		List<String> lists = null;
+		lists = dao.select(namespace+"verifyQueryOfClass", params);
+		return lists;
+	}
 
 }

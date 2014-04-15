@@ -13,15 +13,20 @@ public abstract class AbstractionService {
 	
 	
 	/**
-	 * 得到待审核的信息列表
+	 * 得到待审核的信息列表（一般是以组的形式拿出来的，ps:以班级，活动名称，年级。。）
 	 * 江
 	 * TODO
 	 *　　　　　　　  需要传入的参数格式为 HashMap<String,Object>
 	 *                            <exameState,'院级审核中' or '校级审核中'>
-	 *                            <className,'1102'>
-	 *                            <studentName,'熊安平'>
-	 *                            <fristIndex,0>
-	 *                             <max,100>  
+	 *                            <条件1,'xxx'>
+	 *                            <条件2,'xxx'>
+	 *                           	...
+	 *                             <pageVo,pv> 分页对象
+	 *                        例如:
+	 *                        	 <exameState,'院级审核中'>
+	 *                            <className,'软件1107'>
+	 *                             <pageVo,pv> 
+	 *                              
 	 * 下午10:54:02
 	 * @param params
 	 * @return

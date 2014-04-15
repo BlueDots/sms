@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testrun name="PurviewServiceImplTest.test2" project="sms" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testcase name="test2" classname="jxau.sms.lyx.purview.service.impl.PurviewServiceImplTest" time="1.773"/>
-</testrun>

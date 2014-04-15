@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;
@@ -19,7 +20,7 @@ import jxau.sms.util.chenjiang.exception.NullPonterException;
 import jxau.sms.util.chenjiang.exception.TypeNotMatchException;
 
 @Service("stuBasicInfoServiceImpl")
-public class StuBasicInfoServiceImpl implements GlobalServiceInterface{
+public class StuBasicInfoServiceImpl extends AbstractionService implements GlobalServiceInterface{
 
 	private String namespace ="jxau.sms.stuBasicInfo.dao.";
 	
@@ -92,6 +93,13 @@ public class StuBasicInfoServiceImpl implements GlobalServiceInterface{
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
 		if(object.getClass() == T) {
+			
+			jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo)object;
+			if(s.getStudentNo() == null || s.getStudentName() == null 
+					|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
+					|| s.getIdCard() == null || s.getBirthday() == null) {
+				throw new ParameterNotMatchException("添加的学生基本信息部分不能为空，请认真重新填写！");
+			}
 			dao.add(namespace+"add", object);
 			flag = 1;
 		}
@@ -99,6 +107,16 @@ public class StuBasicInfoServiceImpl implements GlobalServiceInterface{
 			List<StuBasicInfo> lists = (List<StuBasicInfo>)object;
 			if(lists.get(0).getClass() != T)
 				throw new TypeNotMatchException("类型不一致");
+			
+			for(int i=0;i<lists.size();i++) {
+				jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo) lists.get(i);
+				if(s.getStudentNo() == null || s.getStudentName() == null 
+						|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
+						|| s.getIdCard() == null || s.getBirthday() == null) {
+					throw new ParameterNotMatchException("添加的学生基本信息部分不能为空，请认真重新填写！");
+				}
+			}
+			
 			dao.add(namespace+"batchAdd", lists);
 			flag = lists.size();
 		}
@@ -124,13 +142,40 @@ public class StuBasicInfoServiceImpl implements GlobalServiceInterface{
 	 * 江
 	 * TODO
 	 * 下午11:13:52
-	 * params 一定要包含 分页信息
+	 * params 
 	 * @return
 	 */
 	public List<String> getWaitForClassName(Map<String, Object> params) {
 		List<String> lists = null;
 		lists = dao.select(namespace+"verifyQueryOfClass", params);
 		return lists;
+	}
+
+	
+	/**
+	 * 得到待审核的信息列表（一般是以组的形式拿出来的，ps:以班级，活动名称，年级。。）
+	 * 江
+	 * TODO
+	 *　　　　　　　  需要传入的参数格式为 HashMap<String,Object>
+	 *                            <exameState,'院级审核中' or '校级审核中'>
+	 *                            <条件1,'xxx'>
+	 *                            <条件2,'xxx'>
+	 *                           	...
+	 *                             <pageVo,pv> 分页对象
+	 *                        例如:
+	 *                        	 <exameState,'院级审核中'>
+	 *                            <className,'软件1107'>
+	 *                             <pageVo,pv> 
+	 *                              
+	 * 下午10:54:02
+	 * @param  pageVo 分页信息
+	 * @return
+	 */
+	@Override
+	public <T> List<T> getWaitingForLists(Map<String, Object> params,
+			PageVo pageVo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

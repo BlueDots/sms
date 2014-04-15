@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import jxau.sms.util.chenjiang.moduleStateUpdate.ModuleStateOperation;
+import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.util.chenjiang.roleVerify.RolesVerifyOperation;
 
@@ -21,17 +22,15 @@ public abstract class AbstractionService {
 	 *                            <条件1,'xxx'>
 	 *                            <条件2,'xxx'>
 	 *                           	...
-	 *                             <pageVo,pv> 分页对象
 	 *                        例如:
 	 *                        	 <exameState,'院级审核中'>
 	 *                            <className,'软件1107'>
-	 *                             <pageVo,pv> 
 	 *                              
 	 * 下午10:54:02
 	 * @param params
 	 * @return
 	 */
-	public abstract <T>  List<T> getWaitingForLists(Map<String, Object> params);
+	public abstract <T>  List<T> getWaitingForLists(Map<String, Object> params,PageVo pageVo);
 	
 	/**
 	 * 批量审核

@@ -23,4 +23,11 @@
         </action>  
          
     </package>  
+    
+    <package name="RoleManager" namespace="/" extends="struts-default">  
+        <action name="role" class="jxau.sms.lyx.role.action.RoleAction">  
+            <result name="success">/files/college_admin/admin_RoleManager.jsp</result>  
+        </action>          
+    </package>  
+    
 </struts> 

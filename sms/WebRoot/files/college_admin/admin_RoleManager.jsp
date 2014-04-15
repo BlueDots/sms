@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@  taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -20,10 +20,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>学生工作管理系统</title>
 	
-		<link href="./css/css.css" rel="stylesheet" type="text/css" />
-		<link href="./css/style.css" rel="stylesheet" type="text/css" />
-		<link href="./css/jquery-ui.css" rel="stylesheet" type="text/css" />
-		<link href="./css/arrow.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>/css/css.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript">
 
@@ -83,10 +83,9 @@ function link() {
 	document.getElementById("fom").submit();
 }
 </script>
-<script src="./js/date.js"></script>
-<script src="./js/jquery-1.7.2.min.js"></script>
-<script src="./js/testSearch.js"></script>
-<script src="./js/jquery-ui-1.8.21.custom.min.js"></script>
+<script src="<%=basePath%>/js/date.js"></script>
+<script src="<%=basePath%>/js/jquery-1.10.2.js"></script>
+<script src="<%=basePath%>/js/testSearch.js"></script>
 
 </head>
   
@@ -100,13 +99,13 @@ function link() {
 					
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td height="62" background="./images/nav04.gif">
+								<td height="62" background="<%=basePath%>/images/nav04.gif">
 
 									<table width="98%" border="0" align="center" cellpadding="0"
 										cellspacing="0">
 										<tr>
 											<td width="21">
-												<img src="./images/ico07.gif" width="20" height="18" />
+												<img src="<%=basePath%>/images/ico07.gif" width="20" height="18" />
 											</td>
 										  	<td width="538">
 												<b>角色：</b>
@@ -114,16 +113,6 @@ function link() {
 													<option selected="selected">
 														全部
 													</option>
-													<option>
-														院级管理员
-													</option>
-													<option>
-														校级工作人员
-													</option>
-													<option>
-														学生
-													</option>
- 
 												</select>
 												
 												<input name="Submit4" type="button" class="right-button02"
@@ -158,7 +147,7 @@ function link() {
 																			<a href="#">导入</a>
 																		</li>
 																		<li>
-																			<a  href="files/college_admin/admin_addRole.jsp">手动录入</a>
+																			<a  href="<%=basePath%>/files/college_admin/admin_addRole.jsp">手动录入</a>
 																		</li>
 																	</ul>
 																</li>
@@ -217,27 +206,8 @@ function link() {
 																			<td >创建时间</td>
 																			<td>角色描述</td>
 																		 </tr>
-																		 <tr bgcolor="#FFFFFF">
-																			<td><input type="checkbox" name="delid2" /></td>
-																			<td>0323</td>
-																			<td><a href="purview!showPurview">学生</a></td>
-																			<td>2013-3-4</td>
-																			<td>所有学生的权限</td>
-																		</tr>
-																		<tr bgcolor="#FFFFFF">
-																			<td><input type="checkbox" name="delid2" /></td>
-																			<td>0325</td>
-																			<td><a href="files/college_admin/admin_rolePurview.jsp">班主任</a></td>
-																			<td>2013-3-2</td>
-																			<td>所有班主任的权限</td>
-																		</tr>	
-																		<tr bgcolor="#FFFFFF">
-																			<td><input type="checkbox" name="delid2" /></td>
-																			<td>0327</td>
-																			<td><a href="rolePurview!showRolePurview?roleNo=4">校级工作人员</a></td>
-																			<td>2013-3-5</td>
-																			<td>所有校级管理员的权限</td>
-																		</tr>	
+																		
+																																			
 																		<tr bgcolor="#FFFFFF">
 																			<td><input type="checkbox" name="delid2" /></td>
 																			<td>0328</td>

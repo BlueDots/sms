@@ -1,0 +1,42 @@
+package jxau.sms.lyx.purview.action;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+
+import jxau.sms.lyx.po.PurviewInfo;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class SystemPurviewAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
+
+	private List<PurviewInfo> purviewList = new ArrayList<PurviewInfo>();
+	private List<PurviewInfo> checkList = new ArrayList<PurviewInfo>();
+	String number = ServletActionContext.getRequest().getParameter("roleNo");
+	
+	public List<PurviewInfo> getPurviewList() {
+		return purviewList;
+	}
+	public void setPurviewList(List<PurviewInfo> purviewList) {
+		this.purviewList = purviewList;
+	}
+	public List<PurviewInfo> getCheckList() {
+		return checkList;
+	}
+	public void setCheckList(List<PurviewInfo> checkList) {
+		this.checkList = checkList;
+	}
+	
+	public String showPurviewByCondition() throws Exception{
+		
+		
+
+		return null;
+	}
+	
+	
+	
+}

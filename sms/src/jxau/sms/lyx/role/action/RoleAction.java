@@ -39,7 +39,7 @@ public class RoleAction extends ActionSupport {
 
 
 
-	public String roleExecute(){
+	public String roleExecute() throws Exception{
 		
 		PageVo pageVo = new PageVo();
 		pageVo.setSize(4);

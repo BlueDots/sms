@@ -1,0 +1,21 @@
+package jxau.sms.lyx.role.service.impl;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class ServiceTest {
+
+	@Test
+	public void test() {
+		
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		RoleServiceImpl rs = (RoleServiceImpl)context.getBean("RoleServiceImpl");
+		
+		
+		rs.searchByAccurate(param, pageVo, status);
+	}
+
+}

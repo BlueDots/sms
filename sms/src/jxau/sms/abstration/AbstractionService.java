@@ -11,6 +11,23 @@ public abstract class AbstractionService {
 	private RolesVerifyOperation rolesVerifyOperation;
 	private ModuleStateOperation moduleStateOperation;
 	
+	
+	/**
+	 * 得到待审核的信息列表
+	 * 江
+	 * TODO
+	 *　　　　　　　  需要传入的参数格式为 HashMap<String,Object>
+	 *                            <exameState,'院级审核中' or '校级审核中'>
+	 *                            <className,'1102'>
+	 *                            <studentName,'熊安平'>
+	 *                            <fristIndex,0>
+	 *                             <max,100>  
+	 * 下午10:54:02
+	 * @param params
+	 * @return
+	 */
+	public abstract <T>  List<T> getWaitingForLists(Map<String, Object> params);
+	
 	/**
 	 * 批量审核
 	 * @param ids ：主键集合
@@ -33,24 +50,6 @@ public abstract class AbstractionService {
 	 */
 	public int getWaitingVerifyNums(String moduleId,String roleId) {
 		return rolesVerifyOperation.getRoleWaitForVerifyNums(moduleId, roleId);
-	}
-	
-	
-	/**
-	 * 
-	 * 在录入时设置默认审核状态
-	 * TODO
-	 * 下午7:39:01
-	 * @param c 是为了在做添加的时候做判断用户是不是传入了正确的对象
-	 * @param lists 录入对象集合
-	 * @param moduleId 模块号
-	 * @param roleId 角色号
-	 * @param level: 除了学生参与活动模块外其余模块都为null 
-	 * 		对于学生参与活动模块的roleId=6的角色 ，level=1：录入院级活动；level=2：录入校级活动 
-	 */
-	
-	public <T> void setExameStateOfEntering(Class<?> c,List<T> lists,String moduleId,String roleId,String level) {
-		rolesVerifyOperation.setExameStateOfEntering(c, lists, moduleId, roleId ,level);
 	}
 	
 	

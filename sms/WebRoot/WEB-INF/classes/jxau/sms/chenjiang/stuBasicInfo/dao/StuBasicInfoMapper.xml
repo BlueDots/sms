@@ -48,8 +48,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	<if test="stuNoOrName != null">
         		and (studentName=#{stuNoOrName} or studentNo=#{stuNoOrName})
         	</if>
+        	<if test="status != null">
+        		and stuState=0
+        	</if>
         	limit #{start},#{nums}
 	</select>
+	<!--一般查询总数  -->
+	<select id="queryNums" parameterType="map" resultType="java.lang.Long">
+		select count(*) from stu_basic_info where 1=1
+		    <if test="college != null">
+        		and college=#{college}
+        	</if>
+        	<if test="major != null">
+        		and major=#{major}
+        	</if>
+        	<if test="className != null">
+        		and className=#{className}
+        	</if>
+        	<if test="stuNoOrName != null">
+        		and (studentName=#{stuNoOrName} or studentNo=#{stuNoOrName})
+        	</if>
+        	<if test="status != null">
+        		and stuState=0
+        	</if>
+	</select>
+	
 	
 	<!--高级查询  -->
 	<select id="advancedQuery" parameterType="map" resultMap="StuBasicInfoVOResultMap">
@@ -94,6 +117,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             </foreach>  
             limit #{start},#{nums}
 	</select>	
+	
 	
 	
 	<!--增加  -->

@@ -22,29 +22,28 @@ public class RoleAction extends ActionSupport {
 
 	private RoleServiceImpl roleServiceImpl;
 	
-	@Resource(name="RoleServiceImpl")
+	@Resource(name="roleServiceImpl")
 	public void setRoleServiceImpl(RoleServiceImpl roleServiceImpl) {
 		this.roleServiceImpl = roleServiceImpl;
 	}
 
-	private List<RoleInfo> roleInfoList = new ArrayList<RoleInfo>();
+	private List<RoleInfo> roleInfos = new ArrayList<RoleInfo>();
 		
-	public List<RoleInfo> getRoleInfoList() {
-		return roleInfoList;
+	public List<RoleInfo> getRoleInfos() {
+		return roleInfos;
 	}
 
-	public void setRoleInfoList(List<RoleInfo> roleInfoList) {
-		this.roleInfoList = roleInfoList;
+	public void setRoleInfos(List<RoleInfo> roleInfos) {
+		this.roleInfos = roleInfos;
 	}
-
 
 
 	public String roleExecute(){
 		
 		PageVo pageVo = new PageVo();
 		pageVo.setSize(4);
-		List<RoleInfo> roleInfos = roleServiceImpl.searchByAccurate(null, pageVo, 0);
-		this.setRoleInfoList(roleInfos);
+		roleServiceImpl.searchByAccurate(null, pageVo, 0);
+		
 		return SUCCESS;
 	}
 	

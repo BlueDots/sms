@@ -208,15 +208,14 @@ function link() {
 																		 </tr>
 		
 <!--迭代开始-->																
-											
-											<s:iterator value="roleInfoList" id="roleInfoList" >	
-																																			
+											<s:debug></s:debug>
+											<s:iterator>																								
 																		<tr bgcolor="#FFFFFF">
 																			<td><input type="checkbox" name="delid2" /></td>
-																			<td><s:property value="#roleInfoList.roleNo"></s:property>		</td>
-																			<td><a href="files/college_admin/admin_rolePurview.jsp"><s:property value="#roleInfoList.roleName"></s:property></a></td>
-																			<td><s:property value="#roleInfoList.createTime"></s:property></td>
-																			<td><s:property value="#roleInfoList.roleDescription"></s:property></td>
+																			<td>0328</td>
+																			<td><a href="files/college_admin/admin_rolePurview.jsp">院级工作人员</a></td>
+																			<td>2013-3-8</td>
+																			<td>所有院级工作人员的权限</td>
 																		</tr>	
 											</s:iterator>
 <!--  -->																			

@@ -22,7 +22,7 @@ public class RoleAction extends ActionSupport {
 
 	private RoleServiceImpl roleServiceImpl;
 	
-	@Resource(name="RoleServiceImpl")
+	@Resource(name="roleServiceImpl")
 	public void setRoleServiceImpl(RoleServiceImpl roleServiceImpl) {
 		this.roleServiceImpl = roleServiceImpl;
 	}

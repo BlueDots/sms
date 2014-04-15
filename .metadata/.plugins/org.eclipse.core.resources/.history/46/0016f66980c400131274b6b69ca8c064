@@ -208,7 +208,7 @@ function link() {
 																		 </tr>
 		
 <!--迭代开始-->																
-											
+											<s:debug></s:debug>
 											<s:iterator value="roleInfoList" id="roleInfoList" >	
 																																			
 																		<tr bgcolor="#FFFFFF">

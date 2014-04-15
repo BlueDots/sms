@@ -1655,3 +1655,19 @@ java.lang.NullPointerException
 	at org.eclipse.wst.validation.internal.ValBuilderJob.runInWorkspace(ValBuilderJob.java:126)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.jface 2 0 2014-04-15 17:28:30.639
+!MESSAGE Ignored reentrant call while viewer is busy. This is only logged once per viewer instance, but similar calls will still be ignored.
+!STACK 0
+java.lang.RuntimeException
+	at org.eclipse.jface.viewers.ColumnViewer.checkBusy(ColumnViewer.java:763)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:530)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1465)
+	at com.genuitec.eclipse.ast.deploy.core.ui.dialog.DeploymentManagerDialog.refreshViewer(Unknown Source)
+	at com.genuitec.eclipse.ast.deploy.core.ui.dialog.DeploymentManagerDialog.redeployed(Unknown Source)
+	at com.genuitec.eclipse.ast.deploy.core.DeploymentManager.ā(Unknown Source)
+	at com.genuitec.eclipse.ast.deploy.core.DeploymentManager.redeployed(Unknown Source)
+	at com.genuitec.eclipse.ast.deploy.core.Deployment.ā(Unknown Source)
+	at com.genuitec.eclipse.ast.deploy.core.Deployment.redeploy(Unknown Source)
+	at com.genuitec.eclipse.ast.deploy.core.jobs.D.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

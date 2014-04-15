@@ -122,10 +122,10 @@ public class TestService {
 		PageVo pageVo = new PageVo();
 		pageVo.setCurrentPage(1);
 		params.put("exameState", "院级审核中");
-		params.put("start", pageVo.getFirstIndex());
-		params.put("nums", pageVo.getSize());
-		List<String> lists = ((StuBasicInfoServiceImpl)globalServiceInterface).getWaitForClassName(params);
+		
+		List<String> lists = ((StuBasicInfoServiceImpl)globalServiceInterface).getWaitForClassName(params,pageVo);
 		System.out.println(lists);
+		System.out.println(pageVo.getPageNum());
 	}
 	
 	@Test

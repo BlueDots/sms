@@ -50,7 +50,8 @@ public abstract class AbstractionService {
 	 * @param roleId:操作角色
 	 *  		roleId 1:学生  2：班主任 3：院级工作人员 4：校级工作人员 6:活动负责人
 	 * @param operationId：操作编号  "1"：审核通过；"2"：审核不通过；
-	 * @param remarks:备注
+	 * @param remarks:备注  (可以为null)
+	 * 					
 	 */
 	public  <T>  void  verify(List<T> ids, String moduleId,String roleId,String operationId,String remarks){
 		rolesVerifyOperation.roleVerifyOperation(ids, moduleId, roleId, operationId, remarks);
@@ -80,7 +81,7 @@ public abstract class AbstractionService {
 	 * @param moduleState 改变的状态
 	 * @param relatedStates 状态改变级联的属性字段：若没有则写null,
 	 * 				ps只有moduleId为08的模块才不为null，其他模块都写null
-	 * @param remarks 备注 没有备注可以为null
+	 * @param remarks 备注 (没有备注可以为null)
 	 * 
 	 */
 	public <T> void moduleStateUpdate(String moduleId,List<T>  ids,Object moduleState,Map<String, Object> relatedStates,String remarks) {
@@ -94,7 +95,7 @@ public abstract class AbstractionService {
 	 * 上午10:15:06
 	 * @param ids 主键集合
 	 * @param subState 要改变的状态
-	 * @param remarks 备注 若无备注 ,为null
+	 * @param remarks 备注 (若无备注 ,为null)
 	 * @param subId  子表的编号 如活动类别表的subId为：actCategory ，详见jxau/sms/chenjiangConfig/moduleState.xml
 	 */
 	public <T> void subTableStateUpdate(List<T>  ids,Object subState,String remarks,String subId) {

@@ -265,7 +265,11 @@ function manually() {
 	/*提交修改*/
 	
 	function submitEdit(){
+<<<<<<< HEAD
+		    var r=confirm("提交成功,是否继续修改?");
+=======
 		    var r=confirm("提交成功,是否继续修改?")
+>>>>>>> 3f6457903af61d269ed80354442c17cbe12df92a
 	    
  	 if (r==false)
   		  {
@@ -291,6 +295,20 @@ function checkChooseCheck(){
 	} 
 
 //悬浮效果
+<<<<<<< HEAD
+var menuids = [ "suckertree1" ];
+function buildsubmenus() {
+	for ( var i = 0; i < menuids.length; i++) {
+		var ultags = document.getElementById(menuids[i]).getElementsByTagName("ul");
+		for ( var t = 0; t < ultags.length; t++) {
+			ultags[t].parentNode.getElementsByTagName("a")[0].className = "subfolderstyle";
+			ultags[t].parentNode.onmouseover = function() {
+				this.getElementsByTagName("ul")[0].style.display = "block";
+			};
+			ultags[t].parentNode.onmouseout = function() {
+				this.getElementsByTagName("ul")[0].style.display = "none";
+			};
+=======
 var menuids = [ "suckertree1" ]
 function buildsubmenus() {
 	for ( var i = 0; i < menuids.length; i++) {
@@ -303,11 +321,18 @@ function buildsubmenus() {
 			ultags[t].parentNode.onmouseout = function() {
 				this.getElementsByTagName("ul")[0].style.display = "none"
 			}
+>>>>>>> 3f6457903af61d269ed80354442c17cbe12df92a
 		}
 	}
 }
 if (window.addEventListener)
+<<<<<<< HEAD
+	window.addEventListener("load", buildsubmenus, false);
+else if (window.attachEvent)
+	window.attachEvent("onload", buildsubmenus);
+=======
 	window.addEventListener("load", buildsubmenus, false)
 else if (window.attachEvent)
 	window.attachEvent("onload", buildsubmenus)
+>>>>>>> 3f6457903af61d269ed80354442c17cbe12df92a
 

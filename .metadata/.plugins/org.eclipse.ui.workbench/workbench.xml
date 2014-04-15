@@ -27,6 +27,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="198" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.genuitec.eclipse.struts2.editor" itemType="typePlaceholder" x="342" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -71,7 +72,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (45 items)"/>
+<category IMemento.internal.id="Warnings (100 of 104 items)"/>
 <category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
@@ -82,6 +83,9 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -112,9 +116,6 @@
 </xmlDefinedFilters>
 </customFilters>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" partName="DB Browser">
 <viewState/>
@@ -214,15 +215,15 @@
 <perspective_action id="com.genuitec.eclipse.web20.perspective"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.ui.views.PropertySheet"/>
-<view id="com.genuitec.eclipse.sqlexplorer.views.DatabaseView"/>
-<view id="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView"/>
-<view id="org.eclipse.jdt.junit.ResultView"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="com.genuitec.eclipse.ui.HTMLView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="com.genuitec.eclipse.ast.deploy.core.serverview"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="com.genuitec.eclipse.sqlexplorer.views.DatabaseView"/>
+<view id="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView"/>
+<view id="org.eclipse.jdt.junit.ResultView"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <view id="uky.article.imageviewer.views.ImageView"/>
@@ -337,50 +338,50 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="login.sql" tooltip="sms/WebRoot/database/login.sql">
+<persistable path="/sms/WebRoot/database/login.sql"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="procedure.sql" tooltip="sms/WebRoot/database/procedure.sql">
+<persistable path="/sms/WebRoot/database/procedure.sql"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="liyixiangTest.sql" tooltip="sms/WebRoot/database/liyixiangTest.sql">
 <persistable path="/sms/WebRoot/database/liyixiangTest.sql"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DaoTest.java" tooltip="sms/src/jxau/sms/lyx/purview/dao/DaoTest.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/dao/DaoTest.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewListPackage.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/PurviewListPackage.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/PurviewListPackage.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="purviewMapper.xml" tooltip="sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml">
-<persistable path="/sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleHandlePurview.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/RoleHandlePurview.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/RoleHandlePurview.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ContainerConversion.java" tooltip="sms/src/jxau/sms/lyx/util/ContainerConversion.java">
-<persistable path="/sms/src/jxau/sms/lyx/util/ContainerConversion.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserHandlePurview.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserHandlePurview.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserHandlePurview.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyNumberFormatException.java" tooltip="sms/src/jxau/sms/lyx/exception/MyNumberFormatException.java">
-<persistable path="/sms/src/jxau/sms/lyx/exception/MyNumberFormatException.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AllocationPurviewStandard.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/AllocationPurviewStandard.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/AllocationPurviewStandard.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ArrayTypeConversion.java" tooltip="sms/src/jxau/sms/lyx/util/ArrayTypeConversion.java">
 <persistable path="/sms/src/jxau/sms/lyx/util/ArrayTypeConversion.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dao.java" tooltip="sms/src/jxau/sms/globaldao/Dao.java">
-<persistable path="/sms/src/jxau/sms/globaldao/Dao.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EntityDao.java" tooltip="sms/src/jxau/sms/globaldao/EntityDao.java">
-<persistable path="/sms/src/jxau/sms/globaldao/EntityDao.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserPurviewManagerServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ContainerTransform.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/ContainerTransform.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/ContainerTransform.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SystemPurviewServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java">
 <persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BasicInfoVo.java" tooltip="sms/src/jxau/sms/commom/vo/BasicInfoVo.java">
-<persistable path="/sms/src/jxau/sms/commom/vo/BasicInfoVo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserPurviewManagerServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="smsCreate.sql" tooltip="sms/WebRoot/database/smsCreate.sql">
-<persistable path="/sms/WebRoot/database/smsCreate.sql"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="mybatis.xml" tooltip="sms/src/mybatis.xml">
+<persistable path="/sms/src/mybatis.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.editor.webapp30" name="web.xml" tooltip="sms/WebRoot/WEB-INF/web.xml">
-<persistable path="/sms/WebRoot/WEB-INF/web.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="purviewMapper.xml" tooltip="sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml">
+<persistable path="/sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DaoTest.java" tooltip="sms/src/jxau/sms/anping/yibao/test/DaoTest.java">
-<persistable path="/sms/src/jxau/sms/anping/yibao/test/DaoTest.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewServiceImplTest.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/PurviewServiceImplTest.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/PurviewServiceImplTest.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestOne.java" tooltip="sms/jxau.sms.lyx.junit/jxau/sms/lyx/purview/dao/test/TestOne.java">
-<persistable path="/sms/jxau.sms.lyx.junit/jxau/sms/lyx/purview/dao/test/TestOne.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ContainerConversion.java" tooltip="sms/src/jxau/sms/lyx/util/ContainerConversion.java">
+<persistable path="/sms/src/jxau/sms/lyx/util/ContainerConversion.java"/>
 </file>
 </mruList>
 </workbench>

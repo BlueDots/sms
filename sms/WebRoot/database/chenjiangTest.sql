@@ -12,7 +12,9 @@ select * from tec_basic_info;
 
 select * from stu_act_participate;
 
-delete from stu_act_participate where id>1;
+select count(distinct activityName) from stu_act_participate sap,act_info ai where sap.actno=ai.actno
+
+update stu_act_participate set exameState = '院级审核中' where id in (1,12,13,14,15,16);
 
 insert into tec_basic_info(teacherNo,teacherName,sex,hometown) values('4610','嘎嘎',0,'江西');
 insert into tec_basic_info(teacherNo,teacherName,sex,hometown) values('4611','啦啦',0,'江西');

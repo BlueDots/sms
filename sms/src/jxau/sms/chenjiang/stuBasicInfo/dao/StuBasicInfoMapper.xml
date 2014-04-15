@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 	
-	<!--一般查询  -->
+	<!--查询  -->
 	<select id="query" parameterType="map" resultMap="StuBasicInfoVOResultMap">
 		select * from stu_basic_info where 1=1
 		    <if test="college != null">
@@ -48,12 +48,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	<if test="stuNoOrName != null">
         		and (studentName=#{stuNoOrName} or studentNo=#{stuNoOrName})
         	</if>
+
+       	<!-- 高级查询条件 -->
+        	<if test="hometomn != null">
+        		and hometomn=#{hometomn}
+        	</if>
+        	<if test="eduBackground != null">
+        		and eduBackground=#{eduBackground}
+        	</if>
+        	<if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
+        	<if test="idCard != null">
+        		and idCard=#{idCard}
+        	</if>
+        	<if test="nation != null">
+        		and nation=#{nation}
+        	</if>
+        	<if test="political != null">
+        		and political=#{political}
+        	</if>
+        	<if test="sex != null">
+        		and sex=#{sex}
+        	</if>
+        	<if test="englishlevel != null">
+        		and englishlevel=#{englishlevel}
+        	</if>
+        	<if test="bankCard != null">
+        		and bankCard=#{bankCard}
+        	</if>
+        	<if test="stuState != null">
+        		and stuState=#{stuState}
+        	</if>       	
+
+
         	<if test="status != null">
         		and stuState=0
         	</if>
+        	
+        	<if test="order != null">
+	        	order by
+				<foreach item="item" index="index" collection="order"  
+	            	open="" separator="," close="">
+	            	#{item}
+	            </foreach>  
+        	</if>         	
+        	
         	limit #{start},#{nums}
 	</select>
-	<!--一般查询总数  -->
+	<!--查询总数  -->
 	<select id="queryNums" parameterType="map" resultType="java.lang.Long">
 		select count(*) from stu_basic_info where 1=1
 		    <if test="college != null">
@@ -67,6 +110,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	</if>
         	<if test="stuNoOrName != null">
         		and (studentName=#{stuNoOrName} or studentNo=#{stuNoOrName})
+        	</if>
+        	
+        	<!-- 高级查询条件 -->
+        	<if test="hometomn != null">
+        		and hometomn=#{hometomn}
+        	</if>
+        	<if test="eduBackground != null">
+        		and eduBackground=#{eduBackground}
+        	</if>
+        	<if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
+        	<if test="idCard != null">
+        		and idCard=#{idCard}
+        	</if>
+        	<if test="nation != null">
+        		and nation=#{nation}
+        	</if>
+        	<if test="political != null">
+        		and political=#{political}
+        	</if>
+        	<if test="sex != null">
+        		and sex=#{sex}
+        	</if>
+        	<if test="englishlevel != null">
+        		and englishlevel=#{englishlevel}
+        	</if>
+        	<if test="bankCard != null">
+        		and bankCard=#{bankCard}
+        	</if>
+        	<if test="stuState != null">
+        		and stuState=#{stuState}
+        	</if>
+        	<if test="order != null">
+	        	order by
+				<foreach item="item" index="index" collection="order"  
+	            	open="" separator="," close="">
+	            	#{item}
+	            </foreach>  
         	</if>
         	<if test="status != null">
         		and stuState=0
@@ -116,9 +198,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             	#{item}
             </foreach>  
             limit #{start},#{nums}
-	</select>	
+	</select>
 	
-	<!--查询待审核信息  -->
+		
+	<!--审核  -->
+	<!--查询待审核信息  以班级为组 -->
 	<select id="verifyQuery" parameterType="map" resultMap="StuBasicInfoVOResultMap">
 		select * from stu_basic_info where 1=1
 		    <if test="exameState != null">
@@ -130,7 +214,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             limit #{start},#{nums}
 	</select>	
 	
-	<!--查询待审核信息人数  -->
+	<!--查询待审核信息人数  以班级为组-->
 	<select id="verifyQueryNums" parameterType="map" resultType="java.lang.Long">
 		select count(*) from stu_basic_info where 1=1
 		    <if test="exameState != null">

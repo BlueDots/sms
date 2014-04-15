@@ -130,9 +130,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             limit #{start},#{nums}
 	</select>	
 	
+	<!--查询待审核信息人数  -->
+	<select id="verifyQueryNums" parameterType="map" resultType="java.lang.Long">
+		select count(*) from stu_basic_info where 1=1
+		    <if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
+        	<if test="className != null">
+        		and className=#{className}
+        	</if>
+	</select>
+	
 	<!--查询待审核班级  -->
 	<select id="verifyQueryOfClass" parameterType="map" resultType="java.lang.String">
 		select distinct className from stu_basic_info where 1=1
+		    <if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
+        	limit #{start},#{nums}
+	</select>	
+	
+	<!--查询待审核班级数量  -->
+	<select id="verifyQueryOfClassNums" parameterType="map" resultType="java.lang.Long">
+		select count(distinct className)  from stu_basic_info where 1=1
 		    <if test="exameState != null">
         		and exameState=#{exameState}
         	</if>

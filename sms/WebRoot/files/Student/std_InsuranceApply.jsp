@@ -10,17 +10,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>医保申请</title>
-    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	 
-   <link rel="stylesheet" rev="stylesheet" href="<%=basePath%>/css/style.css"
+	
+   <link rel="stylesheet" rev="stylesheet" href="<%=basePath%>css/style.css"
 			type="text/css" media="all" />
 	<style type="text/css">
 	.STYLE1 {
@@ -41,33 +38,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th class="tablestyle_title">
 								医保申请
 						</th>
-						</tr>
+						　
 						<tr>
 						<td>
 	<form name="MedApplication" id="MedApplication" action="" method="post">
 	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="newfont03">
+  
+  <tr>
+    <td width="50%"><div align="right"><strong>申请类型</strong></div></td>
+    <td width="50%"> 
+                  <div align="left">
+                      <select name="hosType" class="span2">
+                        <option value="居民医保">居民医保</option>
+                        <option value="商业医保">商业医保</option>
+                      </select>
+            <a href="">这是什么？</a>
+            </div></td>
+  </tr>
+  
   <tr>
     <td width="50%"><div align="right"><strong>联系电话</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="textfield3" />
+      <input type="text" name="telephone" value="默认从基本信息中拿取" />
     </label></td>
   </tr>
    <tr>
     <td width="50%"><div align="right"><strong>银行卡号</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="textfield3" />
+      <input type="text" name="bankCard" value="默认从基本信息中拿取"/>
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>住院地址</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="textfield4" />
+      <input type="text" name="hospitalAddress" />
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>住院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="enterDate" type="text" class="input-xlarge datepicker" id="enterDate" value="02/16/12"/> 
+     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="02/16/12"/> 
     </label></td>
   </tr>
   <tr>
@@ -76,19 +86,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="02/16/12"/>  
     </label></td>
   </tr>
-    <tr>
-    <td width="50%"><div align="right"><strong>住院天数</strong></div></td>
-    <td width="50%"><label>
-      <input type="text" name="textfield5" />
-    </label></td>
-  </tr>
+    
   <tr>
     <td width="50%"><div align="right"><strong>本市或转外</strong></div></td>
     <td width="50%"> 
                   <div align="left">
-                      <select name="select2" class="span2">
-                        <option>本市</option>
-                        <option>转外</option>
+                      <select name="localCity" class="span2">
+                        <option value="0">本市</option>
+                        <option value="1">转外</option>
                       </select>
             </div></td>
   </tr>
@@ -106,12 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <input type="text" name="textfield10" />
     </label></td>
   </tr>
-   <tr>
-    <td width="50%"><div align="right"><strong>申请时间</strong></div></td>
-    <td width="50%"><label>
-      <input type="text" name="textfield6" />
-    </label></td>
-  </tr>
+  
   <tr>
     <td colspan="2" ><div align="center"> 
        <input type="button" value="保存" onclick="alert('保存成功！');"/>

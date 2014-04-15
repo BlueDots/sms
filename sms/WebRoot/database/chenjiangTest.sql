@@ -1,5 +1,9 @@
 select * from stu_basic_info;
 
+update stu_basic_info set exameState = '院级审核中' 
+       where studentNo in (20111367,20111429,20111635);
+
+
 select * from act_info;
 
 select * from act_hold;

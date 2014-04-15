@@ -8,7 +8,9 @@ import java.util.Map;
 
 import javassist.expr.Instanceof;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 
@@ -18,6 +20,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestService {
 	private ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 	private GlobalServiceInterface globalServiceInterface =  (GlobalServiceInterface) applicationContext.getBean("stuBasicInfoServiceImpl");
+	
+	private AbstractionService abstractionService = (AbstractionService)applicationContext.getBean("stuBasicInfoServiceImpl");
 	
 	@Test
 	public void testQuery() {
@@ -118,10 +122,50 @@ public class TestService {
 		PageVo pageVo = new PageVo();
 		pageVo.setCurrentPage(1);
 		params.put("exameState", "院级审核中");
-		params.put("start", pageVo.getFirstIndex());
-		params.put("nums", pageVo.getSize());
-		List<String> lists = ((StuBasicInfoServiceImpl)globalServiceInterface).getWaitForClassName(params);
+		
+		List<String> lists = ((StuBasicInfoServiceImpl)globalServiceInterface).getWaitForClassName(params,pageVo);
 		System.out.println(lists);
+		System.out.println(pageVo.getPageNum());
+	}
+	
+	@Test
+	public void testGetWaitingForLists() {
+		List<StuBasicInfoVO> lists = null;
+		PageVo pageVo = new PageVo();
+		pageVo.setCurrentPage(1);
+		Map<String, Object> params = new HashMap<String,Object>();
+		params.put("exameState", "院级审核中");
+		params.put("className", "软件1107");
+		lists = abstractionService.getWaitingForLists(params, pageVo);
+		System.out.println(lists.size());
+		for(StuBasicInfoVO s : lists) {
+			System.out.println(s);
+		}
+	}
+	
+	@Test
+	public void testGetWaitingVerifyNums() {
+		System.out.println(abstractionService.getWaitingVerifyNums("01", "3"));
+	}
+	
+	@Test
+	public void testVerify() {
+		List<String> ids = new ArrayList<String>();
+		ids.add("20111367");
+		ids.add("20111429");
+		ids.add("20111635");
+		
+		abstractionService.verify(ids, "01", "3", "1", null);
+		
+	}
+	
+	@Test
+	public void testModuleStateUpdate() {
+		List<String> ids = new ArrayList<String>();
+		ids.add("20111367");
+		ids.add("20111429");
+		ids.add("20111635");
+		abstractionService.moduleStateUpdate("01", ids, 0, null, null);
 	}
 	
 }

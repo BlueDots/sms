@@ -11,7 +11,7 @@ import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.PurviewInfo;
 
-@Transactional(propagation=Propagation.REQUIRED)
+
 @Service("UserPurviewManagerServiceImpl")
 public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 

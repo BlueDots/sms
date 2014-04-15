@@ -8,7 +8,9 @@ import java.util.Map;
 
 import javassist.expr.Instanceof;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 
@@ -18,6 +20,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestService {
 	private ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 	private GlobalServiceInterface globalServiceInterface =  (GlobalServiceInterface) applicationContext.getBean("stuBasicInfoServiceImpl");
+	
+	private AbstractionService abstractionService = (AbstractionService)applicationContext.getBean("stuBasicInfoServiceImpl");
 	
 	@Test
 	public void testQuery() {
@@ -124,4 +128,23 @@ public class TestService {
 		System.out.println(lists);
 	}
 	
+	@Test
+	public void testGetWaitingForLists() {
+		List<StuBasicInfoVO> lists = null;
+		PageVo pageVo = new PageVo();
+		pageVo.setCurrentPage(1);
+		Map<String, Object> params = new HashMap<String,Object>();
+		params.put("exameState", "院级审核中");
+		params.put("className", "软件1107");
+		lists = abstractionService.getWaitingForLists(params, pageVo);
+		System.out.println(lists.size());
+		for(StuBasicInfoVO s : lists) {
+			System.out.println(s);
+		}
+	}
+	
+	@Test
+	public void testGetWaitingVerifyNums() {
+		System.out.println(abstractionService.getWaitingVerifyNums("01", "3"));
+	}
 }

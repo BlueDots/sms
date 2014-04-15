@@ -3,6 +3,8 @@ package jxau.sms.abstration;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import jxau.sms.util.chenjiang.moduleStateUpdate.ModuleStateOperation;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
@@ -12,6 +14,14 @@ public abstract class AbstractionService {
 	private RolesVerifyOperation rolesVerifyOperation;
 	private ModuleStateOperation moduleStateOperation;
 	
+	@Resource(name="rolesVerifyOperation")
+	public void setRolesVerifyOperation(RolesVerifyOperation rolesVerifyOperation) {
+		this.rolesVerifyOperation = rolesVerifyOperation;
+	}
+	@Resource(name="moduleStateOperation")
+	public void setModuleStateOperation(ModuleStateOperation moduleStateOperation) {
+		this.moduleStateOperation = moduleStateOperation;
+	}
 	
 	/**
 	 * 得到待审核的信息列表（一般是以组的形式拿出来的，ps:以班级，活动名称，年级。。）
@@ -36,7 +46,9 @@ public abstract class AbstractionService {
 	 * 批量审核
 	 * @param ids ：主键集合
 	 * @param moduleId：模块号
+	 *            详见jxau/sms/chenjiangConfig/roleVerify.xml
 	 * @param roleId:操作角色
+	 *  		roleId 1:学生  2：班主任 3：院级工作人员 4：校级工作人员 6:活动负责人
 	 * @param operationId：操作编号  "1"：审核通过；"2"：审核不通过；
 	 * @param remarks:备注
 	 */
@@ -46,10 +58,10 @@ public abstract class AbstractionService {
 	
 	/**
 	 * 得到待审核人数
-	 * @param moduleId 模块编号
+	 * @param moduleId 模块编号  
+	 * 						详见jxau/sms/chenjiangConfig/roleVerify.xml
 	 * @param roleId 角色编号 ，该角色必须有审核的权限才能有数据返回 
 	 * 	roleId 1:学生  2：班主任 3：院级工作人员 4：校级工作人员 6:活动负责人
-		operationId 1:审核通过 2:审核不通过 3:录入
 	 * @return -1 出错, >=0 执行成功
 	 */
 	public int getWaitingVerifyNums(String moduleId,String roleId) {

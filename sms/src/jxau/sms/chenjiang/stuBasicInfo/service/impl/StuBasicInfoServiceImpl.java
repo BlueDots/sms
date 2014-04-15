@@ -171,11 +171,35 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	 * @param  pageVo 分页信息
 	 * @return
 	 */
+	@SuppressWarnings("hiding")
 	@Override
-	public <T> List<T> getWaitingForLists(Map<String, Object> params,
+	public <StuBasicInfoVO> List<StuBasicInfoVO> getWaitingForLists(Map<String, Object> params,
 			PageVo pageVo) {
-		// TODO Auto-generated method stub
-		return null;
+		List<StuBasicInfoVO> lists = null;
+    	List<String> queryCondition  = new ArrayList<String>();
+    	//查询条件检验
+    	queryCondition.add("exameState");
+    	queryCondition.add("className");
+    	
+    	if(params == null) 
+    		throw new NullPonterException("参数不能为null");
+    	//查询条件检验
+		Set<String> keys = params.keySet();
+    	for(int i=0;i<queryCondition.size();i++){
+    		 if(!keys.contains(queryCondition.get(i))){
+    			 throw new ParameterNotMatchException("查询条件输入有误!");
+    		 }
+    	}
+    	
+		params.put("start", pageVo.getFirstIndex());
+    	params.put("nums",   pageVo.getSize());
+    	
+
+    	lists = dao.select(namespace+"verifyQuery", params);
+    	long count = dao.selectOne(namespace+"verifyQueryNums", params); 	
+    	pageVo.setCount(count);
+    	
+		return lists;
 	}
 
 }

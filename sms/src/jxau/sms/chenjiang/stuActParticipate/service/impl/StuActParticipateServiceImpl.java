@@ -1,4 +1,4 @@
-package jxau.sms.chenjiang.stuBasicInfo.service.impl;
+package jxau.sms.chenjiang.stuActParticipate.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,18 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
-import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.util.chenjiang.exception.NullPonterException;
+import jxau.sms.util.chenjiang.exception.ParamWrongException;
 import jxau.sms.util.chenjiang.exception.TypeNotMatchException;
 
 @Transactional(propagation=Propagation.REQUIRED)
-@Service("stuBasicInfoServiceImpl")
-public class StuBasicInfoServiceImpl extends AbstractionService implements GlobalServiceInterface{
+@Service("stuActParticipateServiceImpl")
+public class StuActParticipateServiceImpl  extends AbstractionService implements GlobalServiceInterface {
 
-	private String namespace ="jxau.sms.stuBasicInfo.dao.";
+	private String namespace ="jxau.sms.chenjiang.stuActParticipate.dao.";
 	
 	private Dao dao;
 	
@@ -55,26 +55,29 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	@Transactional(readOnly=true)
 	@SuppressWarnings({"unchecked" })
 	@Override
-	public <StuBasicInfoVo> List<StuBasicInfoVo> searchByAccurate(Map<String, Object> param,
+	public <StuActParticipateVO> List<StuActParticipateVO> searchByAccurate(Map<String, Object> param,
 			PageVo pageVo, int status) {
-		List<StuBasicInfoVO> lists = null;
+		List<StuActParticipateVO> lists = null;
 		//查询条件
     	List<String> queryCondition  = new ArrayList<String>();
+    	//一般查询条件
     	queryCondition.add("college");
     	queryCondition.add("major");
     	queryCondition.add("className");
     	queryCondition.add("stuNoOrName");
-    	queryCondition.add("hometown");
-    	queryCondition.add("eduBackground");
+    	//高级查询条件
     	queryCondition.add("exameState");
-    	queryCondition.add("eduBackground");
-    	queryCondition.add("idCard");
-    	queryCondition.add("nation");
-    	queryCondition.add("political");
+    	queryCondition.add("major");
+    	queryCondition.add("exameState");
+    	queryCondition.add("activityName");
+    	queryCondition.add("activityLevel");
+    	queryCondition.add("activityType");
+    	queryCondition.add("studentPost");
     	queryCondition.add("sex");
-    	queryCondition.add("englishlevel");
-    	queryCondition.add("bankCard");
-    	queryCondition.add("stuState");
+    	queryCondition.add("workingTime");
+    	queryCondition.add("sessionYear");
+    	queryCondition.add("awardTime");
+    	queryCondition.add("stuActState");
     	queryCondition.add("order");
 		if(param == null) {//表示查询无限制
 			param = new HashMap<String, Object>();
@@ -98,36 +101,36 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		lists = dao.select(namespace+"query", param);
 		long totalCount = dao.selectOne(namespace+"queryNums", param);
 		pageVo.setCount(totalCount);
-		return (List<StuBasicInfoVo>) lists;
+		return (List<StuActParticipateVO>) lists;
 	}
 
 	@Override
-	public <StuBasicInfo> int add(Class T, Object object) {
+	public <StuActParticipateVO> int add(Class T, Object object) {
 		int flag = 0;
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
 		if(object.getClass() == T) {
 			
-			jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo)object;
-			if(s.getStudentNo() == null || s.getStudentName() == null 
-					|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
-					|| s.getIdCard() == null || s.getBirthday() == null) {
-				throw new ParameterNotMatchException("添加的学生基本信息部分不能为空，请认真重新填写！");
+			jxau.sms.chenjiang.po.StuActParticipate s = (jxau.sms.chenjiang.po.StuActParticipate) object;
+			if(s.getActInfo() == null ||s.getActInfo().getActNo()==0||s.getStuBasicInfo() == null
+					|| s.getStuBasicInfo().getStudentNo() == null|| s.getStuBasicInfo().getStudentNo().equals("") 
+					|| s.getAwardTime() == null || s.getActivityRating()==null)  {
+				throw new ParameterNotMatchException("添加的学生参与活动信息部分不能为空，请认真重新填写！");
 			}
 			dao.add(namespace+"add", object);
 			flag = 1;
 		}
 		else if(object instanceof List<?>)  {
-			List<StuBasicInfo> lists = (List<StuBasicInfo>)object;
+			List<StuActParticipateVO> lists = (List<StuActParticipateVO>)object;
 			if(lists.get(0).getClass() != T)
 				throw new TypeNotMatchException("类型不一致");
 			
 			for(int i=0;i<lists.size();i++) {
-				jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo) lists.get(i);
-				if(s.getStudentNo() == null || s.getStudentName() == null 
-						|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
-						|| s.getIdCard() == null || s.getBirthday() == null) {
-					throw new ParameterNotMatchException("添加的学生基本信息部分不能为空，请认真重新填写！");
+				jxau.sms.chenjiang.po.StuActParticipate s = (jxau.sms.chenjiang.po.StuActParticipate) lists.get(i);
+				if(s.getActInfo() == null ||s.getActInfo().getActNo()==0||s.getStuBasicInfo() == null
+						|| s.getStuBasicInfo().getStudentNo() == null|| s.getStuBasicInfo().getStudentNo().equals("") 
+						|| s.getAwardTime() == null || s.getActivityRating()==null) {
+					throw new ParameterNotMatchException("添加的学生参与活动信息部分不能为空，请认真重新填写！");
 				}
 			}
 			
@@ -138,29 +141,29 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		return flag;
 	}
 
-	
+	@Transactional(readOnly=true)
 	public <StubasicInfo> int update(Class T, Object object) {
 		int flag = 0;
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
 		if(object.getClass() == T) {
 			
-			jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo)object;
-			if(s.getStudentNo() == null) {
-				throw new ParameterNotMatchException("更新的学生基本信息的学号不能为空，请认真重新填写！");
+			jxau.sms.chenjiang.po.StuActParticipate s = (jxau.sms.chenjiang.po.StuActParticipate)object;
+			if(s.getId() == 0) {
+				throw new ParameterNotMatchException("更新的学生参与活动信息的id不能为空或0，请认真重新填写！");
 			}
 			dao.update(namespace+"update", object);
 			flag = 1;
 		}
 		else if(object instanceof List<?>)  {
-			List<jxau.sms.chenjiang.po.StuBasicInfo> lists = (List<jxau.sms.chenjiang.po.StuBasicInfo>)object;
+			List<jxau.sms.chenjiang.po.StuActParticipate> lists = (List<jxau.sms.chenjiang.po.StuActParticipate>)object;
 			if(lists.get(0).getClass() != T)
 				throw new TypeNotMatchException("类型不一致");
 			
 			for(int i=0;i<lists.size();i++) {
-				jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo) lists.get(i);
-				if(s.getStudentNo() == null) {
-					throw new ParameterNotMatchException("更新的学生基本信息的学号不能为空，请认真重新填写！");
+				jxau.sms.chenjiang.po.StuActParticipate s = (jxau.sms.chenjiang.po.StuActParticipate) lists.get(i);
+				if(s.getId() == 0) {
+					throw new ParameterNotMatchException("更新的学生参与活动信息的id不能为空或0，请认真重新填写！");
 				}
 			}
 			
@@ -179,31 +182,45 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	
 	
 	/**
-	 * 得到待审核班级
+	 * 得到待审核活动项目
 	 * 江
 	 * TODO
 	 * 下午11:13:52
-	 * params 
+	 * params 院级工作人员查询 必须有<exameState,"xxx"
+	 * 							level,0
+	 * 				          organize   ,"xx"	>
+	 * 		  校级工作人员必须有<exameState,"xxx"
+	 * 						level,1>
+	 * level: 0:院级查询
+	 * 		  1：校级查询
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-	public List<String> getWaitForClassName(Map<String, Object> params,PageVo pageVo) {
-		if(params == null) 
-			throw new NullPonterException("传入对象不能为null");
+	public List<String> getWaitForActivityName(Map<String, Object> params,PageVo pageVo) {
 		
-		//查询条件
-		List<String> queryCondition  = new ArrayList<String>();
-    	queryCondition.add("exameState");
-    	
+		if(params == null)
+			throw new NullPonterException("params不能为null");
+			
+		System.out.println(params.get("level"));
+		if(params.get("level") == null || ((Integer)params.get("level") !=0 && (Integer)params.get("level") !=1))
+			throw new ParamWrongException("输入参数params 必须有key:level 且value只能为0或1");
+    	int level = (Integer)params.get("level");
+    	//查询条件
+		List<String> queryCondition  = new ArrayList<String>();   	
+		queryCondition.add("exameState");
+    	if(level == 0) {
+    		queryCondition.add("organize");
+    	}
+		
     	if(!this.checkParams(queryCondition, params, 0))
-   		 throw new ParameterNotMatchException("查询条件输入有误!");
+    		 throw new ParameterNotMatchException("查询条件输入有误!");
 		
 		params.put("start", pageVo.getFirstIndex());
     	params.put("nums",   pageVo.getSize());
 		
 		List<String> lists = null;
-		lists = dao.select(namespace+"verifyQueryOfClass", params);
-		long count = dao.selectOne(namespace+"verifyQueryOfClassNums", params);
+		lists = dao.select(namespace+"verifyQueryOfActivity", params);
+		long count = dao.selectOne(namespace+"verifyQueryOfActivityNums", params);
 		pageVo.setCount(count);
 		return lists;
 	}
@@ -212,17 +229,15 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	/**
 	 * 得到待审核的信息列表（一般是以组的形式拿出来的，ps:以班级，活动名称，年级。。）
 	 * 江
-	 * TODO
-	 *　　　　　　　  需要传入的参数格式为 HashMap<String,Object>
-	 *                            <exameState,'院级审核中' or '校级审核中'>
-	 *                            <条件1,'xxx'>
-	 *                            <条件2,'xxx'>
-	 *                           	...
-	 *                             <pageVo,pv> 分页对象
-	 *                        例如:
-	 *                        	 <exameState,'院级审核中'>
-	 *                            <className,'软件1107'>
-	 *                             <pageVo,pv> 
+ 	 *	params 院级工作人员查询 必须有<exameState,"xxx"
+ 	 *							activityName,"xxx"
+	 * 							level,0
+	 * 				          organize   ,"xx"	>
+	 * 		  校级工作人员必须有<exameState,"xxx"
+	 * 						activityName,"xxx"
+	 * 						level,1>
+	 * level: 0:院级查询
+	 * 		  1：校级查询               
 	 *                              
 	 * 下午10:54:02
 	 * @param  pageVo 分页信息
@@ -233,14 +248,21 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	@Override
 	public <StuBasicInfoVO> List<StuBasicInfoVO> getWaitingForLists(Map<String, Object> params,
 			PageVo pageVo) {
-		if(params == null)
-			throw new NullPonterException("params不能为null");
-		List<StuBasicInfoVO> lists = null;
-    	List<String> queryCondition  = new ArrayList<String>();
-    	//查询条件检验
-    	queryCondition.add("exameState");
-    	queryCondition.add("className");
+	   	if(params == null) 
+    		throw new NullPonterException("参数不能为null");
+	   	
+	   	if(params.get("level") == null || ((Integer)params.get("level") !=0 && (Integer)params.get("level") !=1))
+			throw new ParamWrongException("输入参数params 必须有key:level 且value只能为0或1");
+    	int level = (Integer)params.get("level");
+    	//查询条件
+		List<String> queryCondition  = new ArrayList<String>();   	
+		queryCondition.add("exameState");
+		queryCondition.add("activityName");
+    	if(level == 0) {
+    		queryCondition.add("organize");
+    	}
     	
+ 
     	//查询条件检验
     	if(!checkParams(queryCondition, params,0))
     		 throw new ParameterNotMatchException("查询条件输入有误!");
@@ -248,7 +270,7 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		params.put("start", pageVo.getFirstIndex());
     	params.put("nums",   pageVo.getSize());
     	
-
+    	List<StuBasicInfoVO> lists = null;
     	lists = dao.select(namespace+"verifyQuery", params);
     	long count = dao.selectOne(namespace+"verifyQueryNums", params); 	
     	pageVo.setCount(count);

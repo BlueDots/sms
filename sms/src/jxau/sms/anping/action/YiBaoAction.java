@@ -1,5 +1,7 @@
 package jxau.sms.anping.action;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
@@ -12,6 +14,7 @@ import jxau.sms.anping.service.YiBaoService;
 import jxau.sms.chenjiang.po.StuBasicInfo;
 import jxau.sms.qing.po.Student;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -40,6 +43,12 @@ public class YiBaoAction extends ActionSupport implements ModelDriven<HosInsuran
 	}
 	 
 	
+	public String testSession(){
+		Map<String,Object> session  =  ActionContext.getContext().getSession();
+		StuBasicInfo   info  =  (StuBasicInfo) session.get("student");
+		System.out.println(info.getStudentNo()); 
+		return SUCCESS;
+	}
 	private void print(){
 		System.out.println(hosInsuranceInfo.getConditon());
 	    System.out.println(hosInsuranceInfo.getHosType());

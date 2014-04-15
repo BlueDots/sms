@@ -4,13 +4,17 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<s:debug></s:debug>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
     <title>My JSP 'std_InsuranceInfo.jsp' starting page</title>
-    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -21,9 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 <link rel="stylesheet" rev="stylesheet" href="<%=basePath%>css/style.css"
       type="text/css" media="all" />
-<link href="<%=basePath%>/css/css.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/css/style.css" rel="stylesheet" type="text/css" />
-<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>css/css.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>css/arrow.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 
@@ -91,13 +95,13 @@ function link() {
   document.getElementById("fom").submit();
 }
 </script>
-<script src="<%=basePath%>/js/jquery-1.10.2.min.js">
+<script src="<%=basePath%>js/jquery-1.10.2.min.js">
 </script>
-<script src="<%=basePath%>/js/testSearch.js">
+<script src="<%=basePath%>js/testSearch.js">
 </script>
-<script src="<%=basePath%>/js/provincesdata.js">
+<script src="<%=basePath%>js/provincesdata.js">
 </script>
-<script src="<%=basePath%>/js/jquery.provincesCity.js">
+<script src="<%=basePath%>js/jquery.provincesCity.js">
 </script>
 <style type="text/css">
 .STYLE1 {
@@ -203,8 +207,7 @@ function list(idstr){
       <tr height="32">
         <td width="100"><div align="center"><b>选择</b></div></td>
         <td height="100" width="86"><div align="center"><strong>序号</strong></div></td>
-    <td width="300"><div align="center"><strong>身份证号</strong></div></td>
-    <td width="300"><div align="center"><strong>学院与班级</strong></div></td>
+  
     <td width="300"><div align="center"><strong>联系电话</strong></div></td>
         <td width="300"><div align="center"><strong>住院地址</strong></div></td>
         <td width="300"><div align="center"><strong>住院日期</strong></div></td>
@@ -221,8 +224,7 @@ function list(idstr){
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
         <td height="18">2013001</td>
-        <td>　</td>
-        <td>  </td>
+         
         <td>　</td>
         <td>　</td>
         <td>　</td>
@@ -239,8 +241,7 @@ function list(idstr){
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
         <td height="18">2013002</td>
-        <td>　</td>
-        <td>　</td>
+    
         <td>　</td>
         <td>　</td>
         <td>　</td>
@@ -257,8 +258,7 @@ function list(idstr){
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
         <td height="18">2013003</td>
-        <td>　</td>
-        <td>　</td>
+         
         <td>　</td>
         <td>　</td>
         <td>　</td>
@@ -295,7 +295,7 @@ function list(idstr){
    </td>
     </tr>
   
- i   <tr>
+   <tr>
       <td colspan="2">
     <table width="100%" border="1" cellpadding="4" cellspacing="1" class="newfont03">
           <tr>
@@ -303,8 +303,7 @@ function list(idstr){
       <tr height="32">
         <td width="100"><div align="center"><b>选择</b></div></td>
         <td height="100" width="86"><div align="center"><strong>序号</strong></div></td>
-        <td width="300"><div align="center"><strong>身份证号</strong></div></td>
-        <td width="300"><div align="center"><strong>学院和班级</strong></div></td>
+      
         <td width="300"><div align="center"><strong>联系电话</strong></div></td>
         <td width="300"><div align="center"><strong>银行卡号</strong></div></td>
         <td width="200"><div align="center"><strong>除结算单材料是否齐全</strong></div></td>
@@ -316,8 +315,7 @@ function list(idstr){
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
         <td height="18">2013001</td>
-        <td>　</td>
-        <td>　</td>
+        
         <td>　</td>
         <td>　</td>
         <td>　</td>
@@ -329,8 +327,7 @@ function list(idstr){
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
         <td height="18">2013002</td>
-        <td>　</td>
-        <td>　</td>
+        
         <td>　</td>
         <td>　</td>
         <td>　</td>
@@ -342,8 +339,7 @@ function list(idstr){
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
         <td height="18">2013003</td>
-        <td>　</td>
-        <td>　</td>
+        
         <td>　</td>
         <td>　</td>
         <td>　</td>

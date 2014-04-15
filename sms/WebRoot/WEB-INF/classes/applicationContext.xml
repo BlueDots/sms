@@ -83,7 +83,7 @@
 		name="basePackage" value="com.sms.*.dao"/> </bean> -->
 	
 	<!-- 开启注解版事务 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager" mode="proxy" proxy-target-class="true"/>
 	
 	<!-- 事务配置 -->
 	<bean id="transactionManager"

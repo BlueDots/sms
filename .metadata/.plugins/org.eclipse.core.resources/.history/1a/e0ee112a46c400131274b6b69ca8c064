@@ -62,6 +62,7 @@ function  edit(){
 		 }
 		
 }
+<<<<<<< HEAD
 /*切换*/
 function change(id1,id2) {
 	alert("ssssssssssss");
@@ -74,6 +75,9 @@ function change(id1,id2) {
  			id2.style.display = "block";
  		}
 }
+=======
+
+>>>>>>> 3f6457903af61d269ed80354442c17cbe12df92a
 
 /**
 	@todo 弹出框响应函数

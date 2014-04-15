@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						　
 						<tr>
 						<td>
-	<form name="MedApplication" id="MedApplication" action="" method="post">
+	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!applyYiBao" method="post">
 	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="newfont03">
   
   <tr>
@@ -102,20 +102,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </br>
     </strong></div></td>
     <td width="50%"><label>
-	  <textarea name="diagnoise" cols="20" rows="5"></textarea>
+	  <textarea name="conditon" cols="20" rows="5"></textarea>
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>总费用</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="textfield10" />
+      <input type="text" name="cost" />
     </label></td>
   </tr>
   
   <tr>
     <td colspan="2" ><div align="center"> 
-       <input type="button" value="保存" onclick="alert('保存成功！');"/>
-        <input type="button" value="提交" onclick="alert('提交成功！');"/>
+        <input type="submit" value="提交" onclick="checkApplyForm()"/>
     </div></td>
   </tr>
       </table>
@@ -125,4 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </table>   
    </div>
 </body>
+
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/student/xionganping_YiBaoModule.js"></script>
 </html>

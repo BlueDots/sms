@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.exception.ParamterTypeErrorException;
@@ -24,6 +26,7 @@ import jxau.sms.globaldao.Dao;
  * @author anping 2014-4-14 TODO
  */
 @Service("yiBaoService")
+@Transactional(propagation=Propagation.REQUIRED)
 public class YiBaoServiceImpl implements YiBaoService {
 
 	@Resource(name = "dao")
@@ -34,6 +37,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 	/**
 	 * 学生查询自己的医保申请情况的时候不使用分页 那么就需要学生传入studentNo以及 状态
 	 */
+	@Transactional(readOnly=true)
 	@Override
 	public <T> List<T> searchListByAccurate(Map<String, Object> param,
 			int status) {
@@ -65,6 +69,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 	/**
 	 * 这个用于id 的查询
 	 */
+	@Transactional(readOnly=true)
 	@Override
 	public <T> T searchByAccurate(Map<String, Object> param, int status) {
 		if (param == null) {
@@ -97,6 +102,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 	 */
 	@SuppressWarnings("hiding")
 	@Override
+	@Transactional(readOnly=true)
 	public <HosInsuranceInfo> List<HosInsuranceInfo> searchByAccurate(
 			Map<String, Object> param, PageVo pageVo, int status) {
 		if (param == null) {
@@ -147,6 +153,8 @@ public class YiBaoServiceImpl implements YiBaoService {
 					|| data.getHospitalDate() == null
 					|| data.getLeaveDate() == null
 					|| data.getConditon() == null || data.getCost() == 0
+					||data.getStudent()==null 
+					||data.getStudent().getTelephone()==null
 					) {
                throw   new ParameterNotMatchException("添加的医保信息部分不能为空，请认真重新填写！");
 			}

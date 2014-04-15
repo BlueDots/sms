@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="jxau.sms.lyx.role.dao">
+
+	<select id="findAllRoleInfo" resultMap="RoleList">
+		select roleNo,roleName,createTime,roleDescription from role_info;
+	</select>
+		
+		 <resultMap type="RoleInfo" id="RoleList">
+		        <id column="roleNo" property="id" />
+		        <result column="roleName" property="pid" />
+		        <result column="purviewName" property="purviewName" />
+		        <result column="purviewUrl" property="purviewUrl" />
+  		 </resultMap>
+  		
+  	
+	 
+</mapper>

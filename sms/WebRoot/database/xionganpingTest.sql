@@ -46,4 +46,4 @@ null,null,null,null,null,null,null,null,null,null,null
 );
 
 
-select * from hos_insurance_info  order    by  hosNo desc limit 0,5  ;
+select * from hos_insurance_info  order    by  hosNo desc   ;

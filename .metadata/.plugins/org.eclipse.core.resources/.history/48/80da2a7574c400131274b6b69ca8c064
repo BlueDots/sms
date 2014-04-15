@@ -1,0 +1,15 @@
+package jxau.sms.lyx.role.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class RoleAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
+
+	public String roleExecute(){
+		
+		System.out.println("成功进入action");
+		return SUCCESS;
+	}
+	
+}

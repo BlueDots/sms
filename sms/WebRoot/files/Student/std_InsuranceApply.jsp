@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						　
 						<tr>
 						<td>
-	<form name="MedApplication" id="MedApplication" action="" method="post">
+	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!applyYiBao" method="post">
 	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="newfont03">
   
   <tr>
@@ -59,13 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td width="50%"><div align="right"><strong>联系电话</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="telephone" value="默认从基本信息中拿取" />
+      <input type="text" name="telephone" value="1827271" />
     </label></td>
   </tr>
    <tr>
     <td width="50%"><div align="right"><strong>银行卡号</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="bankCard" value="默认从基本信息中拿取"/>
+      <input type="text" name="bankcardID" value="128289"/>
     </label></td>
   </tr>
   <tr>
@@ -77,13 +77,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td width="50%"><div align="right"><strong>住院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="02/16/12"/> 
+     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="2012-02-11"/> 
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>出院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="02/16/12"/>  
+     <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="2013-09-19"/>  
     </label></td>
   </tr>
     
@@ -102,20 +102,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </br>
     </strong></div></td>
     <td width="50%"><label>
-	  <textarea name="diagnoise" cols="20" rows="5"></textarea>
+	  <textarea name="conditon" cols="20" rows="5"></textarea>
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>总费用</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="textfield10" />
+      <input type="text" name="cost" />
     </label></td>
   </tr>
   
   <tr>
     <td colspan="2" ><div align="center"> 
-       <input type="button" value="保存" onclick="alert('保存成功！');"/>
-        <input type="button" value="提交" onclick="alert('提交成功！');"/>
+        <input type="submit" value="提交" onclick="checkApplyForm()"/>
     </div></td>
   </tr>
       </table>
@@ -125,4 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </table>   
    </div>
 </body>
+
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/student/xionganping_YiBaoModule.js"></script>
 </html>

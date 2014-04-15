@@ -33,7 +33,7 @@ body {
 function tupian(idt){
     var nametu="xiaotu"+idt;
     var tp = document.getElementById(nametu);
-    tp.src="./images/ico05.gif";//
+    tp.src="<%=basePath%>/images/ico05.gif";//
 	
 	for(var i=1;i<30;i++)
 	{
@@ -43,7 +43,7 @@ function tupian(idt){
 	  {
 	    var tp2=document.getElementById('xiaotu'+i);
 		if(tp2!=undefined)
-	    {tp2.src="./images/ico06.gif";}//
+	    {tp2.src="<%=basePath%>/images/ico06.gif";}//
 	  }
 	}
 }
@@ -66,15 +66,15 @@ function list(idstr){
 				o.style.display="none";
 				var image=document.all(name3);
 				//alert(image);
-				image.src="./images/ico04.gif";
+				image.src="<%=basePath%>/images/ico04.gif";
 			}
 		}
 		objectobj.style.display="";
-		imgobj.src="./images/ico03.gif";
+		imgobj.src="<%=basePath%>/images/ico03.gif";
 	}
 	else{
 		objectobj.style.display="none";
-		imgobj.src="./images/ico04.gif";
+		imgobj.src="<%=basePath%>/images/ico04.gif";
 	}
 }
 
@@ -97,14 +97,14 @@ function list(idstr){
 					  </tr>
 					  <tr>
 						<td height="22" class="left-font01">
-							[&nbsp;<a href="./login.jsp" target="_top" class="left-font01">退出</a>&nbsp;]</td>
+							[&nbsp;<a href="<%=basePath%>/login.jsp" target="_top" class="left-font01">退出</a>&nbsp;]</td>
 					  </tr>
 					</table>
 				</td>
 		 	 </tr>
 			</table>
-			
-		<!-- 学生信息管理 -->
+		<!--	
+		<!-- 学生信息管理 
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
           <tr>
             <td height="29">
@@ -119,10 +119,7 @@ function list(idstr){
           </tr>		  
         </table>
 		
-		<!--  学生信息管理    -->
-		
-		<!--  教师信息管理    -->
-		
+
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" class="left-table03">
           <tr>
             <td height="29">
@@ -136,8 +133,7 @@ function list(idstr){
 			</td>
           </tr>		  
         </table>
-        
-		<!--  教师信息管理    -->
+     -->
 		
 		
 		<!--  角色管理    -->
@@ -149,7 +145,7 @@ function list(idstr){
 					<tr>
 						<td width="8%"><img name="img8" id="img8" src="<%=basePath%>/images/ico04.gif" width="8" height="11" /></td>
 						<td width="92%">
-								<a href="./files/college_admin/admin_RoleManager.jsp" target="mainFrame" class="left-font03">角色管理</a></td>
+								<a href="<%=basePath%>/RoleManager/role!roleExecute" target="mainFrame" class="left-font03">角色管理</a></td>
 					</tr>
 				</table>
 			</td>
@@ -165,9 +161,9 @@ function list(idstr){
          <td height="29">
 						<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="8%"><img name="img8" id="img8" src="./images/ico04.gif" width="8" height="11" /></td>
+								<td width="8%"><img name="img8" id="img8" src="<%=basePath%>/images/ico04.gif" width="8" height="11" /></td>
 								<td width="92%">
-									<a href="./files/college_admin/admin_userPurview.jsp" target="mainFrame" class="left-font03">分配权限管理</a>
+									<a href="<%=basePath%>/files/college_admin/admin_userPurview.jsp" target="mainFrame" class="left-font03">分配权限管理</a>
 								</td>
 							</tr>
 						</table>
@@ -181,9 +177,9 @@ function list(idstr){
          <td height="29">
 						<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
 							<tr>
-								<td width="8%"><img name="img8" id="img8" src="./images/ico04.gif" width="8" height="11" /></td>
+								<td width="8%"><img name="img8" id="img8" src="<%=basePath%>/images/ico04.gif" width="8" height="11" /></td>
 								<td width="92%">
-									<a href="./files/college_admin/admin_userRole.jsp" target="mainFrame" class="left-font03">分配角色管理</a>
+									<a href="<%=basePath%>/files/college_admin/admin_userRole.jsp" target="mainFrame" class="left-font03">分配角色管理</a>
 								</td>
 							</tr>
 						</table>

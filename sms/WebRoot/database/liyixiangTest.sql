@@ -14,6 +14,9 @@ select * from teacher_purview;
 select * from teacher_role;
 select * from role_purview;
 
+--select test
+select * from role_info where roleName like '%管理员';
+
 --insert 
 --测试发现 default约束是指插入固定字段时而不插入有default约束的字段，该
 --字段才会默认，插入null时该字段就是null

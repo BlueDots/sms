@@ -1,7 +1,0 @@
-package jxau.sms.lyx.role.action;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-public class RoleAction extends ActionSupport {
-
-}

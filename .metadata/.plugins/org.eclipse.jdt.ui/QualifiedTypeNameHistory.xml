@@ -8,14 +8,20 @@
 <fullyQualifiedTypeName name="jxau.sms.lyx.po.PurviewInfo"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="jxau.sms.globaldao.Dao"/>
-<fullyQualifiedTypeName name="javax.annotation.Resource"/>
 <fullyQualifiedTypeName name="jxau.sms.lyx.exception.MyNumberFormatException"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Propagation"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
 <fullyQualifiedTypeName name="org.apache.poi.ss.formula.functions.T"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="jxau.sms.lyx.util.ArrayTypeConversion"/>
 <fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="jxau.sms.globalService.GlobalServiceInterface"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.role.service.impl.RoleServiceImpl"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="jxau.sms.commom.vo.PageVo"/>
+<fullyQualifiedTypeName name="jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
+<fullyQualifiedTypeName name="com.opensymphony.xwork2.ModelDriven"/>
 </qualifiedTypeNameHistroy>

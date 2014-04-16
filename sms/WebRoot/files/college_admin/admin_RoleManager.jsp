@@ -214,7 +214,7 @@ function link() {
 																		<tr bgcolor="#FFFFFF">
 																			<td><input type="checkbox" name="delid2" /></td>
 																			<td><s:property value="#roleInfoList.roleNo"></s:property>		</td>
-																			<td><a href="Purview/purview!showPurviewByCondition?roleNo=<s:property value="#roleInfoList.roleNo"></s:property>"><s:property value="#roleInfoList.roleName"></s:property></a></td>
+																			<td><a href="Purview/purview!showPurviewByCondition?roleNo=<s:property value="#roleInfoList.roleNo"></s:property>&roleName=<s:property value="#roleInfoList.roleName"></s:property>"><s:property value="#roleInfoList.roleName"></s:property></a></td>
 																			<td><s:property value="#roleInfoList.createTime"></s:property></td>
 																			<td><s:property value="#roleInfoList.roleDescription"></s:property></td>
 																		</tr>	
@@ -244,27 +244,15 @@ function link() {
 																				<span class="right-text09">1</span> 页
 																			</td>
 																			<td width="49%" align="right">
-																				[
-																				<a href="#" class="right-font08">首页</a> |
-																				<a href="#" class="right-font08">上一页</a> |
-																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 转至：
+																				[																		
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=1" class="right-font08">首页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>-1" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>+1" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>" class="right-font08">末页</a>
+																				] 
+																				<s:debug></s:debug>
 																			</td>
-																			<td width="1%">
-																				<table width="20" border="0" cellspacing="0"
-																					cellpadding="0">
-																					<tr>
-																						<td width="1%">
-																							<input name="textfield3" type="text"
-																								class="right-textfield03" size="1" />
-																						</td>
-																						<td width="87%">
-																							<input name="Submit23222" type="submit"
-																								class="right-button06" value=" " />
-																						</td>
-																					</tr>
-																				</table>
-																			</td>
+																			
 																		</tr>
 																	</table>
 																</td>

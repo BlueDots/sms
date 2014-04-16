@@ -1,8 +1,5 @@
 package jxau.sms.lyx.util;
 
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * 
  * @author lyx
@@ -12,10 +9,6 @@ import java.util.List;
  */
 public class ContainerConversion {
 
-	public static HashMap<String,Object> listChangeMap(List<Integer> list,Class obj){
 	
-		
-		return null;		
-	}
 	
 }

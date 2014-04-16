@@ -5,21 +5,40 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+<<<<<<< HEAD
+=======
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+>>>>>>> 1f43a0fbe217bd933fa0cc6d662d26ccad89b6e7
 
 import org.springframework.stereotype.Service;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
+<<<<<<< HEAD
 import jxau.sms.qing.po.Student;
 
 @Service("loginService")
 public class LoginService implements GlobalServiceInterface{
 	private Dao dao;
+=======
+ @Service("loginService")
+public class LoginService {
+	
+	private  Dao dao ;
+	
+>>>>>>> 1f43a0fbe217bd933fa0cc6d662d26ccad89b6e7
 	@Resource(name="dao")
 	public void setDao(Dao dao) {
 		this.dao = dao;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f43a0fbe217bd933fa0cc6d662d26ccad89b6e7
 	public boolean whichUser(String userId,String password){
 		if(userId.length()==8){
 			return this.selectStudent(userId,password);

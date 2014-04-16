@@ -387,8 +387,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    <if test="exameState != null">
         		and sap.exameState=#{exameState}
         	</if>
-        	<if test="activityName != null">
-        		and ai.activityName=#{activityName}
+        	<if test="actNo != null">
+        		and ai.actNo=#{actNo}
         	</if>
         	<if test="organize != null">
         		and ai.organize=#{organize}
@@ -410,15 +410,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         	</if>
 	</select>
 	
+	
+	<resultMap type="ActHold" id="ActHoldResultMap">
+			<id property="id" column="id"/>
+			<result property="sessionYear" column="sessionYear"/>
+			<result property="startTime" column="startTime"/>
+			<result property="endTime" column="endTime"/>
+			<result property="holdPlace" column="holdPlace"/>
+			<association property="actInfo" column="actNo" select="selectActInfo" javaType="ActInfo">
+			</association>
+	</resultMap>
+	
+	<select id="selectActInfo" resultType="ActInfo">
+		select * from act_info where actNo = #{actNo}
+	</select>	
+	
 	<!--查询待审核活动  -->
-	<select id="verifyQueryOfActivity" parameterType="map" resultType="java.lang.String">
-		select distinct activityName from stu_act_participate sap,act_info ai where sap.actno=ai.actno
+	<select id="verifyQueryOfActivity" parameterType="map" resultMap="ActHoldResultMap">
+		select  ah.* from stu_act_participate sap,act_hold ah,act_info ai
+ 			where sap.actno=ah.actno and ai.actNo=ah.actNo and sap.sessionYear=ah.sessionYear 
 		    <if test="exameState != null">
         		and sap.exameState=#{exameState}
         	</if>
         	<if test="organize != null">
         		and ai.organize=#{organize}
         	</if>
+        	order by ah.actNo
         	limit #{start},#{nums}
 	</select>	
 	

@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import jxau.sms.lyx.po.PurviewInfo;
 import jxau.sms.lyx.util.ArrayTypeConversion;
 
@@ -99,12 +96,23 @@ public class PurviewListPackage {
 			
 	}
 	
+	/**
+	 * 
+	 * lyx
+	 * TODO
+	 * 下午7:39:44
+	 * @param number:角色编号或教师编号
+	 * @param newList：待插入的权限id
+	 * @param oldList:		待删除的权限id
+	 */
 	public void HandlePurviewPackage(String number,List<Integer> newList,List<Integer> oldList){
 		
+		//传入的是教师编号
 		if(number.length()==4){
 			
 			uhp.handleAllocationPurview(number, newList, oldList);
 			
+		//传入的是角色编号
 		}else if(number.length()<4){
 			
 			rhp.handleAllocationPurview(number, newList, oldList);

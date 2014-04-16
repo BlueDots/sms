@@ -27,16 +27,105 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from tec_basic_info where teacherNo = #{teacherNo}
 	</select>	
 		
-	<!--一般查询 -->
+	<!--查询 -->
 	<select id="query" parameterType="map" resultMap="ActivityInfoVOResultMap">
 		select * from act_info where 1=1
+		<!-- 一般查询 -->
 		<if test="organize != null">
 			and organize = #{organize}
 		</if>
 		<if test="actNoOrName != null">
 			and (actNo=#{actNoOrName} or activityName={actNoOrName})
 		</if>
+		
+		<!-- 高级查询  -->
+		<if test="activityLevel != null">
+			and activityLevel = #{activityLevel}
+		</if>
+		<if test="activityType != null">
+			and activityType=#{activityType}
+		</if>
+		<if test="createTime != null">
+			and createTime = #{createTime}
+		</if>
+		<if test="exameState != null">
+			and exameState = #{exameState}
+		</if>
+		<if test="sponsor != null">
+			and sponsor = #{sponsor}
+		</if>
+		<if test="actState != null">
+			and actState=#{actState}
+		</if>
+		<if test="studentName != null">
+			and studentName = #{studentName}
+		</if>
+		<if test="teacherName != null">
+			and teacherName = #{teacherName}
+		</if>
+		
+		<if test="status != null">
+			and actState=0
+		</if>
+		<if test="order != null">
+			order by 
+			<foreach item="item" index="index" collection="order"  
+	            	open="" separator="," close="">
+	            	#{item}
+	        </foreach> 	
+		</if>
+	
+		
 		limit #{start},#{nums}
+	</select>
+	
+	<!--查询记录数-->
+	<select id="queryNums" parameterType="map" resultType="java.lang.Long">
+		select count(*) from act_info where 1=1
+		<!-- 一般查询 -->
+		<if test="organize != null">
+			and organize = #{organize}
+		</if>
+		<if test="actNoOrName != null">
+			and (actNo=#{actNoOrName} or activityName={actNoOrName})
+		</if>
+		
+		<!-- 高级查询  -->
+		<if test="activityLevel != null">
+			and activityLevel = #{activityLevel}
+		</if>
+		<if test="activityType != null">
+			and activityType=#{activityType}
+		</if>
+		<if test="createTime != null">
+			and createTime = #{createTime}
+		</if>
+		<if test="exameState != null">
+			and exameState = #{exameState}
+		</if>
+		<if test="sponsor != null">
+			and sponsor = #{sponsor}
+		</if>
+		<if test="actState != null">
+			and actState=#{actState}
+		</if>
+		<if test="studentName != null">
+			and studentName = #{studentName}
+		</if>
+		<if test="teacherName != null">
+			and teacherName = #{teacherName}
+		</if>
+		
+		<if test="status != null">
+			and actState=0
+		</if>
+		<if test="order != null">
+			order by 
+			<foreach item="item" index="index" collection="order"  
+	            	open="" separator="," close="">
+	            	#{item}
+	        </foreach> 	
+		</if>
 	</select>
 	
 		<!--高级查询 -->
@@ -76,6 +165,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </foreach> 
 		limit #{start},#{nums}
 	</select>	
+	
+	
+	<!--审核  -->
+	<!--查询待审核活动信息 -->
+	<select id="verifyQuery" parameterType="map" resultMap="ActivityInfoVOResultMap">
+		select * from act_info where 1=1
+		    <if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
+            limit #{start},#{nums}
+	</select>	
+	
+	<!--查询待审核活动信息记录数-->
+	<select id="verifyQueryNums" parameterType="map" resultType="java.lang.Long">
+		select count(*) from act_info where 1=1
+		    <if test="exameState != null">
+        		and exameState=#{exameState}
+        	</if>
+	</select>
+	
+	
+	
 	
 	<!--增加  -->
 	<insert id="add" parameterType="ActInfo" useGeneratedKeys="true" keyProperty="actNo">

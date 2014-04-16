@@ -230,7 +230,7 @@ function link() {
 															cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="6">
-																	<img src="./images/spacer.gif" width="1" height="1" />
+																	<img src="<%=basePath%>/images/spacer.gif" width="1" height="1" />
 																</td>
 															</tr>
 															<tr>

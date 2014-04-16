@@ -13,6 +13,7 @@ import jxau.sms.chenjiang.po.ActHold;
 import jxau.sms.chenjiang.po.ActInfo;
 import jxau.sms.chenjiang.po.StuActParticipate;
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl;
 import jxau.sms.chenjiang.vo.StuActParticipateVO;
 import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;

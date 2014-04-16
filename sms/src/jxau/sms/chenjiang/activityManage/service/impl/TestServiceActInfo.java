@@ -60,7 +60,7 @@ public class TestServiceActInfo {
 		
 	   	 List<ActInfo> lists = new ArrayList<ActInfo>();
 	   	 ActInfo a1 = new ActInfo();
-	   	a1.setActivityName("xxxaa");
+	   	a1.setActivityName("XXXX");
 	   	a1.setActivityType("实践创新类");
 	   	a1.setActivityLevel("院级");
 	   	a1.setSponsor("软件学院");
@@ -82,7 +82,7 @@ public class TestServiceActInfo {
 	   	lists.add(a1);
 	   	lists.add(a2);		
 		
-		int a = globalServiceInterface.add(ActInfo.class, lists);
+		int a = globalServiceInterface.add(ActInfo.class, a1);
 		System.out.println(a);
 	}
 	

@@ -11,7 +11,7 @@
 	  
 	      
 		<action name="hosInsuranceInfo" class="jxau.sms.anping.action.YiBaoAction">
-	        <result name="success">/files/Student/mainfrastudent.html</result>
+	        <result name="success">/files/Student/std_InsuranceInfo.jsp</result>
 			<result name="error">/error.html</result>
 			<result name="input">/applyError.html</result>
 		</action>

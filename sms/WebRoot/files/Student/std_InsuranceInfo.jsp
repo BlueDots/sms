@@ -8,6 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <s:debug></s:debug>
 
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -168,8 +170,8 @@ function list(idstr){
 
   </head>
   <body>
-  
-  
+
+ 
   
 <div id="lurubiao" style="margin-left:10px">
   <table width="99%" border="0" cellpadding="0" cellspacing="0"
@@ -208,70 +210,46 @@ function list(idstr){
         <td width="100"><div align="center"><b>选择</b></div></td>
         <td height="100" width="86"><div align="center"><strong>序号</strong></div></td>
   
-    <td width="300"><div align="center"><strong>联系电话</strong></div></td>
+    <td width="300"><div align="center"><strong>类型</strong></div></td>
         <td width="300"><div align="center"><strong>住院地址</strong></div></td>
         <td width="300"><div align="center"><strong>住院日期</strong></div></td>
         <td width="300"><div align="center"><strong>出院日期</strong></div></td>
-    <td width="200"><div align="center"><strong>住院天数</strong></div></td>
-        <td width="200"><div align="center"><strong>本市或转外</strong></div></td>
+      <td width="200"><div align="center"><strong>本市或转外</strong></div></td>
         <td width="300"><div align="center"><strong>诊断病情</strong></div></td>
         <td width="200"><div align="center"><strong>总费用</strong></div></td>
         <td width="300"><div align="center"><strong>申请时间</strong></div></td>
     <td width="200"><div align="center"><strong>是否受理</strong></div></td>
         <td width="200"><div align="center"><strong>是否领卡</strong></div></td>
-    <td width="500"><div align="center"><strong>详情</strong></div></td>
+    <td width="200"><div align="center"><strong>状态</strong></div></td>
+    <td width="500"><div align="center"><strong>备注</strong></div></td>
+    <td width="500"><div align="center"><strong>操作</strong></div></td>
       </tr>
-      <tr height="18">
-        <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
-        <td height="18">2013001</td>
-         
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-    <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-      </tr>
-      <tr height="18">
-        <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
-        <td height="18">2013002</td>
+      
     
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-    <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-      </tr>
+      <s:iterator value="#request.hoss" >
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
-        <td height="18">2013003</td>
+      
+     	
+        <td height="18">1</td>
          
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-    <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
+        <td><s:property value="hosType"/></td>
+        <td><s:property  value="hospitalAddress"/></td>
+        <td><s:property  value="hospitalDate"/>　</td>
+        <td><s:property  value="leaveDate"/></td>
+    
+        <td><s:if test="%{localCity==0}">本市</s:if><s:else>转外</s:else></td>
+        <td><s:property value="condition"/></td>
+        <td><s:property value="cost"/></td>
+        <td><s:property value="applyTime"/>　</td>
+        <td><s:if test="%{accept==0}">等待中</s:if><s:elseif test="%{accept==-1}">不受理</s:elseif><s:else >受理</s:else></td>
+        <td><s:if test="%{collarCard==0}"></s:if><s:elseif test="%{collarCard==1}">已领卡</s:elseif><s:else >未领卡</s:else></td>
+        <td><s:property value="hosState"/>　	</td>
+        <td><s:property value="stateRemark"/></td>
+        <td><s:if test="%{accept!=1}"><input type="button" value="修改"></s:if></td>
       </tr>
+      </s:iterator>
+     
       </table>
    </td>
   </tr>

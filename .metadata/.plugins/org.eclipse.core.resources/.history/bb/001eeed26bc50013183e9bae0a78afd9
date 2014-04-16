@@ -31,6 +31,10 @@ public class LoginService implements GlobalServiceInterface{
 		this.dao = dao;
 	}
 
+
+	public boolean whichUser(String userId,String password){
+
+	
  	public boolean whichUser(String userId,String password){
 
 		if(userId.length()==8){
@@ -65,43 +69,74 @@ public class LoginService implements GlobalServiceInterface{
         	return false;
         }
 	}
-
 	@Override
 	public <T> List<T> searchListByAccurate(Map<String, Object> param,
 			int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public <T> T searchByAccurate(Map<String, Object> param, int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public <T> List<T> searchByAccurate(Map<String, Object> param,
 			PageVo pageVo, int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public <T> int add(Class T, Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public <T> int update(Class T, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public <T> int delete(Class T, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+}
+
+@Override
+public <T> List<T> searchListByAccurate(Map<String, Object> param, int status) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public <T> T searchByAccurate(Map<String, Object> param, int status) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public <T> List<T> searchByAccurate(Map<String, Object> param, PageVo pageVo,
+		int status) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public <T> int add(Class T, Object object) {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public <T> int update(Class T, Map<String, Object> param) {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public <T> int delete(Class T, Map<String, Object> param) {
+	// TODO Auto-generated method stub
+	return 0;
+	}
 }

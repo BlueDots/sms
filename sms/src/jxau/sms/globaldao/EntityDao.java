@@ -79,7 +79,7 @@ public class EntityDao implements Dao {
 		for (T a : t) {
 			session.update(mapperId, a);
 		}
-
+		session.commit();
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 		System.out.println(param.get("vo"));
 		if(param.get("vo") == null || ((Integer)param.get("vo") !=0 && (Integer)param.get("vo") !=1))
 			throw new ParamWrongException("输入参数params 必须有key:vo 且value只能为0或1");
-    	int vo = (Integer)param.get("level");
+    	int vo = (Integer)param.get("vo");
     	List<T> lists = null;
     	if(vo == 0) {
 			//查询条件
@@ -94,6 +94,8 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 	    	queryCondition.add("studentName");
 	    	queryCondition.add("teacherName");
 	    	queryCondition.add("order");
+	    	
+	    	queryCondition.add("vo");
 		    //查询条件检验
 		    if(!checkParams(queryCondition, param,1))
 		    		 throw new ParameterNotMatchException("查询条件输入有误!");
@@ -113,6 +115,7 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 	    	List<String> queryCondition  = new ArrayList<String>();
 	    	//一般查询条件
 	    	queryCondition.add("actNo");
+	    	queryCondition.add("vo");
 	    	 //查询条件检验
 		    if(!checkParams(queryCondition, param,1))
 		    		 throw new ParameterNotMatchException("查询条件输入有误!");
@@ -141,6 +144,7 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 						|| a.getTecBasicInfo().getTeacherNo() == null)  {
 					throw new ParameterNotMatchException("添加的活动信息部分不能为空，请认真重新填写！");
 				}
+				dao.add(actInfoNamespace+"add", object);
 				
 			}
 			else {
@@ -171,7 +175,8 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 			}
 			else {
 				for(int i=0;i<lists.size();i++) {
-					ActHold a = (ActHold) lists.get(i);;
+					ActHold a = (ActHold) lists.get(i);
+					System.out.println(a);
 					if(a.getActInfo() == null || a.getActInfo().getActNo() == 0
 							||a.getSessionYear() == 0 ||a.getStartTime()==null
 							||a.getEndTime() == null || a.getHoldPlace() == null) 
@@ -228,7 +233,11 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 						throw new ParameterNotMatchException("更新的活动举办信息的id不能为空或0，请认真重新填写！");
 					}
 				}
+				
+				System.out.println(lists);
+				
 				dao.batchUpdate(actHoldNamespace+"update", lists);
+				
 			}
 			flag = lists.size();
 		}
@@ -240,7 +249,25 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 	public <T> int delete(Class T, Map<String, Object> param) {
 		if(ActHold.class != T)
 			throw new ParamWrongException("传入的参数T 必须是 ActHold.class");
-		return 0;
+		if(param == null) 
+			throw new NullPonterException("传入param不能为null");
+		
+    	//删除条件
+		List<String> deleteCondition  = new ArrayList<String>();   	
+		deleteCondition.add("ids");
+		 //查询条件检验
+	    if(!checkParams(deleteCondition, param,1))
+	    		 throw new ParameterNotMatchException("param必须有key:ids");
+	    
+	    List<Integer> ids = (List<Integer>) param.get("ids");
+	    
+	    if(ids == null)
+	    	throw new ParameterNotMatchException("param的key为ids的value 不能为空");
+	    
+	    
+	    dao.delete(actHoldNamespace+"delete", param);
+	    
+		return ids.size();
 	}
 	
 	

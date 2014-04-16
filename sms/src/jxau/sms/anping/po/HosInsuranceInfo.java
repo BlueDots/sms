@@ -24,8 +24,8 @@ public class HosInsuranceInfo {
 	private String conditon;//病情
 	private double cost;//总费用
 	private Date applyTime;//申请时间
-	private int accept;//是否受理
-	private int collarCard;//是否领卡
+	private int accept;//是否受理//数据等于０表示在等待，否则－１不受理1受理
+	private int collarCard;//是否领卡 0 表示现待受理，１表示已领卡，－１表示未领卡
 	private Date submitTime;//递交案子时间
 	private String refuseReason;//未受理原因
 	private String resultDeal;//处理结果

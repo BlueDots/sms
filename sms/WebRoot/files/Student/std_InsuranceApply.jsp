@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -56,11 +56,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div></td>
   </tr>
   
+ 
   <tr>
     <td width="50%"><div align="right"><strong>联系电话</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="telephone" value="1827271" />
-    </label></td>
+         <input type="text" name="telephone" value="<s:if test="%{#session.student.telephone!=null}"><s:property  value="#session.student.telephone"/></s:if>" disabled="disabled"/>
+    </label><s:if test="%{#session.student.telephone==null}"><font color="red">请先去基本信息中填写电话号码</font></s:if></td>
   </tr>
    <tr>
     <td width="50%"><div align="right"><strong>银行卡号</strong></div></td>

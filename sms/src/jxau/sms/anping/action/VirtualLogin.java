@@ -33,7 +33,7 @@ public class VirtualLogin implements Filter{
 		HttpSession session  = req.getSession();
 		if(session.getAttribute("student")==null){
 			StuBasicInfo  stuBasicInfo  = new StuBasicInfo();
-			stuBasicInfo.setStudentNo("4610");
+			stuBasicInfo.setStudentNo("20111429");
 			stuBasicInfo.setAddress("江西人");
 			stuBasicInfo.setBankCard("121312312");
 			stuBasicInfo.setBirthday(new Date(2011,11,11));
@@ -44,9 +44,10 @@ public class VirtualLogin implements Filter{
 			stuBasicInfo.setSex(1);
 			
 			session.setAttribute("student",stuBasicInfo );
-			
+
+			System.out.println("已经在session中设置了一个学生信息，详细请见jxau.sms.anping.action.VirtualLogin");
 		}
-		System.out.println("已经在session中设置了一个学生信息，详细请见jxau.sms.anping.action.VirtualLogin");
+
 		chain.doFilter(request, response);
 	}
 

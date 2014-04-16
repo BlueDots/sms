@@ -1,5 +1,5 @@
 /**
-* @package_name   com.stuManSys.advanceInfo.po
+* @package_name   jxau.sms.thomas.vo
 * @file_name StuAward.java
 * @author Administrator
 * @date 2014-2-25
@@ -22,13 +22,13 @@ public class StuAdvVo {
 	private String studentNo;
 	private String name;
 	private int sex;
-	private String stuClass;
-	private String professionalDirection;
 	private String college;
+	private String major;
+	private String className;
 	private String advanceActivity;
-	private String advLevel;
 	private String advTime;
-	private int examState;
+	private String advLevel;
+	private String  examState;
 	private String remarks;
 	
 	public String getStudentNo() {
@@ -49,23 +49,23 @@ public class StuAdvVo {
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public String getStuClass() {
-		return stuClass;
-	}
-	public void setStuClass(String stuClass) {
-		this.stuClass = stuClass;
-	}
-	public String getProfessionalDirection() {
-		return professionalDirection;
-	}
-	public void setProfessionalDirection(String professionalDirection) {
-		this.professionalDirection = professionalDirection;
-	}
 	public String getCollege() {
 		return college;
 	}
 	public void setCollege(String college) {
 		this.college = college;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
 	}
 	public String getAdvanceActivity() {
 		return advanceActivity;
@@ -73,22 +73,22 @@ public class StuAdvVo {
 	public void setAdvanceActivity(String advanceActivity) {
 		this.advanceActivity = advanceActivity;
 	}
-	public String getAdvLevel() {
-		return advLevel;
-	}
-	public void setAdvLevel(String advLevel) {
-		this.advLevel = advLevel;
-	}
 	public String getAdvTime() {
 		return advTime;
 	}
 	public void setAdvTime(String advTime) {
 		this.advTime = advTime;
 	}
-	public int getExamState() {
+	public String getAdvLevel() {
+		return advLevel;
+	}
+	public void setAdvLevel(String advLevel) {
+		this.advLevel = advLevel;
+	}
+	public String getExamState() {
 		return examState;
 	}
-	public void setExamState(int examState) {
+	public void setExamState(String examState) {
 		this.examState = examState;
 	}
 	public String getRemarks() {
@@ -97,5 +97,5 @@ public class StuAdvVo {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	
+
 }

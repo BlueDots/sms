@@ -1,9 +1,0 @@
---select
-
-select * from t_teacher_info;
-select * from t_purview_info;
-select * from t_role_info;
-select * from t_teacher_purview;
-select * from t_teacher_role;
-select * from t_role_purview;
-select * from t_student_info;

@@ -17,8 +17,8 @@ import jxau.sms.qing.po.Student;
 @Service("loginService")
 public class LoginService implements GlobalServiceInterface{
 	private Dao dao;
-
-  
+ 
+ 
 	
 	@Resource(name="dao")
 	public void setDao(Dao dao) {

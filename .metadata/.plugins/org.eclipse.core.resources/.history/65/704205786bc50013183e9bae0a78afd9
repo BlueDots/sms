@@ -59,7 +59,7 @@ public class LoginService implements GlobalServiceInterface{
         	return false;
         }
 	}
-	@Override
+
 	public <T> List<T> searchListByAccurate(Map<String, Object> param,
 			int status) {
 		// TODO Auto-generated method stub

@@ -18,7 +18,10 @@ import jxau.sms.qing.po.Student;
 public class LoginService implements GlobalServiceInterface{
 	private Dao dao;
 
-  
+ @Service("loginService")
+public class LoginService {
+	
+	private  Dao dao ;
 	
 	@Resource(name="dao")
 	public void setDao(Dao dao) {
@@ -90,43 +93,5 @@ public class LoginService implements GlobalServiceInterface{
 	public <T> int delete(Class T, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-}
-
-@Override
-public <T> List<T> searchListByAccurate(Map<String, Object> param, int status) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public <T> T searchByAccurate(Map<String, Object> param, int status) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public <T> List<T> searchByAccurate(Map<String, Object> param, PageVo pageVo,
-		int status) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public <T> int add(Class T, Object object) {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
-@Override
-public <T> int update(Class T, Map<String, Object> param) {
-	// TODO Auto-generated method stub
-	return 0;
-}
-
-@Override
-public <T> int delete(Class T, Map<String, Object> param) {
-	// TODO Auto-generated method stub
-	return 0;
 	}
 }

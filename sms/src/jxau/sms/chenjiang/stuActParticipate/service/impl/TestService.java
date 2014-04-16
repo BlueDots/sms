@@ -9,6 +9,7 @@ import java.util.Map;
 import javassist.expr.Instanceof;
 
 import jxau.sms.abstration.AbstractionService;
+import jxau.sms.chenjiang.po.ActHold;
 import jxau.sms.chenjiang.po.ActInfo;
 import jxau.sms.chenjiang.po.StuActParticipate;
 import jxau.sms.chenjiang.po.StuBasicInfo;
@@ -94,18 +95,16 @@ public class TestService {
 	
 	@Test 
 	public void testUpdate() {
-/*		 StuBasicInfo stuBasicInfo = new StuBasicInfo();
-		 stuBasicInfo.setStudentNo("20111738");
-		 stuBasicInfo.setStudentName("李八");
-		 stuBasicInfo.setBirthday(Date.valueOf("1992-06-24"));
-		 stuBasicInfo.setClassName("软件1108");
-		 stuBasicInfo.setMajor("数字媒体");
-		 stuBasicInfo.setCollege("软件学院");
-		 stuBasicInfo.setSex(1);
-		 stuBasicInfo.setNation("汉族");
-		 stuBasicInfo.setHometown("天朝");
-		 stuBasicInfo.setPolitical("共青团员");
-		 stuBasicInfo.setIdCard("111112211111111111");  */
+	   	 StuActParticipate stuActParticipate = new StuActParticipate();
+	   	 ActInfo actInfo = new ActInfo();
+	   	 actInfo.setActNo(3);
+	   	 stuActParticipate.setActInfo(actInfo);
+	   	 
+	   	 stuActParticipate.setSessionYear(1);
+	   	 stuActParticipate.setAwardTime(Date.valueOf("2001-11-11"));
+	   	 stuActParticipate.setActivityRating("二等奖");
+	   	 stuActParticipate.setId(13);
+	   	 
 	   	 List<StuBasicInfo> lists = new ArrayList<StuBasicInfo>();
    	   	 StuBasicInfo s1 = new StuBasicInfo();
    		 s1.setStudentNo("20111556");
@@ -164,13 +163,13 @@ public class TestService {
    		lists.add(s3);
    		lists.add(s4);
 		
-		int a =( (StuBasicInfoServiceImpl)globalServiceInterface).update(StuBasicInfo.class, lists);
+		int a =( (StuActParticipateServiceImpl)globalServiceInterface).update(StuActParticipate.class, stuActParticipate);
 		System.out.println(a);
 	}
 	
 	
 	@Test
-	public void testGetWaitForActivityName() {
+	public void testGetWaitForActHold() {
 		Map<String, Object> params = new HashMap<String,Object>();
 		PageVo pageVo = new PageVo();
 		pageVo.setCurrentPage(1);
@@ -178,7 +177,7 @@ public class TestService {
 		params.put("level", 0);
 		params.put("organize", "软件学院");
 		
-		List<String> lists = ((StuActParticipateServiceImpl)globalServiceInterface).getWaitForActivityName(params, pageVo);
+		List<ActHold> lists = ((StuActParticipateServiceImpl)globalServiceInterface).getWaitForActHold(params, pageVo);
 		System.out.println(lists.size());
 		System.out.println(lists);
 		System.out.println(pageVo.getPageNum());
@@ -192,7 +191,7 @@ public class TestService {
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("exameState", "院级审核中");
 		params.put("level", 0);
-		params.put("activityName", "打嘎啦大赛");
+		params.put("actNo", 3);
 		params.put("organize", "软件学院");
 		lists = abstractionService.getWaitingForLists(params, pageVo);
 		System.out.println(lists.size());
@@ -203,7 +202,7 @@ public class TestService {
 	
 	@Test
 	public void testGetWaitingVerifyNums() {
-		System.out.println(abstractionService.getWaitingVerifyNums("01", "3"));
+		System.out.println(abstractionService.getWaitingVerifyNums("03", "3"));
 	}
 	
 	@Test

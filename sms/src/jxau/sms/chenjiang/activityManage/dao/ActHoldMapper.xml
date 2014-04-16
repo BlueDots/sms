@@ -53,5 +53,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{start},#{nums}
 	</select>
 	
+	<select id="queryNums" parameterType="map" resultMap="ActivityHoldInfoVOResultMap">
+		select count(*) from act_hold where actNo=#{actNo}
+	</select>
+	
 </mapper>
 

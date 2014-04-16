@@ -47,9 +47,5 @@
 		<!-- 赖辉强部分 结束 -->
 	</typeAliases>
 
-	<mappers>
-
-	<!--  无需配置，只需要你的mapper.xml在jxau.sms.名字.项目.dao下就行-->
-
-	</mappers>
+	
 </configuration>

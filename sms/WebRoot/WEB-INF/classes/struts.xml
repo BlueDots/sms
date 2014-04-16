@@ -2,9 +2,9 @@
 <!DOCTYPE struts PUBLIC  
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
 
-    "http://struts.apache.org/dtds/struts-2.3.dtd">  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
 
-    
+
 <struts>
 	<!-- 指定默认编码集 ，作用于HttpServletRequest的setCharacterEncoding（）和freemarker，vilocity的输出 -->
 	<constant name="struts.i18n.encoding" value="UTF-8" />
@@ -22,5 +22,6 @@
 
 	<include file="anpingAction.xml"></include>
 	<include file="lyxAction.xml"></include>
-
+  
+   
 </struts> 

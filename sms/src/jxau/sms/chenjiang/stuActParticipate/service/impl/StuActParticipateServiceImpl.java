@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
+import jxau.sms.chenjiang.po.ActHold;
+import jxau.sms.chenjiang.po.ActInfo;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
@@ -105,7 +107,11 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 	}
 
 	@Override
-	public <StuActParticipateVO> int add(Class T, Object object) {
+	public <StuActParticipate> int add(Class T, Object object) {
+		
+		if(jxau.sms.chenjiang.po.StuActParticipate.class != T )
+			throw new ParamWrongException("传入的参数T 必须是 StuActParticipate.class");
+		
 		int flag = 0;
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
@@ -121,7 +127,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 			flag = 1;
 		}
 		else if(object instanceof List<?>)  {
-			List<StuActParticipateVO> lists = (List<StuActParticipateVO>)object;
+			List<StuActParticipate> lists = (List<StuActParticipate>)object;
 			if(lists.get(0).getClass() != T)
 				throw new TypeNotMatchException("类型不一致");
 			
@@ -141,8 +147,9 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 		return flag;
 	}
 
-	@Transactional(readOnly=true)
-	public <StubasicInfo> int update(Class T, Object object) {
+	public <StuActParticipate> int update(Class T, Object object) {
+		if(jxau.sms.chenjiang.po.StuActParticipate.class != T )
+			throw new ParamWrongException("传入的参数T 必须是 StuActParticipate.class");
 		int flag = 0;
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
@@ -182,7 +189,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 	
 	
 	/**
-	 * 得到待审核活动项目
+	 * 得到待审核活动举办信息
 	 * 江
 	 * TODO
 	 * 下午11:13:52
@@ -196,7 +203,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-	public List<String> getWaitForActivityName(Map<String, Object> params,PageVo pageVo) {
+	public List<ActHold> getWaitForActHold(Map<String, Object> params,PageVo pageVo) {
 		
 		if(params == null)
 			throw new NullPonterException("params不能为null");
@@ -218,7 +225,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 		params.put("start", pageVo.getFirstIndex());
     	params.put("nums",   pageVo.getSize());
 		
-		List<String> lists = null;
+		List<ActHold> lists = null;
 		lists = dao.select(namespace+"verifyQueryOfActivity", params);
 		long count = dao.selectOne(namespace+"verifyQueryOfActivityNums", params);
 		pageVo.setCount(count);
@@ -246,7 +253,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 	@Transactional(readOnly=true)
 	@SuppressWarnings("hiding")
 	@Override
-	public <StuBasicInfoVO> List<StuBasicInfoVO> getWaitingForLists(Map<String, Object> params,
+	public <StuActParticipateVO> List<StuActParticipateVO> getWaitingForLists(Map<String, Object> params,
 			PageVo pageVo) {
 	   	if(params == null) 
     		throw new NullPonterException("参数不能为null");
@@ -257,7 +264,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
     	//查询条件
 		List<String> queryCondition  = new ArrayList<String>();   	
 		queryCondition.add("exameState");
-		queryCondition.add("activityName");
+		queryCondition.add("actNo");
     	if(level == 0) {
     		queryCondition.add("organize");
     	}
@@ -270,7 +277,7 @@ public class StuActParticipateServiceImpl  extends AbstractionService implements
 		params.put("start", pageVo.getFirstIndex());
     	params.put("nums",   pageVo.getSize());
     	
-    	List<StuBasicInfoVO> lists = null;
+    	List<StuActParticipateVO> lists = null;
     	lists = dao.select(namespace+"verifyQuery", params);
     	long count = dao.selectOne(namespace+"verifyQueryNums", params); 	
     	pageVo.setCount(count);

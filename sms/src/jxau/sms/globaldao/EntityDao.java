@@ -36,7 +36,7 @@ public class EntityDao implements Dao {
 
 	}
 
-	@Transactional(readOnly=true)
+
 	@Override
 	public <T> T selectOne(String mapperId, Map<String, Object> params) {
 		return session.selectOne(mapperId, params);
@@ -79,7 +79,7 @@ public class EntityDao implements Dao {
 		for (T a : t) {
 			session.update(mapperId, a);
 		}
-
+		session.commit();
 	}
 
 	@Override

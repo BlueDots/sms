@@ -19,6 +19,7 @@ import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.util.chenjiang.exception.NullPonterException;
+import jxau.sms.util.chenjiang.exception.ParamWrongException;
 import jxau.sms.util.chenjiang.exception.TypeNotMatchException;
 
 @Transactional(propagation=Propagation.REQUIRED)
@@ -103,6 +104,8 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 
 	@Override
 	public <StuBasicInfo> int add(Class T, Object object) {
+		if(jxau.sms.chenjiang.po.StuBasicInfo.class != T )
+			throw new ParamWrongException("传入的参数T 必须是 StuBasicInfo.class");
 		int flag = 0;
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
@@ -140,6 +143,8 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 
 	
 	public <StubasicInfo> int update(Class T, Object object) {
+		if(jxau.sms.chenjiang.po.StuBasicInfo.class != T )
+			throw new ParamWrongException("传入的参数T 必须是 StuBasicInfo.class");
 		int flag = 0;
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");

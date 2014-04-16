@@ -11,7 +11,7 @@ import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.PurviewInfo;
 
-
+@Transactional(propagation=Propagation.REQUIRED)
 @Service("UserPurviewManagerServiceImpl")
 public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 
@@ -64,22 +64,28 @@ public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 	 */
 
 	public void renewAllocationPurview(Map<String,Object> insertMap,Map<String,Object> deleteMap){
-	
+		
+		//判断是否无需添加权限
 		if(insertMap.isEmpty()){	
 			
+			//判断是否无需删除权限
 			if(deleteMap.isEmpty()){				
-				System.out.println("不做处理！");				
+			
 			}else{
-				System.out.println("只删除！");				
+		
+				//只做删除
 				dao.batchDelete("jxau.sms.lyx.purview.dao.deletePurview", deleteMap);
 			}		
 			
+		//说明需要添加，那么判断是否无需删除权限
 		}else if(deleteMap.isEmpty()){			
-			System.out.println("只添加！");				
+			
+			//只做添加
 			dao.batchAdd("jxau.sms.lyx.purview.dao.addPurview",insertMap);
 			
 		}else{			
-			System.out.println("都有！");				
+			
+			//全部都做，而且包含事务回滚
 			dao.batchDelete("jxau.sms.lyx.purview.dao.deletePurview", deleteMap);			
 			dao.batchAdd("jxau.sms.lyx.purview.dao.addPurview",insertMap);
 			

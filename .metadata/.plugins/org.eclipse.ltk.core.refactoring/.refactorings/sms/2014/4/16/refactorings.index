@@ -13,3 +13,11 @@
 1397552411366	Delete element
 1397552601831	Rename resource 'lyx.xml'
 1397563786114	Rename resource 'admin_rolePurview.jsp'
+1397646452427	Rename type 'SystemPurviewAction'
+1397646569003	Copy compilation unit
+1397647436088	Copy compilation unit
+1397649022133	Rename resource 'admin_systemPurview.jsp'
+1397649102197	Rename resource 'admin_roleSystemPurview.jsp'
+1397649479638	Copy compilation unit
+1397649585522	Delete element
+1397649592931	Rename type 'UserSystemPurviewAction'

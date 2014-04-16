@@ -109,7 +109,7 @@ function getChecked(roleNo){
 		
 		array.push($(this).siblings("input:hidden").val());
 	
-		window.location.href="Purview/updatePurview!renewPurview?array="+array+"&roleNo="+roleNo;
+		window.location.href="Purview/updateRolePurview!renewPurview?array="+array+"&roleNo="+roleNo;
 	
 	});
 
@@ -133,7 +133,7 @@ function getChecked(roleNo){
 										cellspacing="0">
 										<tr>
 										  <td width="250">											  
-											  &lt;角色名称：<font color="red">院级工作人员</font>&nbsp;&nbsp;
+											  <strong>角色名称:</strong><font color="red"><s:property value="#roleName"></s:property></font>&nbsp;&nbsp;
 										  </td>
 										  
 										  <td width="77" align="left">
@@ -237,7 +237,7 @@ function getChecked(roleNo){
 															<tr>
 																<td colspan="2" align="center" height="30px">
 																	<input type="button" name="submitPurview" value="提交"
-																		class="button" onclick="getChecked(<s:property value="roleNo"/>)" />
+																		class="button" onclick="getChecked(<s:property value="#parameters['roleNo']"/>)" />
 																    <input type="button" name="cancel" value="取消"
 																		class="button" onclick="" />
 																	<input type="button" name="return" value="返回"

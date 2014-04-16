@@ -9,7 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import jxau.sms.lyx.po.PurviewInfo;
-import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
 import jxau.sms.lyx.purview.service.impl.PurviewListPackage;
 import jxau.sms.lyx.purview.service.impl.SystemPurviewServiceImpl;
 import jxau.sms.lyx.purview.service.impl.UserPurviewManagerServiceImpl;
@@ -19,19 +19,12 @@ import com.opensymphony.xwork2.ModelDriven;
 
 @Controller  
 @Scope("prototype")
-public class SystemPurviewAction extends ActionSupport implements ModelDriven<RoleInfo>{
+public class SystemPurviewAction extends ActionSupport{
 
 	private static final long serialVersionUID = 1L;
 
 	private UserPurviewManagerServiceImpl upms;
 	private SystemPurviewServiceImpl spsi;
-	private PurviewListPackage plp;
-	private RoleInfo roleInfo = new RoleInfo();
-	
-	@Resource(name="PurviewListPackage")
-	public void setPlp(PurviewListPackage plp) {
-		this.plp = plp;
-	}
 
 	@Resource(name="SystemPurviewServiceImpl")
 	public void setSpsi(SystemPurviewServiceImpl spsi) {
@@ -45,8 +38,8 @@ public class SystemPurviewAction extends ActionSupport implements ModelDriven<Ro
 
 	private List<PurviewInfo> purviewList = new ArrayList<PurviewInfo>();
 	private List<PurviewInfo> checkList = new ArrayList<PurviewInfo>();
-	String roleNo = ServletActionContext.getRequest().getParameter("roleNo");
 	String teacherNo = ServletActionContext.getRequest().getParameter("teacherNo");
+	String roleNo = ServletActionContext.getRequest().getParameter("roleNo");
 	String param = ServletActionContext.getRequest().getParameter("array");
 	
 	public List<PurviewInfo> getPurviewList() {
@@ -67,15 +60,11 @@ public class SystemPurviewAction extends ActionSupport implements ModelDriven<Ro
 		Map<String,Object> map = new HashMap<String,Object>();
 		
 		if(roleNo==null){
-			
 			map.put("teacherNo", teacherNo);
-			
 		}else if(teacherNo==null){
-			
 			map.put("roleNo", roleNo);
-			
 		}
-		
+					
 		List<PurviewInfo> purviewLists = spsi.searchListByAccurate(null, 0);
 		this.setPurviewList(purviewLists);
 		
@@ -84,31 +73,5 @@ public class SystemPurviewAction extends ActionSupport implements ModelDriven<Ro
 		
 		return SUCCESS;
 	}
-	
-	public String renewPurview() throws Exception{
-		
-		System.out.println(roleNo+"roleNo");
-		System.out.println("String"+param);
-		
-		if(roleNo==null){
-			
-			plp.containerTransform(teacherNo, param);
-			
-		}else if(teacherNo==null){
-			
-			plp.containerTransform(roleNo, param);
-			
-		}
-				
-		return SUCCESS;
-		
-		
-	}
 
-	@Override
-	public RoleInfo getModel() {
-		// TODO Auto-generated method stub
-		return roleInfo;
-	}
-	
 }

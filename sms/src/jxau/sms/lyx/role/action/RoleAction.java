@@ -1,7 +1,9 @@
 package jxau.sms.lyx.role.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import jxau.sms.commom.vo.PageVo;
+import jxau.sms.lyx.exception.NotFoundDataException;
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 
@@ -41,6 +44,24 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		this.roleInfoList = roleInfoList;
 	}
 
+	public String searchRole() throws Exception{
+		
+		String searchRole = ServletActionContext.getRequest().getParameter("searchRole");
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("roleName", searchRole);
+		List<RoleInfo> roleInfos = new ArrayList<RoleInfo>();
+		try{
+			roleInfos = roleServiceImpl.searchListByAccurate(map,0);
+		}catch(NotFoundDataException e){
+			System.out.println("没事");
+		}finally{		
+			this.setRoleInfoList(roleInfos);
+		}
+		return SUCCESS;
+	}
+	
+	
 	public String roleExecute() throws Exception{
 		
 		String currentPage = ServletActionContext.getRequest().getParameter("currentPage");

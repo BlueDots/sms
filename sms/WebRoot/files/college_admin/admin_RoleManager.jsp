@@ -89,10 +89,7 @@ function link() {
 
 </head>
   
-  <body>
-  
-		<form name="fom"  method="post" action="">
-		
+<body>	
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td height="30">
@@ -108,11 +105,14 @@ function link() {
 												<img src="<%=basePath%>/images/ico07.gif" width="20" height="18" />
 											</td>
 										  	<td width="538">
-										  	<b>请输入角色名称：</b>
-												<input name="context" type="text">											
-												<input name="select" type="button" class="right-button02" value="查询" />
-												&nbsp;&nbsp;	
+										  	
+										  	<form action="RoleManager/role!searchRole" method="post" id="searchForm"> 
+										  	<b>请输入角色名称：</b> 	
+												<input name="searchRole" type="text"/>											
+												<input name="select" type="submit" class="right-button02" value="查询" />
 												
+												&nbsp;&nbsp;	
+											
 											<b>排序:</b>
 												<select name="sort">
 													<option>
@@ -122,6 +122,7 @@ function link() {
 														创建时间
 													</option>
 												</select>
+												</form>
 											</td>
 											<td width="77" align="left">
 												<div class="suckerdiv">
@@ -236,12 +237,11 @@ function link() {
 																			</td>
 																			<td width="49%" align="right">
 																				[																		
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=1" class="right-font08">首页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage-1}" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=1" class="right-font08">首页</a> |	
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage-1}" class="right-font08">上一页</a> |																																						
 																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage+1}" class="right-font08">下一页</a> |
 																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${pageNum}" class="right-font08">末页</a>
 																				] 
-																				<s:debug></s:debug>
 																			</td>
 																			
 																		</tr>
@@ -260,6 +260,5 @@ function link() {
 						</td>
 				</tr>
 			</table>
-		</form>
 	</body>
 </html>

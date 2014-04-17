@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -42,8 +43,12 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 
 	public String roleExecute() throws Exception{
 		
+		String currentPage = ServletActionContext.getRequest().getParameter("currentPage");
 		pageVo.setSize(4);
-		List<RoleInfo> roleInfos = roleServiceImpl.searchByAccurate(null, pageVo, 0);
+		if(currentPage!=null){
+			pageVo.setCurrentPage(Integer.parseInt(currentPage));
+		}		
+		List<RoleInfo> roleInfos = roleServiceImpl.searchByAccurate(null, pageVo, 0);	
 		this.setRoleInfoList(roleInfos);
 		return SUCCESS;
 	}

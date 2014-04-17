@@ -231,16 +231,15 @@ function link() {
 																		cellpadding="0" cellspacing="0" class="right-font08">
 																		<tr>
 																			<td width="50%">
-																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																				共<span class="right-text09">${pageNum}</span> 页 |
+																			   第<span class="right-text09">${currentPage}</span> 页
 																			</td>
 																			<td width="49%" align="right">
 																				[																		
 																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=1" class="right-font08">首页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>-1" class="right-font08">上一页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>+1" class="right-font08">下一页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>" class="right-font08">末页</a>
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage-1}" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage+1}" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${pageNum}" class="right-font08">末页</a>
 																				] 
 																				<s:debug></s:debug>
 																			</td>

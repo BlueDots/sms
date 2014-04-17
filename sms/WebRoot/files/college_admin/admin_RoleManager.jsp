@@ -108,23 +108,18 @@ function link() {
 												<img src="<%=basePath%>/images/ico07.gif" width="20" height="18" />
 											</td>
 										  	<td width="538">
-												<b>角色：</b>
-												<select name="job" size="1">
-													<option selected="selected">
-														全部
-													</option>
-												</select>
+										  	<b>请输入角色名称：</b>
+												<input name="context" type="text">											
+												<input name="select" type="button" class="right-button02" value="查询" />
+												&nbsp;&nbsp;	
 												
-												<input name="Submit4" type="button" class="right-button02"
-													value="查 询" />
-													
-													<b>排序:</b>
-												<select name="排序">
+											<b>排序:</b>
+												<select name="sort">
 													<option>
-														创建时间 
+														角色编号 
 													</option>
 													<option>
-														角色名称
+														创建时间
 													</option>
 												</select>
 											</td>
@@ -135,7 +130,7 @@ function link() {
 															<a href="#">角色管理</a>
 															<ul>
 															 	<li>
-																	<a href="javascript:alert('已进入编辑状态');">编辑</a>
+																	<a href="">编辑</a>
 																</li>
 																<li>
 																	<a href="#">删除</a>
@@ -159,8 +154,7 @@ function link() {
 											</td>
 											 
 											<td width="77" align="center">
-												<a href="#" onclick="sousuo()"> <input name="Submit4"
-														type="button" class="right-button07" value="导出" /> </a>
+												<a href="#" onclick=""> <input name="Submit4" type="button" class="right-button07" value="导出" /> </a>
 											 
 											</td>
 										</tr>
@@ -207,10 +201,8 @@ function link() {
 																			<td>角色描述</td>
 																		 </tr>
 		
-<!--迭代开始-->																
-											
-											<s:iterator value="roleInfoList" id="roleInfoList" >	
-																																			
+<!--迭代开始-->																										
+															<s:iterator value="roleInfoList" id="roleInfoList" >																																		
 																		<tr bgcolor="#FFFFFF">
 																			<td><input type="checkbox" name="delid2" /></td>
 																			<td><s:property value="#roleInfoList.roleNo"></s:property>		</td>
@@ -218,7 +210,7 @@ function link() {
 																			<td><s:property value="#roleInfoList.createTime"></s:property></td>
 																			<td><s:property value="#roleInfoList.roleDescription"></s:property></td>
 																		</tr>	
-											</s:iterator>
+															</s:iterator>
 <!--  -->																			
 																		
 																				

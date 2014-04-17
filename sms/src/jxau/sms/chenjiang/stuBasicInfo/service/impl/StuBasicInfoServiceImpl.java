@@ -50,7 +50,7 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	 * 
 	 * @param param  你需要查询的条件
 	 * @param pageVo  分页封装类　,在该方法中需要调用pageVo.setCount,而在action中需要调用setCurrentPage方法，默认一页显示10条
-	 * @param status  级别 0,代表只能开到state为0的数据，级别1，可以开到所有状态的数据
+	 * @param status  级别 0,代表只能开到state为0的数据，级别1，可以得到所有状态的数据
 	 * @return    返回的是一个List<xxx> 并且PageVo分页信息也得到了变化
 	 */
 	@Transactional(readOnly=true)

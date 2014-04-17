@@ -6,29 +6,33 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
-
 import jxau.sms.qing.po.Student;
 
 @Service("loginService")
 public class LoginService implements GlobalServiceInterface{
 	private Dao dao;
 	
- 	@Resource(name="dao")
+	@Resource(name="dao")
 	public void setDao(Dao dao) {
 		this.dao = dao;
 	}
+
  	public boolean whichUser(String userId,String password){
+
 		if(userId.length()==8){
 			return this.selectStudent(userId,password);
 		} else if(userId.length()==4){
@@ -61,36 +65,43 @@ public class LoginService implements GlobalServiceInterface{
         	return false;
         }
 	}
+
 	@Override
 	public <T> List<T> searchListByAccurate(Map<String, Object> param,
 			int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public <T> T searchByAccurate(Map<String, Object> param, int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public <T> List<T> searchByAccurate(Map<String, Object> param,
 			PageVo pageVo, int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public <T> int add(Class T, Object object) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@Override
 	public <T> int update(Class T, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@Override
 	public <T> int delete(Class T, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
 }

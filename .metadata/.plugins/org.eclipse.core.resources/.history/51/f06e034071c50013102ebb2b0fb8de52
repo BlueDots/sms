@@ -1,0 +1,12 @@
+package jxau.sms.lyx.vo;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-16
+ * TODO:
+ * 		用户权限的界面VO
+ */
+public class VTeacherPurview {
+
+}

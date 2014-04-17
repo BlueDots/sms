@@ -15,6 +15,11 @@ public class MajorInfo {
 	private int num;// 专业人数
 	private int majorState;// 专业信息
 
+	public String toString() {
+		return "majorNo:"+majorNo+",major:"+major+",majorState:"+majorState
+				+"\ndepInfo:"+depInfo;
+	}
+	
 	public String getMajorNo() {
 		return majorNo;
 	}

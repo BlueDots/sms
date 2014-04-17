@@ -1,13 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>学生工作管理系统</title>
 	
-		<link href="../../css/css.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="../../css/college/tanchu.css">
-		<link href="../../css/style.css" rel="stylesheet" type="text/css" />
-		<link href="../../css/arrow.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/css.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/college/tanchu.css">
+		<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/arrow.css" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 *{margin:0;padding:0;list-style-type:none;}
@@ -17,11 +33,10 @@
 }
  
 </style>
-<script src="../../js/jquery-1.10.2.min.js"></script>
-<script src="../../js/jquery-ui-1.8.21.custom.min.js"></script>
-<script src="../../js/jquery.chromatable.js"></script></script>
-<script src="../../js/college/college.js"></script>
-<script src="../../js/college/entry.js"></script>
+<script src="<%=basePath%>js/jquery-1.10.2.js"></script>
+<script src="<%=basePath%>js/jquery.chromatable.js"></script></script>
+<script src="<%=basePath%>js/college/college.js"></script>
+<script src="<%=basePath%>js/college/entry.js"></script>
 <script type="text/javascript">
    $(document).ready(function(){ 
  	
@@ -41,12 +56,12 @@
 					<td height="30">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td height="62" background="../../images/nav04.gif">
+								<td height="62" background="<%=basePath%>images/nav04.gif">
 
 									<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 										<tr>
 											<td width="2%">
-												<img src="../../images/ico07.gif" width="20" height="18" />
+												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="70%">
 												学院：
@@ -108,21 +123,21 @@
 												<div class="suckerdiv">
 													<ul id="suckertree1">
 														<li>
-															<a href="#">信息管理</a>
+															<a >信息管理</a>
 															<ul>
 																<li>
-																	<a href="#">编辑</a>
+																	<a >编辑</a>
 																	<ul>
 																		<li>
-																			<a onclick="edit()" href="#">修改</a>
+																			<a onclick="edit()" >修改</a>
 																		</li>																		
 																		<li>
-																			<a onclick="edit()" href="#">删除</a>
+																			<a onclick="edit()" >删除</a>
 																		</li>																		
 																	</ul>	
 																</li>
 																<li>
-																	<a  href="#">录入</a>
+																	<a  href="">录入</a>
 																	<ul>
 																		<li>
 																			<a href="#" onclick="manually('entryStuBasicInfo')">手动录入</a>
@@ -139,7 +154,7 @@
 											</td>
 											<td width="6%" align="center">
 
-												<a href="#" onclick="sousuo()"> <input name="Submit3"
+												<a onclick="sousuo()"> <input name="Submit3"
 														type="button" class="right-button07" value="高级搜索"  onclick="popup('#advancedDiv', '#advancedSearchDiv', '#CloseadvancedSearch')" id='advancedBtn'/> </a>
 											</td>
 
@@ -166,7 +181,7 @@
 											<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：学生基本信息<span style="position:relative;left:950px"><a href="dept_basicInfo/dept_basicInfo_verify.html"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置：学生基本信息<span style="position:relative;left:950px"><a href="<%=basePath%>files/college/dept_basicInfo/dept_basicInfo_verify.jsp"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
 												</tr>
 												<tr id="editMsg"  style="display:none">
@@ -175,7 +190,7 @@
 														<table width="150%" border="0" align="center" cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="40" class="font42">
-																	<form action="#" method = "post">
+																	<form action="" method = "post">
 																	
 																	<table border="0" cellpadding="4"
 																		cellspacing="1" bgcolor="#464646" class="demo" id = "entryStuBasicInfo">
@@ -221,24 +236,21 @@
 																			</th>
 																			<th width="5%">
 																				<center>英语等级</center>
-																			</th>
-																			<th width="8%">
-																				<center>担任职务及时间</center>
 																			</th>																			
 																			<th width="7%">
 																				<center>银行卡号</center>
 																			</th>		
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align = "center" >
-																			<td colspan="14" style="padding:1px">
+																			<td colspan="13" style="padding:1px">
 																				<button type="button">提交</button>
 																				<button type="button" onclick="exchange('allbasicMsg','editMsg')">取消</button>
 																			</td>
 																		</tr>
 																	</table>
-																
-																</td>
 																</form>
+																</td>
+																
 															</tr>	
 														</table>
 														</div>
@@ -298,9 +310,6 @@
 																			</th>
 																			<th width="5%">
 																				<center>英语等级</center>
-																			</th>
-																			<th width="8%">
-																				<center>担任职务及时间</center>
 																			</th>																			
 																			<th width="7%">
 																				<center>银行卡号</center>
@@ -320,7 +329,7 @@
 																				照片
 																			</td>
 																			<td>
-																				<a href="#" onclick="popup('#stuBasicInfoDiv', '#StuBasicInfoDiv', '#btnCloseStuBasicInfoDiv')">
+																				<a  onclick="popup('#stuBasicInfoDiv', '#StuBasicInfoDiv', '#btnCloseStuBasicInfoDiv')">
 																					20111635
 																				</a>
 																			</td>
@@ -355,7 +364,55 @@
 																				4级
 																			</td>
 																			<td>
-																				2012/9 学习委员
+																				111111111111111111
+																			</td>
+																			<td>
+																				审核通过
+																			</td>
+																			<td>
+																				无
+																			</td>
+																		</tr>
+																		<tr bgcolor="#FFFFFF" align = "center">
+																			<td>
+																			<input name="checkbox11" type="checkbox" value="checkbox" />
+																			</td> 																			
+																			<td>
+																				照片
+																			</td>
+																			<td>
+																				<a href="listmokuaimingxi.htm" onclick=""></a>20111635
+																			</td>
+
+																			<td>
+																				陈江
+																			</td>
+																			<td>
+																				数字媒体
+																			</td>
+																			<td>
+																				软件1107
+																			</td>
+																			<td>
+																				男
+																			</td>
+																			<td>
+																				汉
+																			</td>
+																			<td>
+																				安徽
+																			</td>
+																			<td>
+																				团员
+																			</td>
+																			<td>
+																				42108719930326131X
+																			</td>
+																			<td>
+																				本科
+																			</td>
+																			<td>
+																				4级
 																			</td>
 																			<td>
 																				111111111111111111
@@ -409,9 +466,6 @@
 																				4级
 																			</td>
 																			<td>
-																				2012/9 学习委员
-																			</td>
-																			<td>
 																				111111111111111111
 																			</td>
 																			<td>
@@ -461,63 +515,6 @@
 																			</td>
 																			<td>
 																				4级
-																			</td>
-																			<td>
-																				2012/9 学习委员
-																			</td>
-																			<td>
-																				111111111111111111
-																			</td>
-																			<td>
-																				审核通过
-																			</td>
-																			<td>
-																				无
-																			</td>
-																		</tr>
-																		<tr bgcolor="#FFFFFF" align = "center">
-																			<td>
-																			<input name="checkbox11" type="checkbox" value="checkbox" />
-																			</td> 																			
-																			<td>
-																				照片
-																			</td>
-																			<td>
-																				<a href="listmokuaimingxi.htm" onclick=""></a>20111635
-																			</td>
-
-																			<td>
-																				陈江
-																			</td>
-																			<td>
-																				数字媒体
-																			</td>
-																			<td>
-																				软件1107
-																			</td>
-																			<td>
-																				男
-																			</td>
-																			<td>
-																				汉
-																			</td>
-																			<td>
-																				安徽
-																			</td>
-																			<td>
-																				团员
-																			</td>
-																			<td>
-																				42108719930326131X
-																			</td>
-																			<td>
-																				本科
-																			</td>
-																			<td>
-																				4级
-																			</td>
-																			<td>
-																				2012/9 学习委员
 																			</td>
 																			<td>
 																				111111111111111111
@@ -539,7 +536,7 @@
 														<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="6">
-																	<img src="../../images/spacer.gif" width="1" height="1" />
+																	<img src="<%=basePath %>images/spacer.gif" width="1" height="1" />
 																</td>
 															</tr>
 															<tr>
@@ -593,7 +590,7 @@
 			</table>
 		</form>
 		    		<div id="StuBasicInfoDiv" style="display: none">
-		        	<h2>学生基本信息<a href="#" id="btnCloseStuBasicInfoDiv">关闭</a></h2>
+		        	<h2>学生基本信息<a id="btnCloseStuBasicInfoDiv">关闭</a></h2>
 		        	<div class="form">
 		            	<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
 		            		<tr class="CTitle">
@@ -627,12 +624,8 @@
 								<td width="6%">山区</td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
-								<td width="6%">政治面貌</td>
-								<td width="6%">党员</td>
-								<td width="6%">担任职务</td>
-								<td width="6%">班长</td>
-								<td width="6%">担任时间</td>
-								<td width="6%">2012/2/3</td>
+								<td width="6%" colspan="3">政治面貌</td>
+								<td width="6%" colspan="3">党员</td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%">电话</td>
@@ -666,7 +659,7 @@
 
 
 	    		<div id="advancedSearchDiv" style="display: none">
-             	<h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
+             	<h2>高级查询选项<a id="CloseadvancedSearch">关闭</a></h2>
         	<div class="form">
             	<table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="advancedSearchTab" ><thead>
             

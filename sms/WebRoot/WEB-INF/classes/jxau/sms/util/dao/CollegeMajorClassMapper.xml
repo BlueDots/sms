@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.util.dao">
+	<resultMap type="MajorInfo" id="MajorInfoResultMap">
+		<id property="majorNo" column="majorNo"/>
+		<result property="major" column="major" />
+		<result property="majorShort" column="majorShort" />
+		<result property="majorInfo" column="majorInfo" />
+		<result property="num" column="majorNumber" />
+		<result property="majorState" column="majorState" />
+		<association property="depInfo" javaType="DepInfo" select="selectDepInfo" column="departNo">
+		</association>
+	</resultMap>
+	
+	<resultMap type="ClassInfo" id="ClassInfoResultMap">
+		<id property="classNo" column="classNo"/>
+		<result property="className" column="className" />
+		<result property="classShort" column="classBreif" />
+		<result property="num" column="classNumber" />
+		<result property="girlNum" column="girlNumber" />
+		<result property="schoolDate" column="schoolDate" />
+		<result property="study" column="studyTime" />
+		<result property="state" column="classState" />
+		<association property="majorInfo" javaType="MajorInfo" select="selectMajorInfo" column="majorNo">
+		</association>
+	</resultMap>
+	
+	
+	<!--查询学院部门信息  -->
+	<select id="selectDepInfo" resultType="DepInfo">
+		select *  from dep_info where departNo=#{departNo}
+	</select>
+	
+	<!--查询专业信息  -->
+	<select id="selectMajorInfo" resultType="MajorInfo">
+		select *  from major_info where majorNo=#{majortNo}
+	</select>
+	
+	
+	<!--查询学院list -->
+	<select id="queryOfCollegeLists" parameterType="map" resultType="DepInfo">
+		select *  from dep_info where 1=1
+        	<if test="status != null">
+        		and depState=0
+        	</if>
+        	limit #{start},#{nums}
+	</select>
+	
+	<!--查询学院数量 -->
+	<select id="queryOfCollegeNums" parameterType="map" resultType="java.lang.Long">
+		select count(*)  from dep_info where 1=1
+        	<if test="status != null">
+        		and depState=0
+        	</if>
+	</select>
+	
+	<!--查询专业list -->
+	<select id="queryOfMajorLists" parameterType="map" resultMap="MajorInfoResultMap">
+		select *  from major_info where 1=1
+		<if test="departNo != null">
+        	and departNo=#{departNo}
+        </if>
+        <if test="status != null">
+        	and majorState=0
+        </if>
+        limit #{start},#{nums}
+	</select>
+	
+	<!--查询专业数量 -->
+	<select id="queryOfMajorNums" parameterType="map" resultType="java.lang.Long">
+		select count(*)  from major_info where 1=1
+		<if test="departNo != null">
+        	and departNo=#{departNo}
+        </if>
+        <if test="status != null">
+        	and majorState=0
+        </if>
+	</select>	
+	
+	
+	<!--查询班级list -->
+	<select id="queryOfClassLists" parameterType="map" resultMap="ClassInfoResultMap">
+		select * from class_info where 1=1
+		<if test="majorNo != null">
+			and majorNo=#{majorNo}
+		</if>
+        <if test="status != null">
+        	and classState=0
+        </if>		
+        limit #{start},#{nums}
+	</select>
+	
+	<!--查询班级数量  -->
+	<select id="queryOfClassNums" parameterType="map" resultType="java.lang.Long">
+		select count(*) from class_info where 1=1
+		<if test="majorNo != null">
+			and majorNo=#{majorNo}
+		</if>
+        <if test="status != null">
+        	and classState=0
+        </if>		
+	</select>	
+	
+	
+</mapper>
+

@@ -23,6 +23,10 @@ public class DepInfo {
 	private int junNumber;//大三人数
 	private int senNumber;//大四人数
 	 
+	public String toString() {
+		return "departNo:"+departNo+",department:"+department+",depState:"+depState;
+	}
+	
 	
 	public int getGirlNumber() {
 		return girlNumber;

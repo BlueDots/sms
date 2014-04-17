@@ -8,7 +8,7 @@
 		keyProperty="hosNo" keyColumn="hosNo" useGeneratedKeys="true">
 		insert into
 		hos_insurance_info(studentNo,bankcardID,hosType,hospitalAddress,hospitalDate,leaveDate,hosDate,localCity,conditon,cost,applyTime,hosState)
-		values(#{student.studentNo},#{bankcardID},#{hosType},#{hospitalAddress},#{hospitalDate},#{leaveDate},#{hosDate},#{localCity},#{conditon},#{cost},now(),'未审核');
+		values(#{student.studentNo},#{bankcardID},#{hosType},#{hospitalAddress},#{hospitalDate},#{leaveDate},#{hosDate},#{localCity},#{conditon},#{cost},now(),'院级审核中');
 
 	</insert>
 

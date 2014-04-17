@@ -14,6 +14,7 @@ import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import jxau.sms.anping.exception.AccessOrUpdateErrorException;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.service.YiBaoService;
@@ -37,8 +38,8 @@ public class YiBaoAction extends ActionSupport implements
 		this.print();
 		String result = SUCCESS;
 		String[] types = (String[]) parameters.get("type");
-		String type = types[0];
-		if (type != null && type.equals("show")
+	 
+		if (types != null && types[0].equals("show")
 				&& hosInsuranceInfo.getHosNo() > 0) {
 			Map<String, Object> param = new HashMap<String, Object>(1);
 			param.put("hosNo", hosInsuranceInfo.getHosNo());
@@ -53,6 +54,9 @@ public class YiBaoAction extends ActionSupport implements
 				this.yiBaoService.updateYiBaoByStudent(student,
 						hosInsuranceInfo);
 			} catch (ParameterNotMatchException e) {
+				e.printStackTrace();
+				result = ERROR;
+			}catch(AccessOrUpdateErrorException e){
 				e.printStackTrace();
 				result = ERROR;
 			}

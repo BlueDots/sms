@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="jxau.sms.lyx.TeacherInfo.po.TecBasicInfo"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="jxau.sms.lyx.po.TecBasicInfo"/>
 <fullyQualifiedTypeName name="org.jboss.weld.context.ApplicationContext"/>
 <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
@@ -20,8 +19,9 @@
 <fullyQualifiedTypeName name="javax.annotation.Resource"/>
 <fullyQualifiedTypeName name="jxau.sms.commom.vo.PageVo"/>
 <fullyQualifiedTypeName name="jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.ModelDriven"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
 </qualifiedTypeNameHistroy>

@@ -13,13 +13,16 @@ import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 @Controller  
 @Scope("prototype")
-public class RoleAction extends ActionSupport {
+public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 
 	private static final long serialVersionUID = 1L;
 
+	private PageVo pageVo = new PageVo();
+	
 	private RoleServiceImpl roleServiceImpl;
 	
 	@Resource(name="RoleServiceImpl")
@@ -37,15 +40,18 @@ public class RoleAction extends ActionSupport {
 		this.roleInfoList = roleInfoList;
 	}
 
-
-
 	public String roleExecute() throws Exception{
 		
-		PageVo pageVo = new PageVo();
 		pageVo.setSize(4);
 		List<RoleInfo> roleInfos = roleServiceImpl.searchByAccurate(null, pageVo, 0);
 		this.setRoleInfoList(roleInfos);
 		return SUCCESS;
+	}
+
+	@Override
+	public PageVo getModel() {
+		// TODO Auto-generated method stub
+		return pageVo;
 	}
 	
 }

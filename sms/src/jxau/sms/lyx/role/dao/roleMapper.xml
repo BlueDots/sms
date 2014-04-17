@@ -15,4 +15,11 @@
 		        <result column="roleDescription" property="roleDescription" />
   		 </resultMap>
  
+ 	<select id="findRoleByCondition" resultMap="RoleList">
+		select roleNo,roleName,createTime,roleDescription from role_info
+		where
+		<if test='roleName!= null'>
+			roleName like Concat('%',#{roleName},'%');
+		</if>
+	</select>
 </mapper>

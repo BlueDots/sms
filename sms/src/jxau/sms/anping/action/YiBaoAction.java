@@ -1,5 +1,7 @@
 package jxau.sms.anping.action;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -12,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.service.YiBaoService;
 import jxau.sms.chenjiang.po.StuBasicInfo;
-import jxau.sms.qing.po.Student;
+ 
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,13 +27,35 @@ public class YiBaoAction extends ActionSupport implements ModelDriven<HosInsuran
 
 	
     
+	/**
+	 * 学生自己查看医保，取出所有的信息，不管是审核通过的还是审核不通过的
+	 * anping
+	 * TODO
+	 * 下午3:11:49
+	 * @return
+	 */
+	public String showYiBaoForStudent(){
+		StuBasicInfo  student = (StuBasicInfo) session.get("student");
+		
+		Map<String,Object>  param  = new HashMap<String,Object>(1);
+		param.put("studentNo",student.getStudentNo());
+		List<HosInsuranceInfo>  hoss =   yiBaoService.searchListByAccurate(param, -1);
+		request.put("hoss",hoss);
+		return SUCCESS;
+	}
+	
+	
+	/**
+	 * 申请医保
+	 * anping
+	 * TODO
+	 * 下午3:10:58
+	 * @return
+	 */
 	public  String applyYiBao(){
 		
 	    this.print();
-	    StuBasicInfo  student = new StuBasicInfo();
-	    student.setStudentNo("20111429");
-	    
-	    student.setTelephone("18272737");
+	    StuBasicInfo  student = (StuBasicInfo)session.get("student");
 	    hosInsuranceInfo.setStudent(student);
 	    try {
 			this.yiBaoService.add(HosInsuranceInfo.class, hosInsuranceInfo);
@@ -80,9 +104,17 @@ public class YiBaoAction extends ActionSupport implements ModelDriven<HosInsuran
 		// TODO Auto-generated method stub
 		return hosInsuranceInfo;
 	}
-   
 	
-	private HosInsuranceInfo hosInsuranceInfo=new HosInsuranceInfo();
+	
+    public String getErrorMsg() {
+		return ErrorMsg;
+	}
+
+
+	private String ErrorMsg;
+	private Map<String,Object>  session  = ActionContext.getContext().getSession();
+	private Map<String,Object>  request  =(Map<String, Object>) ActionContext.getContext().get("request");
+	private HosInsuranceInfo  hosInsuranceInfo=new HosInsuranceInfo();
 	private String telephone;
 	private YiBaoService yiBaoService;
 	private static final long serialVersionUID = 1L;

@@ -9,7 +9,7 @@ public class PageVo {
 	private long count;
 	// 可以在页面中显示的数量
 	private int pageNum;
-
+	
 	private int firstIndex;
 
 	public int getFirstIndex() {

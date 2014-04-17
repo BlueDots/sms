@@ -164,6 +164,8 @@ public class YiBaoServiceImpl implements YiBaoService {
                throw   new ParameterNotMatchException("添加的医保信息部分不能为空，请认真重新填写！");
 			}
          
+			
+		
 			//判断添加的数据是否合法，如入院时间不应该大于出院时间
 			
 			if(data.getHospitalDate().after(data.getLeaveDate())){
@@ -216,24 +218,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 		return 0;
 	}
 
-	private boolean checkParamterTypeIsError(Map<String, Object> param) {
-		boolean result = true;
-		Set<String> keys = param.keySet();
-		for (String key : keys) {
-			Object data = param.get(key);
-			if (key.equals("hosNo")) {
-				if (!(data instanceof Integer)) {
-					result = false;
-				}
-			} else {
-				if (!(data instanceof String)) {
-					result = false;
-				}
-			}
-		}
-		return result;
 
-	}
 	
 
 	
@@ -244,7 +229,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 	public int updateYiBaoByStudent(StuBasicInfo student,
 			jxau.sms.anping.po.HosInsuranceInfo data) {
 		Map<String,Object>  params = new HashMap<String,Object>(1);
-		params.put("hosNo", student.getStudentNo());
+		params.put("hosNo", data.getHosNo());
 	    HosInsuranceInfo  info  = dao.selectOne("findYiBaoById", params);
 		
 	    if(!info.getStudent().getStudentNo().equals(student.getStudentNo())){
@@ -266,7 +251,15 @@ public class YiBaoServiceImpl implements YiBaoService {
            throw   new ParameterNotMatchException("添加的医保信息部分不能为空，请认真重新填写！");
 		}
      
-		//判断添加的数据是否合法，如入院时间不应该大于出院时间
+		
+
+		//判断是不是没有对数据做任何的修改，如果没有修改则往前回退
+		
+	    if(!this.checkDataUpdateIsTrue(data, info)){
+	        throw   new ParameterNotMatchException("数据没有更新不能修改!");
+	    }
+		
+	    //判断添加的数据是否合法，如入院时间不应该大于出院时间
 		
 		if(data.getHospitalDate().after(data.getLeaveDate())){
 			 throw   new ParameterNotMatchException("添加的医保信息入院时间不能比出院时间和晚！");
@@ -281,7 +274,56 @@ public class YiBaoServiceImpl implements YiBaoService {
 	    return 0;
 	}
 	
+	/**
+	 * 判断数据是不是被更新了呢
+	 * anping
+	 * TODO
+	 * 下午4:48:04
+	 * @return
+	 */
+	private boolean checkDataUpdateIsTrue(HosInsuranceInfo hosOld,HosInsuranceInfo hosNew ){
+		boolean result = true;
+		
+		if(hosOld.getHosType().equals(hosNew.getHosType())
+				&& hosOld.getBankcardID().equals(hosNew.getBankcardID())
+				&& hosOld.getHospitalAddress().equals(hosNew.getHospitalAddress())
+				&& hosOld.getHospitalDate().equals(hosNew.getHospitalDate())
+				&& hosOld.getLeaveDate().equals(hosNew.getLeaveDate())
+				&& hosOld.getLocalCity()==hosNew.getLocalCity()
+				&& hosOld.getConditon().equals(hosNew.getConditon())
+				&& hosOld.getCost()== hosNew.getCost()
+				){
+			result = false;
+		}
+		return result;
+	}
 	
+	/**
+	 * 比较参数是不是正确的
+	 * anping
+	 * TODO
+	 * 下午4:47:13
+	 * @param param
+	 * @return
+	 */
+	private boolean checkParamterTypeIsError(Map<String, Object> param) {
+		boolean result = true;
+		Set<String> keys = param.keySet();
+		for (String key : keys) {
+			Object data = param.get(key);
+			if (key.equals("hosNo")) {
+				if (!(data instanceof Integer)) {
+					result = false;
+				}
+			} else {
+				if (!(data instanceof String)) {
+					result = false;
+				}
+			}
+		}
+		return result;
+
+	}
 
 	private String namespace = "jxau.sms.anping.yibao.dao.";
 	private String paramterTypeError = "参数类型不正确，正确如：hosNo->int;(studentNo,studentName,hosState,college,className)->String;";

@@ -188,8 +188,7 @@ on delete no action on update cascade;
  	senNumber int default 0,
  	depState tinyint default 0
  )engine=innodb;
- --alter table dep_info change depart department varchar(36) ;
---alter table dep_info modify column depState tinyint default 0;
+
 ##创建院级奖学金统计表11
 create table dep_statistical(
 	term varchar(20),
@@ -212,7 +211,7 @@ on delete no action on update cascade;
       majorNumber int default 0,
       majorState tinyint default 0
  )engine = innodb;
- --alter table major_info modify majorState tinyint default 0;
+##alter table major_info modify majorState tinyint default 0;
  ##添加外键和外键索引
 alter table major_info 
 add  foreign key (departNo) references dep_info(departNo)
@@ -230,12 +229,11 @@ on  delete no action on update  cascade;
       schoolDate date,
       studyTime tinyint ,
       classState tinyint default 0,
-     
-       foreign key  (majorNo) references major_info(majorNo)
+      foreign key  (majorNo) references major_info(majorNo)
       on delete no action on update cascade
      
  ) ENGINE=innodb; 
- --alter table class_info modify classState tinyint default 0;
+
  alter table class_info add index  classFkIndex(majorNo);
 ##创建班级奖学金统计表14
 create table class_statistical(
@@ -515,7 +513,7 @@ create table sta_change_info(
 	remarks text
 	
 );
- -- 学籍变动类型表34 --
+## 学籍变动类型表34 --
 create table sta_category(          
 	staNo tinyint primary key auto_increment,
 	staContent varchar(10) not null,

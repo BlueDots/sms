@@ -42,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<tr>
 						<td>
 	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!modifyStu" method="post">
+	<input type="hidden" name="hosNo" value="<s:property value="#request.hos.hosNo"/>">
 	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="newfont03">
   
   <tr>
@@ -89,19 +90,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td width="50%"><div align="right"><strong>住院地址</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="hospitalAddress" />
+      <input type="text" name="hospitalAddress" value="<s:property  value="#request.hos.hospitalAddress"/>" />
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>住院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="2012-02-11"/> 
+     <input name="hospitalDate" type="text" class="input-xlarge datepicker" id="enterDate" value="<s:property  value="#request.hos.hospitalDate"/>"/> 
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>出院日期</strong></div></td>
     <td width="50%"><label>
-     <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="2013-09-19"/>  
+     <input name="leaveDate" type="text" class="input-xlarge datepicker" id="leaveDate" value="<s:property value="#request.hos.leaveDate"/>"/>  
     </label></td>
   </tr>
     
@@ -110,8 +111,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td width="50%"> 
                   <div align="left">
                       <select name="localCity" class="span2">
-                        <option value="0">本市</option>
-                        <option value="1">转外</option>
+                        <option value="0"  <s:if test="#request.hos.localCity==0">selected="selected"</s:if>>本市</option>
+                        <option value="1"  <s:if test="#request.hos.localCity==1">selected="selected"</s:if>>转外</option>
                       </select>
             </div></td>
   </tr>
@@ -120,13 +121,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </br>
     </strong></div></td>
     <td width="50%"><label>
-	  <textarea name="conditon" cols="20" rows="5"></textarea>
+	  <textarea name="conditon" cols="20" rows="5"><s:property value="#request.hos.conditon"/></textarea>
     </label></td>
   </tr>
   <tr>
     <td width="50%"><div align="right"><strong>总费用</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="cost" />
+      <input type="text" name="cost" value="<s:property value="#request.hos.cost"/>"/>
     </label></td>
   </tr>
   

@@ -7,13 +7,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<s:debug></s:debug>
 
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
+  <head>	
     <base href="<%=basePath%>">
     
     <title>My JSP 'std_InsuranceInfo.jsp' starting page</title>

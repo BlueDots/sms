@@ -1,13 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>学生工作管理系统</title>
 	
-		<link href="../../../css/css.css" rel="stylesheet" type="text/css" />
-		<link href="../../../css/style.css" rel="stylesheet" type="text/css" />
-		<link href="../../../css/jquery-ui.css" rel="stylesheet" type="text/css" />
-		<link href="../../../css/arrow.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/css.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/arrow.css" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 *{margin:0;padding:0;list-style-type:none;}
@@ -19,17 +35,16 @@
 		
 	</head>
 
-<script src="../../../js/jquery-1.10.2.min.js"></script>
-<script src="../../../js/jquery-ui-1.8.21.custom.min.js"></script>
+<script src="<%=basePath%>js/jquery-1.10.2.js"></script>
 
-<script src="../../../js/jquery.chromatable.js"></script>
+<script src="<%=basePath%>js/jquery.chromatable.js"></script>
 <script type="text/javascript">
    
 
 
 
 </script>
-<script src="../../../js/college/college.js"></script>
+<script src="<%=basePath%>js/college/college.js"></script>
 	<body> 
 		<form name="fom" id="fom" method="post" action="">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -38,13 +53,13 @@
 					<td height="30">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td height="62" background="../../../images/nav04.gif">
+								<td height="62" background="<%=basePath%>images/nav04.gif">
 
 									<table width="98%" border="0" align="center" cellpadding="0"
 										cellspacing="0">
 										<tr>
 											<td width="21">
-												<img src="../../../images/ico07.gif" width="20" height="18" />
+												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
 												学院：
@@ -97,7 +112,7 @@
 														姓名
 													</option>
 												</select>
-													 <img src="../../../images/up[1].png"></img>
+													 <img src="<%=basePath%>images/up[1].png"></img>
 											</td>
 											<td width="77" align="center" style="position:relative;left:-100px">
 												<div class="suckerdiv">
@@ -166,7 +181,7 @@
 											<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：<a href="../dept_basicInfo.html">学生基本信息</a>--->审核
+														当前位置：<a href="<%=basePath%>files/college/dept_basicInfo.jsp">学生基本信息</a>--->审核
 													</th>
 												</tr>
 												<tr>
@@ -523,7 +538,7 @@
 														<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="6">
-																	<img src="../../../images/spacer.gif" width="1" height="1" />
+																	<img src="<%=basePath%>images/spacer.gif" width="1" height="1" />
 																</td>
 															</tr>
 															<tr>
@@ -862,7 +877,7 @@
 														<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="6">
-																	<img src="../../images/spacer.gif" width="1" height="1" />
+																	<img src="<%=basePath %>images/spacer.gif" width="1" height="1" />
 																</td>
 															</tr>
 															<tr>

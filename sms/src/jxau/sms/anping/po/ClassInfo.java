@@ -13,6 +13,11 @@ public class ClassInfo {
 	private int study;// 学年制
 	private int state;// 班级状态
 
+	public String toString() {
+		return "classNo:"+classNo+",className:"+className+",classShort:"+classShort
+				+"\nmajorInfo:"+majorInfo;
+	}
+	
 	public String getClassNo() {
 		return classNo;
 	}

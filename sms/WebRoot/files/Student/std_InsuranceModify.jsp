@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>医保申请</title>
+    <title>医保信息修改</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -36,35 +36,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div id="lurubiao" style="margin-left:10px">
 					<table width="99%" border="0" cellpadding="4" cellspacing="1" class="CContent">
 						<th class="tablestyle_title">
-								医保申请
+								医保信息修改
 						</th>
 						　
 						<tr>
 						<td>
-	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!applyYiBao" method="post">
+	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!modifyStu" method="post">
 	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="newfont03">
   
   <tr>
     <td width="50%"><div align="right"><strong>申请类型</strong></div></td>
     <td width="50%"> 
                   <div align="left">
-                      <select name="hosType" class="span2">
+                  	
+                    <select name="hosType" class="span2">
+                    
                         <optgroup label="居民医保">
-                        	<option  value="居民医保住院未刷卡">已住院未刷卡</option>
-                        	<option  value="居民医保住院已刷卡">已住院已刷卡</option>
-                        	<option  value="居民医保未刷卡">未刷卡</option>
+                        	<option  value="居民医保住院未刷卡" <s:if test="#request.hos.hosType=='居民医保住院未刷卡'">selected="selected"</s:if> >已住院未刷卡</option>
+                        	<option  value="居民医保住院已刷卡" <s:if test="#request.hos.hosType=='居民医保住院已刷卡'">selected="selected"</s:if>>已住院已刷卡</option>
+                        	<option  value="居民医保未刷卡" <s:if test="#request.hos.hosType=='居民医保未刷卡'">selected="selected"</s:if>>未刷卡</option>
                         </optgroup>
-                         <optgroup label="大病医保">
-                        	<option value="大病医保住院未刷卡">已住院未刷卡</option>
-                        	<option value="大病医保住院已刷卡">已住院已刷卡</option>
-                        	<option value="大病医保未刷卡">未刷卡</option>
+                         <optgroup label="大病医保" >
+                        	<option value="大病医保住院未刷卡" <s:if test="#request.hos.hosType=='大病医保住院未刷卡'">selected="selected"</s:if>>已住院未刷卡</option>
+                        	<option value="大病医保住院已刷卡" <s:if test="#request.hos.hosType=='大病医保住院已刷卡'">selected="selected"</s:if>>已住院已刷卡</option>
+                        	<option value="大病医保未刷卡" <s:if test="#request.hos.hosType=='大病医保未刷卡'">selected="selected"</s:if>>未刷卡</option>
                         </optgroup>
                         
                         
                          <optgroup label="商业医保" >
-                        	<option value="商业医保住院未刷卡">已住院未刷卡</option>
-                        	<option value="商业医保住院已刷卡">已住院已刷卡</option>
-                        	<option value="商业医保未刷卡">未刷卡</option>
+                        	<option value="商业医保住院未刷卡" <s:if test="#request.hos.hosType=='商业医保住院未刷卡'">selected="selected"</s:if>>已住院未刷卡</option>
+                        	<option value="商业医保住院已刷卡" <s:if test="#request.hos.hosType=='商业医保住院已刷卡'">selected="selected"</s:if>>已住院已刷卡</option>
+                        	<option value="商业医保未刷卡" <s:if test="#request.hos.hosType=='商业医保'">selected="selected"</s:if>>未刷卡</option>
                         </optgroup>
                       </select>
             <a href="">这是什么？</a>
@@ -81,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <tr>
     <td width="50%"><div align="right"><strong>银行卡号</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="bankcardID" value="<s:property  value="#session.student.bankCard"/>"/>
+      <input type="text" name="bankcardID" value="<s:property  value="#request.hos.bankcardID"/>"/>
     </label></td>
   </tr>
   <tr>

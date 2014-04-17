@@ -1,6 +1,7 @@
 package jxau.sms.anping.yibao.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,13 +13,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import jxau.sms.anping.exception.AccessOrUpdateErrorException;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.exception.ParamterTypeErrorException;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.service.YiBaoService;
+import jxau.sms.chenjiang.po.StuBasicInfo;
 import jxau.sms.commom.vo.PageVo;
 
 import jxau.sms.globaldao.Dao;
+import jxau.sms.qing.po.Student;
+import jxau.sms.qing.po.Teacher;
 
 /**
  * 医保的业务逻辑类
@@ -73,10 +78,10 @@ public class YiBaoServiceImpl implements YiBaoService {
 	@Override
 	public <T> T searchByAccurate(Map<String, Object> param, int status) {
 		if (param == null) {
-			throw new ParameterNotMatchException("需要提供学号来查询");
+			throw new ParameterNotMatchException("需要提供编号来查询");
 		} else {
 			if (!param.containsKey("hosNo")) {
-				throw new ParameterNotMatchException("需要提供学号来查询");
+				throw new ParameterNotMatchException("需要提供编号来查询");
 			}
 
 			Set<String> keys = param.keySet();
@@ -165,6 +170,9 @@ public class YiBaoServiceImpl implements YiBaoService {
 				 throw   new ParameterNotMatchException("添加的医保信息入院时间不能比出院时间和晚！");
 			}
 		 
+			if(data.getLeaveDate().after(new Date())){
+				throw new ParameterNotMatchException("出院时间大于今天？");
+			}
 			data.setHosDate((int)(data.getLeaveDate().getTime()-data.getHospitalDate().getTime())/(24*60*60*1000));
 			dao.add(namespace + "applyYiBao", object);
 		}
@@ -172,7 +180,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 	}
 
 	/**
-	 * 
+	 * 　需要在权限模块中拦截这个请求，因为需要知道这个老师有没有这个权利
 	 * 录入是否受理结果传入<"modifyAcceptOrNotResult",HosInsuranceInfo>
 	 * 录入以报销名单<"modifyReimburseStudent",HosInsuranceInfo>
 	 * 　录入商业保险　　　　　　modifyCompany
@@ -226,9 +234,58 @@ public class YiBaoServiceImpl implements YiBaoService {
 		return result;
 
 	}
+	
+
+	
+	/**
+	 * 需要判断这个学生修改的医保是不是修改了自己的
+	 */
+	@Override
+	public int updateYiBaoByStudent(StuBasicInfo student,
+			jxau.sms.anping.po.HosInsuranceInfo data) {
+		Map<String,Object>  params = new HashMap<String,Object>(1);
+		params.put("hosNo", student.getStudentNo());
+	    HosInsuranceInfo  info  = dao.selectOne("findYiBaoById", params);
+		
+	    if(!info.getStudent().getStudentNo().equals(student.getStudentNo())){
+	    	throw new AccessOrUpdateErrorException("你没有权限修改");
+	    }
+	    
+	    //检测是不是已经状态变成已审核
+        if(info.getHosState().equals("通过")){
+        	throw new AccessOrUpdateErrorException("已通过，不能修改！");
+	    }
+	    //检测合法性
+	    if (data.getBankcardID() == null || data.getHosType() == null
+				|| data.getHospitalAddress() == null
+				|| data.getHospitalDate() == null
+				|| data.getLeaveDate() == null
+				|| data.getConditon() == null || data.getCost() == 0
+				
+				) {
+           throw   new ParameterNotMatchException("添加的医保信息部分不能为空，请认真重新填写！");
+		}
+     
+		//判断添加的数据是否合法，如入院时间不应该大于出院时间
+		
+		if(data.getHospitalDate().after(data.getLeaveDate())){
+			 throw   new ParameterNotMatchException("添加的医保信息入院时间不能比出院时间和晚！");
+		}
+	 
+		if(data.getLeaveDate().after(new Date())){
+			throw new ParameterNotMatchException("出院时间大于今天？");
+		}
+		data.setHosDate((int)(data.getLeaveDate().getTime()-data.getHospitalDate().getTime())/(24*60*60*1000));
+	    
+		dao.update(namespace+"modifYiBaoByStudent", data);
+	    return 0;
+	}
+	
+	
 
 	private String namespace = "jxau.sms.anping.yibao.dao.";
 	private String paramterTypeError = "参数类型不正确，正确如：hosNo->int;(studentNo,studentName,hosState,college,className)->String;";
 	private Dao dao;
+	
 
 }

@@ -1,3 +1,4 @@
+<%@page import="jxau.sms.anping.po.HosInsuranceInfo"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -194,7 +195,7 @@ function list(idstr){
     <tr>
      <td class="tablestyle_title" colspan="2">
        <div align="left">
-            <span class="STYLE1">居民医保</span>
+            <span class="STYLE1"></span>
            <input type="button" name="Otput" value="导出"
                   onclick="alert('导出成功！');" />
       </div>
@@ -208,7 +209,7 @@ function list(idstr){
   <td colspan="2"><table width="100%" border="1" cellpadding="4" cellspacing="1" class="newfont03" style="border-collapse:collapse">
       <tr height="32">
         <td width="100"><div align="center"><b>选择</b></div></td>
-        <td height="100" width="86"><div align="center"><strong>序号</strong></div></td>
+        <td height="100" width="86"><div align="center"><strong>编号</strong></div></td>
   
     <td width="300"><div align="center"><strong>类型</strong></div></td>
         <td width="300"><div align="center"><strong>住院地址</strong></div></td>
@@ -218,8 +219,7 @@ function list(idstr){
         <td width="300"><div align="center"><strong>诊断病情</strong></div></td>
         <td width="200"><div align="center"><strong>总费用</strong></div></td>
         <td width="300"><div align="center"><strong>申请时间</strong></div></td>
-    <td width="200"><div align="center"><strong>是否受理</strong></div></td>
-        <td width="200"><div align="center"><strong>是否领卡</strong></div></td>
+         <td width="200"><div align="center"><strong>是否领卡</strong></div></td>
     <td width="200"><div align="center"><strong>状态</strong></div></td>
     <td width="500"><div align="center"><strong>备注</strong></div></td>
     <td width="500"><div align="center"><strong>操作</strong></div></td>
@@ -231,7 +231,7 @@ function list(idstr){
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
       
      	
-        <td height="18">1</td>
+        <td height="18"><s:property value="hosNo"/></td>
          
         <td><s:property value="hosType"/></td>
         <td><s:property  value="hospitalAddress"/></td>
@@ -242,11 +242,11 @@ function list(idstr){
         <td><s:property value="condition"/></td>
         <td><s:property value="cost"/></td>
         <td><s:property value="applyTime"/>　</td>
-        <td><s:if test="%{accept==0}">等待中</s:if><s:elseif test="%{accept==-1}">不受理</s:elseif><s:else >受理</s:else></td>
+       
         <td><s:if test="%{collarCard==0}"></s:if><s:elseif test="%{collarCard==1}">已领卡</s:elseif><s:else >未领卡</s:else></td>
         <td><s:property value="hosState"/>　	</td>
         <td><s:property value="stateRemark"/></td>
-        <td><s:if test="%{accept!=1}"><input type="button" value="修改"></s:if></td>
+        <td><s:if test="%{hosState!='通过'}"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!modifyStu?type=show&hosNo=<s:property value="hosNo"/>">修改</a></s:if></td>
       </tr>
       </s:iterator>
      
@@ -260,6 +260,7 @@ function list(idstr){
    </div>
    <br />
    <br />
+   <!-- 
    <div id="lurubiao" style="margin-left:10px  height:400px;overflow-x:scroll">
   <table width="99%" border="0" cellpadding="0" cellspacing="0"
             class="newfont03">
@@ -280,53 +281,28 @@ function list(idstr){
   <td colspan="2"><table width="100%" border="1" cellpadding="4" cellspacing="1" class="newfont03" style="border-collapse:collapse">
       <tr height="32">
         <td width="100"><div align="center"><b>选择</b></div></td>
-        <td height="100" width="86"><div align="center"><strong>序号</strong></div></td>
-      
-        <td width="300"><div align="center"><strong>联系电话</strong></div></td>
+        <td height="100" width="86"><div align="center"><strong>编号</strong></div></td>
         <td width="300"><div align="center"><strong>银行卡号</strong></div></td>
         <td width="200"><div align="center"><strong>除结算单材料是否齐全</strong></div></td>
         <td width="300"><div align="center"><strong>接案子日期</strong></div></td>
         <td width="300"><div align="center"><strong>未报销原因</strong></div></td>
-        <td width="300"><div align="center"><strong>类型</strong></div></td>
+       
     <td width="500"><div align="center"><strong>详细</strong></div></td>
       </tr>
+      
+      <s:iterator value="#request.hoss">
       <tr height="18">
         <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
-        <td height="18">2013001</td>
+        <td height="18"><s:property value="item.hosNo"/></td>
         
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-    <td>　</td>
-      </tr>
-      <tr height="18">
-        <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
-        <td height="18">2013002</td>
-        
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-    <td>　</td>
-      </tr>
-      <tr height="18">
-        <td><input type="checkbox" name="checkbox" value="checkbox" align="left"/></td>
-        <td height="18">2013003</td>
-        
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-        <td>　</td>
-    <td>　</td>
-      </tr>
-      </table>
+        <td><s:property value="bankcardID"/>　</td>
+        <td><s:if test="%{complete==0}">无</s:if><s:else>有</s:else>　</td>
+        <td><s:property value="insurerTime"/></td>
+        <td><s:property value="notinsurerReason"/>　</td>
+        <td><s:property value="companyRemark"/></td>
+    　 </tr>
+      </s:iterator>
+         </table>
    </td>
   </tr>
    </table>   
@@ -334,6 +310,7 @@ function list(idstr){
    </tr>  
    </table>
    </div>
+    -->
 </body>
   
 </html>

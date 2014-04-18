@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -175,6 +176,7 @@
 					<td id = "main">
 						<div  style="display: block">
 							<table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
+								
 								<tr>
 									<td class="CPanel">
 										<div id="liulanbiao" style="margin-left: 10px">
@@ -256,11 +258,15 @@
 														</div>
 													</td>
 												</tr>
-												<tr id="allbasicMsg">
+												<tr id="allbasicMsg" >
 
 													<td class="CPanel" align="center">
 														<table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
-															<tr>
+														
+														<s:debug></s:debug>
+														
+															<!--显示数据  -->
+															<tr id="mainShow" style="display:block">
 																<td height="40" class="font42">
 																	<table width="100%" border="0" cellpadding="4"
 																		cellspacing="1" bgcolor="#464646" class="demo" id="tableID" >

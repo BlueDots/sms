@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.chenjiang.po.ActHold;
-import jxau.sms.chenjiang.po.ActInfo;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;

@@ -5,7 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@  taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -75,7 +75,7 @@
 
 	var zNodes =[
       { id:1, pId:0, name:"功能模块", open:true},
-      { id:11, pId:1, name:"学生基本信息",url:"<%=basePath%>files/college/dept_basicInfo.jsp", target:"mainFrame"},
+      { id:11, pId:1, name:"学生基本信息",url:"<%=basePath%>StuBasicInfo/getStuBasicInfoLists!stuBasicInfoExecute", target:"mainFrame"},
       { id:12, pId:1, name:"教师基本信息",url:"dept_teacherInfoManagement.html", target:"mainFrame"},
       { id:13, pId:1, name:"学生参与活动",url:"<%=basePath%>files/college/dept_activityInfo.html", target:"mainFrame"},
       { id:14, pId:1, name:"活动管理",url:"<%=basePath%>files/college/dept_activityManage.html", target:"mainFrame"},

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+      
+<struts>  
+          
+    <package name="default" namespace="/" extends="struts-default">  
+        <action name="hello" class="jxau.sms.anping.action.HelloAction">  
+            <result name="success">/Hello.jsp</result>  
+        </action>  
+    </package>  
+    
+    <package name="StuBasicInfo" namespace="/" extends="struts-default">  
+        <action name="getStuBasicInfoLists" class="jxau.sms.chenjiang.stuBasicInfo.action.StuBasicInfoAction">  
+            <result name="success">/files/college/dept_basicInfo.jsp</result>  
+        </action>          
+    </package> 
+    
+    
+</struts>

@@ -1,5 +1,6 @@
 package jxau.sms.lyx.role.service.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,9 +119,15 @@ public class RoleServiceImpl implements GlobalServiceInterface{
 	 * 添加角色以及角色权限信息
 	 */
 	@Transactional(propagation=Propagation.REQUIRED)
-	public void insertRoleInfoPurview(String number,RoleInfo roleInfo,String param){
+	public void insertRoleInfoPurview(String roleName,String roleDescription,String param){
+		
+		RoleInfo roleInfo = new RoleInfo();
+		roleInfo.setRoleName(roleName);
+		roleInfo.setCreateTime(new Date());
+		roleInfo.setRoleDescription(roleDescription);
 		
 		add(RoleInfo.class, roleInfo);
+		String number = getDataNum()+1+"";
 		purviewListPackage.containerTransform(number, param);
 	}
 	

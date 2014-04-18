@@ -65,7 +65,7 @@ public class ServiceTest {
 		roleInfo.setRoleName("测试4");
 		roleInfo.setCreateTime(new Date());
 		roleInfo.setRoleDescription("测试角色哦亲");
-		rs.insertRoleInfoPurview(rs.getDataNum()+1+"", roleInfo, "2,3,4,5");
+		//rs.insertRoleInfoPurview(rs.getDataNum()+1+"", roleInfo, "2,3,4,5");
 	}
 
 }

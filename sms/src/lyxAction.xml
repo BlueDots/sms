@@ -19,6 +19,10 @@
         
         <action name="rolePurview" class="jxau.sms.lyx.role.action.RoleAction">  
             <result name="success">/files/college_admin/admin_addRole.jsp</result>  
+        </action>
+        
+        <action name="addRole" class="jxau.sms.lyx.role.action.RoleAction">  
+            <result name="success">/files/college_admin/admin_addRole.jsp</result>  
         </action>  
     </package> 
     

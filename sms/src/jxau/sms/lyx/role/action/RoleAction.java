@@ -122,7 +122,24 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 
+	 * lyx
+	 * TODO: 保存角色信息与初始化权限
+	 * 下午7:17:35
+	 * @return
+	 * @throws Exception
+	 */
+	public String addRole() throws Exception{
+		
+		String param = ServletActionContext.getRequest().getParameter("array");
+		String roleName = ServletActionContext.getRequest().getParameter("roleName");
+		String roleDescription = ServletActionContext.getRequest().getParameter("roleDescription");	
+		roleServiceImpl.insertRoleInfoPurview(roleName,roleDescription,param);
+		return SUCCESS;
+	}
 	
+
 	@Override
 	public PageVo getModel() {
 		// TODO Auto-generated method stub

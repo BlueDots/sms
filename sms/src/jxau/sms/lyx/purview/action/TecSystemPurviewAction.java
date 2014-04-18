@@ -26,6 +26,15 @@ public class TecSystemPurviewAction extends ActionSupport implements ModelDriven
 	String teacherNo = ServletActionContext.getRequest().getParameter("teacherNo");	
 	String param = ServletActionContext.getRequest().getParameter("array");
 		
+	/**
+	 * 
+	 * lyx
+	 * TODO:
+	 * 			教师修改权限
+	 * 下午7:14:10
+	 * @return
+	 * @throws Exception
+	 */
 	public String renewPurview() throws Exception{
 			
 		plp.containerTransform(teacherNo, param);				

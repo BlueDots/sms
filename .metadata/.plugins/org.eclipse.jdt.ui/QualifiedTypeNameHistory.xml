@@ -1,27 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="jxau.sms.lyx.TeacherInfo.po.TecBasicInfo"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.po.TecBasicInfo"/>
-<fullyQualifiedTypeName name="org.jboss.weld.context.ApplicationContext"/>
-<fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.po.PurviewInfo"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-<fullyQualifiedTypeName name="jxau.sms.globaldao.Dao"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.exception.MyNumberFormatException"/>
-<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Propagation"/>
-<fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
-<fullyQualifiedTypeName name="org.apache.poi.ss.formula.functions.T"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.util.ArrayTypeConversion"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
-<fullyQualifiedTypeName name="jxau.sms.globalService.GlobalServiceInterface"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.role.service.impl.RoleServiceImpl"/>
-<fullyQualifiedTypeName name="javax.annotation.Resource"/>
-<fullyQualifiedTypeName name="jxau.sms.commom.vo.PageVo"/>
-<fullyQualifiedTypeName name="jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl"/>
-<fullyQualifiedTypeName name="com.opensymphony.xwork2.ModelDriven"/>
-<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

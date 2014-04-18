@@ -52,54 +52,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<option value="selected">
 														请选择学院
 													</option>
-													<option value="agri_college">
-														农学院
-													</option>
-													<option value="garden_art">
-														园林与艺术学院
-													</option>
-													<option value="animal_science_tech">
-														动物科学技术学院
-													</option>
-													<option value="engin_college">
-														工学院
-													</option>
-													<option value="science_college">
-														理学院
-													</option>
-													<option value="land_resources">
-														国土资源与环境学院
-													</option>
-													<option value=" computer_information">
-														计算机与信息工程学院
-													</option>
-													<option value=" economics_management">
-														经济管理学院
-													</option>
-													<option value="food_science_engin">
-														食品科学与工程学院
-													</option>
-													<option value="normal_college">
-														职业师范（技术）学院
-													</option>
-													<option value="biological_science_engine">
-														生物科学与工程学院
-													</option>
-													<option value="foreign_languages">
-														外国语学院
-													</option>
-													<option value="software">
-														软件学院
-													</option>
-													<option value="marxism_college">
-														马克思主义学院
-													</option>
-													<option value="continu_education">
-														继续教育学院
+													
+												</select>
+												</span>
+												<span class="majorName">专业方向
+												<select name="major" id="majorId">
+													<option value="selected">
+														请选择专业方向
 													</option>
 												</select>
 												</span>
-												
 												<span class="className">班级
 												<select name="class" id="classId">
 													<option value="selected">

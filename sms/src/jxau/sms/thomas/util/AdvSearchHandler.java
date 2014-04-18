@@ -20,8 +20,8 @@ import jxau.sms.commom.vo.AdvanceSearchVo;
 
 
 /** 
- * @ClassName: XmlHandler
- * @Description: TODO
+ * @ClassName: AdvSearchHandler
+ * @Description: 用于高级查询，获取高级查询的条件，调用getAdvAttribute方法
  */
 /**
  * @author Administrator

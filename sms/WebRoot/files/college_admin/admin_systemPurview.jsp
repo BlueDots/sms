@@ -15,9 +15,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
  
-	<script src="<%=basePath%>/js/jquery-1.10.2.js"></script>
+	<script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>
 	<script src="<%=basePath%>/js/admin/jquery.cookie.js"></script>
 	<script src="<%=basePath%>/js/admin/jquery.treeview.js"></script>
+	<script src="<%=basePath%>/js/admin/lyx.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
 	<script src="<%=basePath%>/js/date.js"></script>
 	
@@ -33,45 +34,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script type="text/javascript">
 
 var menuids = [ "suckertree1" ];
-
-$(document).ready(function(){
-		
-    		$("#test").treeview();
-    
-		
-		//给所有的权限复选框绑定事件处理函数
-		$("[name=purview]").click(function(){
-		
-				var checked = this.checked;   //当前checkbox的选中状态
-		
-				//当选中或取消一个权限时，选中或取消所有下级的权限
-				$(this).siblings("ul").find("input").attr("checked",checked);
-				
-				//当选中一个权限时，也要同时选中所有上级权限
-				if(checked){
-					
-					$(this).parents("li").children("input").attr("checked",checked);
-				}
-				
-				//当取消一个权限后，同级若没有选中的权限时，上级也取消权限，再向上一层也类似
-				else{
-				
-					if($(this).parent().siblings("li").children("input:checked").size() == 0){
-						
-						$(this).parent().parent().siblings("input").attr("checked",checked);
-						
-						var startPoint = $(this).parent().parent();
-						
-							if(startPoint.parent().siblings("li").children("input:checked").size() == 0){
-							
-								startPoint.parent().parent().siblings("input").attr("checked",checked);
-							
-							}
-						
-					}
-				}
-		});	
-	});	
 
 function buildsubmenus() {
 	for ( var i = 0; i < menuids.length; i++) {
@@ -161,8 +123,8 @@ function getChecked(roleNo){
 				</tr>
 				<tr>
 					<td>
-			<!--这事显示录入人员的表格-->
-						<div id="add"  >
+			<!--显示权限树状图-->
+						<div id=""  >
 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
@@ -190,8 +152,6 @@ function getChecked(roleNo){
 																				<td  height="60"  width="100%">
 																				
 <!--  ----------- ----------- -----------权限界面开始---------- ------------------- -->																						
-		<s:debug></s:debug>
-		
 		<ul id="test">	
 				<s:iterator value="purviewList" id="purviewParent" >	
 					<s:if test='#purviewParent.pid==1' >	

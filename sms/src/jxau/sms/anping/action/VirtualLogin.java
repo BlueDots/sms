@@ -2,6 +2,8 @@ package jxau.sms.anping.action;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
  
 
 import javax.servlet.Filter;
@@ -14,10 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
+import jxau.sms.qing.po.Teacher;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
- 
+
 public class VirtualLogin implements Filter{
 
 	@Override
@@ -45,7 +50,25 @@ public class VirtualLogin implements Filter{
 			
 			session.setAttribute("student",stuBasicInfo );
 
-			System.out.println("已经在session中设置了一个学生信息，详细请见jxau.sms.anping.action.VirtualLogin");
+			System.out.println("学生已经登陆账号为20111429，详细请见jxau.sms.anping.action.VirtualLogin");
+		}
+		
+		
+		if(session.getAttribute("teacher")==null){
+			TecBasicInfo teacher = new TecBasicInfo();
+			//先虚拟的存储这点东西
+			teacher.setTeacherNo("1234");
+			teacher.setTeacherName("jack");
+			
+			session.setAttribute("teacher",teacher);
+		    //虚拟的存储一点点角色
+			RoleInfo  role  = new RoleInfo();
+		    role.setRoleName("校级工作人员");
+		    RoleInfo  role2  = new RoleInfo();
+		    role.setRoleName("班主任");
+		    
+		    List<RoleInfo> roles = new ArrayList<RoleInfo>(2);
+		    session.setAttribute("roles", roles);
 		}
 
 		chain.doFilter(request, response);

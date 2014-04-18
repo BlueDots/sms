@@ -1,0 +1,9 @@
+package jxau.sms.thomas.action;
+
+import java.util.Map;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class AdvanceInfoAction extends ActionSupport {
+
+
+}

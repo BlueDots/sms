@@ -55,6 +55,15 @@ public class SystemPurviewAction extends ActionSupport{
 		this.checkList = checkList;
 	}
 	
+	/**
+	 * 
+	 * lyx
+	 * TODO:
+	 * 		根据角色编号或用户编号查询权限
+	 * 下午7:13:38
+	 * @return
+	 * @throws Exception
+	 */
 	public String showPurviewByCondition() throws Exception{
 		
 		Map<String,Object> map = new HashMap<String,Object>();

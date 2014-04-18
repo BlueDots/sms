@@ -2,6 +2,7 @@ package jxau.sms.lyx.role.service.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,30 @@ public class ServiceTest {
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).getRoleName());
 		}
+	}
+	
+	@Test
+	public void test3() {
+		
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		RoleServiceImpl rs = (RoleServiceImpl)context.getBean("RoleServiceImpl");		
+		RoleInfo roleInfo = new RoleInfo();
+		roleInfo.setRoleName("测试2");
+		roleInfo.setCreateTime(new Date());
+		roleInfo.setRoleDescription("测试角色哦亲");
+		rs.add(RoleInfo.class, roleInfo);
+	}
+	
+	@Test
+	public void test4() {
+		
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		RoleServiceImpl rs = (RoleServiceImpl)context.getBean("RoleServiceImpl");		
+		RoleInfo roleInfo = new RoleInfo();
+		roleInfo.setRoleName("测试4");
+		roleInfo.setCreateTime(new Date());
+		roleInfo.setRoleDescription("测试角色哦亲");
+		//rs.insertRoleInfoPurview(rs.getDataNum()+1+"", roleInfo, "2,3,4,5");
 	}
 
 }

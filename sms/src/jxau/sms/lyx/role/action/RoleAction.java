@@ -62,6 +62,14 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		this.purviewList = purviewList;
 	}
 
+	/**
+	 * 
+	 * lyx
+	 * TODO:根据角色名称查询
+	 * 下午7:12:00
+	 * @return
+	 * @throws Exception
+	 */
 	public String searchRole() throws Exception{
 		
 		String searchRole = ServletActionContext.getRequest().getParameter("searchRole");
@@ -79,7 +87,14 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		return SUCCESS;
 	}
 	
-	
+	/**
+	 * 
+	 * lyx
+	 * TODO:角色列表显示
+	 * 下午7:12:33
+	 * @return
+	 * @throws Exception
+	 */
 	public String roleExecute() throws Exception{
 		
 		String currentPage = ServletActionContext.getRequest().getParameter("currentPage");
@@ -92,6 +107,14 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		return SUCCESS;
 	}
 
+	/**
+	 * 
+	 * lyx
+	 * TODO:权限树状显示
+	 * 下午7:12:46
+	 * @return
+	 * @throws Exception
+	 */
 	public String PurviewDisplay() throws Exception{
 		
 		List<PurviewInfo> purviewList = systemPurviewServiceImpl.searchListByAccurate(null, 0);
@@ -99,7 +122,24 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		return SUCCESS;
 	}
 	
+	/**
+	 * 
+	 * lyx
+	 * TODO: 保存角色信息与初始化权限
+	 * 下午7:17:35
+	 * @return
+	 * @throws Exception
+	 */
+	public String addRole() throws Exception{
+		
+		String param = ServletActionContext.getRequest().getParameter("array");
+		String roleName = ServletActionContext.getRequest().getParameter("roleName");
+		String roleDescription = ServletActionContext.getRequest().getParameter("roleDescription");	
+		roleServiceImpl.insertRoleInfoPurview(roleName,roleDescription,param);
+		return SUCCESS;
+	}
 	
+
 	@Override
 	public PageVo getModel() {
 		// TODO Auto-generated method stub

@@ -330,7 +330,7 @@ create unique index purviewUrl_index on purview_info(purviewUrl);
 
 ##角色信息表18
 create table role_info(
-	roleNo int primary key,
+	roleNo int primary key auto_increment,
 	roleName varchar(45) not null,
 	createTime date,
 	roleDescription varchar(255)

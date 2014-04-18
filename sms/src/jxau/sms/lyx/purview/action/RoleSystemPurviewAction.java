@@ -26,6 +26,15 @@ public class RoleSystemPurviewAction extends ActionSupport implements ModelDrive
 	String roleNo = ServletActionContext.getRequest().getParameter("roleNo");	
 	String param = ServletActionContext.getRequest().getParameter("array");
 		
+	/**
+	 * 
+	 * lyx
+	 * TODO:
+	 * 			角色修改权限
+	 * 下午7:14:10
+	 * @return
+	 * @throws Exception
+	 */
 	public String renewPurview() throws Exception{
 			
 		plp.containerTransform(roleNo, param);				

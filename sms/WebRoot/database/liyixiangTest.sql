@@ -2,6 +2,9 @@
 drop table if exists teacher_purview;
 drop table if exists role_purview;
 drop table if exists purview_info;
+drop table if exists role_info;
+drop table if exists teacher_role;
+drop table if exists dep_teacher;
 
 --delete
 delete from role_purview;
@@ -30,13 +33,13 @@ insert into tec_basic_info values('4321','tom',0,null,'江西',null,'在职',nul
 insert into tec_basic_info values('0000','admin',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
 
 --role_info
-insert into role_info values(0,'校级管理员',now(),'校级管理员角色,默认所有系统权限');
-insert into role_info values(1,'学生',now(),'学生角色，固定权限');
-insert into role_info values(2,'班主任',now(),'班主任角色');
-insert into role_info values(3,'院级工作人员',now(),'院级工作人员角色');
-insert into role_info values(4,'校级工作人员',now(),'校级工作人员角色');
-insert into role_info values(5,'院级管理员',now(),'院级管理员角色');
-insert into role_info values(6,'活动负责人',now(),'活动管理中的特殊角色');
+insert into role_info values(null,'校级管理员',now(),'校级管理员角色,默认所有系统权限');
+insert into role_info values(null,'学生',now(),'学生角色，固定权限');
+insert into role_info values(null,'班主任',now(),'班主任角色');
+insert into role_info values(null,'院级工作人员',now(),'院级工作人员角色');
+insert into role_info values(null,'校级工作人员',now(),'校级工作人员角色');
+insert into role_info values(null,'院级管理员',now(),'院级管理员角色');
+insert into role_info values(null,'活动负责人',now(),'活动管理中的特殊角色');
 
 --purview_info
 insert into purview_info values(1,null,'功能模块','null');
@@ -84,7 +87,7 @@ insert into teacher_role values('5678',2);
 insert into teacher_role values('5678',3);
 insert into teacher_role values('8765',3);
 insert into teacher_role values('4321',5);
-insert into teacher_role values('0000',0);
+insert into teacher_role values('0000',1);
 
 
 

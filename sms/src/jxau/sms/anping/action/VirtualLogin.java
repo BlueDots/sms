@@ -16,8 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
+<<<<<<< HEAD
+=======
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.po.TecBasicInfo;
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 import jxau.sms.qing.po.Teacher;
 
 import com.opensymphony.xwork2.Action;
@@ -55,6 +58,9 @@ public class VirtualLogin implements Filter{
 		
 		
 		if(session.getAttribute("teacher")==null){
+<<<<<<< HEAD
+			
+=======
 			TecBasicInfo teacher = new TecBasicInfo();
 			//先虚拟的存储这点东西
 			teacher.setTeacherNo("1234");
@@ -70,6 +76,7 @@ public class VirtualLogin implements Filter{
 		    List<RoleInfo> roles = new ArrayList<RoleInfo>(2);
 		    session.setAttribute("roles", roles);
 		    
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 		}
 
 		chain.doFilter(request, response);

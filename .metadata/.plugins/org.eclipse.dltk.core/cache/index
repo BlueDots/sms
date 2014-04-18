@@ -1,47 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
 <cache:CacheIndex xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cache="http://eclipse.org/dltk/cache_model" environment="org.eclipse.dltk.core.environment.localEnvironment">
-<<<<<<< HEAD
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/date.js" timestamp="1397525038656" lastAccessTime="1397525043570"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery-1.10.2.js" timestamp="1397525038672" lastAccessTime="1397525043700"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery.chromatable.js" timestamp="1397525038737" lastAccessTime="1397525044284"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery.provincesCity.js" timestamp="1397525038741" lastAccessTime="1397525044391"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery.ztree.core-3.5.js" timestamp="1397525038758" lastAccessTime="1397525044522"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/provincesdata.js" timestamp="1397525038766" lastAccessTime="1397525044642"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/testSearch.js" timestamp="1397525038806" lastAccessTime="1397525045299"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/typem.js" timestamp="1397525038873" lastAccessTime="1397525046271"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/xiangmu.js" timestamp="1397525038875" lastAccessTime="1397525046375"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/admin/jquery.cookie.js" timestamp="1397525038569" lastAccessTime="1397525042796"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/admin/jquery.treeview.js" timestamp="1397525038581" lastAccessTime="1397525042909"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/college/entry.js" timestamp="1397525038597" lastAccessTime="1397525043353"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/school/jquery-1.10.2-vsdoc.js" timestamp="1397525038784" lastAccessTime="1397525045061"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/school/school.js" timestamp="1397525038798" lastAccessTime="1397525045195"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/tutor/tutor_advanceInfo.js" timestamp="1397525038819" lastAccessTime="1397525045824"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/tutor/tutor_assessScholarship.js" timestamp="1397525038837" lastAccessTime="1397525045930"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/tutor/tutor_povertyFile.js" timestamp="1397525038845" lastAccessTime="1397525046034"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/tutor/tutor_scholarship.js" timestamp="1397525038857" lastAccessTime="1397525046160"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/css/tab.js" timestamp="1397529086009" lastAccessTime="1397529086582"/>
-  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/student/xionganping_YiBaoModule.js" timestamp="1397552362427" lastAccessTime="1397552406666"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/css/tab.js" timestamp="1397655447520" lastAccessTime="1397657997531"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/date.js" timestamp="1397655448219" lastAccessTime="1397658001209"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/jquery-1.10.2.js" timestamp="1397655448233" lastAccessTime="1397658001454"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/jquery.chromatable.js" timestamp="1397655448235" lastAccessTime="1397658001677"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/jquery.provincesCity.js" timestamp="1397655448237" lastAccessTime="1397658001790"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/jquery.ztree.core-3.5.js" timestamp="1397655448241" lastAccessTime="1397658002016"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/provincesdata.js" timestamp="1397655448244" lastAccessTime="1397658002275"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/testSearch.js" timestamp="1397655448261" lastAccessTime="1397658003309"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/typem.js" timestamp="1397655448273" lastAccessTime="1397658004928"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/xiangmu.js" timestamp="1397655448274" lastAccessTime="1397658005035"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/admin/jquery.cookie.js" timestamp="1397655448211" lastAccessTime="1397658000652"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/admin/jquery.treeview.js" timestamp="1397655448213" lastAccessTime="1397658000757"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/college/entry.js" timestamp="1397655448218" lastAccessTime="1397658001062"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/school/jquery-1.10.2-vsdoc.js" timestamp="1397655448254" lastAccessTime="1397658002787"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/school/school.js" timestamp="1397655448257" lastAccessTime="1397658002972"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/student/xionganping_YiBaoModule.js" timestamp="1397655448259" lastAccessTime="1397658003204"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/tutor/tutor_advanceInfo.js" timestamp="1397655448264" lastAccessTime="1397658004459"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/tutor/tutor_assessScholarship.js" timestamp="1397655448266" lastAccessTime="1397658004568"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/tutor/tutor_povertyFile.js" timestamp="1397655448269" lastAccessTime="1397658004676"/>
-  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/tutor/tutor_scholarship.js" timestamp="1397655448271" lastAccessTime="1397658004787"/>
-=======
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/date.js" timestamp="1397525038656" lastAccessTime="1397654818432"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery-1.10.2.js" timestamp="1397525038672" lastAccessTime="1397654818730"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery.chromatable.js" timestamp="1397525038737" lastAccessTime="1397654819480"/>
@@ -62,5 +20,7 @@
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/tutor/tutor_scholarship.js" timestamp="1397525038857" lastAccessTime="1397654821993"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/css/tab.js" timestamp="1397529086009" lastAccessTime="1397654817021"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/student/xionganping_YiBaoModule.js" timestamp="1397552362427" lastAccessTime="1397654821338"/>
->>>>>>> 43ad3cee7141acce05cd651e0ac3149890a2b90c
+  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/admin/lyx.js" timestamp="1397783203027" lastAccessTime="1397783203805"/>
+  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/admin/jquery-1.7.2.min.js" timestamp="1397783891388" lastAccessTime="1397784059871"/>
+  <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/util/loadCollegeClass.js" timestamp="1397790244321" lastAccessTime="1397790734392"/>
 </cache:CacheIndex>

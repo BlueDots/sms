@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.lyx.exception.NotFoundDataException;
+import jxau.sms.lyx.po.PurviewInfo;
 import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.purview.service.impl.SystemPurviewServiceImpl;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,7 +30,15 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 	private PageVo pageVo = new PageVo();
 	
 	private RoleServiceImpl roleServiceImpl;
+	private SystemPurviewServiceImpl systemPurviewServiceImpl;
+	private List<PurviewInfo> purviewList = new ArrayList<PurviewInfo>();
 	
+	@Resource(name="SystemPurviewServiceImpl")
+	public void setSystemPurviewServiceImpl(
+			SystemPurviewServiceImpl systemPurviewServiceImpl) {
+		this.systemPurviewServiceImpl = systemPurviewServiceImpl;
+	}
+
 	@Resource(name="RoleServiceImpl")
 	public void setRoleServiceImpl(RoleServiceImpl roleServiceImpl) {
 		this.roleServiceImpl = roleServiceImpl;
@@ -42,6 +52,14 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 
 	public void setRoleInfoList(List<RoleInfo> roleInfoList) {
 		this.roleInfoList = roleInfoList;
+	}
+
+	public List<PurviewInfo> getPurviewList() {
+		return purviewList;
+	}
+
+	public void setPurviewList(List<PurviewInfo> purviewList) {
+		this.purviewList = purviewList;
 	}
 
 	public String searchRole() throws Exception{
@@ -74,6 +92,14 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		return SUCCESS;
 	}
 
+	public String PurviewDisplay() throws Exception{
+		
+		List<PurviewInfo> purviewList = systemPurviewServiceImpl.searchListByAccurate(null, 0);
+		this.setPurviewList(purviewList);
+		return SUCCESS;
+	}
+	
+	
 	@Override
 	public PageVo getModel() {
 		// TODO Auto-generated method stub

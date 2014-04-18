@@ -55,7 +55,7 @@ public class SystemPurviewServiceImpl implements GlobalServiceInterface {
 		return 0;
 	}
 
-	//查询所有的系统权限
+
 	@Override
 	public <PurviewInfo> List<PurviewInfo> searchListByAccurate(Map<String, Object> param,
 			int status) {

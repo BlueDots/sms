@@ -25,7 +25,7 @@ public class UserHandlePurview implements AllocationPurviewStandard {
 		this.upms = upms;
 	}
 	
-	//用户权限增删操作
+	//权限增删操作
 	@Override
 	public void handleAllocationPurview(String number, List<Integer> newList,
 			List<Integer> oldList) {
@@ -38,7 +38,6 @@ public class UserHandlePurview implements AllocationPurviewStandard {
 		
 	}
 
-	//用户权限增删操作业务封装
 	@Override
 	public <TeacherPurview> void logicJudgment(Class TeacherPurview, List<TeacherPurview> insertList,
 			List<TeacherPurview> deleteList, List<Integer> newList, List<Integer> oldList,
@@ -62,6 +61,7 @@ public class UserHandlePurview implements AllocationPurviewStandard {
 			}	
 	}
 		
+	System.out.println("---------------------");
 	
 	if(oldList.size()!=0){	
 			for(int i=0;i<oldList.size();i++){
@@ -84,7 +84,6 @@ public class UserHandlePurview implements AllocationPurviewStandard {
 					MapPutList(insertList,deleteList);
 	}
 	
-	//map转换为list
 	public <TeacherPurview> void MapPutList(List<TeacherPurview> insertList,List<TeacherPurview> deleteList){
 		
 		HashMap<String,Object> insertMap = new HashMap<String,Object>();

@@ -38,7 +38,7 @@ public class UserHandlePurview implements AllocationPurviewStandard {
 		
 	}
 
-	//用户权限增删操作业务封装
+	//权限增删操作业务封装
 	@Override
 	public <TeacherPurview> void logicJudgment(Class TeacherPurview, List<TeacherPurview> insertList,
 			List<TeacherPurview> deleteList, List<Integer> newList, List<Integer> oldList,

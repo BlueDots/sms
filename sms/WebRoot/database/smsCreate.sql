@@ -209,6 +209,7 @@ on delete no action on update cascade;
       departNo char(4),
       majorInfo varchar(150),
       majorNumber int default 0,
+      
       majorState tinyint default 0
  )engine = innodb;
 ##alter table major_info modify majorState tinyint default 0;
@@ -229,6 +230,9 @@ on  delete no action on update  cascade;
       schoolDate date,
       studyTime tinyint ,
       classState tinyint default 0,
+      teacherNo char(4),
+      foreign key (teacherNo)  references tec_basic_info(teacherNo),
+      
       foreign key  (majorNo) references major_info(majorNo)
       on delete no action on update cascade
      

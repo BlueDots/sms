@@ -2,6 +2,7 @@ package jxau.sms.anping.po;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
@@ -11,7 +12,7 @@ import jxau.sms.chenjiang.po.StuBasicInfo;
  * 2014-4-13
  * TODO
  */
-public class HosInsuranceInfo {
+public class HosInsuranceInfo implements Serializable{
 	private int hosNo;//编号
 	private StuBasicInfo student;//学号
 

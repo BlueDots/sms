@@ -1,6 +1,6 @@
 $(document).ready(function() {
     console.log( "加载学院班级信息开始!" );
-    var  formShow = $("#showCollege");
+    
     $.getJSON("",callback);
 });
 

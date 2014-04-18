@@ -1,11 +1,25 @@
 INDEX VERSION 1.126
-G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\217224304.index
+<<<<<<< HEAD
+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2552044831.index
 \sms\src
+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\217224304.index
+=======
 G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1273186740.index
 \sms\src
-G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2552044831.index
+G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\217224304.index
 \sms\src
-G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1098492515.index
+G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2577881113.index
+>>>>>>> 43ad3cee7141acce05cd651e0ac3149890a2b90c
+\sms\src
+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1273186740.index
+\sms\src
+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1098492515.index
+\sms\src
+<<<<<<< HEAD
+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\14784461.index
+=======
+G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\153945721.index
 \sms\src
 G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\14784461.index
+>>>>>>> 43ad3cee7141acce05cd651e0ac3149890a2b90c
 \sms\src

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.qing.po.Teacher;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -45,7 +46,12 @@ public class VirtualLogin implements Filter{
 			
 			session.setAttribute("student",stuBasicInfo );
 
-			System.out.println("已经在session中设置了一个学生信息，详细请见jxau.sms.anping.action.VirtualLogin");
+			System.out.println("学生已经登陆账号为20111429，详细请见jxau.sms.anping.action.VirtualLogin");
+		}
+		
+		
+		if(session.getAttribute("teacher")==null){
+			
 		}
 
 		chain.doFilter(request, response);

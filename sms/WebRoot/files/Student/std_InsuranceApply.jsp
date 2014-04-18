@@ -49,8 +49,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td width="50%"> 
                   <div align="left">
                       <select name="hosType" class="span2">
-                        <option value="居民医保">居民医保</option>
-                        <option value="商业医保">商业医保</option>
+                        <optgroup label="居民医保">
+                        	<option  value="居民医保住院未刷卡">已住院未刷卡</option>
+                        	<option  value="居民医保住院已刷卡">已住院已刷卡</option>
+                        	<option  value="居民医保未刷卡">未刷卡</option>
+                        </optgroup>
+                         <optgroup label="大病医保">
+                        	<option value="大病医保住院未刷卡">已住院未刷卡</option>
+                        	<option value="大病医保住院已刷卡">已住院已刷卡</option>
+                        	<option value="大病医保未刷卡">未刷卡</option>
+                        </optgroup>
+                        
+                        
+                         <optgroup label="商业医保" >
+                        	<option value="商业医保住院未刷卡">已住院未刷卡</option>
+                        	<option value="商业医保住院已刷卡">已住院已刷卡</option>
+                        	<option value="商业医保未刷卡">未刷卡</option>
+                        </optgroup>
                       </select>
             <a href="">这是什么？</a>
             </div></td>
@@ -66,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <tr>
     <td width="50%"><div align="right"><strong>银行卡号</strong></div></td>
     <td width="50%"><label>
-      <input type="text" name="bankcardID" value="128289"/>
+      <input type="text" name="bankcardID" value="<s:property  value="#session.student.bankCard"/>"/>
     </label></td>
   </tr>
   <tr>

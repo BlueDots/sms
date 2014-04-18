@@ -2,7 +2,9 @@ package jxau.sms.lyx.role.service.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.lyx.po.RoleInfo;
@@ -22,6 +24,20 @@ public class ServiceTest {
 		pageVo.setSize(4);
 	   	pageVo.setCurrentPage(1);	
 		List<RoleInfo> list = rs.searchByAccurate(null, pageVo, 0);
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).getRoleName());
+		}
+	}
+	
+	@Test
+	public void test2() {
+		
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		RoleServiceImpl rs = (RoleServiceImpl)context.getBean("RoleServiceImpl");
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("roleName", "gala");
+		List<RoleInfo> list = rs.searchListByAccurate(map, 0);
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i).getRoleName());
 		}

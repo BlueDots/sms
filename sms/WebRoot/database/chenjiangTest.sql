@@ -44,6 +44,9 @@ select *  from dep_info;
 ##delete from dep_info;
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1105','软件学院','','');
+	
+insert into dep_info(departNo,department,departBrief,departInfo) 
+	values('1106','计信院','','');	
 desc major_info;
 select * from major_info;
 insert into major_info(majorNo,major,departNo) values('11050101','网络应用方向','1105');

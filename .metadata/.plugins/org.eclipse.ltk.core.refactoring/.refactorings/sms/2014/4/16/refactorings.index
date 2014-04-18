@@ -1,4 +1,10 @@
 1397370243015	Delete element
+<<<<<<< HEAD
+1397477148720	Delete elements
+1397477391474	Delete element
+1397477443770	Delete element
+1397477515945	Delete element
+=======
 1397472972490	Delete element
 1397480057116	Delete element
 1397525074931	Delete element
@@ -21,3 +27,8 @@
 1397649479638	Copy compilation unit
 1397649585522	Delete element
 1397649592931	Rename type 'UserSystemPurviewAction'
+<<<<<<< HEAD
+>>>>>>> c88b438619243e8f384ccb00750a24f10b3824f0
+=======
+1397724210682	Copy compilation unit
+>>>>>>> 43ad3cee7141acce05cd651e0ac3149890a2b90c

@@ -1,5 +1,6 @@
 package jxau.sms.lyx.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * 2014-4-12
  * TODO
  */
-public class RoleInfo {
+public class RoleInfo implements Serializable {
 
 		private int roleNo;								//角色编号
 		private String roleName;					//角色名称

@@ -194,16 +194,11 @@ function entryStuBasicInfo(numsOfRow) {
 			TdObj12.appendChild(CET);
 
 			//第十三列
-			var TdObj13 = TrObj.insertCell(12);
-			var job = document.createElement("input");
-			job.type = "text";
-			TdObj13.appendChild(job);
 
-			//第十三列
-			var TdObj14 = TrObj.insertCell(13);
+			var TdObj13 = TrObj.insertCell(12);
 			var bandCard = document.createElement("input");
 			bandCard.type = "text";
-			TdObj14.appendChild(bandCard);		
+			TdObj13.appendChild(bandCard);		
 		}
 	}
 		

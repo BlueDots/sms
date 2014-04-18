@@ -89,10 +89,7 @@ function link() {
 
 </head>
   
-  <body>
-  
-		<form name="fom"  method="post" action="">
-		
+<body>	
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td height="30">
@@ -108,25 +105,24 @@ function link() {
 												<img src="<%=basePath%>/images/ico07.gif" width="20" height="18" />
 											</td>
 										  	<td width="538">
-												<b>角色：</b>
-												<select name="job" size="1">
-													<option selected="selected">
-														全部
-													</option>
-												</select>
+										  	
+										  	<form action="RoleManager/role!searchRole" method="post" id="searchForm"> 
+										  	<b>请输入角色名称：</b> 	
+												<input name="searchRole" type="text"/>											
+												<input name="select" type="submit" class="right-button02" value="查询" />
 												
-												<input name="Submit4" type="button" class="right-button02"
-													value="查 询" />
-													
-													<b>排序:</b>
-												<select name="排序">
+												&nbsp;&nbsp;	
+											
+											<b>排序:</b>
+												<select name="sort">
 													<option>
-														创建时间 
+														角色编号 
 													</option>
 													<option>
-														角色名称
+														创建时间
 													</option>
 												</select>
+												</form>
 											</td>
 											<td width="77" align="left">
 												<div class="suckerdiv">
@@ -135,7 +131,7 @@ function link() {
 															<a href="#">角色管理</a>
 															<ul>
 															 	<li>
-																	<a href="javascript:alert('已进入编辑状态');">编辑</a>
+																	<a href="">编辑</a>
 																</li>
 																<li>
 																	<a href="#">删除</a>
@@ -159,8 +155,7 @@ function link() {
 											</td>
 											 
 											<td width="77" align="center">
-												<a href="#" onclick="sousuo()"> <input name="Submit4"
-														type="button" class="right-button07" value="导出" /> </a>
+												<a href="#" onclick=""> <input name="Submit4" type="button" class="right-button07" value="导出" /> </a>
 											 
 											</td>
 										</tr>
@@ -207,10 +202,8 @@ function link() {
 																			<td>角色描述</td>
 																		 </tr>
 		
-<!--迭代开始-->																
-											
-											<s:iterator value="roleInfoList" id="roleInfoList" >	
-																																			
+<!--迭代开始-->																										
+															<s:iterator value="roleInfoList" id="roleInfoList" >																																		
 																		<tr bgcolor="#FFFFFF">
 																			<td><input type="checkbox" name="delid2" /></td>
 																			<td><s:property value="#roleInfoList.roleNo"></s:property>		</td>
@@ -218,7 +211,7 @@ function link() {
 																			<td><s:property value="#roleInfoList.createTime"></s:property></td>
 																			<td><s:property value="#roleInfoList.roleDescription"></s:property></td>
 																		</tr>	
-											</s:iterator>
+															</s:iterator>
 <!--  -->																			
 																		
 																				
@@ -239,18 +232,16 @@ function link() {
 																		cellpadding="0" cellspacing="0" class="right-font08">
 																		<tr>
 																			<td width="50%">
-																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																				共<span class="right-text09">${pageNum}</span> 页 |
+																			   第<span class="right-text09">${currentPage}</span> 页
 																			</td>
 																			<td width="49%" align="right">
 																				[																		
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=1" class="right-font08">首页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>-1" class="right-font08">上一页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>+1" class="right-font08">下一页</a> |
-																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=<s:property value="currentPage"/>" class="right-font08">末页</a>
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=1" class="right-font08">首页</a> |	
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage-1}" class="right-font08">上一页</a> |																																						
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${currentPage+1}" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>/RoleManager/role!roleExecute?currentPage=${pageNum}" class="right-font08">末页</a>
 																				] 
-																				<s:debug></s:debug>
 																			</td>
 																			
 																		</tr>
@@ -269,6 +260,5 @@ function link() {
 						</td>
 				</tr>
 			</table>
-		</form>
 	</body>
 </html>

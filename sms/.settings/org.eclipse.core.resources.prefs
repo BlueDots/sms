@@ -2,4 +2,8 @@
 eclipse.preferences.version=1
 encoding//WebRoot/Configuration\ instructions/C3P0-instructions=UTF-8
 encoding//WebRoot/database/procedure.sql=GBK
+<<<<<<< HEAD
+encoding//WebRoot/files/college/top.jsp=UTF-8
+=======
 encoding//WebRoot/database/qingTest.sql=UTF-8
+>>>>>>> d082e33c8699d4145151310afb88bc72a27a52ed

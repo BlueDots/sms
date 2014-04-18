@@ -15,7 +15,7 @@
     <package name="RoleManager" namespace="/" extends="struts-default">  
         <action name="role" class="jxau.sms.lyx.role.action.RoleAction">  
             <result name="success">/files/college_admin/admin_RoleManager.jsp</result>  
-        </action>          
+        </action>  
     </package> 
     
      <package name="Purview" namespace="/" extends="struts-default">  

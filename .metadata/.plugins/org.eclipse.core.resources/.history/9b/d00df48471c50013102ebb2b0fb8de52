@@ -1,0 +1,11 @@
+package jxau.sms.lyx.vo;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-16
+ * TODO
+ */
+public class VUserRole {
+
+}

@@ -35,11 +35,8 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi3.9/poi-3.9-20121203.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi3.9/poi-excelant-3.9-20121203.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dom4j/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/struts2-json-plugin-2.3.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

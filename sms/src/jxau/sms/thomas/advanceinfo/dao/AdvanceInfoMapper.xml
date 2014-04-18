@@ -18,7 +18,7 @@
         <result column="remarks" property="remarks" />
  	</resultMap>
 
-    <select id="findAdvInfoById" parameterType="String" statementType="CALLABLE" resultMap="listStuAdvInfo">
+    <select id="findAdvInfoById" parameterType="java.util.Map" statementType="CALLABLE" resultMap="listStuAdvInfo">
 		<!-- {call adv_info_proc(#{studentNo})}--> <!--使用存储过程--> 
        select * from stu_adv_info sav where sav.studentNo = #{studentNo}
     </select>

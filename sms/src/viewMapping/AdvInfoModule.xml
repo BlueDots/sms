@@ -6,7 +6,20 @@
 	3.property中value表示该字段的多值属性；
 -->
 <mapping>
-	<view id="0100" type="StuAdvInfoView">
+	<view id="0100" type="StuAdvInfoVo">
+	<column name="studentNo" value="学号" multiply="false">
+		</column>
+		<column name="name" value="姓名" multiply="false">
+		</column>
+		<column name="sex" value="性别" multiply="true">
+			<property value="男"  type="1"/>	
+			<property value="女" type="0"/> 
+		</column>
+		<column name="college" value="学院" multiply="false">
+		</column>
+		<column name="professionalDirection" value="专业方向" multiply="false">
+		</column>
+		<column name="stuClass" value="班级" multiply="false"></column>
 		<column name="advanceActivity" value="先进项目" multiply="true">
 			<property value="优秀三好学生" />	
 			<property value="优秀学生干部" /> 
@@ -21,17 +34,17 @@
 		<column name="advLevel" value="级别" multiply="true">
 			<property value="院级" /> 	
 			<property value="校级" />  
-			<property value="厅级" />
-			<property value="省级" />
-			<property value="国家级" />
+			<property value="厅级"  />
+			<property value="省级"  />
+			<property value="国家级"  />
 		</column>
 		<column name="examState" value="审核状态" multiply="true">
-			<property value="未提交 "  type="1"/>
-	     	<property value="院级审核中 "  type="2"/>
-	      	<property value="校级审核中 "  type="3"/>
-	      	<property value="院级未通过"  type="4"/>
-	        <property value="校级未通过"  type="5"/>
-	         <property value="通过"  type="6"/>		
+			<property value="未提交 "  />
+	     	<property value="院级审核中 " />
+	      	<property value="校级审核中 "  />
+	      	<property value="院级未通过"  />
+	        <property value="校级未通过"  />
+	         <property value="通过"  />		
 		</column>
 		<column name="remarks" value="备注" multiply="false">
 		</column>

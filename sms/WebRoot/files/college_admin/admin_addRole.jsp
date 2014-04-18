@@ -31,7 +31,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="<%=basePath%>/js/admin/lyx.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
 	<script src="<%=basePath%>/js/date.js"></script>
+
+<script type="text/javascript">
+function displayPurview(){
 	
+	$("#tablePurview").toggle();
+	
+}
+
+function getChecked(roleNo){
+
+	var array = new Array();
+
+	$("input:checkbox:checked").each(function(){
+		
+		array.push($(this).siblings("input:hidden").val());
+	
+		window.location.href="Purview/updateRolePurview!renewPurview?array="+array+"&roleNo="+roleNo;
+	
+	});
+
+}
+</script>
   </head>
   
  <body>
@@ -111,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																			  	<input type="text" name="roleDescription"/>
 																			</td>
 																			<td>
-																				<a href="">分配权限</a>
+																				<a href="javascript:displayPurview();">分配权限</a>
 																			</td>																			
 																		</tr>																			 			
 																	</table>
@@ -119,11 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</tr>
 															<tr>
 																<td colspan="2" align="center" height="30px">
-																	
-																    <input type="button" name="submit" value="提交"
-																		class="button" onclick="" />
-																	<input type="button" name="submit2" value="返回"
-																		class="button" onclick="window.history.go(-1);" />
+																							
 																</td>
 															</tr>
 															
@@ -132,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																
 														
 										               <!--添加权限的表格-->
-										               		<table width="100%" border="0" cellpadding="4"	cellspacing="1" bgcolor="#464646" class="newfont03">
+										               		<table width="100%" border="0" cellpadding="4"	cellspacing="1" bgcolor="#464646" class="newfont03" id="tablePurview" style=display:none>
 																		<tr class="CTitle">
 																			<td height="22" colspan="13" align="center"
 																				style="font-size: 16px" width="100%">
@@ -183,16 +200,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 																				</td>
 																		</tr>
+																		<tr bgcolor="#FFFFFF">
+																			<td colspan="2" align="center" height="30px">
+																				<input type="button" name="submitPurview" value="提交"
+																					class="button" onclick="getChecked(<s:property value="#parameters['roleNo']"/>)" />
+																				<input type="button" name="return" value="返回"
+																					class="button" onclick="window.history.go(-1);"/>
+																			</td>
+																		</tr>
 										               		</table>
 													
-															<tr>
-																<td colspan="2" align="center" height="30px">
-																	<input type="button" name="submitPurview" value="保存"
-																		class="button" onclick="getChecked(<s:property value="#parameters['roleNo']"/>)" />
-																	<input type="button" name="return" value="返回"
-																		class="button" onclick="window.history.go(-1);"/>
-																</td>
-															</tr>
+															
 																													
 														</table>
 													</td>

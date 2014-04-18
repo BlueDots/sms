@@ -18,22 +18,12 @@ import java.util.Map;
  *
  */
 public class AdvanceSearchVo {
-
-	private String type;	//配置文件中View中的type属性
+	
 	private String colName;		//配置文件中column中的name属性
 	private String colValue;	//配置文件中column中的value属性
 	private String colMutiply;	//配置文件中column中的multiply属性
 	private Map<String,Object> properties;	//配置文件中property中的value和type属性
 	
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getColName() {
-		return colName;
-	}
 	public void setColName(String colName) {
 		this.colName = colName;
 	}

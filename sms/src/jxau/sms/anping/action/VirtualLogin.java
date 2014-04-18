@@ -2,6 +2,8 @@ package jxau.sms.anping.action;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
  
 
 import javax.servlet.Filter;
@@ -14,11 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import jxau.sms.chenjiang.po.StuBasicInfo;
+<<<<<<< HEAD
+=======
+import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 import jxau.sms.qing.po.Teacher;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
- 
+
 public class VirtualLogin implements Filter{
 
 	@Override
@@ -51,7 +58,25 @@ public class VirtualLogin implements Filter{
 		
 		
 		if(session.getAttribute("teacher")==null){
+<<<<<<< HEAD
 			
+=======
+			TecBasicInfo teacher = new TecBasicInfo();
+			//先虚拟的存储这点东西
+			teacher.setTeacherNo("1234");
+			teacher.setTeacherName("jack");
+			
+			session.setAttribute("teacher",teacher);
+		    //虚拟的存储一点点角色
+			RoleInfo  role  = new RoleInfo();
+		    role.setRoleName("校级工作人员");
+		    RoleInfo  role2  = new RoleInfo();
+		    role.setRoleName("班主任");
+		    
+		    List<RoleInfo> roles = new ArrayList<RoleInfo>(2);
+		    session.setAttribute("roles", roles);
+		    
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 		}
 
 		chain.doFilter(request, response);

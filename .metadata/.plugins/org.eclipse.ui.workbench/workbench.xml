@@ -8,7 +8,7 @@
 </perspectiveBar>
 <coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="124" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="266" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="com.genuitec.eclipse.j2eedt.core.ejb" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="com.genuitec.eclipse.uml.actions" itemType="typeToolBarContribution" x="61" y="22"/>
@@ -17,13 +17,13 @@
 <coolItem id="com.genuitec.myeclipse.actions.deploytools" itemType="typeToolBarContribution" x="101" y="22"/>
 <coolItem id="com.genuitec.myeclipse.actions.desktop" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="com.genuitec.myeclipse.actions.reporting" itemType="typeToolBarContribution" x="78" y="22"/>
-<coolItem id="com.genuitec.myeclipse.actions.screencapture" itemType="typeToolBarContribution" x="196" y="30"/>
+<coolItem id="com.genuitec.myeclipse.actions.screencapture" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="175" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="78" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="101" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="198" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
@@ -31,7 +31,7 @@
 <coolItem id="com.genuitec.eclipse.j2eedt.core.editor.tld" itemType="typePlaceholder" x="38" y="22"/>
 <coolItem id="com.genuitec.eclipse.webdesigner3.editors.html" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.genuitec.eclipse.webdesigner3.editors.jsp" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.genuitec.eclipse.webdesigner3.editors.jsp" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="com.genuitec.eclipse.struts2.editor" itemType="typePlaceholder" x="342" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -46,19 +46,10 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_RoleManager.jsp" partName="admin_RoleManager.jsp" path="G:/studentManagerSystem/sms/sms/WebRoot/files/college_admin/admin_RoleManager.jsp" title="admin_RoleManager.jsp" tooltip="sms/WebRoot/files/college_admin/admin_RoleManager.jsp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/WebRoot/files/college_admin/admin_RoleManager.jsp"/>
-</editor>
-<editor activePart="true" focus="true" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_addRole.jsp" partName="admin_addRole.jsp" path="G:/studentManagerSystem/sms/sms/WebRoot/files/college_admin/admin_addRole.jsp" title="admin_addRole.jsp" tooltip="sms/WebRoot/files/college_admin/admin_addRole.jsp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/WebRoot/files/college_admin/admin_addRole.jsp"/>
-</editor>
 </editors>
 <views>
 <view id="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" partName="SQL Results">
@@ -85,6 +76,10 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (100 of 5055 items)"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="120" org.eclipse.ui.ide.markerType="120" org.eclipse.ui.ide.pathField="160" org.eclipse.ui.ide.resourceField="120" org.eclipse.ui.ide.severityAndDescriptionField="400"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -253,7 +248,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.18376383" ratioLeft="249" ratioRight="1106" relationship="2" relative="cvslocation"/>
+<info part="org.eclipse.ui.editorss" ratio="0.3217712" ratioLeft="436" ratioRight="919" relationship="2" relative="cvslocation"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@87281f" ratio="0.75" ratioLeft="606" ratioRight="202" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
@@ -263,7 +258,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@15b4804" ratio="0.55" ratioLeft="352" ratioRight="288" relationship="4" relative="org.eclipse.ui.internal.ViewStack@87281f">
-<folder activePageID="org.eclipse.jdt.junit.ResultView" appearance="2" expanded="2">
+<folder activePageID="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" label="DB Browser"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" label="SQL Results"/>
@@ -320,159 +315,7 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/sms/src/jxau/sms/lyx/role/service/impl/RoleServiceImpl.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/sms/WebRoot/files/college_admin/admin_RoleManager.jsp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/sms/src/jxau/sms/lyx/role/action/RoleAction.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/sms/WebRoot/files/college_admin/admin_RoleManager.jsp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/sms/WebRoot/css/css.css"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/sms/WebRoot/css/admin/lyx.css"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/sms/WebRoot/css/admin/file.css"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/sms/src/jxau/sms/lyx/role/service/impl/ServiceTest.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/sms/src/jxau/sms/lyx/po/RoleInfo.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/sms/WebRoot/files/college_admin/admin_addRole.jsp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/sms/WebRoot/files/college_admin/admin_addRole.jsp"/>
-</editors>
-<item historyLabel="admin_RoleManager.jsp" index="1"/>
-<item historyLabel="css.css" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="1"/>
-<item historyLabel="lyx.css" index="5">
-<position/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="1"/>
-<item historyLabel="lyx.css" index="5">
-<position/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="1"/>
-<item historyLabel="lyx.css" index="5">
-<position/>
-</item>
-<item historyLabel="file.css" index="6">
-<position info="not_deleted" x="125" y="0"/>
-</item>
-<item historyLabel="lyx.css" index="5">
-<position/>
-</item>
-<item historyLabel="RoleServiceImpl.java" index="0">
-<position info="not_deleted" x="1103" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1752" y="0"/>
-</item>
-<item historyLabel="lyx.css" index="5">
-<position/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="1">
-<position info="not_deleted" x="1772" y="0"/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="3">
-<position info="not_deleted" x="3589" y="38"/>
-</item>
-<item historyLabel="RoleServiceImpl.java" index="0">
-<position info="not_deleted" x="1103" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1710" y="0"/>
-</item>
-<item historyLabel="RoleServiceImpl.java" index="0">
-<position info="not_deleted" x="1837" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1710" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1710" y="0"/>
-</item>
-<item historyLabel="RoleServiceImpl.java" index="0">
-<position info="not_deleted" x="1837" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1710" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1430" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1463" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1465" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1708" y="0"/>
-</item>
-<item historyLabel="ServiceTest.java" index="7">
-<position info="not_deleted" x="1081" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="2050" y="0"/>
-</item>
-<item historyLabel="RoleInfo.java" index="8">
-<position/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="2050" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1663" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1560" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1556" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="1663" y="0"/>
-</item>
-<item historyLabel="RoleServiceImpl.java" index="0">
-<position info="not_deleted" x="1996" y="0"/>
-</item>
-<item historyLabel="RoleAction.java" index="2">
-<position info="not_deleted" x="2217" y="0"/>
-</item>
-<item historyLabel="RoleServiceImpl.java" index="0">
-<position info="not_deleted" x="1837" y="0"/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="1"/>
-<item historyLabel="admin_RoleManager.jsp" index="1">
-<position info="not_deleted" x="72" y="0"/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="3">
-<position info="not_deleted" x="4526" y="0"/>
-</item>
-<item historyLabel="admin_RoleManager.jsp" index="3">
-<position info="not_deleted" x="4442" y="0"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="9">
-<position info="not_deleted" x="1822" y="0"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="10">
-<position info="not_deleted" x="957" y="0"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="10">
-<position info="not_deleted" x="4307" y="0"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="10">
-<position info="not_deleted" x="4307" y="0"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="10">
-<position info="not_deleted" x="3772" y="36"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="10">
-<position info="not_deleted" x="3832" y="0"/>
-</item>
-<item historyLabel="admin_addRole.jsp" index="10">
-<position info="not_deleted" x="3834" y="0"/>
-</item>
-<item historyLabel="RoleInfo.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item active="true" historyLabel="admin_addRole.jsp" index="9"/>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -489,50 +332,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleInfo.java" tooltip="sms/src/jxau/sms/lyx/po/RoleInfo.java">
-<persistable path="/sms/src/jxau/sms/lyx/po/RoleInfo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewListPackage.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/PurviewListPackage.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/PurviewListPackage.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewInfo.java" tooltip="sms/src/jxau/sms/lyx/po/PurviewInfo.java">
-<persistable path="/sms/src/jxau/sms/lyx/po/PurviewInfo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserPurviewManagerServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_addRole.jsp" tooltip="sms/WebRoot/files/college_admin/admin_addRole.jsp">
-<persistable path="/sms/WebRoot/files/college_admin/admin_addRole.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserHandlePurview.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserHandlePurview.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserHandlePurview.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_RoleManager.jsp" tooltip="sms/WebRoot/files/college_admin/admin_RoleManager.jsp">
-<persistable path="/sms/WebRoot/files/college_admin/admin_RoleManager.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SystemPurviewServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ServiceTest.java" tooltip="sms/src/jxau/sms/lyx/role/service/impl/ServiceTest.java">
-<persistable path="/sms/src/jxau/sms/lyx/role/service/impl/ServiceTest.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AllocationPurviewStandard.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/AllocationPurviewStandard.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/AllocationPurviewStandard.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="file.css" tooltip="sms/WebRoot/css/admin/file.css">
-<persistable path="/sms/WebRoot/css/admin/file.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="purviewMapper.xml" tooltip="sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml">
+<persistable path="/sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="lyx.css" tooltip="sms/WebRoot/css/admin/lyx.css">
-<persistable path="/sms/WebRoot/css/admin/lyx.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleSystemPurviewAction.java" tooltip="sms/src/jxau/sms/lyx/purview/action/RoleSystemPurviewAction.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/action/RoleSystemPurviewAction.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="css.css" tooltip="sms/WebRoot/css/css.css">
-<persistable path="/sms/WebRoot/css/css.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleHandlePurview.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/RoleHandlePurview.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/RoleHandlePurview.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="arrow.css" tooltip="sms/WebRoot/css/arrow.css">
-<persistable path="/sms/WebRoot/css/arrow.css"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewServiceImplTest.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/PurviewServiceImplTest.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/PurviewServiceImplTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="jquery-ui-1.8.21.custom.min.js" tooltip="sms/WebRoot/js/jquery-ui-1.8.21.custom.min.js">
+<persistable path="/sms/WebRoot/js/jquery-ui-1.8.21.custom.min.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_systemPurview.jsp" tooltip="sms/WebRoot/files/college_admin/admin_systemPurview.jsp">
+<persistable path="/sms/WebRoot/files/college_admin/admin_systemPurview.jsp"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="lyx.js" tooltip="sms/WebRoot/js/admin/lyx.js">
+<persistable path="/sms/WebRoot/js/admin/lyx.js"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.struts2.editor" name="struts.xml" tooltip="sms/src/struts.xml">
+<persistable path="/sms/src/struts.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.struts2.editor" name="lyxAction.xml" tooltip="sms/src/lyxAction.xml">
 <persistable path="/sms/src/lyxAction.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="StuBasicInfoMapper.xml" tooltip="sms/src/jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml">
-<persistable path="/sms/src/jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="roleMapper.xml" tooltip="sms/src/jxau/sms/lyx/role/dao/roleMapper.xml">
-<persistable path="/sms/src/jxau/sms/lyx/role/dao/roleMapper.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StuBasicInfoServiceImpl.java" tooltip="sms/src/jxau/sms/chenjiang/stuBasicInfo/service/impl/StuBasicInfoServiceImpl.java">
-<persistable path="/sms/src/jxau/sms/chenjiang/stuBasicInfo/service/impl/StuBasicInfoServiceImpl.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dao.java" tooltip="sms/src/jxau/sms/globaldao/Dao.java">
-<persistable path="/sms/src/jxau/sms/globaldao/Dao.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PageVo.java" tooltip="sms/src/jxau/sms/commom/vo/PageVo.java">
-<persistable path="/sms/src/jxau/sms/commom/vo/PageVo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SystemPurviewAction.java" tooltip="sms/src/jxau/sms/lyx/purview/action/SystemPurviewAction.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/action/SystemPurviewAction.java"/>
 </file>
 </mruList>
 </workbench>

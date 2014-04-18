@@ -4,11 +4,24 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 import jxau.sms.anping.po.DepInfo;
+=======
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import jxau.sms.anping.po.DepInfo;
+import jxau.sms.lyx.po.RoleInfo;
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+<<<<<<< HEAD
+=======
+@Controller("displayCollegeAction")
+@Scope("prototype")
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 public class DisplayCollegeAction extends ActionSupport{
 
 	/**
@@ -22,6 +35,15 @@ public class DisplayCollegeAction extends ActionSupport{
 	 * @return
 	 */
 	public String showCollege(){
+<<<<<<< HEAD
+=======
+		
+		@SuppressWarnings("unchecked")
+		List<RoleInfo> roles = (List<RoleInfo>) session.get("roles");
+		
+		
+		
+>>>>>>> d08e56d422cf81608214957a84ec753a0f002fdb
 		for(int i =0 ;i<10;i++){
 			DepInfo  depInfo  = new DepInfo();
 			depInfo.setDepNum(1);

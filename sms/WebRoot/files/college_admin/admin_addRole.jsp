@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@  taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -17,14 +17,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	
+	<link href="<%=basePath%>/css/admin/jquery.treeview.css" rel="stylesheet" type="text/css" />
+	<link href="<%=basePath%>/css/admin/screen.css" rel="stylesheet" type="text/css" />
+	<link href="<%=basePath%>/css/admin/file.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/css.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
 
-	<script src="<%=basePath%>/js/jquery-1.7.2.min.js"></script>
+	<script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>
+	<script src="<%=basePath%>/js/admin/jquery.cookie.js"></script>
+	<script src="<%=basePath%>/js/admin/jquery.treeview.js"></script>
+	<script src="<%=basePath%>/js/admin/lyx.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
-	<script src="<%=basePath%>/js/jquery-ui-1.8.21.custom.min.js"></script>
 	<script src="<%=basePath%>/js/date.js"></script>
 	
   </head>
@@ -58,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<div>&nbsp;</div>
 				<!--这事显示录入人员的表格-->
-						<div id="add"  >
+				
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td>
@@ -86,10 +91,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		<tr bgcolor="#EEEEEE">
 																			 		
-																			<td width="7%" align="center">
+																			<td width="5%" align="center">
 																			  角色名称
 																			</td>
-																			<td width="7%" align="center">
+																			<td width="10%" align="center">
 																				角色描述
 																			</td>
 																			<td width="8%" align="center">
@@ -100,45 +105,107 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		<tr bgcolor="#FFFFFF" align="center">
 																			 		
 																			<td>
-																				<input type="text"/>
+																				<input type="text" name="roleName"/>
 																			</td>
 																			<td>
-																			  <input type="text"/>
+																			  	<input type="text" name="roleDescription"/>
 																			</td>
 																			<td>
-																				<a href="admin_rolePurview.html">分配权限</a>
-																			</td>
-																			
-																		</tr>
-																			 
-																		
+																				<a href="">分配权限</a>
+																			</td>																			
+																		</tr>																			 			
 																	</table>
 																</td>
 															</tr>
 															<tr>
 																<td colspan="2" align="center" height="30px">
-																	<input type="button" name="Submit" value="新增一列"
-																		class="button" onclick="link();" />
-																	<input type="button" name="Submit" value="保存"
-																		class="button" onclick="link();" />
-																    <input type="button" name="Submit" value="提交"
-																		class="button" onclick="link();" />
-																	<input type="button" name="Submit2" value="返回"
+																	
+																    <input type="button" name="submit" value="提交"
+																		class="button" onclick="" />
+																	<input type="button" name="submit2" value="返回"
 																		class="button" onclick="window.history.go(-1);" />
 																</td>
 															</tr>
+															
+															<tr>
+																<td>
+																
+														
+										               <!--添加权限的表格-->
+										               		<table width="100%" border="0" cellpadding="4"	cellspacing="1" bgcolor="#464646" class="newfont03">
+																		<tr class="CTitle">
+																			<td height="22" colspan="13" align="center"
+																				style="font-size: 16px" width="100%">
+																				权限列表
+																			</td>
+																		</tr>
+																		<tr bgcolor="#FFFFFF">																		
+																				<td  height="60"  width="100%">
+																				
+<!--  ----------- ----------- -----------权限界面开始---------- ------------------- -->																						
+		<ul id="test">	
+				<s:iterator value="purviewList" id="purviewParent" >	
+					<s:if test='#purviewParent.pid==1' >	
+						<li>
+							<input type="checkbox" name="purview" 
+							<s:iterator value="checkList" id="checkLists" >
+								<s:property value="%{#purviewParent.id == #checkLists.id ? 'checked' : ''}"/>
+							</s:iterator>	
+							/>
+							<input type="hidden" name="field＿name" value="<s:property value="#purviewParent.id"/>">
+							<span class="folder">	
+								<s:property value="#purviewParent.purviewName"></s:property>						
+							</span>	
+						
+									<ul>
+										<s:iterator value="purviewList" id="purviewChild">	
+												<s:if test="#purviewParent.id==#purviewChild.pid">							
+													<li>													
+														<input type="checkbox" name="purview" 
+																<s:iterator value="checkList" id="checkLists" >
+																	<s:property value="%{#purviewChild.id == #checkLists.id ? 'checked' : ''}"/>
+																</s:iterator>
+														/>
+														<input type="hidden" name="field＿name" value="<s:property value="#purviewChild.id"/>">
+														<span class="file">	
+															<s:property value="#purviewChild.purviewName"></s:property>						
+														</span>	
+													</li>
+												</s:if>							
+										</s:iterator>
+									</ul>
+									
+								</li>	
+							</s:if>		
+				</s:iterator>
+		</ul>	
+<!--  ----------- ----------- -----------权限界面结束---------- ------------------- -->		
+		
+																				</td>
+																		</tr>
+										               		</table>
+													
+															<tr>
+																<td colspan="2" align="center" height="30px">
+																	<input type="button" name="submitPurview" value="保存"
+																		class="button" onclick="getChecked(<s:property value="#parameters['roleNo']"/>)" />
+																	<input type="button" name="return" value="返回"
+																		class="button" onclick="window.history.go(-1);"/>
+																</td>
+															</tr>
+																													
 														</table>
 													</td>
 												</tr>
 											</table>
-										</div>
-									</td>
+											
+										</div>	
+									<td>												
 								</tr>
 							</table>
-						</div>
-					</td>
-				</tr>
-			</table>
+						</td>
+					</tr>
+				</table>									
 		</form>
 	</body>
 </html>

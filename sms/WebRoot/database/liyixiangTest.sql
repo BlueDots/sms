@@ -25,6 +25,8 @@ select * from role_info where roleName like '%管理员';
 --字段才会默认，插入null时该字段就是null
 --tec_basic_info
 insert into tec_basic_info values('1234','jack',0,null,'江西',null,'离职',null,'2011-1-1',now(),'本科','已通过','无');
+##将jack组
+ 
 insert into tec_basic_info(teacherNo,teacherName,sex,nation,hometown,political,teacherTitle,titleTime,worktime,eduBackground,remarks) values('5678','cat',1,null,'江西',null,null,'2011-1-1',now(),'本科','无');
 insert into tec_basic_info values('8765','arron',1,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
 insert into tec_basic_info values('4321','tom',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
@@ -80,11 +82,13 @@ insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoLis
 
 --teacher_role
 insert into teacher_role values('1234',4);
+insert into teacher_role values('1234',2);
 insert into teacher_role values('5678',2);
 insert into teacher_role values('5678',3);
 insert into teacher_role values('8765',3);
 insert into teacher_role values('4321',5);
 insert into teacher_role values('0000',1);
+
 
 
 --t_teacher_purview
@@ -111,4 +115,12 @@ insert into role_purview values(3,18);
 delete from t_teacher_purview where teacherNo in ('5678') and purviewNo in (2,3);
 
 
---update
+--update教师属于那个部门
+
+--update class_info set teacherNo='1234' where  classNo='11050100200908';
+--update class_info set teacherNo='5678' where  classNo='11050101201013';
+     
+ --insert into dep_teacher values('1105','1234');
+   
+ --  insert into dep_teacher values('1105','5678');
+   

@@ -47,31 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-												<span class="collegeName">学院
-												<select name="college" size="1" id="collegeId">
-													<option value="selected">
-														请选择学院
-													</option>
-													
-												</select>
-												</span>
-												<span class="majorName">专业方向
-												<select name="major" id="majorId">
-													<option value="selected">
-														请选择专业方向
-													</option>
-												</select>
-												</span>
-												<span class="className">班级
-												<select name="class" id="classId">
-													<option value="selected">
-														请选择班级
-													</option>
-												</select>
-												</span>
-												<input name="condition" type="text" size="16" value="请输入学号或者姓名"/>
-												<input name="find" type="button" class="right-button02"
-													value="查询" />
+												<form action="" id="collegeList">
+												</form>
 												
 													 
 											</td>
@@ -822,4 +799,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%=basePath%>js/testSearch.js"></script>
 	    <script src="<%=basePath%>js/jquery.chromatable.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/school/school.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/util/loadCollegeClass.js"></script>
 </html>

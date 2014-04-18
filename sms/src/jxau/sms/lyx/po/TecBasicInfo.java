@@ -1,5 +1,6 @@
 package jxau.sms.lyx.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  *		教师基本信息实体类
  *
  */
-public class TecBasicInfo {
+public class TecBasicInfo implements Serializable{
 
 	private String teacherNo;  				//教师工号
 	private String teacherName;  			//教师姓名 

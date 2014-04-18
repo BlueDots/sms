@@ -163,6 +163,9 @@ public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
 		
 	
 	
+	/**
+	 * 
+	 */
 	@Override
 	public <T> List<T> searchListByAccurate(Map<String, Object> param,
 			int status) {

@@ -70,7 +70,7 @@ function getStuBasicInfoList(currentPage){
 
 			//第七列：性别
 			var TdObj7 = TrObj.insertCell(6);
-			if(stuBasicInfo.className==0)
+			if(stuBasicInfo.sex==0)
 				TdObj7.appendChild(document.createTextNode("男"));
 			else TdObj7.appendChild(document.createTextNode("女"));
 

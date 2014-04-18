@@ -1,0 +1,19 @@
+package jxau.sms.lyx.util;
+
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * 
+ * @author lyx
+ * 2014-4-13
+ * TODO:
+ * 		
+ */
+public class ContainerConversion {
+
+	public <T> void logicJudgment(List<T>  insertList,List<T> deleteList){
+		
+	}
+	
+}

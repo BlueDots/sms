@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.anping.yibao.dao">
+
+
+	<!-- 查找学生部分信息和所有的医保  
+	     需要传入的参数格式为 HashMap<String,Object>
+	                             <studentNo,'20111429'>
+	                             <hosState,'校级审核不通过'>
+ 	                             <firstIndex,0>
+ 	                             <size,1>
+ 	      返回的是最晚的那个
+ 	-->
+	<select id="findYiBaoByStudentNo" parameterType="java.util.HashMap"
+		resultMap="yibaoResultMap">
+		select insurance.* ,student.studentName,student.sex from
+		hos_insurance_info insurance,stu_basic_info student
+		where
+		insurance.studentNo=#{studentNo}
+		<if test="hosState != null">
+			and  insurance.hosState=#{hosState}
+		</if>
+        and student.studentNo=#{studentNo}
+		and
+		insurance.studentNo=student.studentNo
+		
+		 order    by  hosNo desc
+        <if test="firstIndex != null and size!=null">
+			 limit #{firstIndex},#{size}
+		</if>
+		 ;
+	</select>
+
+    <!--查找出数量 一般和查询结合使用 传入的参数和上面的一直 -->
+     <select id="findYiBaoByStudentNum" parameterType="java.util.HashMap"
+		resultType="java.lang.Long">
+		select count(*) from
+		hos_insurance_info insurance,stu_basic_info student
+		where
+		insurance.studentNo=#{studentNo}
+		<if test="hosState != null">
+			and  insurance.hosState=#{hosState}
+		</if>
+        and student.studentNo=#{studentNo}
+		and
+		insurance.studentNo=student.studentNo
+		  ;
+	</select>
+              	
+     	
+     	
+   
+
+
+	<!--通过医保的id 来查询医保 
+	需要传入的参数格式为 HashMap<String,Object>
+	                             <hosNo,1>
+	                             <hosState,'校级审核不通过'>
+	                           
+	-->
+	<select id="findYiBaoById" parameterType="java.util.HashMap"
+		resultMap="yibaoResultMap">
+		select insurance.* ,student.studentName,student.sex from
+		hos_insurance_info insurance,stu_basic_info student
+		where
+		insurance.hosNo=#{hosNo}
+		<if test="hosState != null">
+			and  insurance.hosState=#{hosState}
+		</if>
+		and insurance.studentNo=student.studentNo
+		
+	   ;
+	</select>
+
+
+	<!--医保不提供高级查询，只提供简单的学生学院班级信息之类的查询
+	    这里的条件 有学院，班级 ，姓名
+	    需要传入的参数格式为 HashMap<String,Object>
+	                             <college,'江西农大'>
+	                             <className,'1102'>
+	                             <studentName,'熊安平'>
+	                             <fristIndex,0>
+	                              <max,100>  
+	 -->
+     	<select id="findYiBaoByCondition" parameterType="java.util.HashMap"
+		resultMap="yibaoResultMap">
+		select insurance.* ,student.studentName,student.sex from
+		hos_insurance_info insurance,stu_basic_info student
+		where
+		 insurance.studentNo=student.studentNo
+		 <if test="hosState != null">
+			and  insurance.hosState=#{hosState}
+		</if>
+		<if test="college != null">
+			and  student.college=#{college}
+		</if>
+		<if test="className != null">
+			and  student.className=#{className}
+		</if>
+		<if test="studentName != null">
+			and  student.studentName=#{studentName}
+		</if>
+		<if test="studentNo != null">
+			and  student.studentNo=#{studentNo}
+		</if>
+		order by hosNo desc 
+		<if test="firstIndex != null and size!=null">
+			 limit #{firstIndex},#{size}
+		</if>
+		 ;
+	</select>
+	
+	
+	<!--  同上是为了查询出数量-->
+	<select id="findYiBaoByConditionNum" parameterType="java.util.HashMap"
+		resultType="java.lang.Long">
+		select count(*) from
+		hos_insurance_info insurance,stu_basic_info student
+		where
+		 insurance.studentNo=student.studentNo
+		 <if test="hosState != null">
+			and  insurance.hosState=#{hosState}
+		</if>
+		<if test="college != null">
+			and  student.college=#{college}
+		</if>
+		<if test="className != null">
+			and  student.className=#{className}
+		</if>
+		<if test="studentName != null">
+			and  student.studentName=#{studentName}
+		</if>
+		<if test="studentNo != null">
+			and  student.studentNo=#{studentNo}
+		</if>
+		  ;
+	</select>
+	
+	
+         
+
+
+	<!-- <select id="findStudent" resultMap="StudentList"> select * from t_student; 
+		</select> <resultMap type="com.sms.li.po.Student" id="StudentList"> <id column="studentId" 
+		property="id" /> <result column="name" property="username" /> <result column="sex" 
+		property="sex" /> </resultMap> 这是批量添加student的sql语句 <insert id="addStudentByBatch" 
+		parameterType="List" > insert into t_student(studentId,name,sex) values <foreach 
+		collection="list" item="student" index="index" separator="," > (#{student.id},#{student.username},#{student.sex}) 
+		</foreach> </insert> 这是批量删除的sql语句 <delete id="deleteStudentByBatch" parameterType="List"> 
+		delete t_student from t_student where studentId in ( <foreach collection="list" 
+		item="id" separator="," index="index"> #{id} </foreach> ); </delete> <select 
+		id="selectCountByPro" resultType="int" statementType="CALLABLE"> <![CDATA[ 
+		{call testPro()} ]]> </select> -->
+</mapper>

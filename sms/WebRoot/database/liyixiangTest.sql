@@ -3,6 +3,9 @@ drop table if exists teacher_purview;
 drop table if exists role_purview;
 drop table if exists purview_info;
 
+--delete
+delete from role_purview;
+
 --select
 select * from tec_basic_info;
 select * from purview_info;
@@ -10,7 +13,6 @@ select * from role_info;
 select * from teacher_purview;
 select * from teacher_role;
 select * from role_purview;
-
 
 --insert 
 --测试发现 default约束是指插入固定字段时而不插入有default约束的字段，该

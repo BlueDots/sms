@@ -44,6 +44,6 @@ values(null,'20111429','居民医保','南昌医院',null,null,'10',
 0,'aaa',190,null,0,0,null,'感冒不受理','不受理',null,null,
 null,null,null,null,null,null,null,null,null,null,null
 );
+ 
 
-
-select * from hos_insurance_info  order    by  hosNo desc limit 0,5  ;
+select * from hos_insurance_info  order    by  hosNo desc   ;

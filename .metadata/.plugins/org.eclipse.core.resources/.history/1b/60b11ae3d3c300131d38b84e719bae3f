@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.chenjiang.activityManage.ActHold.dao">
+	<insert id="add" parameterType="ActHold" useGeneratedKeys="true" keyProperty="id">
+		insert into act_hold(id,actNo,sessionYear,startTime,endTime,holdPlace)
+		 values(#{id},#{actInfo.actNo},#{sessionYear},#{startTime},#{endTime},#{holdPlace}); 
+	</insert>
+	<update id="update" parameterType="ActHold">
+		update act_hold
+		<set>
+			<if test="sessionYear != null">
+				sessionYear = #{sessionYear},
+			</if>
+			<if test="startTime != null">
+				startTime = #{startTime},
+			</if>
+			<if test="endTime != null">
+				endTime = #{endTime},
+			</if>
+			<if test="holdPlace != null">
+				holdPlace = #{holdPlace}
+			</if>
+		</set>
+		where id = #{id};
+	</update>
+	
+	<update id="delete" parameterType="ActHold">
+		delete from act_hold
+		where id = #{id}
+	</update>
+	
+	<resultMap type="ActHoldVO" id="ActivityHoldInfoVOResultMap">
+		<id property="id" column="id"/>
+		<association property="actHold" javaType="ActHold">
+			<id property="id" column="id"/>
+			<result property="sessionYear" column="sessionYear"/>
+			<result property="startTime" column="startTime"/>
+			<result property="endTime" column="endTime"/>
+			<result property="holdPlace" column="holdPlace"/>
+			<association property="actInfo" column="actNo" select="selectActInfo" javaType="ActInfo">
+			</association>
+		</association>
+	</resultMap>
+	
+	<select id="selectActInfo" resultType="ActInfo">
+		select * from act_info where actNo = #{actNo}
+	</select>		
+
+	<select id="query" parameterType="map" resultMap="ActivityHoldInfoVOResultMap">
+		select * from act_hold where actNo=#{actNo}
+		limit #{start},#{nums}
+	</select>
+	
+</mapper>
+

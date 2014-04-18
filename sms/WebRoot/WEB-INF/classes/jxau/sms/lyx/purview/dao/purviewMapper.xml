@@ -60,7 +60,7 @@
 		delete from 
 		
 		<if test='delTeacherPurviewList != null'>
-			t_teacher_purview
+			teacher_purview
 			where teacherNo in
 			<foreach collection="delTeacherPurviewList" item="item" open="(" separator="," close=")"> 
 	      			#{ item.teacherNo} 
@@ -73,7 +73,7 @@
 	    </if>
 	    
 	    <if test='delRolePurviewList != null'>
-			t_role_purview
+			role_purview
 			where roleNo in
 			<foreach collection="delRolePurviewList" item="item" open="(" separator="," close=")"> 
 	      			#{ item.roleNo} 

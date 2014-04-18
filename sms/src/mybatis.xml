@@ -9,7 +9,9 @@
 		<!-- 设置懒加载 -->
 		<setting name="lazyLoadingEnabled" value="true" />
 		<setting name="aggressiveLazyLoading" value="false" />
+		<setting name="defaultExecutorType" value="BATCH"/>
 	</settings>
+	
 	<typeAliases>
 		<!-- 熊安平部分 开始 -->
 		<typeAlias alias="ClassAwardInfo" type="jxau.sms.anping.po.ClassAwardInfo" />
@@ -47,24 +49,9 @@
 	</typeAliases>
 
 	<mappers>
-		<!-- 陈江部分 开始 -->
-		<mapper resource="jxau/sms/chenjiang/stuBasicInfo/dao/StuBasicInfoMapper.xml" />
-		<mapper resource="jxau/sms/chenjiang/activityManage/dao/ActInfoMapper.xml" />
-		<mapper resource="jxau/sms/chenjiang/activityManage/dao/ActHoldMapper.xml" />
-		<mapper resource="jxau/sms/chenjiang/stuActParticipate/dao/StuActParticipateMapper.xml" />
-		<mapper resource="jxau/sms/util/chenjiang/roleVerify/ModuleVerifyMapper.xml" />
-		<!-- 陈江部分 结束 -->
-        <!-- 熊安平部分开始 -->
-		<mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml" />
-		<mapper resource="jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml" />
-		<mapper resource="jxau/sms/anping/yibao/dao/yibaoResultMapper.xml" />
-		<mapper resource="jxau/sms/anping/yibao/dao/yibaoAddMapper.xml" />
-		<!-- 熊安平结束 -->
-		<!-- 李易祥开始 -->
-		<mapper resource="jxau/sms/lyx/purview/dao/purviewMapper.xml" />
-		<!-- 李易祥结束 -->
-		<!-- 赖慧强开始 -->
-		<mapper resource="jxau/sms/thomas/advanceinfo/dao/AdvanceInfoMapper.xml" />
-		<!-- 赖慧强结束 -->
+
+	<!--  无需配置，只需要你的mapper.xml在jxau.sms.名字.项目.dao下就行-->
+
 	</mappers>
+
 </configuration>

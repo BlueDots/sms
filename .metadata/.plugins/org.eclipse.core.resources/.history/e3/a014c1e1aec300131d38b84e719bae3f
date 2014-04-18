@@ -1,0 +1,32 @@
+package jxau.sms.lyx.purview.service.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import jxau.sms.lyx.po.RolePurview;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class PurviewServiceImplTest {
+
+	@Test
+	public void test() {
+		
+	}
+	
+	@Test
+	public void test2() {
+		String number = "1";		
+		List<Integer> newList = new ArrayList<Integer>();
+		newList.add(3);
+		List<Integer> oldList = new ArrayList<Integer>();
+		oldList.add(2);
+
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		RoleHandlePurview rhp = (RoleHandlePurview)context.getBean("RoleHandlePurview");
+		rhp.handleAllocationPurview(number,newList,oldList);
+		
+	}
+
+}

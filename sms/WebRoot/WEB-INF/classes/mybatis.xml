@@ -41,6 +41,7 @@
 		<typeAlias alias="TeacherPurview" type="jxau.sms.lyx.po.TeacherPurview" />
 		<typeAlias alias="TeacherRole" type="jxau.sms.lyx.po.TeacherRole" />
 		<typeAlias alias="RolePurview" type="jxau.sms.lyx.po.RolePurview" />
+		<typeAlias alias="VTeacherRole" type="jxau.sms.lyx.vo.VTeacherRole" />
 		<!-- 李轶翔部分 结束 -->
 		<!-- 赖辉强部分 开始 -->
 		<typeAlias alias="StuAdvInfo" type="jxau.sms.thomas.po.StuAdvInfo" />

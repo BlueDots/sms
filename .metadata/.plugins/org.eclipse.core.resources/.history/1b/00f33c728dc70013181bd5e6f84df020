@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="jxau.sms.lyx.tecBasicInfo.dao">
+
+		<select id="findAllTeacherRoleInfo" resultMap="VTeacherRoleList">
+			select teacherNo,teacherName,sex,political,teacherTitle,worktime from tec_basic_info
+			where 1=1
+			<if test="teacherNo!=null">
+				and teacherNo = #{teacherNo}
+			</if>
+			<if test="teacherName!=null">
+				and teacherName = #{teacherName}
+			</if>
+		</select>
+		
+		 <resultMap type="VTeacherRole" id="VTeacherRoleList">
+		        <id column="teacherNo" property="teacherNo" />
+		        <result column="teacherName" property="teacherName" />
+		        <result column="sex" property="sex" />
+		        <result column="political" property="political" />
+		        <result column="teacherTitle" property="teacherTitle" />
+		        <result column="worktime" property="worktime" />
+  		 </resultMap>
+ 
+	 	<select id="findRoleNameByTeacherNo" resultType="java.lang.String">
+	 			select r.roleName from role_info r,teacher_role tr
+	 			where r.roleNo = tr.roleNo and teacherNo = #{teacherNo} 
+	 	</select>
+	 	
+	 	<select id="findDepartmentByTeacherNo" resultType="java.lang.String">
+	 			select d.department from dep_info d,dep_teacher dt
+	 			where d.departNo = dt.departNo and teacherNo = #{teacherNo} 
+	 	</select>
+ 
+</mapper>

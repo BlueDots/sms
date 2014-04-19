@@ -37,6 +37,14 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dom4j/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/struts2-json-plugin-2.3.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+>>>>>>> 070c52b021dc972faed92599681867fc941b2c37
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

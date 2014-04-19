@@ -209,6 +209,7 @@ on delete no action on update cascade;
       departNo char(4),
       majorInfo varchar(150),
       majorNumber int default 0,
+      
       majorState tinyint default 0
  )engine = innodb;
 ##alter table major_info modify majorState tinyint default 0;
@@ -229,12 +230,17 @@ on  delete no action on update  cascade;
       schoolDate date,
       studyTime tinyint ,
       classState tinyint default 0,
+      teacherNo char(4),
+      foreign key (teacherNo)  references tec_basic_info(teacherNo),
+      
       foreign key  (majorNo) references major_info(majorNo)
       on delete no action on update cascade
      
  ) ENGINE=innodb; 
 
  alter table class_info add index  classFkIndex(majorNo);
+ ##alter table class_info add column teacherNo char(4);
+ ##desc class_info;
 ##创建班级奖学金统计表14
 create table class_statistical(
 	term varchar(20),
@@ -326,7 +332,7 @@ create unique index purviewUrl_index on purview_info(purviewUrl);
 
 ##角色信息表18
 create table role_info(
-	roleNo int primary key,
+	roleNo int primary key auto_increment,
 	roleName varchar(45) not null,
 	createTime date,
 	roleDescription varchar(255)
@@ -341,7 +347,7 @@ create table teacher_role(
 	foreign key (roleNo)  references role_info(roleNo)
 );
 
-##教师权限表20
+##教师角色权限表20
 create table teacher_purview(
 	teacherNo char(4),
 	purviewNo int,

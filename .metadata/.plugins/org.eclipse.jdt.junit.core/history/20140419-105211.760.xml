@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="DaoTest.test (2)" project="sms" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="test" classname="jxau.sms.lyx.tecBasicInfo.dao.DaoTest" time="3.676"/>
+</testrun>

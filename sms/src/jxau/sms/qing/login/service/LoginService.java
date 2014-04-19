@@ -6,20 +6,11 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-
-
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import org.springframework.stereotype.Service;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
+import jxau.sms.qing.exception.LoginException;
 import jxau.sms.qing.po.Student;
 
 @Service("loginService")
@@ -37,7 +28,7 @@ public class LoginService implements GlobalServiceInterface{
 			return this.selectStudent(userId,password);
 		} else if(userId.length()==4){
 			return this.selectTeacher(userId, password);
-		} else return false;
+		} else throw new LoginException(LoginException.nameOrPsdError);
 	}
 	
 	public boolean selectStudent(String studentNo,String password){
@@ -47,9 +38,12 @@ public class LoginService implements GlobalServiceInterface{
 		student.put("stuPassword", password);
         stu = dao.selectOne("jxau.sms.qing.login.dao.selectStudent",student);
         if(stu != null){
+        	if(stu.getStuState() != 1){
+        		throw new LoginException(LoginException.stateDatedError);
+        	}
         	return true;
         } else {
-        	return false;
+        	throw new LoginException(LoginException.nameOrPsdError);
         }
 	}
 	
@@ -62,7 +56,7 @@ public class LoginService implements GlobalServiceInterface{
         if(count == 1){
         	return true;
         } else {
-        	return false;
+        	throw new LoginException(LoginException.nameOrPsdError);      	
         }
 	}
 

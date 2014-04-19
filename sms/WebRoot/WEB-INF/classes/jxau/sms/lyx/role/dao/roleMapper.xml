@@ -27,4 +27,11 @@
 			roleName like Concat('%',#{roleName},'%');
 		</if>
 	</select>
+	
+	<insert id="saveRole" parameterType="RoleInfo" keyProperty="roleNo" keyColumn="roleNo" useGeneratedKeys="true">
+			insert into  role_info(roleNo,roleName,createTime,roleDescription)
+			values (#{roleNo},#{roleName},#{createTime},#{roleDescription})		
+	</insert>
+	
+	
 </mapper>

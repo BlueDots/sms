@@ -7,7 +7,6 @@
 
 package jxau.sms.thomas.vo;
 
-import java.util.Date;
 
 /** 
  * @ClassName: StuAward
@@ -20,7 +19,7 @@ import java.util.Date;
 public class StuAdvVo {
 	
 	private String studentNo;
-	private String name;
+	private String studentName;
 	private int sex;
 	private String college;
 	private String major;
@@ -30,18 +29,17 @@ public class StuAdvVo {
 	private String advLevel;
 	private String  examState;
 	private String remarks;
-	
 	public String getStudentNo() {
 		return studentNo;
 	}
 	public void setStudentNo(String studentNo) {
 		this.studentNo = studentNo;
 	}
-	public String getName() {
-		return name;
+	public String getStudentName() {
+		return studentName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 	public int getSex() {
 		return sex;

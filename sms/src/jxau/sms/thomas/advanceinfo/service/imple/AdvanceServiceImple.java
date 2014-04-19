@@ -28,8 +28,9 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 	public <T> List<T> searchListByAccurate(Map<String, Object> param,
 			int status) {
 		// TODO Auto-generated method stub
+		
 		List<StuAdvInfo> stuAdvInfo = new ArrayList<StuAdvInfo>();
-		stuAdvInfo = dao.select("jxau.sms.advanceinfo.dao.findAdvInfoById", param);
+		stuAdvInfo = dao.select("jxau.sms.advanceinfo.dao.findAdvInfo", param);
 		return (List<T>) stuAdvInfo;
 	}
 
@@ -41,7 +42,8 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 	}
 
 	@Override
-	public <T> List<T> searchByAccurate(Map<String, Object> param, PageVo pageVo ,int status) {
+	public <T> List<T> searchByAccurate(Map<String, Object> param,
+			PageVo pageVo, int status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -63,6 +65,9 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	 
+
 
 	 
 }

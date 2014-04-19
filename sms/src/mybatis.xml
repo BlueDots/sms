@@ -44,7 +44,7 @@
 		<!-- 李轶翔部分 结束 -->
 		<!-- 赖辉强部分 开始 -->
 		<typeAlias alias="StuAdvInfo" type="jxau.sms.thomas.po.StuAdvInfo" />
-
+		<typeAlias alias="StuAdvVo" type="jxau.sms.thomas.vo.StuAdvVo" />
 		<!-- 赖辉强部分 结束 -->
 	</typeAliases>
 

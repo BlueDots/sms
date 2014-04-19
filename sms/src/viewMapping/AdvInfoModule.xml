@@ -6,7 +6,7 @@
 	3.property中value表示该字段的多值属性；
 -->
 <mapping>
-	<view id="0100" type="StuAdvInfoVo">
+	<view id="0100" type="jxau.sms.thomas.vo.StuAdvVo">
 	<column name="studentNo" value="学号" multiply="false">
 		</column>
 		<column name="name" value="姓名" multiply="false">

@@ -17,15 +17,46 @@
         <result column="examState" property="examState" />
         <result column="remarks" property="remarks" />
  	</resultMap>
+ 	
+ 	<resultMap type="StuAdvVo" id="listStuAdvVo"><!-- 查询返回集合类型的配置 -->
+        <result column="studentNo" property="studentNo" />
+        <result column="studentName" property="studentName" />
+        <result column="sex" property="sex" />
+        <result column="college" property="college" />
+        <result column="major" property="major" />
+        <result column="className" property="className" />
+        <result column="advanceActivity" property="advanceActivity" />
+        <result column="advLevel" property="advLevel" />
+        <result column="advTime" property="advTime" />
+        <result column="examState" property="examState" />
+        <result column="remarks" property="remarks" />
+ 	</resultMap>
 
-    <select id="findAdvInfoById" parameterType="java.util.Map" statementType="CALLABLE" resultMap="listStuAdvInfo">
-		<!-- {call adv_info_proc(#{studentNo})}--> <!--使用存储过程--> 
-       select * from stu_adv_info sav where sav.studentNo = #{studentNo}
+    <select id="findAdvInfo" parameterType="java.util.Map"  resultMap="listStuAdvVo">
+		<!-- {call adv_info_proc(#{studentNo})}
+		select * from stu_adv_info sav where sav.studentNo = #{studentNo}
+		--> <!--使用存储过程--> 
+		 select sb.studentNo,sb.studentName,sb.sex,sb.college,sb.major,sb.className,sa.advanceActivity,sa.advTime,sa.advLevel,sa.examState,sa.remarks
+	   from stu_basic_info sb inner join stu_adv_info sa on sb.studentNo = sa.studentNo where sb.studentNo = #{studentNo};
     </select>
     
     <select id="findAdvInfoByLevel" parameterType="java.util.Map" statementType="CALLABLE" resultType="int">
 		{call adv_numbers_proc(#{advLevel,jdbcType=String,mode=IN},  
     						   #{numbers,jdbcType=INTEGER,mode=OUT}} <!--使用存储过程--> 
     </select>
-    
+     <insert id="adAdvInfo" parameterType="java.util.List">
+		insert into stu_adv_info(awardNo,studentNo,advanceActivity,advLevel,advTime,examState,remarks)
+			values
+			<foreach collection="list" item="item" index="index" separator="," >  
+				(null,#{item.studentNo},#{item.advanceActivity},#{item.advLevel},#{item.advTime},#{item.examState},#{item.remarks}) 
+			</foreach>
+    </insert>
+      <update id="updateAdvInfo" parameterType="java.util.List">
+		insert into stu_adv_info(awardNo,studentNo,advanceActivity,advLevel,advTime,examState,remarks)
+			values
+			<foreach collection="list" item="item" index="index" separator="," >  
+				(null,#{item.studentNo},#{item.advanceActivity},#{item.advLevel},#{item.advTime},#{item.examState},#{item.remarks}) 
+			</foreach>
+    </update>
+ 
 </mapper>

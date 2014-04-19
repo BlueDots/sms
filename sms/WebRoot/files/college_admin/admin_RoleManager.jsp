@@ -20,6 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>学生工作管理系统</title>
 	
+		<script src="<%=basePath%>/js/jquery-1.10.2.js"></script>
+		<script src="<%=basePath%>/js/admin/jquery.cookie.js"></script>
+		<script src="<%=basePath%>/js/admin/jquery.treeview.js"></script>
+		<script src="<%=basePath%>/js/date.js"></script>
+		<script src="<%=basePath%>/js/testSearch.js"></script>
+	
 		<link href="<%=basePath%>/css/css.css" rel="stylesheet" type="text/css" />
 		<link href="<%=basePath%>/css/style.css" rel="stylesheet" type="text/css" />
 		<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -83,9 +89,6 @@ function link() {
 	document.getElementById("fom").submit();
 }
 </script>
-<script src="<%=basePath%>/js/date.js"></script>
-<script src="<%=basePath%>/js/jquery-1.10.2.js"></script>
-<script src="<%=basePath%>/js/testSearch.js"></script>
 
 </head>
   
@@ -143,7 +146,7 @@ function link() {
 																			<a href="#">导入</a>
 																		</li>
 																		<li>
-																			<a  href="<%=basePath%>/files/college_admin/admin_addRole.jsp">手动录入</a>
+																			<a  href="RoleManager/rolePurview!PurviewDisplay">手动录入</a>
 																		</li>
 																	</ul>
 																</li>

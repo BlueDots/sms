@@ -2,17 +2,17 @@
     <Bean Class="com.genuitec.eclipse.sqlexplorer.utils.ConnectionProfile">
         <activate>false</activate>
         <driverIdentifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
-            <string>-6f70553e:14554f56d10:-7f95</string>
+            <string>7809ec55:145744e8349:-7f6f</string>
         </driverIdentifier>
         <identifier Class="net.sourceforge.squirrel_sql.fw.id.UidIdentifier">
             <string>-6f70553e:14554f56d10:-7fda</string>
         </identifier>
-        <name>mysqlSMS</name>
+        <name>mysql</name>
         <password encryption="true">U6gh0GaqlQc=</password>
         <promptForPassword>false</promptForPassword>
         <schema Indexed="true"/>
         <schemaDisplayPolicy>0</schemaDisplayPolicy>
-        <url>jdbc:mysql:///sms</url>
+        <url>jdbc:mysql://localhost:3306/sms</url>
         <userName>root</userName>
     </Bean>
     <Bean Class="com.genuitec.eclipse.sqlexplorer.utils.ConnectionProfile">

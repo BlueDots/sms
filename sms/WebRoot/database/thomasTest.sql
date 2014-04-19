@@ -1,3 +1,5 @@
+##
+select * from stu_basic_info;
 ##评优评先项目信息
 insert into adv_item values(400,'优秀三好学生','2011-09-02','省级',null,null);
 insert into adv_item values(401,'优秀学生干部','2011-09-02','省级',null,null);

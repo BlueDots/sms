@@ -16,7 +16,7 @@ public class AdvanceInfoTest {
 		Dao dao = (Dao) applicationContext.getBean("dao");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("studentNo", "20111826");
-		dao.selectOne("jxau.sms.advanceinfo.dao.findAdvInfoById",param);
+		System.out.print(dao.select("jxau.sms.advanceinfo.dao.findAdvInfo",param));
 	}
 	@Test
 	public void testService(){

@@ -22,6 +22,7 @@ public class UserPurviewManagerServiceImpl implements GlobalServiceInterface {
 		this.dao = dao;
 	}
 
+	//根据条件（角色编号或者用户编号）查询权限
 	@Override
 	public <PurviewInfo> List<PurviewInfo> searchListByAccurate(Map<String, Object> param,
 			int status) {

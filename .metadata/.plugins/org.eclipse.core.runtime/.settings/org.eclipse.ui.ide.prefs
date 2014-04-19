@@ -1,12 +1,10 @@
-<<<<<<< HEAD
-#Sun Apr 13 19:55:37 CST 2014
-=======
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=c88b438619243e8f384ccb00750a24f10b3824f0
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1\:7,1
 PROBLEMS_FILTERS_MIGRATE=true
->>>>>>> c88b438619243e8f384ccb00750a24f10b3824f0
 eclipse.preferences.version=1
-tipsAndTricks=false
-platformState=1361248736876
-quickStart=false
-PROBLEMS_FILTERS_MIGRATE=true
+platformState=1361248737736
+quickStart=true
+tipsAndTricks=true

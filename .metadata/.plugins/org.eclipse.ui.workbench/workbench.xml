@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="80" version="2.0">
+<workbench progressCount="48" version="2.0">
 <workbenchAdvisor/>
 <window height="744" maximized="true" width="1020" x="491" y="70">
 <fastViewData fastViewLocation="1024"/>
@@ -8,7 +8,7 @@
 </perspectiveBar>
 <coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="266" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="260" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="com.genuitec.eclipse.j2eedt.core.ejb" itemType="typeToolBarContribution" x="55" y="22"/>
 <coolItem id="com.genuitec.eclipse.uml.actions" itemType="typeToolBarContribution" x="61" y="22"/>
@@ -31,13 +31,13 @@
 <coolItem id="com.genuitec.eclipse.j2eedt.core.editor.tld" itemType="typePlaceholder" x="38" y="22"/>
 <coolItem id="com.genuitec.eclipse.webdesigner3.editors.html" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.genuitec.eclipse.webdesigner3.editors.jsp" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.genuitec.eclipse.webdesigner3.editors.jsp" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="com.genuitec.eclipse.struts2.editor" itemType="typePlaceholder" x="342" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -46,10 +46,33 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_userRole.jsp" partName="admin_userRole.jsp" path="G:/studentManagerSystem/sms/sms/WebRoot/files/college_admin/admin_userRole.jsp" title="admin_userRole.jsp" tooltip="sms/WebRoot/files/college_admin/admin_userRole.jsp" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/WebRoot/files/college_admin/admin_userRole.jsp"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="tecBasicInfoMapper.xml" partName="tecBasicInfoMapper.xml" path="G:/studentManagerSystem/sms/sms/src/jxau/sms/lyx/tecBasicInfo/dao/tecBasicInfoMapper.xml" title="tecBasicInfoMapper.xml" tooltip="sms/src/jxau/sms/lyx/tecBasicInfo/dao/tecBasicInfoMapper.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/src/jxau/sms/lyx/tecBasicInfo/dao/tecBasicInfoMapper.xml"/>
+</editor>
+<editor id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="yibaoResultMapper.xml" partName="yibaoResultMapper.xml" path="G:/studentManagerSystem/sms/sms/src/jxau/sms/anping/yibao/dao/yibaoResultMapper.xml" title="yibaoResultMapper.xml" tooltip="sms/src/jxau/sms/anping/yibao/dao/yibaoResultMapper.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/src/jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DepInfo.java" partName="DepInfo.java" path="G:/studentManagerSystem/sms/sms/src/jxau/sms/anping/po/DepInfo.java" title="DepInfo.java" tooltip="sms/src/jxau/sms/anping/po/DepInfo.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/src/jxau/sms/anping/po/DepInfo.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="180" selectionTopPixel="75"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VTeacherRole.java" partName="VTeacherRole.java" path="G:/studentManagerSystem/sms/sms/src/jxau/sms/lyx/vo/VTeacherRole.java" title="VTeacherRole.java" tooltip="sms/src/jxau/sms/lyx/vo/VTeacherRole.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/sms/src/jxau/sms/lyx/vo/VTeacherRole.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="225"/>
+</editor>
 </editors>
 <views>
 <view id="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" partName="SQL Results">
@@ -77,8 +100,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (100 of 5055 items)"/>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings (100 of 5202 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="120" org.eclipse.ui.ide.markerType="120" org.eclipse.ui.ide.pathField="160" org.eclipse.ui.ide.resourceField="120" org.eclipse.ui.ide.severityAndDescriptionField="400"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -125,7 +148,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="com.genuitec.myeclipse.perspective.myeclipseperspective">
+<perspectives activePart="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" activePerspective="com.genuitec.myeclipse.perspective.myeclipseperspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="com.genuitec.myeclipse.perspective.MyEclipsePerspectiveFactory" id="com.genuitec.myeclipse.perspective.myeclipseperspective" label="MyEclipse Java Enterprise"/>
 <alwaysOnActionSet id="com.genuitec.myeclipse.actions.deploytools"/>
@@ -248,7 +271,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.3217712" ratioLeft="436" ratioRight="919" relationship="2" relative="cvslocation"/>
+<info part="org.eclipse.ui.editorss" ratio="0.25535056" ratioLeft="346" ratioRight="1009" relationship="2" relative="cvslocation"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@87281f" ratio="0.75" ratioLeft="606" ratioRight="202" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
@@ -258,7 +281,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@15b4804" ratio="0.55" ratioLeft="352" ratioRight="288" relationship="4" relative="org.eclipse.ui.internal.ViewStack@87281f">
-<folder activePageID="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" appearance="2" expanded="2">
+<folder activePageID="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.DatabaseView" label="DB Browser"/>
 <page content="com.genuitec.eclipse.sqlexplorer.views.SQLResultsView" label="SQL Results"/>
@@ -271,7 +294,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottom" ratio="0.75" ratioLeft="480" ratioRight="160" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.7324415" ratioLeft="438" ratioRight="160" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -315,12 +338,113 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/sms/src/jxau/sms/lyx/tecBasicInfo/dao/tecBasicInfoMapper.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/sms/src/jxau/sms/lyx/vo/VTeacherRole.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/sms/src/mybatis.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/sms/src/jxau/sms/anping/po/DepInfo.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/sms/src/jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/sms/src/jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" path="/sms/WebRoot/files/college_admin/admin_userRole.jsp"/>
+</editors>
+<item historyLabel="yibaoSelectMapper.xml" index="5"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="yibaoSelectMapper.xml" index="5"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="491" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="491" y="0"/>
+</item>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="532" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="491" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="293" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="293" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="293" y="0"/>
+</item>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="293" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="mybatis.xml" index="2"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="293" y="0"/>
+</item>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="yibaoResultMapper.xml" index="4"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="585" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="458" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="DepInfo.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="DepInfo.java" index="3">
+<position info="not_deleted" x="119" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="DepInfo.java" index="3">
+<position info="not_deleted" x="180" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="DepInfo.java" index="3">
+<position info="not_deleted" x="180" y="0"/>
+</item>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="admin_userRole.jsp" index="6"/>
+<item historyLabel="tecBasicInfoMapper.xml" index="0"/>
+<item historyLabel="VTeacherRole.java" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="tecBasicInfoMapper.xml" index="0"/>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topleft"/>
+<trimItem IMemento.internal.id="bottomleft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@15b4804"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@87281f"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -328,54 +452,55 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewListPackage.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/PurviewListPackage.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/PurviewListPackage.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VTeacherRole.java" tooltip="sms/src/jxau/sms/lyx/vo/VTeacherRole.java">
+<persistable path="/sms/src/jxau/sms/lyx/vo/VTeacherRole.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserPurviewManagerServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserPurviewManagerServiceImpl.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DepInfo.java" tooltip="sms/src/jxau/sms/anping/po/DepInfo.java">
+<persistable path="/sms/src/jxau/sms/anping/po/DepInfo.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserHandlePurview.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/UserHandlePurview.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/UserHandlePurview.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="mybatis.xml" tooltip="sms/src/mybatis.xml">
+<persistable path="/sms/src/mybatis.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SystemPurviewServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/SystemPurviewServiceImpl.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="yibaoSelectMapper.xml" tooltip="sms/src/jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml">
+<persistable path="/sms/src/jxau/sms/anping/yibao/dao/yibaoSelectMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AllocationPurviewStandard.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/AllocationPurviewStandard.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/AllocationPurviewStandard.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="yibaoResultMapper.xml" tooltip="sms/src/jxau/sms/anping/yibao/dao/yibaoResultMapper.xml">
+<persistable path="/sms/src/jxau/sms/anping/yibao/dao/yibaoResultMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="purviewMapper.xml" tooltip="sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml">
-<persistable path="/sms/src/jxau/sms/lyx/purview/dao/purviewMapper.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="tecBasicInfoMapper.xml" tooltip="sms/src/jxau/sms/lyx/tecBasicInfo/dao/tecBasicInfoMapper.xml">
+<persistable path="/sms/src/jxau/sms/lyx/tecBasicInfo/dao/tecBasicInfoMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleSystemPurviewAction.java" tooltip="sms/src/jxau/sms/lyx/purview/action/RoleSystemPurviewAction.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/action/RoleSystemPurviewAction.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_userRole.jsp" tooltip="sms/WebRoot/files/college_admin/admin_userRole.jsp">
+<persistable path="/sms/WebRoot/files/college_admin/admin_userRole.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleHandlePurview.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/RoleHandlePurview.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/RoleHandlePurview.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="liyixiangTest.sql" tooltip="sms/WebRoot/database/liyixiangTest.sql">
+<persistable path="/sms/WebRoot/database/liyixiangTest.sql"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PurviewServiceImplTest.java" tooltip="sms/src/jxau/sms/lyx/purview/service/impl/PurviewServiceImplTest.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/service/impl/PurviewServiceImplTest.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_addRole.jsp" tooltip="sms/WebRoot/files/college_admin/admin_addRole.jsp">
+<persistable path="/sms/WebRoot/files/college_admin/admin_addRole.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="jquery-ui-1.8.21.custom.min.js" tooltip="sms/WebRoot/js/jquery-ui-1.8.21.custom.min.js">
-<persistable path="/sms/WebRoot/js/jquery-ui-1.8.21.custom.min.js"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleServiceImpl.java" tooltip="sms/src/jxau/sms/lyx/role/service/impl/RoleServiceImpl.java">
+<persistable path="/sms/src/jxau/sms/lyx/role/service/impl/RoleServiceImpl.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.webdesigner3.editors.jsp" name="admin_systemPurview.jsp" tooltip="sms/WebRoot/files/college_admin/admin_systemPurview.jsp">
-<persistable path="/sms/WebRoot/files/college_admin/admin_systemPurview.jsp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="roleMapper.xml" tooltip="sms/src/jxau/sms/lyx/role/dao/roleMapper.xml">
+<persistable path="/sms/src/jxau/sms/lyx/role/dao/roleMapper.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.jsdt.ui.CompilationUnitEditor" name="lyx.js" tooltip="sms/WebRoot/js/admin/lyx.js">
-<persistable path="/sms/WebRoot/js/admin/lyx.js"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.struts2.editor" name="struts.xml" tooltip="sms/src/struts.xml">
-<persistable path="/sms/src/struts.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.sqlexplorer.editors.SQLEditor" name="smsCreate.sql" tooltip="sms/WebRoot/database/smsCreate.sql">
+<persistable path="/sms/WebRoot/database/smsCreate.sql"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.genuitec.eclipse.struts2.editor" name="lyxAction.xml" tooltip="sms/src/lyxAction.xml">
 <persistable path="/sms/src/lyxAction.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SystemPurviewAction.java" tooltip="sms/src/jxau/sms/lyx/purview/action/SystemPurviewAction.java">
-<persistable path="/sms/src/jxau/sms/lyx/purview/action/SystemPurviewAction.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RoleSystemPurviewAction.java" tooltip="sms/src/jxau/sms/lyx/purview/action/RoleSystemPurviewAction.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/action/RoleSystemPurviewAction.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TecSystemPurviewAction.java" tooltip="sms/src/jxau/sms/lyx/purview/action/TecSystemPurviewAction.java">
+<persistable path="/sms/src/jxau/sms/lyx/purview/action/TecSystemPurviewAction.java"/>
 </file>
 </mruList>
 </workbench>

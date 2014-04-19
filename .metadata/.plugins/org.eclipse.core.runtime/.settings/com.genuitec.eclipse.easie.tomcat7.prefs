@@ -1,7 +1,7 @@
-ENDORSED_DIRS="D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0/common/endorsed"
-JDK_HOME=D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\JavaEE
+ENDORSED_DIRS="G\:\\Tomcat\\tomcat/common/endorsed"
+JDK_HOME=C\:\\Program Files\\Java\\jdk1.7.0\\jre
 JDK_INSTALLATION_NAME=jdk1.7.0
-LIBRARY_PATH="D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\JavaEE\\bin;D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0\\bin"
+LIBRARY_PATH="C\:\\Program Files\\Java\\jdk1.7.0\\jre\\bin;G\:\\Tomcat\\tomcat\\bin"
 SERVER_ENABLEMENT=true
 TOMCAT_BASE=G\:\\Tomcat\\tomcat
 TOMCAT_HOME=G\:\\Tomcat\\tomcat

@@ -100,7 +100,7 @@ function initForm() {
 	var firstMajorData = $("<option value='-1'>全部</option>");
 	var firstClassData = $("<option value='-1'>全部</option>");
 	var input = $("<input name='student' value='输入学号或者姓名' id='studentNoOrName' size='14'>");
-	var button = $("<input type='button' id='accurateQuery' value='查询'>");
+	var button = $("#accurateSearch");
 	//插入下拉框
 	form.append("学院&nbsp;");
 	collegeSelect.appendTo(form);
@@ -114,8 +114,10 @@ function initForm() {
 	form.append("&nbsp;");
 	input.appendTo(form);
 	form.append("&nbsp;");
-	button.appendTo(form);
+	//添加失焦获焦事件
 	$.focusblur("#studentNoOrName");
+    form.append(button);
+	button="";
 }
 //input失去焦点和获得焦点jquery焦点事件插件
 jQuery.focusblur = function(focusid) {

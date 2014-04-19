@@ -64,8 +64,8 @@
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="70%">
-											<form id="collegeList" action="<%=basePath %>StuBasicInfo/queryStuBasicInfoLists!">
-											
+											<form id="collegeList">
+												<input type="button" value="查询" id="accurateSearch">
 											</form>
 <%-- 													排序
 												<select name="排序">

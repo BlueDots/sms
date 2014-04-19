@@ -19,6 +19,7 @@ import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.service.YiBaoService;
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.commom.vo.PageVo;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -29,6 +30,38 @@ import com.opensymphony.xwork2.ModelDriven;
 public class YiBaoAction extends ActionSupport implements
 		ModelDriven<HosInsuranceInfo> {
 
+	/**
+	 * 校级工作人员查询出所有的学生医保信息
+	 * anping
+	 * TODO
+	 * 上午9:06:42
+	 * @return
+	 */
+	public String getAllHosByTeacher(){
+		String result="teacherShowHoss";
+		PageVo  pageVo  = new PageVo();
+		String[] currentPages = (String[]) parameters.get("currentPage");
+		
+		pageVo.setCurrentPage(currentPages==null?0:Integer.parseInt(currentPages[0]));
+		pageVo.setSize(6);
+		List<HosInsuranceInfo> hoss=null;
+		try {
+			hoss = yiBaoService.searchByAccurate(null, pageVo, -1);
+			//将数据发给前台去
+			
+			request.put("pageVo",pageVo);
+			request.put("hoss", hoss);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result=ERROR;
+		}
+		
+		
+		return result;
+	}
+	
+	
 	/**
 	 * 学生修改自己的医保信息 anping TODO 下午11:39:39
 	 * 
@@ -144,5 +177,6 @@ public class YiBaoAction extends ActionSupport implements
 	private HosInsuranceInfo hosInsuranceInfo = new HosInsuranceInfo();
 	private String telephone;
 	private YiBaoService yiBaoService;
+	
 	private static final long serialVersionUID = 1L;
 }

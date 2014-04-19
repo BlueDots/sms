@@ -13,6 +13,10 @@
 			<id property="studentNo" column="studentNo" />
 			<result column="studentName" property="studentName" />
 			<result column="sex" property="sex" />
+			<result column="idCard" property="idCard" />
+			<result column="college" property="college" />
+			<result column="className" property="className" />
+			<result column="telephone" property="telephone" />
 		</association>
 	</resultMap>
 

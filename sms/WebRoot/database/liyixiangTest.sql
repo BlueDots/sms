@@ -140,7 +140,7 @@ where 1=1 and teacherNo='1234' and teacherName='jack';
 --update class_info set teacherNo='1234' where  classNo='11050100200908';
 --update class_info set teacherNo='5678' where  classNo='11050101201013';
      
- --insert into dep_teacher values('1105','1234');
-   
+insert into dep_teacher values('1105','1234');
+##select * from tec_basic_info;
  --  insert into dep_teacher values('1105','5678');
    

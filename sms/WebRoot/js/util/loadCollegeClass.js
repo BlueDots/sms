@@ -28,7 +28,7 @@ function setCollegeData() {
 			var departNo = value.departNo;
 			var department = value.department;
 
-			var option = $("<option value='" + departNo + "' >" + department
+			var option = $("<option value='" + department + "' >" + department
 					+ "</option>");
 			collegeSelect.append(option);
 		});
@@ -44,7 +44,7 @@ function setMajorData(value) {
 		$.each(majors, function(index, value) {
 			var major = value.major;
 			var majorNo = value.majorNo;
-			var option = $("<option value='" + majorNo + "' >" + major
+			var option = $("<option value='" + major + "' >" + major
 					+ "</option>");
 			majorSelect.append(option);
 		});
@@ -87,7 +87,7 @@ function initMajorListener() {
 			$.each(classs, function(index, value) {
 				var className = value.className;
 				var classNo = value.classNo;
-				var option = $("<option value='" + classNo + "' >" + className
+				var option = $("<option value='" + className + "' >" + className
 						+ "</option>");
 				classSelect.append(option);
 			});
@@ -99,18 +99,40 @@ function initForm() {
 	var firstMajor = $("<option value='-1'>无</option>");
 	var firstMajorData = $("<option value='-1'>全部</option>");
 	var firstClassData = $("<option value='-1'>全部</option>");
-	var input = $("<input name='student' value='输入学号或者姓名' size='12'>");
-	var button = $("<input type='submit' value='查询'>");
+	var input = $("<input name='student' value='输入学号或者姓名' id='studentNoOrName' size='14'>");
+	var button = $("#accurateSearch");
 	//插入下拉框
-	form.append("学院");
+	form.append("学院&nbsp;");
 	collegeSelect.appendTo(form);
-	form.append("方向");
+	form.append("&nbsp;方向&nbsp;");
 	majorSelect.appendTo(form);
-	form.append("班级");
+	form.append("&nbsp;班级&nbsp;");
 	classSelect.appendTo(form);
 	collegeSelect.append(firstMajor);
 	majorSelect.append(firstMajorData);
 	classSelect.append(firstClassData);
+	form.append("&nbsp;");
 	input.appendTo(form);
-	button.appendTo(form);
+	form.append("&nbsp;");
+	//添加失焦获焦事件
+	$.focusblur("#studentNoOrName");
+    form.append(button);
+	button="";
 }
+//input失去焦点和获得焦点jquery焦点事件插件
+jQuery.focusblur = function(focusid) {
+	 var focusblurid = $(focusid);
+	 var defval = focusblurid.val();
+	         focusblurid.focus(function(){
+	 var thisval = $(this).val();
+	 if(thisval==defval){
+	                 $(this).val("");
+	             }
+	        });
+	         focusblurid.blur(function(){
+	 var thisval = $(this).val();
+	 if(thisval==""){
+	               $(this).val(defval);
+	             }
+	         });
+};

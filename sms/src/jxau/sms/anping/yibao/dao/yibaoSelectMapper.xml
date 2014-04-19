@@ -14,7 +14,7 @@
  	-->
 	<select id="findYiBaoByStudentNo" parameterType="java.util.HashMap"
 		resultMap="yibaoResultMap">
-		select insurance.* ,student.studentName,student.sex from
+		select insurance.* ,student.studentName,student.sex ,student.idCard,student.className,student.college ,student.telephone from
 		hos_insurance_info insurance,stu_basic_info student
 		where
 		insurance.studentNo=#{studentNo}
@@ -36,7 +36,7 @@
      <select id="findYiBaoByStudentNum" parameterType="java.util.HashMap"
 		resultType="java.lang.Long">
 		select count(*) from
-		hos_insurance_info insurance,stu_basic_info student
+		hos_insurance_info insurance,stu_basic_info  student
 		where
 		insurance.studentNo=#{studentNo}
 		<if test="hosState != null">
@@ -61,7 +61,7 @@
 	-->
 	<select id="findYiBaoById" parameterType="java.util.HashMap"
 		resultMap="yibaoResultMap">
-		select insurance.* ,student.studentName,student.sex from
+		select insurance.* ,student.studentName,student.sex ,student.idCard,student.className,student.college,student.telephone from
 		hos_insurance_info insurance,stu_basic_info student
 		where
 		insurance.hosNo=#{hosNo}
@@ -85,7 +85,7 @@
 	 -->
      	<select id="findYiBaoByCondition" parameterType="java.util.HashMap"
 		resultMap="yibaoResultMap">
-		select insurance.* ,student.studentName,student.sex from
+		select insurance.* ,student.studentName,student.sex ,student.idCard ,student.className,student.college,student.telephone from
 		hos_insurance_info insurance,stu_basic_info student
 		where
 		 insurance.studentNo=student.studentNo

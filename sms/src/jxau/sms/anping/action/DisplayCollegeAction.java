@@ -36,7 +36,7 @@ public class DisplayCollegeAction extends ActionSupport {
 		TecBasicInfo teacher = (TecBasicInfo) session.get("teacher");
 		@SuppressWarnings("unchecked")
 		List<RoleInfo> roles = (List<RoleInfo>) session.get("roles");
-		// 拿到参数为　主要用来判断是拿取学院还是方向还是班级type 的数据
+		// 拿到参数为　主要用来判断是拿取学院、方向还是班级type 的数据
 		String[] type = (String[]) params.get("type");
 		String[] departNo = (String[]) params.get("departNo");
 		String[] majorNo = (String[]) params.get("majorNo");

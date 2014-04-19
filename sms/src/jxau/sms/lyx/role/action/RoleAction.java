@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.lyx.exception.NotFoundDataException;
+import jxau.sms.lyx.po.PurviewInfo;
 import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.purview.service.impl.SystemPurviewServiceImpl;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,7 +30,15 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 	private PageVo pageVo = new PageVo();
 	
 	private RoleServiceImpl roleServiceImpl;
+	private SystemPurviewServiceImpl systemPurviewServiceImpl;
+	private List<PurviewInfo> purviewList = new ArrayList<PurviewInfo>();
 	
+	@Resource(name="SystemPurviewServiceImpl")
+	public void setSystemPurviewServiceImpl(
+			SystemPurviewServiceImpl systemPurviewServiceImpl) {
+		this.systemPurviewServiceImpl = systemPurviewServiceImpl;
+	}
+
 	@Resource(name="RoleServiceImpl")
 	public void setRoleServiceImpl(RoleServiceImpl roleServiceImpl) {
 		this.roleServiceImpl = roleServiceImpl;
@@ -44,6 +54,22 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		this.roleInfoList = roleInfoList;
 	}
 
+	public List<PurviewInfo> getPurviewList() {
+		return purviewList;
+	}
+
+	public void setPurviewList(List<PurviewInfo> purviewList) {
+		this.purviewList = purviewList;
+	}
+
+	/**
+	 * 
+	 * lyx
+	 * TODO:根据角色名称查询
+	 * 下午7:12:00
+	 * @return
+	 * @throws Exception
+	 */
 	public String searchRole() throws Exception{
 		
 		String searchRole = ServletActionContext.getRequest().getParameter("searchRole");
@@ -61,7 +87,14 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		return SUCCESS;
 	}
 	
-	
+	/**
+	 * 
+	 * lyx
+	 * TODO:角色列表显示
+	 * 下午7:12:33
+	 * @return
+	 * @throws Exception
+	 */
 	public String roleExecute() throws Exception{
 		
 		String currentPage = ServletActionContext.getRequest().getParameter("currentPage");
@@ -73,6 +106,39 @@ public class RoleAction extends ActionSupport implements ModelDriven<PageVo>{
 		this.setRoleInfoList(roleInfos);
 		return SUCCESS;
 	}
+
+	/**
+	 * 
+	 * lyx
+	 * TODO:权限树状显示
+	 * 下午7:12:46
+	 * @return
+	 * @throws Exception
+	 */
+	public String PurviewDisplay() throws Exception{
+		
+		List<PurviewInfo> purviewList = systemPurviewServiceImpl.searchListByAccurate(null, 0);
+		this.setPurviewList(purviewList);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 
+	 * lyx
+	 * TODO: 保存角色信息与初始化权限
+	 * 下午7:17:35
+	 * @return
+	 * @throws Exception
+	 */
+	public String addRole() throws Exception{
+		
+		String param = ServletActionContext.getRequest().getParameter("array");
+		String roleName = ServletActionContext.getRequest().getParameter("roleName");
+		String roleDescription = ServletActionContext.getRequest().getParameter("roleDescription");	
+		roleServiceImpl.insertRoleInfoPurview(roleName,roleDescription,param);
+		return SUCCESS;
+	}
+	
 
 	@Override
 	public PageVo getModel() {

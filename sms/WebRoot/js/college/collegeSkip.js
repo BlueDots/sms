@@ -13,8 +13,8 @@ function getStuBasicInfoList(currentPage){
 		//得到数据个数
 		var dataCounts = stuBaisicInfoLists.length;
 		//alert(trLength);
-		//若trLength>2,清空行号1之后的tr
-		if(trLength>2) {
+		//若trLength>1,清空行号1之后的tr
+		if(trLength>1) {
 			for(var i=trLength-1;i>2;i--) {
 				showTableObj.deleteRow(i);
 				trLength--;

@@ -16,7 +16,7 @@
     
     
     <package name="StuBasicInfo" namespace="/" extends="struts-default">  
-        <action name="getStuBasicInfoLists" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
+        <action name="queryStuBasicInfoLists" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
             <result name="success">
             	/files/college/dept_basicInfo.jsp
             </result>

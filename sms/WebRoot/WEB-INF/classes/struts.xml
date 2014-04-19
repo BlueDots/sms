@@ -22,7 +22,11 @@
 
 	<include file="anpingAction.xml"></include>
 	<include file="lyxAction.xml"></include>
+
 	<include file="cjAction.xml"></include>
   
    
+  	<include file="czqAction.xml"></include>
+   
+
 </struts> 

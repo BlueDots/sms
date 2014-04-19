@@ -45,11 +45,11 @@
 		width: "100%",
         scrolling: "yes"
 	});
-
+	$("#tableOfShowStuBasicInfoLists tr:first").css('font-weight','bolder');
 	});
 </script>
 	<body> 
-		<form name="fom" id="fom" method="post" action="">
+		 
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 				<tr>
@@ -64,52 +64,10 @@
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="70%">
-												学院：
-												<select name="学院">
-													<option>
-														软件学院
-													</option>
-													<option>
-														马克思主义学院（政治学院）
-													</option>
-												</select>
-												专业：
-												<select name="专业">
-													<option>
-														请选择
-													</option>
-													<option>
-														软件工程
-													</option>
-													<option>
-														数字媒体
-													</option>
-													<option>
-														软件英语
-													</option>
-												</select>
-												班级：
-												<select name="班级">
-													<option>
-														请选择
-													</option>
-													<option>
-														1101
-													</option>
-													<option>
-														1102
-													</option>
-													<option>
-														1103
-													</option>
-													<option>
-														1104
-													</option>													
-												</select>
-												<input name="textfield" type="text" size="16" value="请输入学号或者姓名" />
-												<input name="Submit4" type="button" class="right-button02"
-													value="查 询" />
-													排序
+											<form id="collegeList" action="<%=basePath %>StuBasicInfo/queryStuBasicInfoLists!">
+											
+											</form>
+<%-- 													排序
 												<select name="排序">
 													<option>
 														学号升序
@@ -117,7 +75,7 @@
 													<option>
 														学号降序
 													</option>
-												</select>
+												</select> --%>
 											</td>
 											<td width="15%" align="center" style="position:relative;left:-80px">
 												<div class="suckerdiv">
@@ -270,60 +228,54 @@
 																	<table width="1300" border="0" cellpadding="4"
 																		cellspacing="1" bgcolor="#464646" class="demo" id="tableOfShowStuBasicInfoLists" >
 																			
-																		<tr class="CTitle" align = "center">
-																			<td height="22" colspan="17" align="center"
-																				style="font-size: 16px">
-																				班级信息 共50人，男生30人，女人20人。
+																		<tr bgcolor="#6795B4" align = "center" >
+																			<td width="2%"  >
+																				<input id = "check1" name="checkbox11" type="checkbox" value="checkbox" onclick = "selectAllAndReverse()"/>
 																			</td>
-																		</tr>
-																		<tr bgcolor="#EEEEEE" align = "center">
-																			<td width="2%">
-																		<input id = "check1" name="checkbox11" type="checkbox" value="checkbox" onclick = "selectAllAndReverse()"/>
-																			</td>
-																			<th width="3%" >
+																			<td width="3%" >
 																				<center>照片</center>
-																			</th>																				
-																			<th width="4%">
+																			</td>																				
+																			<td width="4%">
 																				<center>学号</center>
-																			</th>
-                                                                            <th width="3%">
+																			</td>
+                                                                            <td width="3%">
 																				<center>姓名</center>
-																			</th>
-																			<th width="5%">
+																			</td>
+																			<td width="5%">
 																				<center>专业</center>
-																			</th>
-																			<th width="5%">
+																			</td>
+																			<td width="5%">
 																				<center>班级</center>
-																			</th>
-																			<th width="3%">
+																			</td>
+																			<td width="3%">
 																				<center>性别</center>
-																			</th>
-																			<th width="3%">
+																			</td>
+																			<td width="3%">
 																				<center>民族</center>
-																			</th>
-																			<th width="3%">
+																			</td>
+																			<td width="3%">
 																				<center>籍贯</center>
-																			</th>
-																			<th width="5%">
+																			</td>
+																			<td width="5%">
 																				<center>政治面貌</center>
-																			</th>
-																			<th width="7%">
+																			</td>
+																			<td width="7%">
 																				<center>身份证号码</center>
-																			</th>
-																			<th width="4%">
+																			</td>
+																			<td width="4%">
 																				<center>学历</center>
-																			</th>
-																			<th width="5%">
+																			</td>
+																			<td width="5%">
 																				<center>英语等级</center>
-																			</th>																			
-																			<th width="7%">
+																			</td>																			
+																			<td width="7%">
 																				<center>银行卡号</center>
-																			<th width="5%">
+																			<td width="5%">
 																				<center>审核状态</center>
-																			</th>
-																			<th width="4%">
+																			</td>
+																			<td width="4%">
 																				<center>备注</center>
-																			</th>		
+																			</td>		
 																		</tr>														
 																	</table>
 																</td>
@@ -386,7 +338,7 @@
 					</td>
 				</tr>
 			</table>
-		</form>
+		 
 		<div id="StuBasicInfoDiv" style="display: none">
 		        	<h2>学生基本信息<a id="btnCloseStuBasicInfoDiv">关闭</a></h2>
 		        	<div class="form">
@@ -539,6 +491,8 @@
 	</body>
 
 <script type="text/javascript" src="<%=basePath%>/js/college/collegeSkip.js">
+</script>
+<script type="text/javascript" src="<%=basePath%>/js/util/loadCollegeClass.js">
 </script>
 
 </html>

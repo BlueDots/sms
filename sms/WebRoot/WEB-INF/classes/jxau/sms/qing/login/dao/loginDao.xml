@@ -2,12 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="jxau.sms.qing.login.dao">  
-  <select id="xxselectStudent"  parameterType= "HashMap"  resultType="int">
-  		select count(1) from stu_info where studentNo = #{studentNo}
-  		 and stuPassword = #{stuPassword};
-  </select>
-  
-  
   <select id="selectStudent"  parameterType= "HashMap"  resultType="jxau.sms.qing.po.Student">
   		select 
   			stu_info.studentNo, studentName, 

@@ -17,10 +17,12 @@ import jxau.sms.anping.po.MajorInfo;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
+import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
 import jxau.sms.util.chenjiang.exception.NullPonterException;
 
 @Service("collegeMajorClassServiceImpl")
-public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
+public class CollegeMajorClassServiceImpl implements CollegeMajorClassInterface {
 
 	private String namespace ="jxau.sms.util.dao.";
 	private Dao dao;
@@ -31,17 +33,7 @@ public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
 		this.dao = dao;
 	}
 
-	
-	
-	/**
-	 * 得到学院list
-	 * 江
-	 * TODO
-	 * 下午12:42:58
-	 * @param pageVo 分页 page为null时，默认得到第一页的数据
-	 * @param status  级别 0,代表只能开到state为0的数据,即激活状态的数据,级别1，可以得到所有状态的数据
-	 * @return
-	 */
+	 
 	public  List<DepInfo> getCollegeLists(Map<String, Object> params,int status,PageVo pageVo) {
 		if(status != 0 && status != 0) 
 			throw new NullPonterException("传入参数status只能为0或1");
@@ -70,15 +62,7 @@ public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
 		return lists;
 	}
 	
-	/**
-	 * 得到专业list
-	 * 江
-	 * TODO
-	 * 下午12:42:58
-	 * @param pageVo 分页 page为null时，默认得到第一页的数据
-	 * @param status  级别 0,代表只能开到state为0的数据,即激活状态的数据,级别1，可以得到所有状态的数据
-	 * @return
-	 */
+	 
 	public  List<MajorInfo> getMajorLists(Map<String, Object> params,int status,PageVo pageVo) {
 		if(params == null)
 			throw new NullPonterException("传入params不能为null");
@@ -116,15 +100,7 @@ public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
 	}
 	
 	
-	/**
-	 * 得到班级list
-	 * 江
-	 * TODO
-	 * 下午12:42:58
-	 * @param pageVo 分页 page为null时，默认得到第一页的数据
-	 * @param status  级别 0,代表只能开到state为0的数据,即激活状态的数据,级别1，可以得到所有状态的数据
-	 * @return
-	 */
+	 
 	public  List<ClassInfo> getClassLists(Map<String, Object> params,int status,PageVo pageVo) {
 		if(params == null)
 			throw new NullPonterException("传入params不能为null");
@@ -161,6 +137,7 @@ public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
 		return lists;
 	}
 		
+	
 	
 	
 	@Override
@@ -217,5 +194,70 @@ public class CollegeMajorClassServiceImpl implements GlobalServiceInterface {
 		}
 		return true;
 	}
+
+
+	@Override
+	public List<DepInfo> searchCollegeByTeacher(TecBasicInfo teacher,
+			List<RoleInfo> roles) {
+		
+		Map<String,Object> params  = new HashMap<String,Object>(2);
+		params.put("teacherNo", teacher.getTeacherNo());
+		params.put("roleName", this.getHighLevelRole(roles));
+	    System.out.println(teacher.getTeacherNo()+"------"+this.getHighLevelRole(roles));
+		List<DepInfo> depInfos= dao.select(namespace+"findDepByTeacherRole", params);
+		
+		return depInfos;
+	}
+
+
+	@Override
+	public List<MajorInfo> searchMajorByTeacher(TecBasicInfo teacher,
+			List<RoleInfo> roles, String departNo) {
+		Map<String,Object> params  = new HashMap<String,Object>(3);
+		params.put("teacherNo", teacher.getTeacherNo());
+		params.put("roleName", this.getHighLevelRole(roles));
+	    params.put("departNo", departNo);
+		List<MajorInfo> majorInfos= dao.select(namespace+"findMajorByDeptTeacherRole", params);
+		
+		return majorInfos;
+	}
+
+
+	@Override
+	public List<ClassInfo> searchClassByTeacher(TecBasicInfo teacher,
+			List<RoleInfo> roles, String departNo, String majorNo) {
+		Map<String,Object> params  = new HashMap<String,Object>(4);
+		params.put("teacherNo", teacher.getTeacherNo());
+		params.put("roleName", this.getHighLevelRole(roles));
+	    params.put("departNo", departNo);
+	    params.put("majorNo",majorNo);
+		List<ClassInfo> majorInfos= dao.select(namespace+"findClassByMajorTeacherRole", params);
+		 return majorInfos;
+	}
+
+	/**
+	 * 拿到最高级别的角色
+	 * anping
+	 * TODO
+	 * 下午6:20:07
+	 * @return
+	 */
+	private String getHighLevelRole(List<RoleInfo> roles){
+		
+		String roleName =null;
+		List<String>  roleNames = new ArrayList<String>(6);
+		for(RoleInfo roleInfo:roles){
+	      	roleNames.add(roleInfo.getRoleName());
+	     
+	 	}
+		roleName = roleNames.contains("班主任")==true?"班主任":null;
+		roleName = roleNames.contains("院级工作人员")==true?"院级工作人员":roleName;
+		roleName = roleNames.contains("院级管理员")==true?"院级管理员":roleName;
+		roleName = roleNames.contains("校级工作人员")==true?"校级工作人员":roleName;
+		roleName = roleNames.contains("校级管理员")==true?"校级管理员":roleName;
+		return roleName;
+	}
+
+	 
 	
 }

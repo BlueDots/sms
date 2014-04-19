@@ -55,6 +55,10 @@ public class StuBasicInfoAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String queryStuBasicInfoLists() {
+		return SUCCESS;
+	}
+	
 	// 获取strtus2 的参数
 	private Map<String, Object> parameters = ActionContext.getContext()
 			.getParameters();

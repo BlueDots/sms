@@ -49,9 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</td>
 											<td width="538">
 												<form action="" id="collegeList">
+													 <input type="button" value="查询" id="accurateSearch">
 												</form>
 												
-													 
+												
 											</td>
 											
 											<td width="47" align="center">

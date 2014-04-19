@@ -100,7 +100,7 @@ function initForm() {
 	var firstMajorData = $("<option value='-1'>全部</option>");
 	var firstClassData = $("<option value='-1'>全部</option>");
 	var input = $("<input name='student' value='输入学号或者姓名' size='12'>");
-	var button = $("<input type='submit' value='查询'>");
+	var button = $("#accurateSearch");
 	//插入下拉框
 	form.append("学院");
 	collegeSelect.appendTo(form);
@@ -112,5 +112,6 @@ function initForm() {
 	majorSelect.append(firstMajorData);
 	classSelect.append(firstClassData);
 	input.appendTo(form);
-	button.appendTo(form);
+    form.append(button);
+	button="";
 }

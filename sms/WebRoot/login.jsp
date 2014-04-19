@@ -1,7 +1,13 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  
 <script language="javascript" type="text/javascript">
@@ -53,44 +59,27 @@
         <td><img src="images/line01.gif" width="5" height="292" /></td>
       </tr>
     </table></td>
-    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <td>
+    
+    
+   <form action="login" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="31%" height="35" class="login-text02">用户名称：<br /></td>
-        <td width="69%"><input name="textfield" type="text" size="30" /></td>
+        <td valign="top"><br /></td><td width="31%" height="35" class="login-text02">用户名：<br /></td>
+        <td width="69%"><input name="username" type="text" size="30" /></td>
       </tr>
       <tr>
-        <td height="35" class="login-text02">密　码：<br /></td>
-        <td><input name="textfield2" type="password" size="33" /></td>
+        <td valign="top"><br /></td><td height="35" class="login-text02">密　码：<br /></td>
+        <td><input name="textfield2" type="password" size="30" /></td>
       </tr>
       <tr>
-        <td height="35" class="login-text02">验证图片：<br /></td>
-        <td><img src="images/pic05.gif" width="109" height="40" /> <a href="#" class="login-text03">看不清楚，换张图片</a></td>
-      </tr>
-      <tr>
-        <td height="35" class="login-text02">请输入验证码：</td>
-        <td><input name="textfield3" type="text" size="30" /></td>
-      </tr>
-      <tr>
-      	<td height="35" class="login-text02">选择身份：</td>
-      	<td>
-      					<select name="select" id="select">
-						    <option value="1">学生</option>
-						    <option value="2">班主任</option>
-						    <option value="3">院级工作人员</option>
-						    <option value="4">校级工作人员</option>
-						    <option value="5">院级管理员</option>
-						    <option value="6">校级管理员</option>
-						    <option value="7">系统管理员</option>
-					      </select> 
-      		</td>
-     	
-      	</tr>
-      <tr>
-        <td height="35">&nbsp;</td>
-        <td><input name="Submit2" type="button" class="right-button01" value="确认登陆" onClick="checkForm()" />
+        <td valign="top"><br /></td><td height="35">&nbsp;</td>
+        <td><input name="Submit2" type="submit" class="right-button01" value="确认登陆" onClick="checkForm()" /> 
           <input name="Submit232" type="reset" class="right-button02" value="重 置" /></td>
       </tr>
-    </table></td>
+    </table>
+    </form>
+    </td>
   </tr>
 </table>
 </body>

@@ -298,7 +298,7 @@ create table hos_insurance_info(
 	baoxiaoRemark TINYTEXT,
 	stateRemark TINYTEXT,
 	returnMark TINYTEXT,
-	hosState varchar(30) default '院级审核中'
+	hosState varchar(30) default '校级审核中'
 )ENGINE=innodb;
 alter table hos_insurance_info
 add  foreign key (studentNo) references  stu_basic_info(studentNo)

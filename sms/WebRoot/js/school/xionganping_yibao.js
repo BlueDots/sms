@@ -12,7 +12,20 @@ function updateDataAboutAcceptResult() {
 		return ;
 	}
 	
-	popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult');
+	var hosNo  = 	$("input[type='checkbox'][name='juming']:checkbox:checked").val();
+	
+	$.getJSON("hosInsurance/hosInsurance!getHosByHosNo?hosNo="+hosNo,function(data){
+		var  hos = data.hosInsuranceInfo;
+		if(hos.hosState=='校级审核中'){
+			alert("该学生的未审核，请前去审核");
+			return ;
+		}
+		 setData("juming",hos);
+		$("#jumingHospitalAddress").html(hos.hospitalAddress);
+		$("#jumingCost").html(hos.cost	);
+		popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult');
+	});
+	
 }
 
 
@@ -27,8 +40,21 @@ function updateDataAboutCompany(){
 		alert("请在商业理赔登记表中勾选一个名单");
 		return;
 	}
-	
-	popup('#medicareDiv', '#acceptResultList', '#btnCloseList')
+	var hosNo  = 	$("input[type='checkbox'][name='company']:checkbox:checked").val();
+	$.getJSON("hosInsurance/hosInsurance!getHosByHosNo?hosNo="+hosNo,function(data){
+		var  hos = data.hosInsuranceInfo;
+	   
+		setData("company",hos);
+		$("#companyBankcardID").html(hos.bankcardID	);
+		if(hos.hosState=='校级审核中'){
+			alert("该学生的未审核，请前去审核");
+			return ;
+		}
+		 
+		popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney') ;
+    });
+  
+
 }
 
 function updateDataAboutReimburse(){
@@ -41,7 +67,18 @@ function updateDataAboutReimburse(){
 		alert("请在已报销登记表中勾选一个名单");
 		return ;
 	}
-	popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney');
+	
+	var hosNo  = 	$("input[type='checkbox'][name='reimburse']:checkbox:checked").val();
+	$.getJSON("hosInsurance/hosInsurance!getHosByHosNo?hosNo="+hosNo,function(data){
+		var  hos = data.hosInsuranceInfo;
+		if(hos.hosState=='校级审核中'){
+			alert("该学生的未审核，请前去审核");
+			return ;
+		}
+	    setData("bx",hos);
+		popup('#medicareDiv', '#acceptResultList', '#btnCloseList');
+    });
+
 }
 
 function  getCheckBoxCountAboutJuMing(){
@@ -77,3 +114,17 @@ function popup(div1, div2, btnId) {
     	$(div2).css("display", "none");
 	});
 };
+
+function setData(ads,hos){
+	$("#"+ads+"HosNo").val(hos.hosNo);
+	$("#"+ads+"StudentNo").html(hos.student.studentNo);
+	$("#"+ads+"StudentName").html(hos.student.studentName);
+	$("#"+ads+"College").html(hos.student.college);
+	$("#"+ads+"Class").html(hos.student.className);
+	$("#"+ads+"HospitalDate").html(hos.hospitalDate);
+	$("#"+ads+"LeaveDate").html(hos.leaveDate);
+	$("#"+ads+"HosDate").html(hos.hosDate);
+	$("#"+ads+"Conditon").html(hos.conditon);
+	$("#"+ads+"LocalCity").html(hos.localCity==0?'本市':'外市');
+	$("#"+ads+"ApplyTime").html(hos.applyTime);
+}

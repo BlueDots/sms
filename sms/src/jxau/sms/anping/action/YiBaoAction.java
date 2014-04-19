@@ -30,6 +30,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class YiBaoAction extends ActionSupport implements
 		ModelDriven<HosInsuranceInfo> {
 
+	
 	/**
 	 * 校级工作人员查询出所有的学生医保信息
 	 * anping
@@ -163,7 +164,17 @@ public class YiBaoAction extends ActionSupport implements
 	public String getErrorMsg() {
 		return ErrorMsg;
 	}
+	
+	
+	
+ 
 
+	 
+
+
+
+
+ 
 	private String ErrorMsg;
 	private Map<String, Object> session = ActionContext.getContext()
 			.getSession();

@@ -16,6 +16,8 @@ select * from role_info;
 select * from teacher_purview;
 select * from teacher_role;
 select * from role_purview;
+select * from dep_info;
+select * from dep_teacher;
 
 --select test
 select * from role_info where roleName like '%管理员';
@@ -110,10 +112,28 @@ insert into role_purview values(3,16);
 insert into role_purview values(3,17);
 insert into role_purview values(3,18);
 
-
+--insert
+insert into dep_info(departNo,department,departBrief,departInfo) 
+	values('1105','软件学院','','');
+	
+insert into dep_info(departNo,department,departBrief,departInfo) 
+	values('1106','计信院','','');	
+	
+insert into dep_teacher values('1105','1234');	
+insert into dep_teacher values('1106','1234');
+insert into dep_teacher values('1105','4321');
+	
 --delete
 delete from t_teacher_purview where teacherNo in ('5678') and purviewNo in (2,3);
 
+--
+select * from dep_info;
+
+select r.roleName 	from role_info r,teacher_role tr
+where r.roleNo = tr.roleNo and teacherNo = '1234';
+select teacherNo,teacherName,sex,political,teacherTitle,worktime 
+from tec_basic_info
+where 1=1 and teacherNo='1234' and teacherName='jack';
 
 --update教师属于那个部门
 

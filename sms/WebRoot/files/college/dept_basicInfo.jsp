@@ -40,6 +40,14 @@
 <script src="<%=basePath%>js/college/entry.js"></script>
 <script type="text/javascript">
    $(document).ready(function(){ 
+   
+   	//为查询按钮添加点击事件
+   	
+   	$("#accurateSearch").click(function(){
+		var college=$("#departNo").find("option:selected").text();;
+		alert(college);
+	});
+   	
  	getStuBasicInfoList(1);
 	$("#tableOfShowStuBasicInfoLists").chromatable({
 		width: "100%",

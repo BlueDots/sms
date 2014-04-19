@@ -1,0 +1,8 @@
+package jxau.sms.lyx.allocationRole.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class AllocationRoleAction extends ActionSupport {
+
+	
+}

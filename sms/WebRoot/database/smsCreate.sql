@@ -345,7 +345,7 @@ create table teacher_role(
 	foreign key (roleNo)  references role_info(roleNo)
 );
 
-##教师权限表20
+##教师角色权限表20
 create table teacher_purview(
 	teacherNo char(4),
 	purviewNo int,

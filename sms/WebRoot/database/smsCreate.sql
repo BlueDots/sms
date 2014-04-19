@@ -239,6 +239,8 @@ on  delete no action on update  cascade;
  ) ENGINE=innodb; 
 
  alter table class_info add index  classFkIndex(majorNo);
+ ##alter table class_info add column teacherNo char(4);
+ ##desc class_info;
 ##创建班级奖学金统计表14
 create table class_statistical(
 	term varchar(20),
@@ -345,7 +347,7 @@ create table teacher_role(
 	foreign key (roleNo)  references role_info(roleNo)
 );
 
-##教师权限表20
+##教师角色权限表20
 create table teacher_purview(
 	teacherNo char(4),
 	purviewNo int,

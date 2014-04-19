@@ -2,7 +2,6 @@ package jxau.sms.lyx.vo;
 
 import java.util.Date;
 import java.util.List;
-
 import jxau.sms.lyx.po.RoleInfo;
 
 /**
@@ -21,7 +20,7 @@ public class VTeacherRole {
 		private List<String> departmentList;				//部门列表
 		private String teacherTitle;									//教师职称
 		private Date worktime;											//入职时间
-		private List<RoleInfo> roleList;							//角色列表
+		private List<String> roleList;							//角色列表
 		
 		public String getTeacherNo() {
 			return teacherNo;
@@ -59,10 +58,10 @@ public class VTeacherRole {
 		public void setWorktime(Date worktime) {
 			this.worktime = worktime;
 		}
-		public List<RoleInfo> getRoleList() {
+		public List<String> getRoleList() {
 			return roleList;
 		}
-		public void setRoleList(List<RoleInfo> roleList) {
+		public void setRoleList(List<String> roleList) {
 			this.roleList = roleList;
 		}
 		public List<String> getDepartmentList() {

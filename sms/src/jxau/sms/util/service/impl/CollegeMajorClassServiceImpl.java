@@ -203,7 +203,7 @@ public class CollegeMajorClassServiceImpl implements CollegeMajorClassInterface 
 		Map<String,Object> params  = new HashMap<String,Object>(2);
 		params.put("teacherNo", teacher.getTeacherNo());
 		params.put("roleName", this.getHighLevelRole(roles));
-	   System.out.println(teacher.getTeacherNo()+"------"+this.getHighLevelRole(roles));
+	    System.out.println(teacher.getTeacherNo()+"------"+this.getHighLevelRole(roles));
 		List<DepInfo> depInfos= dao.select(namespace+"findDepByTeacherRole", params);
 		
 		return depInfos;

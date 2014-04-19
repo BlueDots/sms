@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@  taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -22,9 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
 
-	<script src="<%=basePath%>/js/jquery-1.7.2.min.js"></script>
+	<script src="<%=basePath%>/js/jquery-1.10.2.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
-	<script src="<%=basePath%>/js/jquery-ui-1.8.21.custom.min.js"></script>
 	<script src="<%=basePath%>/js/date.js"></script>
 
 <script type="text/javascript">

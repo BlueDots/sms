@@ -1,9 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,java.net.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -35,6 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     	<body> 
 	 
+	 <form action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!checkHosByTeacher" method="post">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 				<tr>
@@ -46,29 +48,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<table width="100%" border="0" align="center" cellpadding="0"
 										cellspacing="0">
 										<tr>
-											<td width="21">
-												 
-											</td>
-											<td width="538">
+										 
+											<td width="300">
 
 													 
 											</td>
 											<td width="47" align="center">
-												<div class="suckerdiv" style="padding-right:-20px">
+												<div class="suckerdiv" style="padding-right:-90px">
 													<ul id="suckertree1">
 														<li>
 															<a href="#">审核管理</a>
 															<ul>
 																<li>
-																	<a>审核</a>
-																		<ul>
-																			<li>
-																				<a onclick=''>审核通过</a>
-																			</li>
-																			<li>
-																				<a onclick=''>审核不通过</a>
-																			</li>
-																		</ul>
+																
+																<a onclick="$('#isYesOrNot').val(1);$(this).closest('form').submit();">通过</a>
+																<a onclick="$('#isYesOrNot').val(0);$(this).closest('form').submit();">不通过</a>
 																</li>
 																　
 															</ul>
@@ -77,12 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													</ul>
 												</div>
 											</td>
-											<td width="77" align="center" style="padding-right:-30px">
-												<input name="advanced_search" type="button" class="right-button07" value="高级搜索" onclick="popup('#advancedDiv', '#advancedSearchDiv', '#CloseadvancedSearch')" />
-											</td>
-											<td width="77" align="center" style="padding-right:-100px">
-											<input name="export" type="button" class="right-button07" value="导出" onclick="exportData()"/>
-											</td>
+										   
 										</tr>
 									</table>
 								</td>
@@ -107,6 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												</tr>
 												<tr>
 													<td class="CPanel">
+												     <input type="hidden" id="isYesOrNot" name="isYesOrNot">
 														<table width="96%" border="0" align="center"
 															cellpadding="0" cellspacing="0">
 															<tr>
@@ -121,28 +111,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%">全选<input type="checkbox"/></td>
+																			<td width="7%"><input type="checkbox"/></td>
 																			<td width="8%">
 																				学号			
 																		    </td>
 																		    <td width="8%">
 																				姓名			
 																		    </td>
-																		    <td width="8%">
-																				性别			
-																		    </td>
-																		    <td width="8%">
-																				身份证号			
-																		    </td>
+																		   
 																		    <td width="8%">
 																				学院与班级			
 																		    </td>
 																		    <td width="8%">
 																				联系电话			
 																		    </td>
-																		    <td width="8%">
-																				银行卡号			
-																		    </td>
+																		    
 																		    <td width="8%">
 																				住院地址			
 																		    </td>
@@ -167,69 +150,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		    <td width="8%">
 																				申请时间			
 																		    </td>
-																		    <td width="8%">
-																				审核状态			
-																		    </td>
+																		   
 																		    <td width="8%">
 																				备注			
 																		    </td>
+																		    
 			                                                            </tr>        
-						                                                            
+						                                               
+						                                               	            
+						                                               <s:iterator value="#request.hoss">   
+						                                                 
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                    
+					                                                       <td width="7%"><input  value="<s:property value="#request.hosNo"/>" name="hosNo<s:property value="#request.hosNo"/>" type="checkbox"/></td>
 																			<td width="8%">
-																				20112222			
+																				<s:property value="student.studentNo"/>			
 																		    </td>
 																		    <td width="8%">
-																				张三			
+																				<s:property value="student.studentName"/>			
 																		    </td>
 																		    <td width="8%">
-																				男			
+																				<s:property value="student.college"/><s:property value="student.className"/>			
 																		    </td>
 																		    <td width="8%">
-																				1312423432			
+																			<s:property value="student.telephone"/>			
+																		  			
 																		    </td>
 																		    <td width="8%">
-																				软件1102			
+																				<s:property value="hospitalAddress"/>		
 																		    </td>
 																		    <td width="8%">
-																				110			
+																			 	<s:property value="hospitalDate"/>			
 																		    </td>
 																		    <td width="8%">
-																				9*****11			
+																				<s:property value="leaveDate"/>			
 																		    </td>
 																		    <td width="8%">
-																				校医院			
+																				<s:property value="hosDate"/>			
 																		    </td>
 																		    <td width="8%">
-																				2013/2/2			
+																				<s:if test="localCity==0">本市</s:if>
+																				<s:else>转外</s:else>		
 																		    </td>
 																		    <td width="8%">
-																				2013/2/3			
+																				<s:property value="conditon"/>				
 																		    </td>
 																		    <td width="8%">
-																				1			
+																				<s:property value="cost"/>			
 																		    </td>
 																		    <td width="8%">
-																				本市			
+																				<s:property value="applyTime"/>		
 																		    </td>
+																		   　
 																		    <td width="8%">
-																				被狗咬			
+																				　<textarea rows="" cols="" name="stateRemark<s:property value="#request.hosNo"/>" value="无">无</textarea>			
 																		    </td>
-																		    <td width="8%">
-																				250			
-																		    </td>
-																		    <td width="8%">
-																				2013/2/4			
-																		    </td>
-																		    <td width="8%">
-																				审核通过			
-																		    </td>
-																		    <td width="8%">
-																				无			
-																		    </td>        
+																		   
+																		          
 					                                                    </tr>		 	
-						                                                
+						                                                </s:iterator>
 																	</table>
 
 																</td>
@@ -249,31 +228,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		<tr>
 																			<td width="50%">
 																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																				<span class="right-text09"><s:property value="#request.pageVo.pageNum"/></span> 页 | 第
+																				<span class="right-text09"><s:property  value="#request.pageVo.currentPage"/></span> 页
 																			</td>
+																			
+																			 
+																			
 																			<td width="49%" align="right">
 																				[
-																				<a href="#" class="right-font08">首页</a> |
-																				<a href="#" class="right-font08">上一页</a> |
-																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 转至
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=1&hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>" class="right-font08">首页</a> |
+																				
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property  value="#request.pageVo.currentPage-1"/>&hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property  value="(#request.pageVo.currentPage+1)<#request.pageVo.pageNum?(#request.pageVo.currentPage+1):#request.pageVo.pageNum"/>&hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property  value="#request.pageVo.pageNum"/>&hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>" class="right-font08">末页</a>] 
 																			</td>
-																			<td width="1%">
-																				<table width="20" border="0" cellspacing="0"
-																					cellpadding="0">
-																					<tr>
-																						<td width="1%">
-																							<input name="textfield3" type="text"
-																								class="right-textfield03" size="1" />
-																						</td>
-																						<td width="87%">
-																							<input name="Submit23222" type="submit"
-																								class="right-button06" value=" " />
-																						</td>
-																					</tr>
-																				</table>
-																			</td>
+																			 
 																		</tr>
 																	</table>
 																</td>
@@ -292,11 +261,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 				</tr>
 			</table>
-		
+		</form>
 	</body>
 		<script src="<%=basePath %>js/jquery-1.10.2.js"></script>
  
-	 
+	 <script type="text/javascript" src="<%=basePath%>js/school/school.js"></script>
 		<script src="<%=basePath %>js/jquery.chromatable.js"></script>
 	 
  

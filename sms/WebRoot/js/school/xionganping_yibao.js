@@ -1,3 +1,7 @@
+ 
+
+
+
 //录入受理结果 首先应该先判断是不是有数据勾选了，才可以去修改受理结果
 function updateDataAboutAcceptResult() {
 

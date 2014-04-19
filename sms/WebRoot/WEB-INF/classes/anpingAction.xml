@@ -16,7 +16,7 @@
 			<result name="input">/applyError.html</result>
 			<result name="modify">/files/Student/std_InsuranceModify.jsp</result>
 			<result name="teacherShowHoss">/files/university/sch_yibao.jsp</result>
-			
+			<result name="apply">/files/university/reviewPage/yibao_review.jsp</result>
 		</action>
 
 	</package>

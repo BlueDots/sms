@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -127,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>files/university/reviewPage/yibao_review.jsp"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
 												</tr>
 												<tr>

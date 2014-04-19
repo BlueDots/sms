@@ -70,13 +70,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																	<a>录入</a>
 																		<ul>
 																			<li>
-																				<a onclick="popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult')">录入受理结果</a>
+																			<!-- popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult') -->
+																				<a onclick="updateDataAboutAcceptResult()">录入受理结果</a>
 																			</li>
 																			<li>
-																				<a onclick="popup('#medicareDiv', '#acceptResultList', '#btnCloseList')">录入已报销名单</a>
+																			<!-- popup('#medicareDiv', '#acceptResultList', '#btnCloseList') -->
+																				<a onclick="updateDataAboutReimburse()">录入已报销名单</a>
 																			</li>
 																			<li>
-																				<a onclick="popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney')">录入商业理赔结果</a>
+																			<!--popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney')  -->
+																				<a onclick="updateDataAboutCompany()">录入商业理赔结果</a>
 																			</li>
 																		</ul>
 																</li>
@@ -84,13 +87,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																	<a href="">导入</a>
 																</li>
 																<li>
-																	<a href="">居民医保</a>
+																	<a onclick="$('#Company').hide();$('#reimburseStudent').hide();$('#juming').show();"  style="cursor: pointer;">居民医保</a>
 																</li>
 																<li>
-																	<a href="">商业医保</a>
+																	<a onclick="$('#reimburseStudent').hide();$('#juming').hide();$('#Company').show();" style="cursor: pointer;">商业医保</a>
 																</li>
 																	<li>
-																	<a href="">已报销名单</a>
+																	<a onclick="$('#juming').hide();$('#Company').hide();$('#reimburseStudent').show();" style="cursor: pointer;">已报销名单</a>
 																</li>
 															</ul>
 														</li>
@@ -123,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:800px"><a href="reviewPage/yibao_review.html"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="reviewPage/yibao_review.html"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
 												</tr>
 												<tr>
@@ -142,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="7%"><input type="checkbox"　name="jumingAll"/></td>
 																			<td width="8%">
 																				序号			
 																		    </td>
@@ -201,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                                                            </tr>        
 						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                       <td width="7%"><input type="checkbox" name="juming"  value="<s:property value="hosNo"/>"/></td>
 																			<td width="8%">
 																				<s:property value="student.studentNo"/>		
 																		    </td>
@@ -277,7 +280,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="7%"><input name="companyAll" type="checkbox"/></td>
 																			<td width="8%">
 																				序号			
 																		    </td>
@@ -315,7 +318,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>        
 						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                       <td width="7%"><input type="checkbox" name="company" value="<s:property value="hosNo"/>"/></td>
 																			<td width="8%">
 																				<s:property value="student.studentNo"/>		
 																		    </td>
@@ -380,7 +383,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="7%"><input type="checkbox" name="reimburseAll"/></td>
 																			<td width="8%">
 																				序号			
 																		    </td>
@@ -417,7 +420,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                                                            </tr>        
 						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                       <td width="7%"><input type="checkbox" name="reimburse" value="<s:property value="hosNo"/>"/></td>
 																			<td width="8%">
 																				<s:property value="student.studentNo"/>		
 																		    </td>
@@ -488,15 +491,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		<tr>
 																			<td width="50%">
 																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																				<span class="right-text09"><s:property value="#request.pageVo.pageNum"/></span> 页 | 第
+																				<span class="right-text09"><s:property value="#request.pageVo.currentPage"/></span> 页
 																			</td>
 																			<td width="49%" align="right">
 																				[
-																				<a href="#" class="right-font08">首页</a> |
-																				<a href="#" class="right-font08">上一页</a> |
-																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=1" class="right-font08">首页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="#request.pageVo.currentPage-1"/>" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="(#request.pageVo.currentPage+1)<#request.pageVo.pageNum?(#request.pageVo.currentPage+1):#request.pageVo.pageNum"/>" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="#request.pageVo.pageNum"/>" class="right-font08">末页</a>] 
 																			</td>
 																		 
 																		</tr>
@@ -521,7 +524,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
     	<div id="medicareDiv" style="display: none"></div>
     		<div id="acceptResultDiv" style="display: none">
-        		<h2>录入受理结果<a href="#" id="btnCloseacceptResult">关闭</a></h2>
+        		<h2>录入受理结果<a  id="btnCloseacceptResult">关闭</a></h2>
         		<div class="form">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
@@ -653,7 +656,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     		<div id="acceptResultList" style="display: none">
-        		<h2>录入已报销名单<a href="#" id="btnCloseList">关闭</a></h2>
+        		<h2>录入已报销名单<a   id="btnCloseList">关闭</a></h2>
         		<div class="form">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
@@ -787,7 +790,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
 
     		<div id="acceptMoney" style="display: none">
-        		<h2>录入商业理赔结果<a href="#" id="btnCloseMoney">关闭</a></h2>
+        		<h2>录入商业理赔结果<a   id="btnCloseMoney">关闭</a></h2>
         		<div class="form">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
@@ -936,6 +939,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              	<h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
         	<div class="form">
             	<table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="advancedSearchTab" ><thead>
+                      
             
 					<tr bgcolor="#FFFFFF" align="center">
 					    <td width='15%' name='projectName'> 
@@ -1020,4 +1024,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <script src="<%=basePath%>js/jquery.chromatable.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/school/school.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/util/loadCollegeClass.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/school/xionganping_yibao.js"></script>
 </html>

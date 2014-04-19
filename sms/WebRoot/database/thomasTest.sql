@@ -1,10 +1,18 @@
 ##
 select * from stu_basic_info;
+select * from stu_adv_info;
+delete from stu_adv_info where awardNo = 30 or awardNo = 31; 
 ##评优评先项目信息
 insert into adv_item values(400,'优秀三好学生','2011-09-02','省级',null,null);
 insert into adv_item values(401,'优秀学生干部','2011-09-02','省级',null,null);
 ##学生评优评先记录
 insert into stu_adv_Info values(null,'20111826','优秀三好学生','省级','201301','校级已通过','无');
+insert into stu_adv_Info values(null,'20111827','优秀学生干部','省级','201302','校级已通过','无');
+insert into stu_adv_Info values(null,'20111826','优秀共青团员','省级','201301','校级已通过','无');
+insert into stu_adv_Info values(null,'20111827','优秀学生干部','省级','201302','校级已通过','无');
+insert into stu_adv_Info values(null,'20111826','优秀三好学生','省级','201301','校级已通过','无');
+insert into stu_adv_Info values(null,'20111827','优秀共青团员','省级','201302','校级已通过','无');
+insert into stu_adv_Info values(null,'20111826','优秀共青团员','省级','201301','校级已通过','无');
 insert into stu_adv_Info values(null,'20111827','优秀学生干部','省级','201302','校级已通过','无');
 ##奖助学项目信息
 insert into grant_item values(500,'国家奖学金','2011-10-02','国家级',8000,null,null);

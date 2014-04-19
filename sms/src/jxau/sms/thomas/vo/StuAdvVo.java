@@ -29,6 +29,7 @@ public class StuAdvVo {
 	private String advLevel;
 	private String  examState;
 	private String remarks;
+	
 	public String getStudentNo() {
 		return studentNo;
 	}

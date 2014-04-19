@@ -2,7 +2,7 @@
 <<<<<<<=HEAD
 >>>>>>>=c88b438619243e8f384ccb00750a24f10b3824f0
 content_assist_autoactivation_triggers_java=.qwertyuiopasdfghjklzxcvbnm
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="jxau.sms.thomas.util.InputHandler"><rhs name\="jxau.sms.thomas.util.InputHandler"/></lhs><lhs name\="java.util.Map"><rhs name\="java.util.HashMap"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="jxau.sms.thomas.util.InputHandler"><rhs name\="jxau.sms.thomas.util.InputHandler"/></lhs><lhs name\="java.util.Map"><rhs name\="java.util.HashMap"/></lhs><lhs name\="jxau.sms.thomas.po.StuAdvInfo"><rhs name\="jxau.sms.thomas.po.StuAdvInfo"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="jxau.sms.commom.vo.PageVo"><rhs name\="jxau.sms.commom.vo.PageVo"/></lhs></history>
 content_assist_number_of_computers=17
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=60,60,60

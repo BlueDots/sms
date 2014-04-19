@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -52,8 +53,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												
 													 
 											</td>
+											
 											<td width="47" align="center">
+											
+											
 												<div class="suckerdiv" style="padding-right:-20px">
+													 
+													
 													<ul id="suckertree1">
 														<li>
 															<a href="#">信息管理</a>
@@ -75,6 +81,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																</li>
 																<li>
 																	<a href="">导入</a>
+																</li>
+																<li>
+																	<a href="">居民医保</a>
+																</li>
+																<li>
+																	<a href="">商业医保</a>
+																</li>
+																	<li>
+																	<a href="">已报销名单</a>
 																</li>
 															</ul>
 														</li>
@@ -107,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:700px"><a href="reviewPage/yibao_review.html"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:800px"><a href="reviewPage/yibao_review.html"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
 												</tr>
 												<tr>
@@ -117,18 +132,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<tr>
 																<td height="40" class="font42">
 																	<table width="100%" border="0" cellpadding="4"
-																		cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
+																		cellspacing="1" bgcolor="#464646" class="demo" id="juming"  ><thead>
 																		<tr class="CTitle">
-																			<td height="22" colspan="18" align="center"
+																			<td height="22" colspan="19" align="center"
 																				style="font-size: 16px">
-																				学生医保信息表
+																				学生医保登记表
 																			</td>
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%">全选<input type="checkbox"/></td>
+																			<td width="7%"><input type="checkbox"/></td>
 																			<td width="8%">
-																				学号			
+																				序号			
 																		    </td>
 																		    <td width="8%">
 																				姓名			
@@ -137,17 +152,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																				性别			
 																		    </td>
 																		    <td width="8%">
-																				身份证号			
+																				身份证	
 																		    </td>
 																		    <td width="8%">
-																				学院与班级			
+																				学院班级			
 																		    </td>
 																		    <td width="8%">
 																				联系电话			
 																		    </td>
-																		    <td width="8%">
-																				银行卡号			
-																		    </td>
+																		     
 																		    <td width="8%">
 																				住院地址			
 																		    </td>
@@ -172,70 +185,290 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		    <td width="8%">
 																				申请时间			
 																		    </td>
+																		     <td width="8%">
+																				未受理原因			
+																		    </td>
+																		    <td width="8%">
+																			处理结果			
+																		    </td>
+																		    
 																		    <td width="8%">
 																				审核状态			
+																		    </td>
+																		   
+																		
+			                                                            </tr>        
+						                                             <s:iterator  value="#request.hoss">
+					                                                    <tr bgcolor="#FFFFFF">
+					                                                       <td width="7%"><input type="checkbox"/></td>
+																			<td width="8%">
+																				<s:property value="student.studentNo"/>		
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="student.studentName"/>			
+																		    </td>
+																		    <td width="8%">
+																		    <s:if test="student.sex==0">
+																		    男
+																		    </s:if>
+																			<s:else>女</s:else>			
+																		    </td>
+																		    
+																		    <td width="8%">
+																				<s:property value="student.idCard"/>		
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="student.college"/><s:property value="student.className"/>
+																							
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="student.telephone"/>			
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="hospitalAddress"/>				
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="hospitalDate"/>			
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="leaveDate"/>			
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="hosDate"/>				
+																		    </td>
+																		    <td width="8%">
+																				<s:if test="localCity==0">本市</s:if>
+																				<s:else >转外</s:else>		
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="conditon"/>		
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="cost"/>		
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="applyTime"/>			
+																		    </td>
+																		     <td width="8%">
+																				<s:property value="refuseReason"/>				
+																		    </td>
+																		    <td width="8%">
+																					<s:property value="resultDeal"/>		
+																		    </td>
+																		    <td width="8%">
+																					<s:property value="hosState"/>		
+																		    </td>
+																		         
+					                                                    </tr>		 	
+						                                                   </s:iterator>
+																	</table>
+
+
+
+																<!--商业医保开始  -->
+																<table width="100%" border="0" cellpadding="4"
+																		cellspacing="1" bgcolor="#464646" class="demo" id="Company"  style="display: none;"><thead>
+																		<tr class="CTitle">
+																			<td height="22" colspan="19" align="center"
+																				style="font-size: 16px">
+																				商业理赔登记表
+																			</td>
+																		</tr>
+																		
+																		<tr bgcolor="#EEEEEE">
+																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="8%">
+																				序号			
+																		    </td>
+																		    <td width="8%">
+																				姓名			
+																		    </td>
+																		    <td width="8%">
+																				性别			
+																		    </td>
+																		    <td width="8%">
+																				身份证	
+																		    </td>
+																		    <td width="8%">
+																				学院班级			
+																		    </td>
+																		    <td width="8%">
+																				联系电话			
+																		    </td>
+																		     
+																		    <td width="8%">
+																				银行卡号		
+																		    </td>
+																		    <td width="8%">
+																				材料齐全			
+																		    </td>
+																		    <td width="8%">
+																				接案时间			
+																		    </td>
+																		    <td width="8%">
+																				未报销原因		
 																		    </td>
 																		    <td width="8%">
 																				备注			
 																		    </td>
-			                                                            </tr>        
-						                                                            
+																		</tr>        
+						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
 					                                                       <td width="7%"><input type="checkbox"/></td>
 																			<td width="8%">
-																				20112222			
+																				<s:property value="student.studentNo"/>		
 																		    </td>
 																		    <td width="8%">
-																				张三			
+																				<s:property value="student.studentName"/>			
 																		    </td>
 																		    <td width="8%">
-																				男			
+																		    <s:if test="student.sex==0">
+																		    男
+																		    </s:if>
+																			<s:else>女</s:else>			
+																		    </td>
+																		    
+																		    <td width="8%">
+																				<s:property value="student.idCard"/>		
 																		    </td>
 																		    <td width="8%">
-																				1312423432			
+																				<s:property value="student.college"/><s:property value="student.className"/>
+																							
 																		    </td>
 																		    <td width="8%">
-																				软件1102			
+																				<s:property value="student.telephone"/>			
 																		    </td>
-																		    <td width="8%">
-																				110			
+																		  　
+																		 
+																		   <td width="8%">
+																				<s:property value="bankcardID"/>			
 																		    </td>
-																		    <td width="8%">
-																				9*****11			
+																		     <td width="8%">
+																			　	<s:if test="complete==1">
+																				是
+																				</s:if>
+																				<s:else>
+																				否
+																				</s:else>			
 																		    </td>
-																		    <td width="8%">
-																				校医院			
+																		     <td width="8%">
+																				<s:property value="insurerTime"/>			
 																		    </td>
-																		    <td width="8%">
-																				2013/2/2			
+																		    
+																		      <td width="8%">
+																				<s:property value="notinsurerReason"/>			
 																		    </td>
-																		    <td width="8%">
-																				2013/2/3			
+																		      <td width="8%">
+																				<s:property value="companyRemark"/>			
 																		    </td>
-																		    <td width="8%">
-																				1			
-																		    </td>
-																		    <td width="8%">
-																				本市			
-																		    </td>
-																		    <td width="8%">
-																				被狗咬			
-																		    </td>
-																		    <td width="8%">
-																				250			
-																		    </td>
-																		    <td width="8%">
-																				2013/2/4			
-																		    </td>
-																		    <td width="8%">
-																				审核通过			
-																		    </td>
-																		    <td width="8%">
-																				无			
-																		    </td>        
 					                                                    </tr>		 	
-						                                                
+						                                                   </s:iterator>
 																	</table>
+																
+																<!-- end -->
+
+
+																<!--报销名单开始  -->
+																<table width="100%" border="0" cellpadding="4"
+																		cellspacing="1" bgcolor="#464646" class="demo" id="reimburseStudent" style="display: none;" ><thead>
+																		<tr class="CTitle">
+																			<td height="22" colspan="11" align="center"
+																				style="font-size: 16px">
+																				已报销登记表
+																			</td>
+																		</tr>
+																		
+																		<tr bgcolor="#EEEEEE">
+																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="8%">
+																				序号			
+																		    </td>
+																		    <td width="8%">
+																				姓名			
+																		    </td>
+																		    <td width="8%">
+																				性别			
+																		    </td>
+																		    <td width="8%">
+																				身份证	
+																		    </td>
+																		    <td width="16%">
+																				学院班级			
+																		    </td>
+																		    <td width="10%">
+																				联系电话			
+																		    </td>
+																		    <td width="8%">
+																				已报销金额			
+																		    </td> 
+																		      <td width="12%">
+																				是否有结算单			
+																		    </td>   
+																		 <td width="8%">
+																				是否领卡
+																					
+																		    </td> 
+																		     <td width="8%">
+																				领卡时间			
+																		    </td> 
+																		   
+																		
+			                                                            </tr>        
+						                                             <s:iterator  value="#request.hoss">
+					                                                    <tr bgcolor="#FFFFFF">
+					                                                       <td width="7%"><input type="checkbox"/></td>
+																			<td width="8%">
+																				<s:property value="student.studentNo"/>		
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="student.studentName"/>			
+																		    </td>
+																		    <td width="8%">
+																		    <s:if test="student.sex==0">
+																		    男
+																		    </s:if>
+																			<s:else>女</s:else>			
+																		    </td>
+																		    
+																		    <td width="8%">
+																				<s:property value="student.idCard"/>		
+																		    </td>
+																		    <td width="16%">
+																				<s:property value="student.college"/><s:property value="student.className"/>
+																							
+																		    </td>
+																		    <td width="10%">
+																				<s:property value="student.telephone"/>			
+																		    </td>
+																	　 <td width="8%">
+																				<s:property value="reimbursementAmount"/>			
+																		    </td>
+																		    <td width="12%">
+																				 	
+																				<s:if test="bill==1">
+																					有
+																				</s:if>
+																				<s:else>
+																				否
+																				</s:else>		
+																		    </td>
+																		   
+																		    <td width="8%">
+																				  <s:if test="collarCard==1">
+																				已领卡
+																				</s:if>	
+																				<s:if test="collarCard==1">
+																				未领卡
+																				</s:if>			
+																		    </td>
+																		    <td width="8%">
+																				<s:property value="getcardTime"/>			
+																		    </td>
+					                                                    </tr>		 	
+						                                                   </s:iterator>
+																	</table>
+																
+																<!-- end -->
 
 																</td>
 															</tr>
@@ -262,23 +495,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																				<a href="#" class="right-font08">首页</a> |
 																				<a href="#" class="right-font08">上一页</a> |
 																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 转至
+																				<a href="#" class="right-font08">末页</a>] 
 																			</td>
-																			<td width="1%">
-																				<table width="20" border="0" cellspacing="0"
-																					cellpadding="0">
-																					<tr>
-																						<td width="1%">
-																							<input name="textfield3" type="text"
-																								class="right-textfield03" size="1" />
-																						</td>
-																						<td width="87%">
-																							<input name="Submit23222" type="submit"
-																								class="right-button06" value=" " />
-																						</td>
-																					</tr>
-																				</table>
-																			</td>
+																		 
 																		</tr>
 																	</table>
 																</td>
@@ -297,7 +516,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 				</tr>
 			</table>
-		</form>
+		 
 		
     	<div id="medicareDiv" style="display: none"></div>
     		<div id="acceptResultDiv" style="display: none">

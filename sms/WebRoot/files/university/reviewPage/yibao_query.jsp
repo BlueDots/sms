@@ -49,9 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-												<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher" id="collegeList" method="post">
-													 <input type="submit" value="查询" id="accurateSearch">
-												</form>
+										　
 												
 												
 											</td>
@@ -128,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">高级查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
 												</tr>
 												<tr>
@@ -503,11 +501,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																				<span class="right-text09"><s:property value="#request.pageVo.currentPage"/></span> 页
 																			</td>
 																			<td width="49%" align="right">
+																		 
+																			<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!queryHosByCondition" method="post">
+																				<input type="hidden"	id="currentPage" name="currentPage">
+																				<input type="hidden"	 name="collarCard" value="<s:property value="#request.collarCard"/>">
+																				<input type="hidden"	 name="hosState" value="<s:property value="#request.hosState"/>">
+																				<input type="hidden"	 name="hosState" value="<s:property value="#request.hosType"/>">
+																				
 																				[
-																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=1" class="right-font08">首页</a> |
-																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="#request.pageVo.currentPage-1"/>" class="right-font08">上一页</a> |
-																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="(#request.pageVo.currentPage+1)<#request.pageVo.pageNum?(#request.pageVo.currentPage+1):#request.pageVo.pageNum"/>" class="right-font08">下一页</a> |
-																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="#request.pageVo.pageNum"/>" class="right-font08">末页</a>] 
+																				<a onclick="$('#currentPage').val(1);$(this).closest('form').submit();" class="right-font08">首页</a> |
+																				<a onclick="$('#currentPage').val(<s:property value="#request.pageVo.currentPage-1"/>);$(this).closest('form').submit();"  class="right-font08">上一页</a> |
+																				<a  onclick="$('#currentPage').val(<s:property value="(#request.pageVo.currentPage+1)<#request.pageVo.pageNum?(#request.pageVo.currentPage+1):#request.pageVo.pageNum"/>);$(this).closest('form').submit();" class="right-font08">下一页</a> |
+																				<a onclick="$('#currentPage').val(<s:property value="#request.pageVo.pageNum"/>);$(this).closest('form').submit();" class="right-font08">末页</a>] 
+																			</form>
 																			</td>
 																		 
 																		</tr>
@@ -961,8 +967,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		</form>
         		</div>
     		</div>
-		</div>
-		
+		 
 		<form name="fom" id="fom" method="post" action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!queryHosByCondition">
     	<div id="advancedDiv" style="display: none"></div>
     		<div id="advancedSearchDiv" style="display: none">
@@ -1020,7 +1025,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  		 <select name='hosState'>
 					   
 					    		<option value="通过"> 通过</option>
-					    	       <option value="校级审核中">校级审核中</option>
+					    	    <option value="校级审核中">校级审核中</option>
 					    	    <option value="校级未通过">校级未通过</option>
 					    	</select>	
 					    </td>
@@ -1034,7 +1039,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	</div>
     	</div>
     	</form>
-    
     
 	</body>
     

@@ -203,7 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		    </td>
 																		   　
 																		    <td width="8%">
-																				　<textarea rows="" cols="" name="stateRemark<s:property value="#request.hosNo"/>" value="无">无</textarea>			
+																				　<textarea rows="" cols="" name="stateRemark<s:property value="#request.hosNo"/>" ></textarea>			
 																		    </td>
 																		   
 																		          

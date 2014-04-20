@@ -121,6 +121,10 @@ public class YiBaoServiceImpl implements YiBaoService {
 			queryCondition.add("className");
 			queryCondition.add("studentName");
 			queryCondition.add("studentNo");
+			queryCondition.add("major");
+			queryCondition.add("hosType");
+			queryCondition.add("collarCard");
+			
 			Set<String> keys = param.keySet();
 
 			for (String key : keys) {
@@ -315,7 +319,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 				if (!(data instanceof Integer)) {
 					result = false;
 				}
-			} else {
+			} else if(data!=null) {
 				if (!(data instanceof String)) {
 					result = false;
 				}

@@ -3,6 +3,7 @@ package jxau.sms.anping.action;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,11 +51,27 @@ public class YiBaoAction extends ActionSupport implements
 	   
 	    System.out.println(isYesOrNo);
 	    Set<String> keys  = parameters.keySet();
+	  //拿到所有装有hosNo  的key 
+	   
+	    Map<String,String>  datas = new HashMap<String,String>(6);
+	    
 	    for(String key:keys){ 
-	    	System.out.println(key);
-	    	String[] data  =(String[]) parameters.get(key);
-	    	System.out.println(data[0]);
+	    	if(key.indexOf("hosNo")==0){
+	    		String[] hosNos  =(String[]) parameters.get(key); 
+	    		String[] stateRemark = (String[])parameters.get("stateRemark"+hosNos[0]);
+	    		datas.put(hosNos[0], stateRemark[0]);
+	    	}
 	    }
+	    
+	    Set<String> keys2 = datas.keySet();
+	    for(String key:keys2){
+	    	System.out.println(key+"---"+datas.get(key));
+	    }
+	    
+	     
+	   
+	    
+	    
 		return SUCCESS;
 	}
 	
@@ -72,6 +89,7 @@ public class YiBaoAction extends ActionSupport implements
 		PageVo  pageVo  = new PageVo();
 		String[] currentPages = (String[]) parameters.get("currentPage");
 		String[] hostates = (String[]) parameters.get("hosState");
+ 
 		Map<String,Object> params = null;
 		if(hostates!=null&&hostates[0]!=null){
 			String hostate = null;

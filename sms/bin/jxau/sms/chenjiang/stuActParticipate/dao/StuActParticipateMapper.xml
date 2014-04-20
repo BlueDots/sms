@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.chenjiang.stuActParticipate.dao">
+	<resultMap type="StuActParticipateVO" id="StuActParticipateVOResultMap">
+		<id property="id" column="sapId"/>
+		<association property="stuActParticipate" javaType="StuActParticipate">
+			<id property="id" column="sapId"/>
+			<result property="sessionYear" column="sessionYear" />
+			<result property="activityRating" column="sapActivityRating" />
+			<result property="activityRating" column="sapActivityRating" />
+			<result property="studentPost" column="studentPost" />
+			<result property="workingTime" column="workingTime" />
+			<result property="exameState" column="sapExameState" />
+			<result property="remarks" column="sapRemarks" />
+			<result property="stuActState" column="stuActState" />
+			<association property="stuBasicInfo" javaType="StuBasicInfo">
+				<id property="studentNo" column="studentNo"/>
+				<result property="studentName" column="sbiStudentName" />
+				<result property="birthday" column="birthday" />
+				<result property="className" column="className" />
+				<result property="major" column="major" />
+				<result property="college" column="college" />
+				<result property="sex" column="sex" />
+				<result property="nation" column="nation" />
+				<result property="hometown" column="hometown" />
+				<result property="political" column="political" />
+				<result property="idCard" column="idCard" />
+				<result property="telephone" column="telephone" />
+				<result property="email" column="email" />
+				<result property="emailOnly" column="emailOnly" />
+				<result property="family" column="family" />
+				<result property="address" column="address" />
+				<result property="fphone" column="fphone" />
+				<result property="photo" column="photo" />
+				<result property="eduBackground" column="eduBackground" />
+				<result property="englishlevel" column="englishlevel" />
+				<result property="bankCard" column="bankCard" />
+				<result property="exameState" column="sbiExameState" />
+				<result property="remarks" column="sbiRemarks" />
+				<result property="stuState" column="stuState" />
+			</association>
+			<association property="actInfo" javaType="ActInfo">
+				<id property="actNo" column="aiActNo"/>
+				<result property="activityName" column="activityName" />
+				<result property="activityType" column="activityType" />
+				<result property="activityLevel" column="activityLevel" />
+				<result property="sponsor" column="sponsor" />
+				<result property="organize" column="organize" />
+				<result property="organize" column="organize" />
+				<result property="studentName" column="aiStudentName"/>
+				<result property="createTime" column="createTime"/>
+				<result property="info" column="info"/>
+				<result property="exameState" column="aiExameState"/>
+				<result property="remarks" column="aiRemarks"/>
+				<result property="actState" column="actState"/>
+			</association>
+		</association>
+	</resultMap>		
+
+	<!--高级查询  -->
+	<select id="advancedQuery" parameterType="map" resultMap="StuActParticipateVOResultMap">
+		select sbi.studentNo as sbiStudentNo,
+			   sbi.studentName as sbiStudentName,
+			   sbi.birthday as birthday,
+			   sbi.className as className,
+			   sbi.major as major,
+			   sbi.college as college,
+			   sbi.sex as sex,
+			   sbi.nation as nation,
+			   sbi.hometown as hometown,
+			   sbi.political as political,
+			   sbi.idcard as idCard,
+			   sbi.telephone as telephone,
+			   sbi.email as email,
+			   sbi.emailOnly as emailOnly,
+			   sbi.family as family,
+			   sbi.address as address,
+			   sbi.fphone as fphone,
+			   sbi.photo as photo,
+			   sbi.eduBackground as eduBackground,
+			   sbi.englishlevel as englishlevel,
+			   sbi.bankcard as bankCard,
+			   sbi.remarks as sbiRemarks,
+			   sbi.exameState as sbiExameState,
+			   sbi.stuState as stuState,
+			   ai.actNo as aiActNo,
+			   ai.activityName as activityName,
+			   ai.activityType as activityType,
+			   ai.activityLevel as activityLevel,
+			   ai.sponsor as sponsor,
+			   ai.organize as organize,
+			   ai.teacherNo as teacherNo,
+			   ai.studentName as aiStudentName,
+			   ai.createTime as createTime,
+			   ai.info as info,
+			   ai.exameState as aiExameState,
+			   ai.remarks as aiRemarks,
+			   ai.actState as actState,
+			   sap.id as sapId,
+			   sap.studentNo as sapStudentNo,
+			   sap.actNo as sapActNo,
+			   sap.sessionYear as sessionYear,
+			   sap.awardTime as awardTime,
+			   sap.activityRating as sapActivityRating,
+			   sap.studentPost as studentPost,
+			   sap.workingTime as workingTime,
+			   sap.exameState as sapExameState,
+			   sap.remarks as sapRemarks,
+			   sap.stuActState as stuActState
+		from stu_basic_info sbi, act_info ai, stu_act_participate sap
+        where sbi.studentNo=sap.studentNo and sap.actno=ai.actno
+        	<if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="major != null">
+        		and sbi.major=#{major}
+        	</if>
+        	<if test="sex != null">
+        		and sbi.sex=#{sex}
+        	</if>
+        	<if test="activityName != null">
+        		and ai.activityName=#{activityName}
+        	</if>
+        	<if test="activityLevel !=null">
+        		and ai.activityLevel = #{activityLevel}
+        	</if>
+        	<if test="activityType != null">
+        		and ai.activityType = #{activityType}
+        	</if>
+        	<if test="studentPost != null">
+        	 	and sap.studentPost=#{studentPost}
+        	</if>
+        	<if test="workingTime != null">
+        		and sap.workingTime=#{workingTime}
+        	</if>
+        	<if test="sessionYear != null">
+        		and sap.sessionYear=#{sessionYear}
+        	</if>
+        	<if test="stuActState != null">
+        		and sap.stuActState = #{stuActState}
+        	</if>
+        	<if test="awardTime != null">
+        		and sap.awardTime = #{awardTime}
+        	</if>
+        	
+        	 order by
+			<foreach item="item" index="index" collection="order"  
+            	open="" separator="," close="">
+            	#{item}
+            </foreach>  
+        	 limit #{start},#{nums};
+        	 
+	</select>
+	
+		<!--查询  -->
+	<select id="query" parameterType="map" resultMap="StuActParticipateVOResultMap">
+		select sbi.studentNo as sbiStudentNo,
+			   sbi.studentName as sbiStudentName,
+			   sbi.birthday as birthday,
+			   sbi.className as className,
+			   sbi.major as major,
+			   sbi.college as college,
+			   sbi.sex as sex,
+			   sbi.nation as nation,
+			   sbi.hometown as hometown,
+			   sbi.political as political,
+			   sbi.idcard as idCard,
+			   sbi.telephone as telephone,
+			   sbi.email as email,
+			   sbi.emailOnly as emailOnly,
+			   sbi.family as family,
+			   sbi.address as address,
+			   sbi.fphone as fphone,
+			   sbi.photo as photo,
+			   sbi.eduBackground as eduBackground,
+			   sbi.englishlevel as englishlevel,
+			   sbi.bankcard as bankCard,
+			   sbi.remarks as sbiRemarks,
+			   sbi.exameState as sbiExameState,
+			   sbi.stuState as stuState,
+			   ai.actNo as aiActNo,
+			   ai.activityName as activityName,
+			   ai.activityType as activityType,
+			   ai.activityLevel as activityLevel,
+			   ai.sponsor as sponsor,
+			   ai.organize as organize,
+			   ai.teacherNo as teacherNo,
+			   ai.studentName as aiStudentName,
+			   ai.createTime as createTime,
+			   ai.info as info,
+			   ai.exameState as aiExameState,
+			   ai.remarks as aiRemarks,
+			   ai.actState as actState,
+			   sap.id as sapId,
+			   sap.studentNo as sapStudentNo,
+			   sap.actNo as sapActNo,
+			   sap.sessionYear as sessionYear,
+			   sap.awardTime as awardTime,
+			   sap.activityRating as sapActivityRating,
+			   sap.studentPost as studentPost,
+			   sap.workingTime as workingTime,
+			   sap.exameState as sapExameState,
+			   sap.remarks as sapRemarks,
+			   sap.stuActState as stuActState
+		from stu_basic_info sbi, act_info ai, stu_act_participate sap
+        where sbi.studentNo=sap.studentNo and sap.actno=ai.actno
+        	<if test="college != null">
+        		and sbi.college=#{college}
+        	</if>
+        	<if test="major != null">
+        		and sbi.major=#{major}
+        	</if>
+        	<if test="className != null">
+        		and sbi.className=#{className}
+        	</if>
+        	<if test="stuNoOrName != null">
+        		and (sbi.studentName=#{stuNoOrName} or sbi.studentNo=#{stuNoOrName})
+        	</if>
+ 
+ 			<!--高级查询  -->	
+       		<if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="major != null">
+        		and sbi.major=#{major}
+        	</if>
+        	<if test="sex != null">
+        		and sbi.sex=#{sex}
+        	</if>
+        	<if test="activityName != null">
+        		and ai.activityName=#{activityName}
+        	</if>
+        	<if test="activityLevel !=null">
+        		and ai.activityLevel = #{activityLevel}
+        	</if>
+        	<if test="activityType != null">
+        		and ai.activityType = #{activityType}
+        	</if>
+        	<if test="studentPost != null">
+        	 	and sap.studentPost=#{studentPost}
+        	</if>
+        	<if test="workingTime != null">
+        		and sap.workingTime=#{workingTime}
+        	</if>
+        	<if test="sessionYear != null">
+        		and sap.sessionYear=#{sessionYear}
+        	</if>
+        	<if test="awardTime != null">
+        		and sap.awardTime = #{awardTime}
+        	</if>
+        	
+        	<if test="status != null">
+        		and stuState=0
+        	</if>
+        	
+        	<if test="order != null">
+	        	 order by
+				<foreach item="item" index="index" collection="order"  
+	            	open="" separator="," close="">
+	            	#{item}
+	            </foreach>          	
+        	</if>
+        	
+        	 limit #{start},#{nums};
+	</select>
+	
+	<!--查询总数  -->
+	<select id="queryNums" parameterType="map" resultType="java.lang.Long">
+		select count(*)
+		from stu_basic_info sbi, act_info ai, stu_act_participate sap
+        where sbi.studentNo=sap.studentNo and sap.actno=ai.actno
+        	<if test="college != null">
+        		and sbi.college=#{college}
+        	</if>
+        	<if test="major != null">
+        		and sbi.major=#{major}
+        	</if>
+        	<if test="className != null">
+        		and sbi.className=#{className}
+        	</if>
+        	<if test="stuNoOrName != null">
+        		and (sbi.studentName=#{stuNoOrName} or sbi.studentNo=#{stuNoOrName})
+        	</if>
+ 
+ 			<!--高级查询  -->	
+       		<if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="major != null">
+        		and sbi.major=#{major}
+        	</if>
+        	<if test="sex != null">
+        		and sbi.sex=#{sex}
+        	</if>
+        	<if test="activityName != null">
+        		and ai.activityName=#{activityName}
+        	</if>
+        	<if test="activityLevel !=null">
+        		and ai.activityLevel = #{activityLevel}
+        	</if>
+        	<if test="activityType != null">
+        		and ai.activityType = #{activityType}
+        	</if>
+        	<if test="studentPost != null">
+        	 	and sap.studentPost=#{studentPost}
+        	</if>
+        	<if test="workingTime != null">
+        		and sap.workingTime=#{workingTime}
+        	</if>
+        	<if test="sessionYear != null">
+        		and sap.sessionYear=#{sessionYear}
+        	</if>
+        	<if test="awardTime != null">
+        		and sap.awardTime = #{awardTime}
+        	</if>
+        	
+        	
+        	<if test="status != null">
+        		and sap.stuActState = 0
+        	</if>
+        	
+        	<if test="order != null">
+	        	 order by
+				<foreach item="item" index="index" collection="order"  
+	            	open="" separator="," close="">
+	            	#{item}
+	            </foreach>          	
+        	</if>
+        	
+	</select>	
+	
+	<!--审核  -->
+	<!--查询待审核信息 以活动项目为组 -->
+	<select id="verifyQuery" parameterType="map" resultMap="StuActParticipateVOResultMap">
+		select sbi.studentNo as sbiStudentNo,
+			   sbi.studentName as sbiStudentName,
+			   sbi.birthday as birthday,
+			   sbi.className as className,
+			   sbi.major as major,
+			   sbi.college as college,
+			   sbi.sex as sex,
+			   sbi.nation as nation,
+			   sbi.hometown as hometown,
+			   sbi.political as political,
+			   sbi.idcard as idCard,
+			   sbi.telephone as telephone,
+			   sbi.email as email,
+			   sbi.emailOnly as emailOnly,
+			   sbi.family as family,
+			   sbi.address as address,
+			   sbi.fphone as fphone,
+			   sbi.photo as photo,
+			   sbi.eduBackground as eduBackground,
+			   sbi.englishlevel as englishlevel,
+			   sbi.bankcard as bankCard,
+			   sbi.remarks as sbiRemarks,
+			   sbi.exameState as sbiExameState,
+			   sbi.stuState as stuState,
+			   ai.actNo as aiActNo,
+			   ai.activityName as activityName,
+			   ai.activityType as activityType,
+			   ai.activityLevel as activityLevel,
+			   ai.sponsor as sponsor,
+			   ai.organize as organize,
+			   ai.teacherNo as teacherNo,
+			   ai.studentName as aiStudentName,
+			   ai.createTime as createTime,
+			   ai.info as info,
+			   ai.exameState as aiExameState,
+			   ai.remarks as aiRemarks,
+			   ai.actState as actState,
+			   sap.id as sapId,
+			   sap.studentNo as sapStudentNo,
+			   sap.actNo as sapActNo,
+			   sap.sessionYear as sessionYear,
+			   sap.awardTime as awardTime,
+			   sap.activityRating as sapActivityRating,
+			   sap.studentPost as studentPost,
+			   sap.workingTime as workingTime,
+			   sap.exameState as sapExameState,
+			   sap.remarks as sapRemarks,
+			   sap.stuActState as stuActState
+		from stu_basic_info sbi, act_info ai, stu_act_participate sap
+        where sbi.studentNo=sap.studentNo and sap.actno=ai.actno
+		    <if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="actNo != null">
+        		and ai.actNo=#{actNo}
+        	</if>
+        	<if test="organize != null">
+        		and ai.organize=#{organize}
+        	</if>
+            limit #{start},#{nums}
+	</select>	
+	
+	<!--查询待审核信息数量  以活动名称为组 -->
+	<select id="verifyQueryNums" parameterType="map" resultType="java.lang.Long">
+		select count(*) from stu_act_participate sap,act_info ai where sap.actno=ai.actno
+		    <if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="activityName != null">
+        		and ai.activityName=#{activityName}
+        	</if>
+        	<if test="organize != null">
+        		and ai.organize=#{organize}
+        	</if>
+	</select>
+	
+	
+	<resultMap type="ActHold" id="ActHoldResultMap">
+			<id property="id" column="id"/>
+			<result property="sessionYear" column="sessionYear"/>
+			<result property="startTime" column="startTime"/>
+			<result property="endTime" column="endTime"/>
+			<result property="holdPlace" column="holdPlace"/>
+			<association property="actInfo" column="actNo" select="selectActInfo" javaType="ActInfo">
+			</association>
+	</resultMap>
+	
+	<select id="selectActInfo" resultType="ActInfo">
+		select * from act_info where actNo = #{actNo}
+	</select>	
+	
+	<!--查询待审核活动  -->
+	<select id="verifyQueryOfActivity" parameterType="map" resultMap="ActHoldResultMap">
+		select  ah.* from stu_act_participate sap,act_hold ah,act_info ai
+ 			where sap.actno=ah.actno and ai.actNo=ah.actNo and sap.sessionYear=ah.sessionYear 
+		    <if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="organize != null">
+        		and ai.organize=#{organize}
+        	</if>
+        	order by ah.actNo
+        	limit #{start},#{nums}
+	</select>	
+	
+	<!--查询待审核活动数量  -->
+	<select id="verifyQueryOfActivityNums" parameterType="map" resultType="java.lang.Long">
+		select count(distinct activityName) from stu_act_participate sap,act_info ai where sap.actno=ai.actno
+		    <if test="exameState != null">
+        		and sap.exameState=#{exameState}
+        	</if>
+        	<if test="organize != null">
+        		and ai.organize=#{organize}
+        	</if>
+	</select>		
+	
+	
+	
+	<!--增加  -->
+	<insert id="add" parameterType="StuActParticipate" useGeneratedKeys="true" keyProperty="id">
+		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime)
+		 values(#{id},#{stuBasicInfo.studentNo},#{actInfo.actNo},#{sessionYear},#{awardTime,jdbcType=TIMESTAMP},#{activityRating},#{studentPost},#{workingTime,jdbcType=TIMESTAMP}); 
+	</insert>
+	
+	<!--批量增加  -->
+	<insert id="batchAdd" parameterType="StuActParticipate">
+		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime)
+		 values
+		 <foreach collection="list" item="item" index="index" separator="," >  
+        	(#{item.id},#{item.stuBasicInfo.studentNo},#{item.actInfo.actNo},#{item.sessionYear},#{item.awardTime,jdbcType=TIMESTAMP},#{item.activityRating},#{item.studentPost},#{item.workingTime,jdbcType=TIMESTAMP})
+    	</foreach> 
+	</insert>
+	
+	<update id="update" parameterType="StuActParticipate">
+		update stu_act_participate
+		<set>
+			<if test="stuBasicInfo != null">
+				studentNo = #{stuBasicInfo.studentNo},
+			</if>
+			<if test="actInfo != null">
+				actNo = #{actInfo.actNo},
+			</if>
+			<if test="sessionYear != null">
+				sessionYear = #{sessionYear},
+			</if>
+			<if test="awardTime != null">
+				awardTime = #{awardTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="activityRating != null">
+				activityRating = #{activityRating},
+			</if>
+			<if test="studentPost != null">
+				studentPost = #{studentPost},
+			</if>
+			<if test="workingTime != null">
+				workingTime = #{workingTime,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+		where id = #{id};
+	</update>
+	
+</mapper>
+

@@ -6,10 +6,10 @@
 	3.property中value表示该字段的多值属性；
 -->
 <mapping>
-	<view id="0100" type="StuAdvInfoVo">
+	<view id="0100" type="jxau.sms.thomas.vo.StuAdvVo">
 	<column name="studentNo" value="学号" multiply="false">
 		</column>
-		<column name="name" value="姓名" multiply="false">
+		<column name="studentName" value="姓名" multiply="false">
 		</column>
 		<column name="sex" value="性别" multiply="true">
 			<property value="男"  type="1"/>	
@@ -17,9 +17,9 @@
 		</column>
 		<column name="college" value="学院" multiply="false">
 		</column>
-		<column name="professionalDirection" value="专业方向" multiply="false">
+		<column name="major" value="专业方向" multiply="false">
 		</column>
-		<column name="stuClass" value="班级" multiply="false"></column>
+		<column name="className" value="班级" multiply="false"></column>
 		<column name="advanceActivity" value="先进项目" multiply="true">
 			<property value="优秀三好学生" />	
 			<property value="优秀学生干部" /> 

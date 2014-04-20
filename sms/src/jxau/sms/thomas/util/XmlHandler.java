@@ -82,6 +82,7 @@ public class XmlHandler {
 		for (Iterator view = read(fileName).elementIterator("view"); view.hasNext();) {
 			Element viewNode = (Element)view.next();
 			if (viewNode.attributeValue("id").equals(viewId)) {
+				@SuppressWarnings("unchecked")
 				List<Element> columnNode = viewNode.elements("mapper");
 				for (int i = 0; i < columnNode.size(); i++) {
 					mapperIds.put(columnNode.get(i).attributeValue("id"), columnNode.get(i).attributeValue("value"));
@@ -100,11 +101,13 @@ public class XmlHandler {
 			for (Iterator view = roots.get(k).elementIterator("view"); view.hasNext();) {
 				Element viewNode = (Element)view.next();
 				listSearchVos = new ArrayList<AdvanceSearchVo>();
+				@SuppressWarnings("unchecked")
 				List<Element> columnNode = viewNode.elements("column");
 				for (int i = 0; i < columnNode.size(); i++) {
 					AdvanceSearchVo advanceSearchVo = new AdvanceSearchVo();
 					properties = new LinkedHashMap<String,Object>();
 				    Element column = columnNode.get(i);
+				    advanceSearchVo.setViewType(viewNode.attributeValue("type"));
 				    advanceSearchVo.setColName(column.attributeValue("name"));
 				    advanceSearchVo.setColValue(column.attributeValue("value"));
 				    advanceSearchVo.setColMutiply(column.attributeValue("multiply"));

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <cache:CacheIndex xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cache="http://eclipse.org/dltk/cache_model" environment="org.eclipse.dltk.core.environment.localEnvironment">
+<<<<<<< HEAD
+  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/college/college.js" timestamp="1397906500777" lastAccessTime="1397908238684"/>
+  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/college/collegeSkip.js" timestamp="1397906500779" lastAccessTime="1397908238844"/>
+  <entries path="E:/GitHub_SMSCodeMana/sms/sms/WebRoot/js/util/loadCollegeClass.js" timestamp="1397906500783" lastAccessTime="1397908239027"/>
+=======
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/date.js" timestamp="1397525038656" lastAccessTime="1397868965484"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery-1.10.2.js" timestamp="1397525038672" lastAccessTime="1397868964957"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/jquery.chromatable.js" timestamp="1397525038737" lastAccessTime="1397868966600"/>
@@ -25,4 +30,5 @@
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/college/college.js" timestamp="1397894156541" lastAccessTime="1397898606375"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/college/collegeSkip.js" timestamp="1397894156542" lastAccessTime="1397898607043"/>
   <entries path="G:/studentManagerSystem/sms/sms/WebRoot/js/util/loadCollegeClass.js" timestamp="1397894156545" lastAccessTime="1397898607169"/>
+>>>>>>> 8ad7efc33e32c8454ade786efedb044cff6d5e73
 </cache:CacheIndex>

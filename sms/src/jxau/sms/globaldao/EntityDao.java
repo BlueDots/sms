@@ -71,6 +71,7 @@ public class EntityDao implements Dao {
 		SqlSession session = sqlSessionFactory.openSession(ExecutorType.BATCH, true);
 
 		session.delete(mapperId, t);
+		session.commit();
 	}
 
 	@Override

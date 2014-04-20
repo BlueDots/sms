@@ -1,0 +1,8 @@
+package jxau.sms.commom.vo;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
+public class PropVo {
+
+	private List<int> numbers;
+}

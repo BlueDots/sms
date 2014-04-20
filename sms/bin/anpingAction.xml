@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+	<package name="hosInsuranceInfo" namespace="/" extends="struts-default">
+ 			
+ 		<!-- 配置属于医保的拦截器 -->
+	  
+	      
+		<action name="hosInsuranceInfo" class="jxau.sms.anping.action.YiBaoAction">
+	        <result name="success">/files/Student/std_InsuranceInfo.jsp</result>
+			<result name="error">/error.html</result>
+			<result name="input">/applyError.html</result>
+			<result name="modify">/files/Student/std_InsuranceModify.jsp</result>
+			<result name="teacherShowHoss">/files/university/sch_yibao.jsp</result>
+		</action>
+
+	</package>
+	
+	<package name="college" namespace="/" extends="json-default">
+ 		<!-- 配置属于医保的拦截器 -->
+	   <action name="college" class="jxau.sms.anping.action.DisplayCollegeAction" method="showCollege">
+	        <result type="json"/>
+		</action>
+	</package>
+</struts> 

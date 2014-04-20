@@ -1,0 +1,8 @@
+<mapping>
+	<view id="0100">
+		<mapper id="searchid" value="" />
+		<mapper id="inputid" value="jxau.sms.advanceinfo.dao.findAdvInfoById" />
+		<mapper id="outputid" value="" />
+		<mapper id="propid" value="" />
+	</view>
+</mapping>

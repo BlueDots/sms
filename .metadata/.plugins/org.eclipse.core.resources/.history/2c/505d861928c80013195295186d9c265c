@@ -1,0 +1,28 @@
+package jxau.sms.thomas.util;
+
+import java.util.List;
+
+import jxau.sms.commom.vo.PropVo;
+
+public class PropHandler {
+	
+	private PropVo propVo;
+	
+	public PropHandler(PropVo propVo){
+		this.propVo = propVo;
+	}
+	
+	public boolean generateProp(String type){
+		boolean flag = true;
+		
+		return flag;
+	}
+	public boolean generateProp(){
+		
+	}
+	public boolean CheckProporation(List<Double> props){
+		
+		
+		return false;
+	}
+}

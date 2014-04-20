@@ -19,6 +19,7 @@ import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.AccessOrUpdateErrorException;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.HosInsuranceInfo;
@@ -35,6 +36,16 @@ import com.opensymphony.xwork2.ModelDriven;
 public class YiBaoAction extends ActionSupport implements
 		ModelDriven<HosInsuranceInfo> {
 
+	/**
+	 * 录入医保结果
+	 * anping
+	 * TODO
+	 * 下午1:20:10
+	 * @return
+	 */
+	public String updateHoss(){
+		return null;
+	}
 	
 	/**
 	 * 审核医保
@@ -53,26 +64,27 @@ public class YiBaoAction extends ActionSupport implements
 	    Set<String> keys  = parameters.keySet();
 	  //拿到所有装有hosNo  的key 
 	   
-	    Map<String,String>  datas = new HashMap<String,String>(6);
-	    
+	    List<String>  ids = new ArrayList(6);
+	    List<String>  params = new ArrayList(6);
 	    for(String key:keys){ 
 	    	if(key.indexOf("hosNo")==0){
 	    		String[] hosNos  =(String[]) parameters.get(key); 
 	    		String[] stateRemark = (String[])parameters.get("stateRemark"+hosNos[0]);
-	    		datas.put(hosNos[0], stateRemark[0]);
+	    		ids.add(hosNos[0]);
+	    		params.add(stateRemark[0]);
 	    	}
 	    }
 	    
-	    Set<String> keys2 = datas.keySet();
-	    for(String key:keys2){
-	    	System.out.println(key+"---"+datas.get(key));
-	    }
 	    
+	    
+	    AbstractionService  service = (AbstractionService)yiBaoService;
+	    
+	    service.verify(ids, "11", "4", isYesOrNo[0].equals("1")?"1":"2", params);
 	     
 	   
 	    
 	    
-		return SUCCESS;
+		return "check";
 	}
 	
 	
@@ -131,7 +143,7 @@ public class YiBaoAction extends ActionSupport implements
 	 */
 	public String modifyStu() {
 		this.print();
-		String result = SUCCESS;
+		String result = "applyYiBaoAndModify";
 		String[] types = (String[]) parameters.get("type");
 	 
 		if (types != null && types[0].equals("show")
@@ -182,7 +194,7 @@ public class YiBaoAction extends ActionSupport implements
 	 */
 	public String applyYiBao() {
 
-		String result = SUCCESS;
+		String result = "applyYiBaoAndModify";
 		this.print();
 		StuBasicInfo student = (StuBasicInfo) session.get("student");
 		hosInsuranceInfo.setStudent(student);

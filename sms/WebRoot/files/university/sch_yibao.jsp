@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -70,13 +71,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																	<a>录入</a>
 																		<ul>
 																			<li>
-																				<a onclick="popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult')">录入受理结果</a>
+																			<!-- popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult') -->
+																				<a onclick="updateDataAboutAcceptResult()">录入受理结果</a>
 																			</li>
 																			<li>
-																				<a onclick="popup('#medicareDiv', '#acceptResultList', '#btnCloseList')">录入已报销名单</a>
+																			<!-- popup('#medicareDiv', '#acceptResultList', '#btnCloseList') -->
+																				<a onclick="updateDataAboutReimburse()">录入已报销名单</a>
 																			</li>
 																			<li>
-																				<a onclick="popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney')">录入商业理赔结果</a>
+																			<!--popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney')  -->
+																				<a onclick="updateDataAboutCompany()">录入商业理赔结果</a>
+																				
 																			</li>
 																		</ul>
 																</li>
@@ -84,13 +89,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																	<a href="">导入</a>
 																</li>
 																<li>
-																	<a href="">居民医保</a>
+																	<a onclick="$('#Company').hide();$('#reimburseStudent').hide();$('#juming').show();"  style="cursor: pointer;">居民医保</a>
 																</li>
 																<li>
-																	<a href="">商业医保</a>
+																	<a onclick="$('#reimburseStudent').hide();$('#juming').hide();$('#Company').show();" style="cursor: pointer;">商业医保</a>
 																</li>
 																	<li>
-																	<a href="">已报销名单</a>
+																	<a onclick="$('#juming').hide();$('#Company').hide();$('#reimburseStudent').show();" style="cursor: pointer;">已报销名单</a>
 																</li>
 															</ul>
 														</li>
@@ -123,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:800px"><a href="reviewPage/yibao_review.html"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
 												</tr>
 												<tr>
@@ -135,14 +140,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																	<table width="100%" border="0" cellpadding="4"
 																		cellspacing="1" bgcolor="#464646" class="demo" id="juming"  ><thead>
 																		<tr class="CTitle">
-																			<td height="22" colspan="19" align="center"
+																			<td height="22" colspan="20" align="center"
 																				style="font-size: 16px">
 																				学生医保登记表
 																			</td>
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="7%"><input type="checkbox" name="jumingAll"/></td>
 																			<td width="8%">
 																				序号			
 																		    </td>
@@ -183,6 +188,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		    <td width="8%">
 																				总费用			
 																		    </td>
+																		     <td width="8%">
+																				递交案子时间			
+																		    </td>
 																		    <td width="8%">
 																				申请时间			
 																		    </td>
@@ -201,7 +209,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                                                            </tr>        
 						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                       <td width="7%"><input type="checkbox" name="juming"  value="<s:property value="hosNo"/>"/></td>
 																			<td width="8%">
 																				<s:property value="student.studentNo"/>		
 																		    </td>
@@ -247,6 +255,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		    <td width="8%">
 																				<s:property value="cost"/>		
 																		    </td>
+																		      <td width="8%">
+																				<s:property value="submitTime"/>		
+																		    </td>
 																		    <td width="8%">
 																				<s:property value="applyTime"/>			
 																		    </td>
@@ -277,7 +288,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="7%"><input name="companyAll" type="checkbox"/></td>
 																			<td width="8%">
 																				序号			
 																		    </td>
@@ -315,7 +326,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>        
 						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                       <td width="7%"><input type="checkbox" name="company" value="<s:property value="hosNo"/>"/></td>
 																			<td width="8%">
 																				<s:property value="student.studentNo"/>		
 																		    </td>
@@ -380,7 +391,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		</tr>
 																		
 																		<tr bgcolor="#EEEEEE">
-																			<td width="7%"><input type="checkbox"/></td>
+																			<td width="7%"><input type="checkbox" name="reimburseAll"/></td>
 																			<td width="8%">
 																				序号			
 																		    </td>
@@ -417,7 +428,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                                                            </tr>        
 						                                             <s:iterator  value="#request.hoss">
 					                                                    <tr bgcolor="#FFFFFF">
-					                                                       <td width="7%"><input type="checkbox"/></td>
+					                                                       <td width="7%"><input type="checkbox" name="reimburse" value="<s:property value="hosNo"/>"/></td>
 																			<td width="8%">
 																				<s:property value="student.studentNo"/>		
 																		    </td>
@@ -488,15 +499,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																		<tr>
 																			<td width="50%">
 																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																				<span class="right-text09"><s:property value="#request.pageVo.pageNum"/></span> 页 | 第
+																				<span class="right-text09"><s:property value="#request.pageVo.currentPage"/></span> 页
 																			</td>
 																			<td width="49%" align="right">
 																				[
-																				<a href="#" class="right-font08">首页</a> |
-																				<a href="#" class="right-font08">上一页</a> |
-																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=1" class="right-font08">首页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="#request.pageVo.currentPage-1"/>" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="(#request.pageVo.currentPage+1)<#request.pageVo.pageNum?(#request.pageVo.currentPage+1):#request.pageVo.pageNum"/>" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?currentPage=<s:property value="#request.pageVo.pageNum"/>" class="right-font08">末页</a>] 
 																			</td>
 																		 
 																		</tr>
@@ -505,7 +516,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															</tr>
 														</table>
 
-													</td>
+												 
 												</tr>
 											</table>
 										</div>
@@ -521,8 +532,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
     	<div id="medicareDiv" style="display: none"></div>
     		<div id="acceptResultDiv" style="display: none">
-        		<h2>录入受理结果<a href="#" id="btnCloseacceptResult">关闭</a></h2>
+        		<h2>录入受理结果<a  id="btnCloseacceptResult">关闭</a></h2>
         		<div class="form">
+        		 <form action="" method="post">
+            		<input type="hidden" name="hosNo" id="jumingHosNo"> 
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
             				<td height="22" colspan="4" align="center" style="font-size: 16px">
@@ -534,13 +547,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								学号			
 							</td>
 							<td width="15%">
-								<input type="text"/>
+								 <p id="jumingStudentNo"></p>
 							</td>
 							<td width="15%">
 							    姓名			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+								<p id="jumingStudentName"></p>			
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -548,13 +561,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								学院			
 							</td>
 							<td width="15%">
-								软件学院
+								<p id="jumingCollege"></p>	
 							</td>
 							<td width="15%">
 							    班级			
 							</td>
 							<td width="15%">
-								1101			
+								<p id="jumingClass"></p> 			
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -562,7 +575,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								住院日期			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								<p id="jumingHospitalDate"></p>
 							</td>
 							
 						</tr>
@@ -571,7 +584,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								出院日期			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								<p id="jumingLeaveDate"></p>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -579,13 +592,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								住院天数			
 							</td>
 							<td width="15%">
-								5
+								<p id="jumingHosDate"></p>
 							</td>
 							<td width="6%">
 							    病情			
 							</td>
 							<td width="15%">
-								还好			
+								<p id="jumingConditon"></p>		
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -593,7 +606,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								本地或转外			
 							</td>
 							<td colspan="2">
-								本地
+							 <p id="jumingLocalCity"></p>	
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -601,15 +614,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								申请时间			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								 <p id="jumingApplyTime"></p>
 							</td>
+						</tr>
+						
+						<tr bgcolor="#EEEEEE">
+						   <td width="15%" >
+								住院地址			
+							</td>
+							<td width="15%" >
+								 <p id="jumingHospitalAddress"></p>
+							</td>
+						   
+						   <td width="15%" >
+								总费用			
+							</td>
+							<td width="15%" >
+								 <p id="jumingCost"></p>
+							</td>
+							
+							
 						</tr>
 						<tr bgcolor="#EEEEEE">
 						   <td colspan="2">
 								递交案子时间			
 							</td>
 							<td colspan="2">
-								<input type="text"/>
+								<input type="text" name="submitTime"/>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -617,44 +648,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								未受理原因			
 							</td>
 							<td width="15%">
-								<input type="text"/>
+								<input type="text" name="refuseReason"/>
 							</td>
 							<td width="15%">
 							    受理结果			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+								<input type="text" name="resultDeal"/>			
 							</td>
 						</tr>
-						<tr bgcolor="#EEEEEE">
-						   <td width="15%">
-								总费用			
-							</td>
-							<td width="15%">
-								￥500
-							</td>
-							<td width="15%">
-							    备注			
-							</td>
-							<td width="15%">
-								<input type="text"/>			
-							</td>
-						</tr>
+						
             		</table>
             	
             		<div style="margin-left: 250px">
-            				<input type='button' value='保存' id="saveProjectPro" onclick="save()" />
+            				<input type='submit' value='提交'  />
             				&nbsp;&nbsp;&nbsp;&nbsp;
-            				<input type='button' value='取消' onclick="cancel()" />
+            				<input type="reset" value='取消'   />
             		</div>
+            		</form>
             		
         		</div>
     		</div>
 
 
     		<div id="acceptResultList" style="display: none">
-        		<h2>录入已报销名单<a href="#" id="btnCloseList">关闭</a></h2>
+        		<h2>录入已报销名单<a   id="btnCloseList">关闭</a></h2>
         		<div class="form">
+       
+		
+		
+		
+		 <form action="" method="post">
+		 	<input type="hidden" name="bxHosNo">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
             				<td height="22" colspan="4" align="center" style="font-size: 16px">
@@ -666,13 +691,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								学号			
 							</td>
 							<td width="15%">
-								<input type="text"/>
+								 <p id="bxStudentNo"></p>
 							</td>
 							<td width="15%">
 							    姓名			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+							 <p id="bxStudentName"></p>			
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -680,21 +705,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								学院			
 							</td>
 							<td width="15%">
-								软件学院
+								 <p id="bxCollege"></p>
 							</td>
 							<td width="15%">
 							    班级			
 							</td>
 							<td width="15%">
-								1101			
+								 <p id="bxClass"></p>			
 							</td>
 						</tr>
+						
+						 
+		
 						<tr bgcolor="#FFFFFF">
 						   <td colspan="2">
 								住院日期			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								<p id="bxHospitalDate"></p>
 							</td>
 							
 						</tr>
@@ -703,7 +731,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								出院日期			
 							</td>
 							<td colspan="2">
-								2011/1/2
+									<p id="bxLeaveDate"></p>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -711,13 +739,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								住院天数			
 							</td>
 							<td width="15%">
-								5
+								<p id="bxHosDate"></p>
 							</td>
 							<td width="6%">
 							    病情			
 							</td>
 							<td width="15%">
-								还好			
+								<p id="bxConditon"></p>		
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -725,7 +753,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								本地或转外			
 							</td>
 							<td colspan="2">
-								本地
+								<p id="bxLocalCity"></p>
+								
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -733,7 +762,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								申请时间			
 							</td>
 							<td colspan="2">
-								2011/1/2
+							<p id="bxApplyTime"></p>
+								 
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -741,7 +771,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								医保处已报销金额			
 							</td>
 							<td colspan="2">
-								<input type="text"/>
+								<input type="text" name="reimbursementAmount"/>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -749,16 +779,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								是否有结算清单			
 							</td>
 							<td width="15%">
-								<select>
-									<option value="是">是</option>
-									<option value="否">否</option>
+								<select name="bill">
+									<option value="1">是</option>
+									<option value="0">否</option>
 								</select>
 							</td>
 							<td width="15%">
 							    领卡时间			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+								<input type="text" name="getcardTime"/>			
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -772,23 +802,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    备注			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+								<input type="text" name="jumingRemark"/>			
 							</td>
 						</tr>
             		</table>
             	
             		<div style="margin-left: 250px">
-            				<input type='button' value='保存' id="saveProjectPro" onclick="save()" />
+            				<input type='submit' value='提交'  />
             				&nbsp;&nbsp;&nbsp;&nbsp;
-            				<input type='button' value='取消' onclick="cancel()" />
+            				<input type="reset" value='取消'   />
             		</div>
-            		
+            		</form>
         		</div>
     		</div>
 
     		<div id="acceptMoney" style="display: none">
-        		<h2>录入商业理赔结果<a href="#" id="btnCloseMoney">关闭</a></h2>
+        		<h2>录入商业理赔结果<a   id="btnCloseMoney">关闭</a></h2>
         		<div class="form">
+        		<form action="">
+        		<input type="hidden" name="companyHosNo">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
             				<td height="22" colspan="4" align="center" style="font-size: 16px">
@@ -800,13 +832,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								学号			
 							</td>
 							<td width="15%">
-								<input type="text"/>
+								 <p id="companyStudentNo"></p>
 							</td>
 							<td width="15%">
 							    姓名			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+								<p id="companyStudentName"></p>			
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -814,13 +846,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								学院			
 							</td>
 							<td width="15%">
-								软件学院
+								 <p id="companyCollege"></p>
 							</td>
 							<td width="15%">
 							    班级			
 							</td>
 							<td width="15%">
-								1101			
+								 <p id="companyClass"></p>				
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -828,7 +860,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								住院日期			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								<p id="companyHospitalDate"></p>
 							</td>
 							
 						</tr>
@@ -837,7 +869,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								出院日期			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								<p id="companyLeaveDate"></p>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -845,13 +877,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								住院天数			
 							</td>
 							<td width="15%">
-								5
+									<p id="companyHosDate"></p>
 							</td>
 							<td width="6%">
 							    病情			
 							</td>
 							<td width="15%">
-								还好			
+								<p id="bxConditon"></p>				
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -859,7 +891,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								本地或转外			
 							</td>
 							<td colspan="2">
-								本地
+									<p id="companyLocalCity"></p>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -867,7 +899,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								申请时间			
 							</td>
 							<td colspan="2">
-								2011/1/2
+								<p id="companyApplyTime"></p>
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -875,7 +907,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								保险公司接案子的时间			
 							</td>
 							<td colspan="2">
-								<input type="text"/>
+								<input type="text" name="insurerTime"/>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -883,9 +915,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								除结算单材料是否齐全			
 							</td>
 							<td colspan="2">
-								<select>
-									<option value="是">是</option>
-									<option value="否">否</option>
+								<select name="complete">
+									<option value="1">是</option>
+									<option value="0">否</option>
 								</select>
 							</td>
 						</tr>
@@ -894,7 +926,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								银行卡号			
 							</td>
 							<td colspan="2">
-								<input type="text"/>
+								 <p id="companyBankcardID"></p>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -902,7 +934,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								没有结算的原因			
 							</td>
 							<td colspan="2">
-								<input type="text"/>
+								<input type="text" name="notinsurerReason"/>
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -916,17 +948,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    备注			
 							</td>
 							<td width="15%">
-								<input type="text"/>			
+								<input type="text" name="companyRemark"/>			
 							</td>
 						</tr>
             		</table>
             	
             		<div style="margin-left: 250px">
-            				<input type='button' value='保存' id="saveProjectPro" onclick="save()" />
+            				<input type='submit' value='提交'   />
             				&nbsp;&nbsp;&nbsp;&nbsp;
-            				<input type='button' value='取消' onclick="cancel()" />
+            				<input type="reset" value='取消'   />
             		</div>
-            		
+            		</form>
         		</div>
     		</div>
 		</div>
@@ -936,6 +968,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              	<h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
         	<div class="form">
             	<table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="advancedSearchTab" ><thead>
+                      
             
 					<tr bgcolor="#FFFFFF" align="center">
 					    <td width='15%' name='projectName'> 
@@ -1020,4 +1053,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <script src="<%=basePath%>js/jquery.chromatable.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/school/school.js"></script>
 		<script type="text/javascript" src="<%=basePath%>js/util/loadCollegeClass.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/school/xionganping_yibao.js"></script>
 </html>

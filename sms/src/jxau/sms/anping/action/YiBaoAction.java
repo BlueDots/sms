@@ -1,5 +1,8 @@
 package jxau.sms.anping.action;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +11,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
+import org.springframework.beans.propertyeditors.URLEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.UnexpectedRollbackException;
@@ -30,6 +34,32 @@ import com.opensymphony.xwork2.ModelDriven;
 public class YiBaoAction extends ActionSupport implements
 		ModelDriven<HosInsuranceInfo> {
 
+	
+	/**
+	 * 审核医保
+	 * anping
+	 * TODO接收的参数有如下的isYesOrNot，是过还是不过
+	 * hosNo 
+	 * stateRemark+hosNo
+	 * 下午9:00:00
+	 * @return
+	 */
+	public String checkHosByTeacher(){
+		
+	    String[] isYesOrNo = (String[])parameters.get("isYesOrNot");
+	   
+	    System.out.println(isYesOrNo);
+	    Set<String> keys  = parameters.keySet();
+	    for(String key:keys){ 
+	    	System.out.println(key);
+	    	String[] data  =(String[]) parameters.get(key);
+	    	System.out.println(data[0]);
+	    }
+		return SUCCESS;
+	}
+	
+	
+	
 	/**
 	 * 校级工作人员查询出所有的学生医保信息
 	 * anping
@@ -41,12 +71,26 @@ public class YiBaoAction extends ActionSupport implements
 		String result="teacherShowHoss";
 		PageVo  pageVo  = new PageVo();
 		String[] currentPages = (String[]) parameters.get("currentPage");
-		
+		String[] hostates = (String[]) parameters.get("hosState");
+		Map<String,Object> params = null;
+		if(hostates!=null&&hostates[0]!=null){
+			String hostate = null;
+			try {
+				hostate=URLDecoder.decode(URLDecoder.decode(hostates[0], "utf-8"),"utf-8");
+				 if(hostate.equals("校级审核中")){
+					result = "apply";
+				}
+			} catch (UnsupportedEncodingException e) {
+				 e.printStackTrace();
+			}
+			params= new HashMap<String,Object>();
+			params.put("hosState", hostate);
+		}
 		pageVo.setCurrentPage(currentPages==null?0:Integer.parseInt(currentPages[0]));
 		pageVo.setSize(6);
 		List<HosInsuranceInfo> hoss=null;
 		try {
-			hoss = yiBaoService.searchByAccurate(null, pageVo, -1);
+			hoss = yiBaoService.searchByAccurate(params, pageVo, -1);
 			//将数据发给前台去
 			
 			request.put("pageVo",pageVo);
@@ -163,7 +207,17 @@ public class YiBaoAction extends ActionSupport implements
 	public String getErrorMsg() {
 		return ErrorMsg;
 	}
+	
+	
+	
+ 
 
+	 
+
+
+
+
+ 
 	private String ErrorMsg;
 	private Map<String, Object> session = ActionContext.getContext()
 			.getSession();

@@ -1,7 +1,23 @@
 //得到学生基本信息列表
 var stuBasicInfoObj;
+var college=null;
+var major=null;
+var className=null;
+var stuNoOrName=null;
 function getStuBasicInfoList(currentPage){
-	$.getJSON("StuBasicInfoJSON/getStuBasicInfoListsJSON!stuBasicInfoExecute?currentPage="+currentPage,function(data){
+	var url="?currentPage="+currentPage;
+	
+	if(college!=null)
+		url+=",college="+college;
+	if(major!=null)
+		url+=",major="+major;
+	if(className!=null)
+		url+=",className="+className;
+	if(stuNoOrName!=null)
+		url+=",stuNoOrName="+stuNoOrName;
+	alert(url);
+	
+	$.getJSON("StuBasicInfoJSON/getStuBasicInfoListsJSON!stuBasicInfoExecute"+url,function(data){
 		//得到StubasicInfoList
 		var stuBaisicInfoLists = data.stuBasicInfoVOlists;
 		
@@ -224,8 +240,4 @@ function stuBasicInfoDetail(stuBasicInfo) {
 	//学历
 	var eduBackground = stuBasicInfo.eduBackground;
 	document.getElementById("eduBackground").innerText=(eduBackground!=null?eduBackground:"");
-}
-
-function aaaa() {
-	alert("ssssssssssssssssssss");
 }

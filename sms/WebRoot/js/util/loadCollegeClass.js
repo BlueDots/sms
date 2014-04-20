@@ -1,7 +1,8 @@
 var form = $("#collegeList");
-var collegeSelect = $("<select name='departNo' >");
-var majorSelect = $("<select name='majorNo' >");
-var classSelect = $("<select name='classNo' >");
+var collegeSelect = $("<select name='department' id='department'>");
+var majorSelect = $("<select name='major' id='major'>");
+var classSelect = $("<select name='className' id='className'>");
+
 $(document).ready(function() {
 	console.log("加载学院班级信息开始!");
 	console.log("初始化表单");
@@ -27,8 +28,7 @@ function setCollegeData() {
 		$.each(depInfos, function(index, value) {
 			var departNo = value.departNo;
 			var department = value.department;
-
-			var option = $("<option value='" + department + "' >" + department
+			var option = $("<option value='" + department + "' id='"+departNo+"' >" + department
 					+ "</option>");
 			collegeSelect.append(option);
 		});
@@ -44,7 +44,7 @@ function setMajorData(value) {
 		$.each(majors, function(index, value) {
 			var major = value.major;
 			var majorNo = value.majorNo;
-			var option = $("<option value='" + major + "' >" + major
+			var option = $("<option value='" + major + "' id='"+majorNo+"' >" + major
 					+ "</option>");
 			majorSelect.append(option);
 		});
@@ -52,8 +52,16 @@ function setMajorData(value) {
 }
 //初始化学院下拉框的监听事件
 function initCollegeListener() {
-	collegeSelect.change(function(){
-		var value = $(this).val();
+	collegeSelect.change(function(event){
+		
+		var collegeSelect = document.getElementById("department");
+		var value;
+		
+		for(var i=0;i<collegeSelect.options.length;i++)
+			 if(collegeSelect.options[i].selected){
+				 value=collegeSelect.options[i].id;
+		}
+		
 		if(value!=-1){
 	    setMajorData(value);
 	    
@@ -66,9 +74,23 @@ function initCollegeListener() {
 function initMajorListener() {
 	
 	majorSelect.change(function(){
-		var value = $(this).val();
+		var college;
+		var value;
+		var collegeSelect = document.getElementById("department");
+		//获得选中option的id
+		for(var i=0;i<collegeSelect.options.length;i++)
+			 if(collegeSelect.options[i].selected){
+				 college=collegeSelect.options[i].id;
+		}
+		
+		var majorSelect = document.getElementById("major");
+		//获得选中option的id
+		for(var i=0;i<majorSelect.options.length;i++)
+			 if(majorSelect.options[i].selected){
+				 value=majorSelect.options[i].id;
+		}
+		
 		var url  = "college/college!showCollege?type=class";
-		var college = collegeSelect.val();
 		if(value==-1&& college==-1){
 	       alert("请选择学院");
 	       return ;

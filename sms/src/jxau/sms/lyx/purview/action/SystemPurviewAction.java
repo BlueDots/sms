@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import jxau.sms.lyx.purview.service.impl.PurviewListPackage;
 import jxau.sms.lyx.purview.service.impl.SystemPurviewServiceImpl;
 import jxau.sms.lyx.purview.service.impl.UserPurviewManagerServiceImpl;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -68,10 +71,16 @@ public class SystemPurviewAction extends ActionSupport{
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		
-		if(roleNo==null){
+		
+		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+		String tecRoleNo = String.valueOf(request.getAttribute("tecRoleNo"));
+		
+		if(roleNo==null && tecRoleNo==null){
 			map.put("teacherNo", teacherNo);
-		}else if(teacherNo==null){
+		}else if(teacherNo==null && tecRoleNo==null){
 			map.put("roleNo", roleNo);
+		}else if(roleNo==null && teacherNo==null){
+			map.put("roleNo", tecRoleNo);
 		}
 					
 		List<PurviewInfo> purviewLists = spsi.searchListByAccurate(null, 0);

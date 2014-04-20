@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.vo.VTeacherRole;
 
@@ -20,8 +21,9 @@ public class ServiceImplTest {
 		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
 		AllocationRoleServiceImpl ars = (AllocationRoleServiceImpl)context.getBean("AllocationRoleServiceImpl");
 		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("teacherNo", "0000");
-		List<VTeacherRole> vTeacherRole = ars.searchByAccurate(map, null, 0);
+		PageVo pageVo = new PageVo();
+		pageVo.setSize(4);
+		List<VTeacherRole> vTeacherRole = ars.searchByAccurate(null, pageVo, 0);
 		for(int i=0;i<vTeacherRole.size();i++){
 			System.out.print(vTeacherRole.get(i).getTeacherNo());
 			System.out.print(vTeacherRole.get(i).getTeacherName());

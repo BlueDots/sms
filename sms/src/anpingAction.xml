@@ -16,9 +16,24 @@
 			<result name="input">/applyError.html</result>
 			<result name="modify">/files/Student/std_InsuranceModify.jsp</result>
 			<result name="teacherShowHoss">/files/university/sch_yibao.jsp</result>
+			<result name="apply">/files/university/reviewPage/yibao_review.jsp</result>
 		</action>
 
 	</package>
+
+
+  	<package name="hosInsurance" namespace="/" extends="json-default">
+ 			
+ 		<!-- 配置属于医保的拦截器 -->
+	  
+	      
+		<action name="hosInsurance" class="jxau.sms.anping.action.YiBaoActionByAJAX">
+	       <result type="json"/>
+			
+		</action>
+
+	</package>
+  
 	
 	<package name="college" namespace="/" extends="json-default">
  		<!-- 配置属于医保的拦截器 -->

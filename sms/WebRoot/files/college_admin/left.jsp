@@ -179,7 +179,7 @@ function list(idstr){
 							<tr>
 								<td width="8%"><img name="img8" id="img8" src="<%=basePath%>/images/ico04.gif" width="8" height="11" /></td>
 								<td width="92%">
-									<a href="<%=basePath%>/files/college_admin/admin_userRole.jsp" target="mainFrame" class="left-font03">分配角色管理</a>
+									<a href="<%=basePath%>/TecRole/allocation!tecRoleDisplay" target="mainFrame" class="left-font03">分配角色管理</a>
 								</td>
 							</tr>
 						</table>

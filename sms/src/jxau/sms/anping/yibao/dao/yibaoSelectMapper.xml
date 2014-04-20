@@ -7,7 +7,7 @@
 	<!-- 查找学生部分信息和所有的医保  
 	     需要传入的参数格式为 HashMap<String,Object>
 	                             <studentNo,'20111429'>
-	                             <hosState,'校级审核不通过'>
+	                             <hosState,'校级未通过'>
  	                             <firstIndex,0>
  	                             <size,1>
  	      返回的是最晚的那个
@@ -24,7 +24,7 @@
         and student.studentNo=#{studentNo}
 		and
 		insurance.studentNo=student.studentNo
-		
+		 
 		 order    by  hosNo desc
         <if test="firstIndex != null and size!=null">
 			 limit #{firstIndex},#{size}
@@ -56,7 +56,7 @@
 	<!--通过医保的id 来查询医保 
 	需要传入的参数格式为 HashMap<String,Object>
 	                             <hosNo,1>
-	                             <hosState,'校级审核不通过'>
+	                             <hosState,'校级未通过'>
 	                           
 	-->
 	<select id="findYiBaoById" parameterType="java.util.HashMap"
@@ -92,6 +92,9 @@
 		 <if test="hosState != null">
 			and  insurance.hosState=#{hosState}
 		</if>
+		<if test="hosState==null">
+			and  insurance.hosState!='校级审核未通过'
+		</if>
 		<if test="college != null">
 			and  student.college=#{college}
 		</if>
@@ -121,6 +124,9 @@
 		 insurance.studentNo=student.studentNo
 		 <if test="hosState != null">
 			and  insurance.hosState=#{hosState}
+		</if>
+		<if test="hosState==null">
+			and  insurance.hosState!='校级审核未通过'
 		</if>
 		<if test="college != null">
 			and  student.college=#{college}

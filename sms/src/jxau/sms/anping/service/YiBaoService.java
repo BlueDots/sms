@@ -12,5 +12,7 @@ import jxau.sms.qing.po.Teacher;
 public interface YiBaoService extends GlobalServiceInterface {
 	public int updateYiBaoByThreeWay(Map<String,List<HosInsuranceInfo>> params);
 	public int updateYiBaoByStudent(StuBasicInfo student,HosInsuranceInfo hosInsuranceInfo);
+	//拿到所有的未审核的信息
+	public long getAllNoCheckData();
 	
 }

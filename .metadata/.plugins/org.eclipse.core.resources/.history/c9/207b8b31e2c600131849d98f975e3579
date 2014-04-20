@@ -1,0 +1,5 @@
+package jxau.sms.thomas.exception;
+
+public class POIException extends RuntimeException {
+
+}

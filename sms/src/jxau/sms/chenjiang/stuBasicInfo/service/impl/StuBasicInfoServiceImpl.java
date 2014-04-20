@@ -288,11 +288,20 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		}
 		return true;
 	}
-
+	
 	@Override
 	public <T> int update(Class T, Map<String, Object> param) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public boolean studentNoIsExist(String studentNo) {
+		long count=-1;
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("stuNoOrName", studentNo);
+		count = dao.selectOne(namespace+"queryNums", params);
+		if(count>0) return true;
+		else return false;
 	}
 
 }

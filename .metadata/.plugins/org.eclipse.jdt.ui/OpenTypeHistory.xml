@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<typeInfoHistroy/>
+=======
 <typeInfoHistroy>
 <typeInfo handle="=sms/src&lt;jxau.sms.lyx.purview.service.impl{AllocationPurviewStandard.java[AllocationPurviewStandard" modifiers="513" timestamp="1397648462279"/>
 <typeInfo handle="=sms/src&lt;jxau.sms.globalService{GlobalServiceInterface.java[GlobalServiceInterface" modifiers="513" timestamp="1397471581095"/>
 <typeInfo handle="=sms/WebRoot\/WEB-INF\/lib\/struts2\/xwork-core-2.3.16.jar&lt;com.opensymphony.xwork2(ActionSupport.class[ActionSupport" modifiers="33" timestamp="1397288353979"/>
 </typeInfoHistroy>
+>>>>>>> 8ad7efc33e32c8454ade786efedb044cff6d5e73

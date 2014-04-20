@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var usertype = document.getElementById("select").value;
 				//alert(usertype);
 				if(usertype == 1) {
-					window.location.href = "#";
+					window.location.href = "index_student.jsp";
 				} else if(usertype == 2) {
 					window.location.href = "index_tutor.html";
 				} else if(usertype == 3) {

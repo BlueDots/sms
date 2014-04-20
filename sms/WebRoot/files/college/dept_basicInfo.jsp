@@ -44,11 +44,26 @@
    	//为查询按钮添加点击事件
    	
    	$("#accurateSearch").click(function(){
-		var college=$("#departNo").find("option:selected").text();;
-		alert(college);
+   		//显示查询层，隐藏录入层
+   		var editDiv = document.getElementById("editMsg");
+		var mainTr = document.getElementById("allbasicMsg");
+		editDiv.style.display = "none";
+		mainTr.style.display = "block";
+   	
+		var college=$("#department").find("option:selected").text();
+		var major=$("#major").find("option:selected").text();
+		var className=$("#className").find("option:selected").text();
+		var studentNoOrName=$("#studentNoOrName").val();
+
+		//alert(college);
+		//alert(major);
+		//alert(className);
+		//alert(studentNoOrName);
+		setCollegeMajorClassStuNoOrName(college,major,className,studentNoOrName);
+		getStuBasicInfoList(1);
 	});
    	
- 	getStuBasicInfoList(1);
+ 	//getStuBasicInfoList(1);
 	$("#tableOfShowStuBasicInfoLists").chromatable({
 		width: "100%",
         scrolling: "yes"
@@ -106,10 +121,10 @@
 																	<a  href="">录入</a>
 																	<ul>
 																		<li>
-																			<a href="#" onclick="manually('entryStuBasicInfo')">手动录入</a>
+																			<a onclick="manually('entryStuBasicInfo')">手动录入</a>
 																		</li>
 																		<li>
-																			<a href="#">导入</a>
+																			<a >导入</a>
 																		</li>																		
 																	</ul>
 																</li>																		
@@ -153,8 +168,8 @@
 												</tr>
 												<tr id="editMsg"  style="display:none">
 													<td  class="CPanel" align="center">
-														<div style="overflow-x: auto; overflow-y: auto;width:100%;">
-														<table width="150%" border="0" align="center" cellpadding="0" cellspacing="0">
+														<div style="overflow-x: auto; overflow-y: auto;width:99%;">
+														<table width="150%" border="0" align="center" cellpadding="0" cellspacing="0" id="importStuBasicInfo">
 															<tr>
 																<td height="40" class="font42">
 																	<form action="" method = "post">
@@ -176,6 +191,9 @@
 																			</th>
                                                                             <th width="3%">
 																				<center>姓名</center>
+																			</th>
+																			<th width="3%">
+																				<center>学院</center>
 																			</th>
 																			<th width="5%">
 																				<center>专业</center>
@@ -209,7 +227,7 @@
 																			</th>		
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align = "center" >
-																			<td colspan="13" style="padding:1px">
+																			<td colspan="14" style="padding:1px">
 																				<button type="button">提交</button>
 																				<button type="button" onclick="exchange('allbasicMsg','editMsg')">取消</button>
 																			</td>
@@ -248,6 +266,9 @@
 																			</td>
                                                                             <td width="3%">
 																				<center>姓名</center>
+																			</td>
+																			<td width="5%">
+																				<center>学院</center>
 																			</td>
 																			<td width="5%">
 																				<center>专业</center>

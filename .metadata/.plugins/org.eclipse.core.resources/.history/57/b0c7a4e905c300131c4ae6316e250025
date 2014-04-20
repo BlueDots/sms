@@ -1,9 +1,0 @@
-package jxau.sms.thomas.action;
-
-import java.util.Map;
-
-import com.opensymphony.xwork2.ActionContext;
-
-public class AdvanceInfoAction extends  {
-
-}

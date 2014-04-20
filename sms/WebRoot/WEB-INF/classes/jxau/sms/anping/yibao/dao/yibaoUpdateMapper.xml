@@ -48,12 +48,14 @@
 		update
 		hos_insurance_info
 		<set>
+		
+			<if test="getcardTime != null">getcardTime=#{getcardTime},collarCard=1</if>
+			<if test="getcardTime == null">collarCard=-1</if>
 			<if test="reimbursementAmount != null">
-				reimbursementAmount=#{reimbursementAmount},
+				,reimbursementAmount=#{reimbursementAmount}
 			</if>
-			<if test="bill != null">bill=#{bill},</if>
-			<if test="getcardTime != null">getcardTime=#{getcardTime},</if>
-			<if test="jumingRemark != null">jumingRemark=#{jumingRemark}</if>
+			<if test="bill != null">,bill=#{bill},</if>
+			<if test="jumingRemark != null">,jumingRemark=#{jumingRemark}</if>
 		</set>
 		where
 		hosNo=#{hosNo};
@@ -65,14 +67,14 @@
 		hos_insurance_info
 		<set>
 			<if test="complete != null">
-				complete=#{complete},
+				complete=#{complete}
 			</if>
-			<if test="insurerTime != null">insurerTime=#{insurerTime},</if>
+			<if test="insurerTime != null">,insurerTime=#{insurerTime},</if>
 			<if test="notinsurerReason != null">
-				notinsurerReason=#{notinsurerReason},
+				,notinsurerReason=#{notinsurerReason}
 			</if>
 			<if test="companyRemark != null">
-				companyRemark=#{companyRemark}
+				,companyRemark=#{companyRemark}
 			</if>
 		</set>
 		where hosNo=#{hosNo};

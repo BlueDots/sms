@@ -3,16 +3,10 @@ package jxau.sms.util.chenjiang.roleVerify;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Resource;
-import javax.enterprise.inject.New;
-import javax.faces.application.Application;
-
 import jxau.sms.chenjiang.po.ActInfo;
 import jxau.sms.chenjiang.po.StuActParticipate;
 import jxau.sms.chenjiang.po.StuBasicInfo;
-
-import org.jboss.weld.context.ApplicationContext;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

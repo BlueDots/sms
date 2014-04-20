@@ -1,0 +1,8 @@
+package jxau.sms.thomas.exception;
+
+public class ClassNotFoundException extends RuntimeException{
+
+	public ClassNotFoundException (String message) {
+		
+	}
+}

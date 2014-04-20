@@ -1,0 +1,10 @@
+package jxau.sms.commom.vo;
+
+import java.util.List;
+
+public class PropVo {
+
+	private List<Integer> numbers;		//
+	private int itemId;	//先进项目的编号
+	private int level;
+}

@@ -1,0 +1,41 @@
+package jxau.sms.thomas.util;
+
+import java.util.List;
+
+import jxau.sms.commom.vo.PropVo;
+import jxau.sms.globaldao.Dao;
+
+public class PropHandler {
+	
+	private PropVo propVo;
+	private Dao dao;
+	
+	public PropHandler(PropVo propVo){
+		this.propVo = propVo;
+	}
+	
+	public void setDao(){
+		
+	}
+	public boolean generateProp(){
+		boolean flag = true;
+		if (propVo.getNumbers()!=null&&propVo.getLevel()==0) {	//院级输入人数
+			
+		}else{		//院级输入比例
+			
+		}
+		
+		if (propVo.getNumbers()!=null&&propVo.getLevel()==0) {	//校级输入人数
+			
+		}else {		//院级输入比例
+			
+		}
+			
+		return flag;
+	}
+	public boolean CheckProporation(List<Double> props){
+		
+		
+		return false;
+	}
+}

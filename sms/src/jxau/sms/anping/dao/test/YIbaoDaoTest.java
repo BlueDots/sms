@@ -19,6 +19,11 @@ public class YIbaoDaoTest {
 	Dao dao = (Dao) app.getBean("dao");
 	
 	@Test
+	public void testSelect(){
+	long data = 	dao.selectOne(namespace+"findAllStateIsNoCheckNum", null);
+		System.out.println(data);
+	}
+	@Test
 	public void selectYibaoTest() {
 		Map<String, Object> params = new HashMap<String, Object>(3);
 		params.put("studentNo", "20111429");

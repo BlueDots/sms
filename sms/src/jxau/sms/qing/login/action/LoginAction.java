@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+ 
 import jxau.sms.qing.exception.LoginException;
 import jxau.sms.qing.login.service.LoginService;
 
@@ -17,12 +17,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @Controller  
 @Scope("prototype")
-public class LoginAction extends ActionSupport implements ServletResponseAware {	 
+public class LoginAction extends ActionSupport  {	 
 	 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private HttpServletResponse response;  
+	  
 	private LoginService loginService;
 	private String username;
 	private String password;
@@ -46,10 +46,7 @@ public class LoginAction extends ActionSupport implements ServletResponseAware {
 		this.loginService = loginService;
 	}
 
-	@Override  
-	 public void setServletResponse(HttpServletResponse response) {  
-	        this.response = response;  
-	  }  
+ 
 	 
 	 @Override  
 	 public String execute() throws Exception {  		 	
@@ -65,13 +62,7 @@ public class LoginAction extends ActionSupport implements ServletResponseAware {
 	      
 	 }  
 	 
-	 public void say() throws IOException{  
-	        System.out.println("HelloAction.say is executing....");  
-	        response.setContentType("text/html;charset=utf-8");  
-	        PrintWriter out = response.getWriter();  
-	        out.println("<span style='color:red;'>啊哈，We are here!</span>");  
-	        out.close();  
-	      
-	 }  
+	 
+	 
 
 }

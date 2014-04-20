@@ -26,7 +26,12 @@ function updateDataAboutAcceptResult() {
 		}
 		 setData("juming",hos);
 		$("#jumingHospitalAddress").html(hos.hospitalAddress);
-		$("#jumingCost").html(hos.cost	);
+		$("#jumingCost").html(hos.cost);
+		$("#submitTime").val(hos.submitTime);
+		$("#refuseReason").val(hos.refuseReason);
+		
+		$("#resultDeal").val(hos.resultDeal);
+		
 		popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult');
 	});
 	
@@ -50,6 +55,14 @@ function updateDataAboutCompany(){
 	   
 		setData("company",hos);
 		$("#companyBankcardID").html(hos.bankcardID	);
+		$("#insurerTime").html(hos.insurerTime);
+		$("#insurerTime").val(hos.insurerTime);
+		
+		$("#complete").val(hos.complete);
+		$("#notinsurerReason").val(hos.notinsurerReason);
+		$("#companyRemark").val(hos.companyRemark);
+		
+		$("#companyCost").html(hos.cost);
 		if(hos.hosState=='校级审核中'){
 			alert("该学生的未审核，请前去审核");
 			return ;
@@ -80,6 +93,11 @@ function updateDataAboutReimburse(){
 			return ;
 		}
 	    setData("bx",hos);
+		$("#bxReimbursementAmount").val(hos.reimbursementAmount);
+		$("#bxBill").val(hos.bill);
+		$("#bxGetCardTime").val(hos.getcardTime);
+		$("#bxCost").html(hos.cost);
+		$("#jumingRemark").val(hos.jumingRemark	);
 		popup('#medicareDiv', '#acceptResultList', '#btnCloseList');
     });
 

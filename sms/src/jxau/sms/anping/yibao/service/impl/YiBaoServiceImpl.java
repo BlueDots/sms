@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.AccessOrUpdateErrorException;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.exception.ParamterTypeErrorException;
@@ -32,7 +33,7 @@ import jxau.sms.qing.po.Teacher;
  */
 @Service("yiBaoService")
 @Transactional(propagation=Propagation.REQUIRED)
-public class YiBaoServiceImpl implements YiBaoService {
+public class YiBaoServiceImpl extends AbstractionService implements YiBaoService {
 
 	@Resource(name = "dao")
 	public void setDao(Dao dao) {
@@ -121,6 +122,10 @@ public class YiBaoServiceImpl implements YiBaoService {
 			queryCondition.add("className");
 			queryCondition.add("studentName");
 			queryCondition.add("studentNo");
+			queryCondition.add("major");
+			queryCondition.add("hosType");
+			queryCondition.add("collarCard");
+			
 			Set<String> keys = param.keySet();
 
 			for (String key : keys) {
@@ -315,7 +320,7 @@ public class YiBaoServiceImpl implements YiBaoService {
 				if (!(data instanceof Integer)) {
 					result = false;
 				}
-			} else {
+			} else if(data!=null) {
 				if (!(data instanceof String)) {
 					result = false;
 				}
@@ -328,6 +333,12 @@ public class YiBaoServiceImpl implements YiBaoService {
 	private String namespace = "jxau.sms.anping.yibao.dao.";
 	private String paramterTypeError = "参数类型不正确，正确如：hosNo->int;(studentNo,studentName,hosState,college,className)->String;";
 	private Dao dao;
+	@Override
+	public <T> List<T> getWaitingForLists(Map<String, Object> params,
+			PageVo pageVo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

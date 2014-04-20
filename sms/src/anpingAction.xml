@@ -10,15 +10,49 @@
  		<!-- 配置属于医保的拦截器 -->
 	  
 	      
-		<action name="hosInsuranceInfo" class="jxau.sms.anping.action.YiBaoAction">
+		<action name="hosInsuranceInfo" class="jxau.sms.anping.action.YiBaoAction" >
 	        <result name="success">/files/Student/std_InsuranceInfo.jsp</result>
 			<result name="error">/error.html</result>
-			<result name="input">/applyError.html</result>
+			<result name="input">/applyError.html</result>	
 			<result name="modify">/files/Student/std_InsuranceModify.jsp</result>
 			<result name="teacherShowHoss">/files/university/sch_yibao.jsp</result>
+			<result name="apply">/files/university/reviewPage/yibao_review.jsp</result>
+			<result name="check" type="chain">
+			　　 <param name="actionName">hosInsuranceInfo</param>  
+                <param name="namespace">/</param> 
+                <param name="method">getAllHosByTeacher</param>   
+			</result>
+			<result name="applyYiBaoAndModify" type="chain">
+			　　 <param name="actionName">hosInsuranceInfo</param>  
+                <param name="namespace">/</param> 
+                <param name="method">showYiBaoForStudent</param>   
+			</result>
+	
+		</action>
+		
+		
+		<action name="hosInsuranceQuery" class="jxau.sms.anping.action.QueryYiBaoAction">
+	        <result name="teacherShowHoss">/files/university/sch_yibao.jsp</result>
+		 	<result name="error">/error.html</result>
+		 	
+		 	<result name="queryCondition">/files/university/reviewPage/yibao_query.jsp</result>
 		</action>
 
 	</package>
+
+
+  	<package name="hosInsurance" namespace="/" extends="json-default">
+ 			
+ 		<!-- 配置属于医保的拦截器 -->
+	  
+	      
+		<action name="hosInsurance" class="jxau.sms.anping.action.YiBaoActionByAJAX">
+	       <result type="json"/>
+			
+		</action>
+
+	</package>
+  
 	
 	<package name="college" namespace="/" extends="json-default">
  		<!-- 配置属于医保的拦截器 -->

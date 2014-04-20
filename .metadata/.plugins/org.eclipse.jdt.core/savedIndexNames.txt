@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 INDEX VERSION 1.126+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jdt.core
 3614880630.index
 17529822.index
+=======
+INDEX VERSION 1.126+G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.jdt.core
+1487563846.index
+3755919691.index
+3959085937.index
+>>>>>>> 8ad7efc33e32c8454ade786efedb044cff6d5e73
 2132342305.index
 2512377300.index
 1220357771.index
@@ -23,6 +30,7 @@ INDEX VERSION 1.126+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jdt
 1227673797.index
 2476691152.index
 2218357992.index
+<<<<<<< HEAD
 615497112.index
 3959085937.index
 3755919691.index
@@ -50,3 +58,10 @@ INDEX VERSION 1.126+E:\GitHub_SMSCodeMana\sms\.metadata\.plugins\org.eclipse.jdt
 1837055033.index
 3927252733.index
 57672969.index
+=======
+3794467367.index
+2229128701.index
+51610724.index
+1386556809.index
+649578846.index
+>>>>>>> 8ad7efc33e32c8454ade786efedb044cff6d5e73

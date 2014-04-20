@@ -1,23 +1,23 @@
 //得到学生基本信息列表
 var stuBasicInfoObj;
-var college=null;
-var major=null;
-var className=null;
-var stuNoOrName=null;
+var g_college=null;
+var g_major=null;
+var g_className=null;
+var g_stuNoOrName=null;
 function getStuBasicInfoList(currentPage){
 	var url="?currentPage="+currentPage;
 	
-	if(college!=null)
-		url+=",college="+college;
-	if(major!=null)
-		url+=",major="+major;
-	if(className!=null)
-		url+=",className="+className;
-	if(stuNoOrName!=null)
-		url+=",stuNoOrName="+stuNoOrName;
-	alert(url);
+	if(g_college!=null)
+		url+="&college="+g_college;
+	if(g_major!=null)
+		url+="&major="+g_major;
+	if(g_className!=null)
+		url+="&className="+g_className;
+	if(g_stuNoOrName!=null)
+		url+="&stuNoOrName="+g_stuNoOrName;
+	//alert(url);
 	
-	$.getJSON("StuBasicInfoJSON/getStuBasicInfoListsJSON!stuBasicInfoExecute"+url,function(data){
+	$.getJSON("StuBasicInfoJSON/StuBasicInfoActionJSON!getStuBasicInfoLists"+url,function(data){
 		//得到StubasicInfoList
 		var stuBaisicInfoLists = data.stuBasicInfoVOlists;
 		
@@ -31,7 +31,7 @@ function getStuBasicInfoList(currentPage){
 		//alert(trLength);
 		//若trLength>1,清空行号1之后的tr
 		if(trLength>1) {
-			for(var i=trLength-1;i>2;i--) {
+			for(var i=trLength-1;i>0;i--) {
 				showTableObj.deleteRow(i);
 				trLength--;
 			}	
@@ -75,56 +75,60 @@ function getStuBasicInfoList(currentPage){
 			//第四列：姓名
 			var TdObj4 = TrObj.insertCell(3);
 			TdObj4.appendChild(document.createTextNode(stuBasicInfo.studentName!=null?stuBasicInfo.studentName:""));
-
-			//第五列：专业
+			
+			//第五列：学院
 			var TdObj5 = TrObj.insertCell(4);
-			TdObj5.appendChild(document.createTextNode(stuBasicInfo.major!=null?stuBasicInfo.className:""));
-
-			//第六列：班级
+			TdObj5.appendChild(document.createTextNode(stuBasicInfo.college!=null?stuBasicInfo.college:""));
+			
+			//第六列：专业
 			var TdObj6 = TrObj.insertCell(5);
-			TdObj6.appendChild(document.createTextNode(stuBasicInfo.className!=null?stuBasicInfo.className:""));
+			TdObj6.appendChild(document.createTextNode(stuBasicInfo.major!=null?stuBasicInfo.major:""));
 
-			//第七列：性别
+			//第七列：班级
 			var TdObj7 = TrObj.insertCell(6);
-			if(stuBasicInfo.sex==0)
-				TdObj7.appendChild(document.createTextNode("男"));
-			else TdObj7.appendChild(document.createTextNode("女"));
+			TdObj7.appendChild(document.createTextNode(stuBasicInfo.className!=null?stuBasicInfo.className:""));
 
-			//第八列：民族
+			//第八列：性别
 			var TdObj8 = TrObj.insertCell(7);
-			TdObj8.appendChild(document.createTextNode(stuBasicInfo.nation!=null?stuBasicInfo.nation:""));
+			if(stuBasicInfo.sex==0)
+				TdObj8.appendChild(document.createTextNode("男"));
+			else TdObj8.appendChild(document.createTextNode("女"));
 
-			//第九列：籍贯
+			//第九列：民族
 			var TdObj9 = TrObj.insertCell(8);
-			TdObj9.appendChild(document.createTextNode(stuBasicInfo.hometown!=null?stuBasicInfo.hometown:""));
+			TdObj9.appendChild(document.createTextNode(stuBasicInfo.nation!=null?stuBasicInfo.nation:""));
 
-			//第十列：政治面貌
+			//第十列：籍贯
 			var TdObj10 = TrObj.insertCell(9);
-			TdObj10.appendChild(document.createTextNode(stuBasicInfo.political!=null?stuBasicInfo.political:""));
+			TdObj10.appendChild(document.createTextNode(stuBasicInfo.hometown!=null?stuBasicInfo.hometown:""));
 
-			//第十一列：身份证号码
+			//第十一列：政治面貌
 			var TdObj11 = TrObj.insertCell(10);
-			TdObj11.appendChild(document.createTextNode(stuBasicInfo.idCard!=null?stuBasicInfo.idCard:""));
+			TdObj11.appendChild(document.createTextNode(stuBasicInfo.political!=null?stuBasicInfo.political:""));
 
-			//第十二列：学历
+			//第十二列：身份证号码
 			var TdObj12 = TrObj.insertCell(11);
-			TdObj12.appendChild(document.createTextNode(stuBasicInfo.eduBackground!=null?stuBasicInfo.eduBackground:""));
+			TdObj12.appendChild(document.createTextNode(stuBasicInfo.idCard!=null?stuBasicInfo.idCard:""));
 
-			//第十三列：英语等级
+			//第十三列：学历
 			var TdObj13 = TrObj.insertCell(12);
-			TdObj13.appendChild(document.createTextNode(stuBasicInfo.englishlevel!=null?stuBasicInfo.englishlevel:""));
+			TdObj13.appendChild(document.createTextNode(stuBasicInfo.eduBackground!=null?stuBasicInfo.eduBackground:""));
 
-			//第十四列：银行卡号
+			//第十四列：英语等级
 			var TdObj14 = TrObj.insertCell(13);
-			TdObj14.appendChild(document.createTextNode(stuBasicInfo.bankCard!=null?stuBasicInfo.bankCard:""));	
-			
-			//十五列：审核状态
+			TdObj14.appendChild(document.createTextNode(stuBasicInfo.englishlevel!=null?stuBasicInfo.englishlevel:""));
+
+			//第十五列：银行卡号
 			var TdObj15 = TrObj.insertCell(14);
-			TdObj15.appendChild(document.createTextNode(stuBasicInfo.exameState!=null?stuBasicInfo.exameState:""));	
+			TdObj15.appendChild(document.createTextNode(stuBasicInfo.bankCard!=null?stuBasicInfo.bankCard:""));	
 			
-			//十六列:备注
+			//十六列：审核状态
 			var TdObj16 = TrObj.insertCell(15);
-			TdObj15.appendChild(document.createTextNode(stuBasicInfo.remarks!=null?stuBasicInfo.remarks:""));		
+			TdObj16.appendChild(document.createTextNode(stuBasicInfo.exameState!=null?stuBasicInfo.exameState:""));	
+			
+			//十七列:备注
+			var TdObj17 = TrObj.insertCell(16);
+			TdObj17.appendChild(document.createTextNode(stuBasicInfo.remarks!=null?stuBasicInfo.remarks:""));		
 		}
 		
 		//分页
@@ -240,4 +244,11 @@ function stuBasicInfoDetail(stuBasicInfo) {
 	//学历
 	var eduBackground = stuBasicInfo.eduBackground;
 	document.getElementById("eduBackground").innerText=(eduBackground!=null?eduBackground:"");
+}
+
+function setCollegeMajorClassStuNoOrName(college,major,className,stuNoOrName) {
+	g_college=college;
+	g_major=major;
+	g_className=className;
+	g_stuNoOrName=stuNoOrName;
 }

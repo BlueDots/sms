@@ -1,5 +1,9 @@
 package jxau.sms.anping.action;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,12 +12,14 @@ import java.util.Set;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
+import org.springframework.beans.propertyeditors.URLEditor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.AccessOrUpdateErrorException;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.HosInsuranceInfo;
@@ -31,6 +37,59 @@ public class YiBaoAction extends ActionSupport implements
 		ModelDriven<HosInsuranceInfo> {
 
 	/**
+	 * 录入医保结果
+	 * anping
+	 * TODO
+	 * 下午1:20:10
+	 * @return
+	 */
+	public String updateHoss(){
+		return null;
+	}
+	
+	/**
+	 * 审核医保
+	 * anping
+	 * TODO接收的参数有如下的isYesOrNot，是过还是不过
+	 * hosNo 
+	 * stateRemark+hosNo
+	 * 下午9:00:00
+	 * @return
+	 */
+	public String checkHosByTeacher(){
+		
+	    String[] isYesOrNo = (String[])parameters.get("isYesOrNot");
+	   
+	    System.out.println(isYesOrNo);
+	    Set<String> keys  = parameters.keySet();
+	  //拿到所有装有hosNo  的key 
+	   
+	    List<String>  ids = new ArrayList(6);
+	    List<String>  params = new ArrayList(6);
+	    for(String key:keys){ 
+	    	if(key.indexOf("hosNo")==0){
+	    		String[] hosNos  =(String[]) parameters.get(key); 
+	    		String[] stateRemark = (String[])parameters.get("stateRemark"+hosNos[0]);
+	    		ids.add(hosNos[0]);
+	    		params.add(stateRemark[0]);
+	    	}
+	    }
+	    
+	    
+	    
+	    AbstractionService  service = (AbstractionService)yiBaoService;
+	    
+	    service.verify(ids, "11", "4", isYesOrNo[0].equals("1")?"1":"2", params);
+	     
+	   
+	    
+	    
+		return "check";
+	}
+	
+	
+	
+	/**
 	 * 校级工作人员查询出所有的学生医保信息
 	 * anping
 	 * TODO
@@ -41,12 +100,27 @@ public class YiBaoAction extends ActionSupport implements
 		String result="teacherShowHoss";
 		PageVo  pageVo  = new PageVo();
 		String[] currentPages = (String[]) parameters.get("currentPage");
-		
+		String[] hostates = (String[]) parameters.get("hosState");
+ 
+		Map<String,Object> params = null;
+		if(hostates!=null&&hostates[0]!=null){
+			String hostate = null;
+			try {
+				hostate=URLDecoder.decode(URLDecoder.decode(hostates[0], "utf-8"),"utf-8");
+				 if(hostate.equals("校级审核中")){
+					result = "apply";
+				}
+			} catch (UnsupportedEncodingException e) {
+				 e.printStackTrace();
+			}
+			params= new HashMap<String,Object>();
+			params.put("hosState", hostate);
+		}
 		pageVo.setCurrentPage(currentPages==null?0:Integer.parseInt(currentPages[0]));
 		pageVo.setSize(6);
 		List<HosInsuranceInfo> hoss=null;
 		try {
-			hoss = yiBaoService.searchByAccurate(null, pageVo, -1);
+			hoss = yiBaoService.searchByAccurate(params, pageVo, -1);
 			//将数据发给前台去
 			
 			request.put("pageVo",pageVo);
@@ -69,7 +143,7 @@ public class YiBaoAction extends ActionSupport implements
 	 */
 	public String modifyStu() {
 		this.print();
-		String result = SUCCESS;
+		String result = "applyYiBaoAndModify";
 		String[] types = (String[]) parameters.get("type");
 	 
 		if (types != null && types[0].equals("show")
@@ -120,7 +194,7 @@ public class YiBaoAction extends ActionSupport implements
 	 */
 	public String applyYiBao() {
 
-		String result = SUCCESS;
+		String result = "applyYiBaoAndModify";
 		this.print();
 		StuBasicInfo student = (StuBasicInfo) session.get("student");
 		hosInsuranceInfo.setStudent(student);
@@ -163,7 +237,17 @@ public class YiBaoAction extends ActionSupport implements
 	public String getErrorMsg() {
 		return ErrorMsg;
 	}
+	
+	
+	
+ 
 
+	 
+
+
+
+
+ 
 	private String ErrorMsg;
 	private Map<String, Object> session = ActionContext.getContext()
 			.getSession();

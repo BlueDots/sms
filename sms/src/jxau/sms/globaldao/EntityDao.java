@@ -49,9 +49,10 @@ public class EntityDao implements Dao {
 
 	@Override
 	public <T> void batchAdd(String mapperId, List<T> t) {
-		session = sqlSessionFactory.openSession(ExecutorType.BATCH, false);
+		SqlSession	session = sqlSessionFactory.openSession(ExecutorType.BATCH, false);
 
 		session.insert(mapperId, t);
+		session.commit();
 	}
 
 	@Override
@@ -67,7 +68,7 @@ public class EntityDao implements Dao {
 
 	@Override
 	public <T> void batchDelete(String mapperId, List<T> t) {
-		session = sqlSessionFactory.openSession(ExecutorType.BATCH, false);
+		SqlSession session = sqlSessionFactory.openSession(ExecutorType.BATCH, true);
 
 		session.delete(mapperId, t);
 		session.commit();
@@ -75,7 +76,7 @@ public class EntityDao implements Dao {
 
 	@Override
 	public <T> void batchUpdate(String mapperId, List<T> t) {
-		session = sqlSessionFactory.openSession(ExecutorType.BATCH, false);
+	   SqlSession	session = sqlSessionFactory.openSession(ExecutorType.BATCH, true);
 
 		for (T a : t) {
 			session.update(mapperId, a);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
+<<<<<<< HEAD
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.ModelDriven"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
@@ -17,4 +18,24 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+=======
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.exception.InsertErrorException"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.exception.DataExistException"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.purview.service.impl.RoleHandlePurview"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="jxau.sms.globaldao.Dao"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="jxau.sms.commom.vo.PageVo"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.vo.VTeacherRole"/>
+<fullyQualifiedTypeName name="javax.enterprise.inject.New"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+>>>>>>> 8ad7efc33e32c8454ade786efedb044cff6d5e73
 </qualifiedTypeNameHistroy>

@@ -225,7 +225,7 @@
 	</module>			
 	<!-- 医保模块 -->
 	<module id="11" table="hos_insurance_info">
-		<id column="no"/>
+		<id column="hosNo"/>
 		<verify column="hosState"/>
 		<remarks column="stateRemark"/>
 		<procedure>verifyNumsOfHosInsuranceInfo</procedure><!--存储过程  -->

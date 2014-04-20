@@ -1,9 +1,13 @@
 select * from stu_basic_info;
 
-update stu_basic_info set exameState = '院级审核中' 
+select * from dep_teacher;
+
+
+update stu_basic_info set exameState='院级审核中' where studentNo=20111367,
+ set exameState='院级不通过' where studentNo=20111429;
        where studentNo in (20111367,20111429,20111635);
 
-update act_info set exameState = '校级审核中' 
+update act_info set exameState = '校级审核中',remarks='aa' where actNo=1; update act_info set exameState = '校级审核中' where actNo =2;
        where actNo in (1,2,3);
        
 select * from act_info;

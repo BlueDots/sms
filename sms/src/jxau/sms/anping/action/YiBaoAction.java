@@ -37,105 +37,121 @@ public class YiBaoAction extends ActionSupport implements
 		ModelDriven<HosInsuranceInfo> {
 
 	/**
-	 * 录入医保结果
-	 * anping
-	 * TODO
-	 * 下午1:20:10
+	 * 录入医保结果 anping TODO 下午1:20:10
+	 * 
 	 * @return
 	 */
-	public String updateHoss(){
-		return null;
-	}
-	
-	/**
-	 * 审核医保
-	 * anping
-	 * TODO接收的参数有如下的isYesOrNot，是过还是不过
-	 * hosNo 
-	 * stateRemark+hosNo
-	 * 下午9:00:00
-	 * @return
-	 */
-	public String checkHosByTeacher(){
-		
-	    String[] isYesOrNo = (String[])parameters.get("isYesOrNot");
-	   
-	    System.out.println(isYesOrNo);
-	    Set<String> keys  = parameters.keySet();
-	  //拿到所有装有hosNo  的key 
-	   
-	    List<String>  ids = new ArrayList(6);
-	    List<String>  params = new ArrayList(6);
-	    for(String key:keys){ 
-	    	if(key.indexOf("hosNo")==0){
-	    		String[] hosNos  =(String[]) parameters.get(key); 
-	    		String[] stateRemark = (String[])parameters.get("stateRemark"+hosNos[0]);
-	    		ids.add(hosNos[0]);
-	    		params.add(stateRemark[0]);
-	    	}
-	    }
-	    
-	    
-	    
-	    AbstractionService  service = (AbstractionService)yiBaoService;
-	    
-	    service.verify(ids, "11", "4", isYesOrNo[0].equals("1")?"1":"2", params);
-	     
-	   
-	    
-	    
+	public String updateHoss() {
+		String[] type = (String[]) parameters.get("type");
+		if (type == null) {
+			return ERROR;
+		} else {
+
+			Map<String, List<HosInsuranceInfo>> datas = new HashMap<String, List<HosInsuranceInfo>>();
+			List<HosInsuranceInfo> infos = new ArrayList<HosInsuranceInfo>(1);
+			infos.add(hosInsuranceInfo);
+
+			switch (type[0]) {
+			case "modifyAcceptOrNotResult": {
+				datas.put("modifyAcceptOrNotResult", infos);
+			}
+				break;
+			case "modifyReimburseStudent": {
+				datas.put("modifyReimburseStudent", infos);
+
+			}
+				break;
+			case "modifyCompany": {
+				datas.put("modifyCompany", infos);
+			}
+				break;
+			}
+
+			yiBaoService.updateYiBaoByThreeWay(datas);
+		}
 		return "check";
 	}
-	
-	
-	
+
 	/**
-	 * 校级工作人员查询出所有的学生医保信息
-	 * anping
-	 * TODO
-	 * 上午9:06:42
+	 * 审核医保 anping TODO接收的参数有如下的isYesOrNot，是过还是不过 hosNo stateRemark+hosNo
+	 * 下午9:00:00
+	 * 
 	 * @return
 	 */
-	public String getAllHosByTeacher(){
-		String result="teacherShowHoss";
-		PageVo  pageVo  = new PageVo();
+	public String checkHosByTeacher() {
+
+		String[] isYesOrNo = (String[]) parameters.get("isYesOrNot");
+
+		System.out.println(isYesOrNo);
+		Set<String> keys = parameters.keySet();
+		// 拿到所有装有hosNo 的key
+
+		List<String> ids = new ArrayList(6);
+		List<String> params = new ArrayList(6);
+		for (String key : keys) {
+			if (key.indexOf("hosNo") == 0) {
+				String[] hosNos = (String[]) parameters.get(key);
+				String[] stateRemark = (String[]) parameters.get("stateRemark"
+						+ hosNos[0]);
+				ids.add(hosNos[0]);
+				params.add(stateRemark[0]);
+			}
+		}
+
+		AbstractionService service = (AbstractionService) yiBaoService;
+
+		service.verify(ids, "11", "4", isYesOrNo[0].equals("1") ? "1" : "2",
+				params);
+
+		return "check";
+	}
+
+	/**
+	 * 校级工作人员查询出所有的学生医保信息 anping TODO 上午9:06:42
+	 * 
+	 * @return
+	 */
+	public String getAllHosByTeacher() {
+		String result = "teacherShowHoss";
+		PageVo pageVo = new PageVo();
 		String[] currentPages = (String[]) parameters.get("currentPage");
 		String[] hostates = (String[]) parameters.get("hosState");
- 
-		Map<String,Object> params = null;
-		if(hostates!=null&&hostates[0]!=null){
+
+		Map<String, Object> params = null;
+		if (hostates != null && hostates[0] != null) {
 			String hostate = null;
 			try {
-				hostate=URLDecoder.decode(URLDecoder.decode(hostates[0], "utf-8"),"utf-8");
-				 if(hostate.equals("校级审核中")){
+				hostate = URLDecoder.decode(
+						URLDecoder.decode(hostates[0], "utf-8"), "utf-8");
+				if (hostate.equals("校级审核中")) {
 					result = "apply";
 				}
 			} catch (UnsupportedEncodingException e) {
-				 e.printStackTrace();
+				e.printStackTrace();
 			}
-			params= new HashMap<String,Object>();
+			params = new HashMap<String, Object>();
 			params.put("hosState", hostate);
 		}
-		pageVo.setCurrentPage(currentPages==null?0:Integer.parseInt(currentPages[0]));
+		pageVo.setCurrentPage(currentPages == null ? 0 : Integer
+				.parseInt(currentPages[0]));
 		pageVo.setSize(6);
-		List<HosInsuranceInfo> hoss=null;
+		List<HosInsuranceInfo> hoss = null;
 		try {
 			hoss = yiBaoService.searchByAccurate(params, pageVo, -1);
-			//将数据发给前台去
-			
-			request.put("pageVo",pageVo);
+			// 将数据发给前台去
+
+			request.put("pageVo", pageVo);
 			request.put("hoss", hoss);
-			
+			request.put("nocheckNum", yiBaoService.getAllNoCheckData());
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			result=ERROR;
+			result = ERROR;
 		}
-		
-		
+
 		return result;
 	}
-	
-	
+
 	/**
 	 * 学生修改自己的医保信息 anping TODO 下午11:39:39
 	 * 
@@ -145,7 +161,7 @@ public class YiBaoAction extends ActionSupport implements
 		this.print();
 		String result = "applyYiBaoAndModify";
 		String[] types = (String[]) parameters.get("type");
-	 
+
 		if (types != null && types[0].equals("show")
 				&& hosInsuranceInfo.getHosNo() > 0) {
 			Map<String, Object> param = new HashMap<String, Object>(1);
@@ -163,7 +179,7 @@ public class YiBaoAction extends ActionSupport implements
 			} catch (ParameterNotMatchException e) {
 				e.printStackTrace();
 				result = ERROR;
-			}catch(AccessOrUpdateErrorException e){
+			} catch (AccessOrUpdateErrorException e) {
 				e.printStackTrace();
 				result = ERROR;
 			}
@@ -237,17 +253,7 @@ public class YiBaoAction extends ActionSupport implements
 	public String getErrorMsg() {
 		return ErrorMsg;
 	}
-	
-	
-	
- 
 
-	 
-
-
-
-
- 
 	private String ErrorMsg;
 	private Map<String, Object> session = ActionContext.getContext()
 			.getSession();
@@ -261,6 +267,6 @@ public class YiBaoAction extends ActionSupport implements
 	private HosInsuranceInfo hosInsuranceInfo = new HosInsuranceInfo();
 	private String telephone;
 	private YiBaoService yiBaoService;
-	
+
 	private static final long serialVersionUID = 1L;
 }

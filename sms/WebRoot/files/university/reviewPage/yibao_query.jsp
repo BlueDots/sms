@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">高级查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">高级查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"></a></span>
 													</th>
 												</tr>
 												<tr>

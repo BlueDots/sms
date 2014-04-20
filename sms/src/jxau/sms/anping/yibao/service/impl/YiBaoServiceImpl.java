@@ -202,11 +202,11 @@ public class YiBaoServiceImpl extends AbstractionService implements YiBaoService
 
 		else if (params.containsKey("modifyReimburseStudent")) {
 			dao.batchUpdate(namespace + "modifyReimburseStudent",
-					params.get("modifyAcceptOrNotResult"));
+					params.get("modifyReimburseStudent"));
 
 		} else if (params.containsKey("modifyCompany")) {
 			dao.batchUpdate(namespace + "modifyCompany",
-					params.get("modifyAcceptOrNotResult"));
+					params.get("modifyCompany"));
 		}
 
 		return 0;
@@ -338,6 +338,12 @@ public class YiBaoServiceImpl extends AbstractionService implements YiBaoService
 			PageVo pageVo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public long getAllNoCheckData() {
+		// TODO Auto-generated method stub
+		return dao.selectOne(namespace+"findAllStateIsNoCheckNum", null);
 	}
 	
 

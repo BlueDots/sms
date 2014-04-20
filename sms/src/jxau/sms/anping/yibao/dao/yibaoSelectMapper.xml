@@ -164,6 +164,12 @@
 	</select>
 	
 	
+	
+	<!-- 需找未审核的所有信息 -->
+	<select id="findAllStateIsNoCheckNum" resultType="java.lang.Long">
+		select  count(*) from hos_insurance_info where hosState='校级审核中';
+	
+	</select>
          
 
 

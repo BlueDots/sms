@@ -76,7 +76,7 @@ public class EntityDao implements Dao {
 	@Override
 	public <T> void batchUpdate(String mapperId, List<T> t) {
 	   SqlSession	session = sqlSessionFactory.openSession(ExecutorType.BATCH, true);
-
+   
 		for (T a : t) {
 			session.update(mapperId, a);
 		}

@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="../mainfra.html">首页</a>---><a href="../sch_yibao.html">学生医保信息查询</a>---><font color="red">学生医保信息审核</font>
+														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">学生医保信息查询</a>---><font color="red">学生医保信息审核</font>
 													</th>
 												</tr>
 												<tr>

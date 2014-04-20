@@ -17,12 +17,12 @@
 			<result name="modify">/files/Student/std_InsuranceModify.jsp</result>
 			<result name="teacherShowHoss">/files/university/sch_yibao.jsp</result>
 			<result name="apply">/files/university/reviewPage/yibao_review.jsp</result>
-			<result name="check" type="chain">
+			<result name="check" type="redirectAction">
 			　　 <param name="actionName">hosInsuranceInfo</param>  
                 <param name="namespace">/</param> 
                 <param name="method">getAllHosByTeacher</param>   
 			</result>
-			<result name="applyYiBaoAndModify" type="chain">
+			<result name="applyYiBaoAndModify" type="redirectAction">
 			　　 <param name="actionName">hosInsuranceInfo</param>  
                 <param name="namespace">/</param> 
                 <param name="method">showYiBaoForStudent</param>   

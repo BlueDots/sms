@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@  taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -22,9 +22,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
 
-	<script src="<%=basePath%>/js/jquery-1.7.2.min.js"></script>
+		<script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
-	<script src="<%=basePath%>/js/jquery-ui-1.8.21.custom.min.js"></script>
+
 
 <script type="text/javascript">
 
@@ -51,7 +51,7 @@ if (window.addEventListener)
 else if (window.attachEvent)
 	window.attachEvent("onload", buildsubmenus);
 	
-	
+
 function sousuo() {
 	window
 			.open(
@@ -84,6 +84,20 @@ function link() {
 	document.getElementById("fom").action = "../addrenwu.htm";
 	document.getElementById("fom").submit();
 }
+
+function searchTecRole(){
+
+	var teacherNo = $("#teacherNo").attr("value");
+	var teacherName = $("#teacherName").attr("value");
+
+	if(teacherNo=='' || teacherName == ''){
+		alert("查询条件不能为空");
+		return;
+	}else {
+		window.location.href= "TecRole/findTec!tecRoleDisplay?teacherNo="+teacherNo+"&teacherName="+teacherName;
+	}
+
+}
 </script>
 
   </head>
@@ -106,16 +120,18 @@ function link() {
 											</td>
 											<td width="538">
 																 
-												教师工号:<input name="teacherNo"    type="text" size="10" />
-											  教师姓名:<input name="teacherName" type="text" size="10" />
-												<input name="Submit4" type="button" class="right-button02" value="查 询" />
+											  <b>教师工号:</b>
+											  <input name="teacherNo"  type="text" size="10" id="teacherNo"/>
+											  <b>教师姓名:</b>
+											  <input name="teacherName" type="text" size="10" id="teacherName"/>
+											  <input name="search" type="button" class="right-button02" value="查 询" onclick="javascript:searchTecRole();"/>
 													
 											  
 											</td>
 											
 											 
 											<td width="77" align="center">
-												<a href="#" onclick="sousuo()"> <input name="Submit4"
+												<a href="#" onclick="javascript:test();"> <input name="Submit4"
 														type="button" class="right-button07" value="导出" /> </a>
 											 
 											</td>
@@ -157,33 +173,49 @@ function link() {
 																		<tr bgcolor="#EEEEEE" align="center">
 																		  <td><input type="checkbox" name="delid" />全选</td>
 																			<td>教师工号</td>
-																			<td>姓名</td>
+																			<td>教师姓名</td>
 																			<td>性别</td>
-																			<td>职称</td>
-																			<td>职务</td>
-																			<td>所属单位</td>
-																			<td>角色</td>
+																			<td>政治面貌</td>
+																			<td>部门</td>
+																			<td>教师职称</td>
+																			<td>入职时间</td>
+																			<td>角色列表</td>
 																		</tr>
-																		
+												<s:iterator value="vteacherRoleList" id="vteacherRole" >			
 																		<tr bgcolor="#FFFFFF" align="center">
-																		  <td><input type="checkbox" name="delid" /></td>
-																			<td>2323</td>
-																			<td>艾老师</td>
-																			<td>男</td>
-																			<td>副教授</td>
-																			<td>团委书记</td>
-																			<td>软件学院</td>
+																		    <td><input type="checkbox" name="delid" /></td>
+																			<td><s:property value="#vteacherRole.teacherNo"></s:property>	</td>
+																			<td><s:property value="#vteacherRole.teacherName"></s:property>	</td>
 																			<td>
-																				<select>
-																					<option>学生</option>
-																					<option>班主任</option>
-																					<option>院级工作人员</option>
-																					<option>校级工作人员</option>
-																					<option>院级管理员</option>
-																					<option>校级管理员</option>
-																				</select>	
+																				<s:if test="%{#vteacherRole.sex==0}"> 
+																					男	
+																				</s:if>
+																				<s:if test="%{#vteacherRole.sex==1}"> 
+																					女	
+																				</s:if>						
 																			</td>
-																		</tr>								                         	
+																			<td><s:property value="#vteacherRole.political"></s:property>	</td>																			
+																			<td>
+																				<s:iterator value="#vteacherRole.departmentList" id="dList" >
+																					<s:property value="#dList"></s:property>	
+																				</s:iterator>
+																			</td>
+																			<td><s:property value="#vteacherRole.teacherTitle"></s:property></td>
+																			<td><s:property value="#vteacherRole.worktime"></s:property>	</td>
+																			<td>																			
+																					<select>
+																						<s:iterator value="roleInfoList" id="roleInfoList" >
+																							<s:if test="%{#roleInfoList.roleName not in {'学生','校级管理员'}}">
+																								<option>																								
+																										<s:property value="#roleInfoList.roleName"></s:property>																									
+																								</option>
+																							</s:if>
+																						</s:iterator>
+																					</select>																					
+																			</td>
+																			
+																		</tr>
+											</s:iterator>												                         	
 
 																		</table>
 																</td>
@@ -207,11 +239,8 @@ function link() {
 																</td>
 															</tr>
 															<tr>
-																<td colspan="2" align="center" height="30px">
-																	<input type="button" name="Submit" value="新增一列"
-																		class="button" onclick="link();" />
-																	<input type="button" name="Submit" value="保存"
-																		class="button" onclick="link();" />
+																
+																<td colspan="2" align="center" height="30px">			
 																    <input type="button" name="Submit" value="提交"
 																		class="button" onclick="link();" />
 																	<input type="button" name="Submit2" value="返回"

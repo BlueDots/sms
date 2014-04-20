@@ -8,6 +8,8 @@ import java.util.Map;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globaldao.Dao;
+import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 import jxau.sms.lyx.vo.VTeacherRole;
 
 import org.junit.Test;
@@ -33,6 +35,18 @@ public class ServiceImplTest {
 			for(int j=0;j<vTeacherRole.get(i).getDepartmentList().size();j++){
 				System.out.print(vTeacherRole.get(i).getDepartmentList().get(j));
 			}		
+		}	
+	}
+	
+	
+	@Test
+	public void test2() {
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		RoleServiceImpl rs = (RoleServiceImpl)context.getBean("RoleServiceImpl");
+		PageVo pageVo = new PageVo();
+		List<RoleInfo> list = rs.searchByAccurate(null,pageVo,0);
+		for(int j=0;j<list.size();j++){
+			System.out.print(list.get(j).getRoleName());
 		}	
 	}
 }

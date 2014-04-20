@@ -38,4 +38,9 @@
 	 			where d.departNo = dt.departNo and teacherNo = #{teacherNo} 
 	 	</select>
  
+ 		<insert id="addTecRole" parameterType="TeacherPurview" useGeneratedKeys="false">
+ 				insert into teacher_role (teacherNo,roleNo)   
+ 				values (#{teacherNo},#{roleNo})	
+ 		</insert>
+ 
 </mapper>

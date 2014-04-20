@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import jxau.sms.globaldao.Dao;
+import jxau.sms.lyx.po.TeacherPurview;
+import jxau.sms.lyx.po.TeacherRole;
 import jxau.sms.lyx.vo.VTeacherRole;
 
 import org.junit.Test;
@@ -43,5 +45,15 @@ public class DaoTest {
 		map.put("teacherNo", "1234");
 		List<String> str= dao.select("findDepartmentByTeacherNo", map);
 		System.out.println(str.get(1));
+	}
+	
+	@Test
+	public void test4() {
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Dao dao = (Dao)context.getBean("dao");
+		TeacherRole teacherRole = new TeacherRole();
+		teacherRole.setRoleNo(6);
+		teacherRole.setTeacherNo("1234");
+		dao.add("addTecRole", teacherRole);
 	}
 }

@@ -6,16 +6,17 @@
 <fullyQualifiedTypeName name="jxau.sms.lyx.exception.DataExistException"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 <fullyQualifiedTypeName name="jxau.sms.lyx.purview.service.impl.RoleHandlePurview"/>
-<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="jxau.sms.globaldao.Dao"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="jxau.sms.commom.vo.PageVo"/>
 <fullyQualifiedTypeName name="javax.annotation.Resource"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="jxau.sms.lyx.vo.VTeacherRole"/>
-<fullyQualifiedTypeName name="javax.enterprise.inject.New"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="javax.enterprise.inject.New"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.po.RoleInfo"/>
+<fullyQualifiedTypeName name="jxau.sms.commom.vo.PageVo"/>
+<fullyQualifiedTypeName name="jxau.sms.lyx.po.TeacherPurview"/>
 </qualifiedTypeNameHistroy>

@@ -7,7 +7,7 @@
 	<!-- 查找学生部分信息和所有的医保  
 	     需要传入的参数格式为 HashMap<String,Object>
 	                             <studentNo,'20111429'>
-	                             <hosState,'校级审核不通过'>
+	                             <hosState,'校级未通过'>
  	                             <firstIndex,0>
  	                             <size,1>
  	      返回的是最晚的那个
@@ -24,7 +24,7 @@
         and student.studentNo=#{studentNo}
 		and
 		insurance.studentNo=student.studentNo
-		
+		 
 		 order    by  hosNo desc
         <if test="firstIndex != null and size!=null">
 			 limit #{firstIndex},#{size}
@@ -56,7 +56,7 @@
 	<!--通过医保的id 来查询医保 
 	需要传入的参数格式为 HashMap<String,Object>
 	                             <hosNo,1>
-	                             <hosState,'校级审核不通过'>
+	                             <hosState,'校级未通过'>
 	                           
 	-->
 	<select id="findYiBaoById" parameterType="java.util.HashMap"
@@ -78,6 +78,7 @@
 	    这里的条件 有学院，班级 ，姓名
 	    需要传入的参数格式为 HashMap<String,Object>
 	                             <college,'江西农大'>
+	                              <major,'major'>
 	                             <className,'1102'>
 	                             <studentName,'熊安平'>
 	                             <fristIndex,0>
@@ -92,8 +93,14 @@
 		 <if test="hosState != null">
 			and  insurance.hosState=#{hosState}
 		</if>
+		<if test="hosState==null">
+			and  insurance.hosState!='校级审核未通过'
+		</if>
 		<if test="college != null">
 			and  student.college=#{college}
+		</if>
+		<if test="major !=null">
+			and student.major=#{major}
 		</if>
 		<if test="className != null">
 			and  student.className=#{className}
@@ -103,6 +110,12 @@
 		</if>
 		<if test="studentNo != null">
 			and  student.studentNo=#{studentNo}
+		</if>
+			<if test="hosType != null">
+			and  hosType=#{hosType}
+		</if>
+		<if test="collarCard != null">
+			and  collarCard=#{collarCard}
 		</if>
 		order by hosNo desc 
 		<if test="firstIndex != null and size!=null">
@@ -122,8 +135,14 @@
 		 <if test="hosState != null">
 			and  insurance.hosState=#{hosState}
 		</if>
+		<if test="hosState==null">
+			and  insurance.hosState!='校级审核未通过'
+		</if>
 		<if test="college != null">
 			and  student.college=#{college}
+		</if>
+		<if test="major !=null">
+			and student.major=#{major}
 		</if>
 		<if test="className != null">
 			and  student.className=#{className}
@@ -134,10 +153,23 @@
 		<if test="studentNo != null">
 			and  student.studentNo=#{studentNo}
 		</if>
+		<if test="hosType != null">
+			and  hosType=#{hosType}
+		</if>
+		<if test="collarCard != null">
+			and  collarCard=#{collarCard}
+		</if>
+		
 		  ;
 	</select>
 	
 	
+	
+	<!-- 需找未审核的所有信息 -->
+	<select id="findAllStateIsNoCheckNum" resultType="java.lang.Long">
+		select  count(*) from hos_insurance_info where hosState='校级审核中';
+	
+	</select>
          
 
 

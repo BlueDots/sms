@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<!-- 
+	配置每个模块关于删除的信息，
+	table：模块需要操作的数据表名称
+	id :表的主键，column:主键的列名
+	column:需要操作的数据表的字段名
+	state:property :表示状态，column：对应的数据库列名
+	remarks :表示备注信息，column：对应的数据库列名	
+ -->
+<modules>
+	<!-- 学生基本信息模块 -->
+	<module id="01" table="stu_basic_info">
+		<id column="studentNo"/>
+		<state column="stuState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</module>
+ 	<!-- 教师基本信息模块 -->
+ 	<module id="02" table="t_teacher_info">
+		<id column="teacherNo"/>
+		<state column="workState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</module>	
+	<!-- 学生参与活动模块 -->
+	<module id="03" table="stu_act_participate">
+		<id column="id"/>
+		<state column="stuActState"/>
+		<remarks column="remarks"/>
+	</module>
+	<!-- 活动管理模块 -->
+	<module id="04" table="act_info">
+		<id column="actNo"/>
+		<state column="actState"/>
+		<remarks column="remarks"/>		
+	</module>	
+	<!-- 评优评先模块 -->
+	<module id="05" table="adv_item">
+		<id column="advNo"/>
+		<state column="advState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</module>
+	
+	<!-- 奖助学金模块 -->
+	<module id="06" table="grant_item">
+		<id column="grantNo"/>
+		<state column="grantState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</module>		
+	<!--奖学金评定  -->
+	<module id="07" table="stu__class_grant">
+			<id column="studentNo"/>
+			<state column="state"/>
+			<remarks column="remarks"/>
+	</module> 
+	<!-- 处分信息管理模块 -->
+	<module id="08" table="dis_info">
+		<id column="id"/>
+		<state column="dispoalState">
+			<related><!--表示与状态字段级联变化的字段  -->
+			 	<column>removeTime</column>
+			 	<column>removeReason</column>
+			</related>			
+		</state>
+		<remarks column="remarks"/>
+	</module>
+	<!-- 学籍变动信息模块 -->
+	<module id="09" table="sta_category">
+		<id column="studentNo"/>
+		<verify column="staState"/><!-- 审核需要修改的数据表的字段名 -->
+	</module>	
+	<!-- 贫困生建档模块 -->	<!--贫困生等级表  -->
+	<module id="10" table="des_item">
+		<id column="povertyId"/>
+		<state column="desState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</module>	
+	<!-- 医保模块 -->
+	<module id="11" table="hos_insurance_info">
+		<id column="no"/>
+		<verify column="veritystate"/>
+		<state column="state"/>
+		<remarks column="stateRemark"/>
+	</module>	
+	
+	<!-- 禁用或启用子表的状态 -->
+	<!--评优评先项目表评优评先项目表  -->
+	<sub id="advItem" table="adv_item">
+		<id column="advNo"/>
+		<state column="advState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</sub>
+	
+	<!-- 奖助学项目表 -->
+	<sub id="grantItem" table="grant_item">
+		<id column="grantNo"/>
+		<state column="grantState"/><!-- 数据的状态对应的数据表的字段名 -->
+		<remarks column="remarks"/>
+	</sub>	
+
+	<!-- 班级奖学金等级表 -->
+	<sub id="classAwardInfo" table="class_award_info">
+		<id column="awardNo"/>
+		<state column="awardState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>		
+	
+	<!-- 级别表 -->
+	<sub id="awardLevel" table="award_level">
+		<id column="awardNo"/>
+		<state column="awardState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>
+	
+	<!-- 活动类别表 -->
+	<sub id="actCategory" table="act_category">
+		<id column="actNo"/>
+		<state column="actState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>	
+
+	<!-- 处分类型表-->
+	<sub id="disCategory" table="dis_category">
+		<id column="disNo"/>
+		<state column="disState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>	
+	
+	<!-- 贫困生等级表-->
+	<sub id="desItem" table="des_item">
+		<id column="povertyId"/>
+		<state column="desState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>
+	
+	<!-- 学籍变动类型表-->
+	<sub id="staCategory" table="sta_category">
+		<id column="staNo"/>
+		<state column="staState"/><!-- 数据的状态对应的数据表的字段名 -->
+	</sub>				
+	
+</modules>

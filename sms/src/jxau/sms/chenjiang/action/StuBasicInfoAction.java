@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.enterprise.inject.New;
 
 import jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl;
 import jxau.sms.chenjiang.vo.StuBasicInfoVO;

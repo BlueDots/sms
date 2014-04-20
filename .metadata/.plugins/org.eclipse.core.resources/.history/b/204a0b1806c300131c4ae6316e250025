@@ -1,8 +1,0 @@
-package jxau.sms.thomas.action;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-public class AdvanceInfoAction extends ActionSupport {
-
-
-}

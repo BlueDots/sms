@@ -1,0 +1,36 @@
+package jxau.sms.thomas.action;
+
+
+import java.util.Map;
+import javax.annotation.Resource;
+import org.springframework.context.annotation.Scope;
+import jxau.sms.globalService.GlobalServiceInterface;
+import jxau.sms.thomas.advanceinfo.service.imple.AdvanceServiceImple;
+import jxau.sms.thomas.po.StuAdvInfo;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+@Scope("prototype") 
+public class AdvanceInfoAction extends ActionSupport {
+
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+		private AdvanceServiceImple advanceServiceImple;
+		
+		@Resource(name="advanceServiceImple")
+		public void setAdvanceServiceImple(AdvanceServiceImple advanceServiceImple) {
+			this.advanceServiceImple = advanceServiceImple;
+		}
+		
+		public String showStuAdvInfo(){
+			String result = "success";
+			
+			return result;
+		}
+		
+		
+}

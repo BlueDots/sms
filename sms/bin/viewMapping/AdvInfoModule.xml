@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--说明:(配置模块中范围最大的VO)
+	1.view的id属性由模块号+视图编号,type属性是对应的vo名，用于导入导出使用；
+	2.column用于高级查询使用，其中name是数据库中字段名，value属于高级查询的选项名或者是导出的项目名称；
+	  mutiply表示是否是多值属性,用于高级查询,ture表示是高级查询的条件，反之，false则不是；
+	3.property中value表示该字段的多值属性；
+-->
+<mapping>
+	<view id="0100" type="jxau.sms.thomas.vo.StuAdvVo">
+	<column name="studentNo" value="学号" multiply="false">
+		</column>
+		<column name="studentName" value="姓名" multiply="false">
+		</column>
+		<column name="sex" value="性别" multiply="true">
+			<property value="男"  type="1"/>	
+			<property value="女" type="0"/> 
+		</column>
+		<column name="college" value="学院" multiply="false">
+		</column>
+		<column name="major" value="专业方向" multiply="false">
+		</column>
+		<column name="className" value="班级" multiply="false"></column>
+		<column name="advanceActivity" value="先进项目" multiply="true">
+			<property value="优秀三好学生" />	
+			<property value="优秀学生干部" /> 
+			<property value="最佳三好学生" /> 
+			<property value="最佳学生干部" /> 
+			<property value="优秀团干部" /> 
+			<property value="优秀学生干部" /> 
+		</column>
+		<column name="advTime" value="获奖时间" multiply="true"> <!-- 使用时间插件-->
+			<property value="201101" /> 
+		</column>
+		<column name="advLevel" value="级别" multiply="true">
+			<property value="院级" /> 	
+			<property value="校级" />  
+			<property value="厅级"  />
+			<property value="省级"  />
+			<property value="国家级"  />
+		</column>
+		<column name="examState" value="审核状态" multiply="true">
+			<property value="未提交 "  />
+	     	<property value="院级审核中 " />
+	      	<property value="校级审核中 "  />
+	      	<property value="院级未通过"  />
+	        <property value="校级未通过"  />
+	         <property value="通过"  />		
+		</column>
+		<column name="remarks" value="备注" multiply="false">
+		</column>
+	</view>
+</mapping>

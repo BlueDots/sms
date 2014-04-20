@@ -23,6 +23,7 @@
 		<typeAlias alias="MajorInfo" type="jxau.sms.anping.po.MajorInfo" />
 		<typeAlias alias="ScholarShip" type="jxau.sms.anping.po.ScholarShip" />
 		<!-- 熊安平部分结束 -->
+		<!--陈江部分开始  -->
 		<typeAlias alias="StuBasicInfo" type="jxau.sms.chenjiang.po.StuBasicInfo" />
 		<typeAlias alias="StuBasicInfoVO" type="jxau.sms.chenjiang.vo.StuBasicInfoVO" />
 		<typeAlias alias="ActInfo" type="jxau.sms.chenjiang.po.ActInfo" />
@@ -31,7 +32,8 @@
 		<typeAlias alias="ActHoldVO" type="jxau.sms.chenjiang.vo.ActHoldVO" />
 		<typeAlias alias="StuActParticipate" type="jxau.sms.chenjiang.po.StuActParticipate" />
 		<typeAlias alias="StuActParticipateVO" type="jxau.sms.chenjiang.vo.StuActParticipateVO" />
-
+		<typeAlias alias="ModuleVerifyAndData" type="jxau.sms.util.chenjiang.roleVerify.ModuleVerifyAndData" />
+		<!--陈江部分结束  -->
 
 		<!-- 李轶翔部分 开始 -->
 		<typeAlias alias="TecBasicInfo" type="jxau.sms.lyx.po.TecBasicInfo" />

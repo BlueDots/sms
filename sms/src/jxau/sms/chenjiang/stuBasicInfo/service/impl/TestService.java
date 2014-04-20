@@ -232,8 +232,11 @@ public class TestService {
 		ids.add("20111367");
 		ids.add("20111429");
 		ids.add("20111635");
-		
-		abstractionService.verify(ids, "01", "3", "1", null);
+		List<String> remarksLists = new ArrayList<>();
+		remarksLists.add("aaa");
+		remarksLists.add("bbb");
+		remarksLists.add("ccc");
+		abstractionService.verify(ids, "01", "3", "1", "chaaaaaa");
 		
 	}
 	

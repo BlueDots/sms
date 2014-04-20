@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+      
+<struts>  
+          
+    <package name="default" namespace="/" extends="struts-default">  
+        <action name="hello" class="jxau.sms.anping.action.HelloAction">  
+            <result name="success">/Hello.jsp</result>  
+        </action>  
+    </package>  
+    
+    <package name="RoleManager" namespace="/" extends="struts-default">  
+        <action name="role" class="jxau.sms.lyx.role.action.RoleAction">  
+            <result name="success">/files/college_admin/admin_RoleManager.jsp</result>  
+        </action>
+        
+        <action name="rolePurview" class="jxau.sms.lyx.role.action.RoleAction">  
+            <result name="success">/files/college_admin/admin_addRole.jsp</result>  
+        </action>
+        
+        <action name="addRole" class="jxau.sms.lyx.role.action.RoleAction">  
+            <result name="success">/files/college_admin/admin_addRole.jsp</result>  
+        </action>  
+    </package> 
+    
+     <package name="Purview" namespace="/" extends="struts-default">  
+        <action name="purview" class="jxau.sms.lyx.purview.action.SystemPurviewAction">  
+            <result name="success">/files/college_admin/admin_systemPurview.jsp</result>  
+        </action>
+        
+        <action name="updateRolePurview" class="jxau.sms.lyx.purview.action.RoleSystemPurviewAction">  
+            <result name="success">/files/college_admin/admin_systemPurview.jsp</result>  
+        </action>
+        
+        <action name="updateUserPurview" class="jxau.sms.lyx.purview.action.UserSystemPurviewAction">  
+            <result name="success">/files/college_admin/admin_systemPurview.jsp</result>  
+        </action>          
+    </package>
+    
+    <package name="TecRole" namespace="/" extends="struts-default">  
+        <action name="allocation" class="jxau.sms.lyx.purview.action.SystemPurviewAction">  
+            <result name="success">/files/college_admin/admin_systemPurview.jsp</result>  
+        </action>
+    </package>
+    
+</struts>

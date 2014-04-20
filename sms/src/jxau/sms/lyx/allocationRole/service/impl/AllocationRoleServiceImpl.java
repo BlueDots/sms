@@ -48,8 +48,11 @@ public class AllocationRoleServiceImpl implements GlobalServiceInterface {
 	public <VTeacherRole> List<VTeacherRole> searchByAccurate(Map<String, Object> param,
 			PageVo pageVo, int status) {
 		// TODO Auto-generated method stub
+		param = new HashMap<String, Object>();
+		param.put("start",pageVo.getFirstIndex());
+		param.put("nums",pageVo.getSize());
 		List<VTeacherRole> vTeacherRoleList = dao.select("findAllTeacherRoleInfo", param);
-
+		
 		for(int i=0;i<vTeacherRoleList.size();i++){
 			 jxau.sms.lyx.vo.VTeacherRole vTeacherRole = (jxau.sms.lyx.vo.VTeacherRole) vTeacherRoleList.get(i);		 
 			 Map<String, Object> map = new HashMap<String, Object>();
@@ -65,6 +68,9 @@ public class AllocationRoleServiceImpl implements GlobalServiceInterface {
 			 List<String> departmentList= dao.select("findDepartmentByTeacherNo",map);
 			 vTeacherRole.setDepartmentList(departmentList);		 
 		}
+		
+		long totalCount = dao.selectOne("findAllTeacherRoleInfoNums", null);
+		pageVo.setCount(totalCount);
 		
 		return vTeacherRoleList;
 	}

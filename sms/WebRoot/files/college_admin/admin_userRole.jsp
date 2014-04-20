@@ -117,7 +117,7 @@ function link() {
 												</select>
 												
 												 
-												教师工号:<input name="teacherNo"    type="text" size="10" />
+											  教师工号:<input name="teacherNo"  type="text" size="10" />
 											  教师姓名:<input name="teacherName" type="text" size="10" />
 												<input name="Submit4" type="button" class="right-button02" value="查 询" />
 													
@@ -191,9 +191,9 @@ function link() {
 																				用户信息查询表																			</td>
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align="center">
-																		  <td><input type="checkbox" name="delid" />全选</td>
+																		 <td><input type="checkbox" name="delid" />全选</td>
 																			<td>教师工号</td>
-																			<td>姓名</td>
+																			<td>教师姓名</td>
 																			<td>性别</td>
 																			<td>政治面貌</td>
 																			<td>部门</td>
@@ -201,44 +201,38 @@ function link() {
 																			<td>入职时间</td>
 																			<td>角色列表</td>
 																		</tr>
-																		
+										
+										<s:iterator value="vteacherRoleList" id="vteacherRole" >			
 																		<tr bgcolor="#FFFFFF" align="center">
-																		  <td><input type="checkbox" name="delid" /></td>
-																			<td>2323</td>
-																			<td>艾老师</td>
-																			<td>男</td>
-																			<td>中共党员</td>																			
-																			<td>软件学院</td>
-																			<td>教授</td>
-																			<td>2000-2-2</td>
-																			<td><a href="admin_rolePurview.html">院级工作人员</a></td>
+																		    <td><input type="checkbox" name="delid" /></td>
+																			<td><s:property value="#vteacherRole.teacherNo"></s:property>	</td>
+																			<td><s:property value="#vteacherRole.teacherName"></s:property>	</td>
+																			<td>
+																				<s:if test="%{#vteacherRole.sex==0}"> 
+																					男	
+																				</s:if>
+																				<s:if test="%{#vteacherRole.sex==1}"> 
+																					女	
+																				</s:if>						
+																			</td>
+																			<td><s:property value="#vteacherRole.political"></s:property>	</td>																			
+																			<td>
+				
+																				<s:iterator value="#vteacherRole.departmentList" id="dList" >
+																					<s:property value="#dList"></s:property>	
+																				</s:iterator>
+																			</td>
+																			<td><s:property value="#vteacherRole.teacherTitle"></s:property>	</td>
+																			<td><s:property value="#vteacherRole.worktime"></s:property>	</td>
+																			<td>
+																				<s:iterator value="#vteacherRole.roleList" id="rList" >
+																				<a href="TecRole/displayPurview!showPurviewByRoleNo?roleName=<s:property value="#rList"></s:property>">
+																					<s:property value="#rList"></s:property>	
+																				</a>
+																				</s:iterator>
+																			</td>
 																		</tr>
-																		
-																		<tr bgcolor="#FFFFFF" align="center">
-																		  <td><input type="checkbox" name="delid" /></td>
-																			<td>2564</td>
-																			<td>张老师</td>
-																			<td>男</td>
-																			<td>中共团员</td>																			
-																			<td>软件学院</td>
-																			<td>助教</td>
-																			<td>2010-4-5</td>
-																			<td><a href="admin_rolePurview.html">校级工作人员</a></td>
-																		</tr>
-																		
-																		<tr bgcolor="#FFFFFF" align="center">
-																		  <td><input type="checkbox" name="delid" /></td>
-																			<td>7343</td>
-																			<td>李老师</td>
-																			<td>男</td>
-																			<td>中共党员</td>																			
-																			<td>工学院</td>
-																			<td>副教授</td>
-																			<td>2004-8-9</td>
-																			<td><a href="admin_rolePurview.html">班主任</a></td>
-																		</tr>
-                                                              	
-
+											</s:iterator>					
 																		</table>
 																</td>
 															</tr>
@@ -275,20 +269,15 @@ function link() {
 																				<a href="#" class="right-font08">首页</a> |
 																				<a href="#" class="right-font08">上一页</a> |
 																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 转至：
+																				<a href="#" class="right-font08">末页</a>] 
+																				<s:debug></s:debug>
 																			</td>
 																			<td width="1%">
 																				<table width="20" border="0" cellspacing="0"
 																					cellpadding="0">
 																					<tr>
-																						<td width="1%">
-																							<input name="textfield3" type="text"
-																								class="right-textfield03" size="1" />
-																						</td>
-																						<td width="87%">
-																							<input name="Submit23222" type="submit"
-																								class="right-button06" value=" " />
-																						</td>
+																						
+																						
 																					</tr>
 																				</table>
 																			</td>

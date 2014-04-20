@@ -1,3 +1,143 @@
+var collegeSelect_enter = $("<select name='department_enter' id='department_enter'>");
+var majorSelect_enter = $("<select name='major_enter' id='major_enter'>");
+var classSelect_enter = $("<select name='className_enter' id='className_enter'>");
+
+//获取学院信息
+function setCollegeData_enter() {
+	$.getJSON("college/college!showCollege?type=depart", function(data) {
+		var depInfos = data.depInfos;
+		var optionfirst = $("<option value='-1' id='-1' >请选择</option>");
+		collegeSelect_enter.append(optionfirst);
+		$.each(depInfos, function(index, value) {
+			var departNo = value.departNo;
+			var department = value.department;
+			var option = $("<option value='" + department + "' id='"+departNo+"' >" + department
+					+ "</option>");
+			collegeSelect_enter.append(option);
+		});
+	});
+}
+//获取专业信息
+function setMajorData_enter(value) {
+	$.getJSON("college/college!showCollege?type=major&departNo="+value,function(data){
+		var majors = data.majors;
+		majorSelect_enter.empty();
+		$.each(majors, function(index, value) {
+			var major = value.major;
+			var majorNo = value.majorNo;
+			var option = $("<option value='" + major + "' id='"+majorNo+"' >" + major
+					+ "</option>");
+			majorSelect_enter.append(option);
+		});
+	});
+}
+
+//初始化学院下拉框的监听事件
+function initCollegeListener_enter() {
+	collegeSelect_enter.change(function(event){
+		
+		var collegeSelect_enter = document.getElementById("department_enter");
+		var value;
+		
+		for(var i=0;i<collegeSelect_enter.options.length;i++)
+			 if(collegeSelect_enter.options[i].selected){
+				 value=collegeSelect_enter.options[i].id;
+		}
+		
+		if(value!=-1){
+	    setMajorData_enter(value);
+	    
+		}else{
+			alert("请选择具体的学院");
+		}
+	 });
+}
+//初始化专业的下拉框的监听事件
+function initMajorListener_enter() {
+	
+	majorSelect_enter.change(function(){
+		var college;
+		var value;
+		var collegeSelect_enter = document.getElementById("department_enter");
+		//获得选中option的id
+		for(var i=0;i<collegeSelect_enter.options.length;i++)
+			 if(collegeSelect_enter.options[i].selected){
+				 college=collegeSelect_enter.options[i].id;
+		}
+		
+		var majorSelect_enter = document.getElementById("major_enter");
+		//获得选中option的id
+		for(var i=0;i<majorSelect_enter.options.length;i++)
+			 if(majorSelect_enter.options[i].selected){
+				 value=majorSelect_enter.options[i].id;
+		}
+		
+		var url  = "college/college!showCollege?type=class";
+		if(value==-1&& college==-1){
+	       alert("请选择学院");
+	       return ;
+		}else if(value==-1&& college!=-1){
+			url=url+"&departNo="+college;
+		}else if(value!=-1){
+			url=url+"&majorNo="+value;
+		}
+		
+		$.getJSON(url,function(data){
+			
+			var classs = data.classInfos;
+			classSelect_enter.empty();
+			var firstMajorData = $("<option value='-1'>全部</option>");
+			classSelect_enter.append(firstMajorData);
+			$.each(classs, function(index, value) {
+				var className = value.className;
+				var classNo = value.classNo;
+				var option = $("<option value='" + className + "' >" + className
+						+ "</option>");
+				classSelect_enter.append(option);
+			});
+		});
+	 });
+}
+
+//民族
+function addNation()
+{
+var nations=new Array("汉族","蒙古族","回族","藏族","维吾尔族","苗族","彝族","壮族","布依族","朝鲜族","满族","侗族","瑶族","白族","土家族","哈尼族","哈萨克族","傣族","黎族","僳僳族","佤族","畲族","高山族","拉祜族","水族","东乡族","纳西族","景颇族","柯尔克孜族","土族","达斡尔族","仫佬族","羌族","布朗族","撒拉族","毛南族","仡佬族","锡伯族","阿昌族","普米族","塔吉克族","怒族","乌孜别克族","俄罗斯族","鄂温克族","德昂族","保安族","裕固族","京族","塔塔尔族","独龙族","鄂伦春族","赫哲族","门巴族","珞巴族","基诺族","其他");
+ 
+var nation=document.getElementById("nation");
+var docE=document.createDocumentFragment();
+var leg=nations.length;
+var ele;
+for(var tagi=0;tagi<leg;tagi++)
+{
+ ele=document.createElement("option");
+ ele.appendChild(document.createTextNode(nations[tagi]));
+ docE.appendChild(ele);
+}
+ nation.appendChild(docE);
+}
+
+//验证学号是否符合规范(数字，8位)
+function validateStudent(studentNo) {
+	if(isNaN(studentNo)) {
+		alert("学号只能是数字!");
+		return;
+	}
+	if(studentNo.length!=8) {
+		alert("学号只能为8位!");
+		return;
+	}
+	$.getJSON("StuBasicInfoJSON/StuBasicInfoActionJSON!validateStudentNoIsExist?studentNo="+studentNo,function(data) {
+		if(data.studentNoIsExist)
+		alert("学号已经存在!");
+		return;
+	});
+}
+
+function validateStudentNoIsExist(studentNo) {
+	
+}
+
 
 /*切换*/
 function exchange(id1,id2) {
@@ -51,59 +191,62 @@ function entryStuBasicInfo(numsOfRow) {
 			TrObj.setAttribute("bgcolor","#EEEEEE");
 			TrObj.setAttribute("align","center");
 
-			//第一列
+			//第一列:照片
 			var TdObj1 = TrObj.insertCell(0);
 			var photo = document.createElement("input");
 			photo.type = "button";
 			photo.value = "导入";
+			photo.setAttribute("style","width:50px");
 			TdObj1.appendChild(photo);
 
-			//第二列
+			//第二列 :学号
 			var TdObj2 = TrObj.insertCell(1);
 			var sno = document.createElement("input");
 			sno.type = "text";
 			sno.name = "sno";
-			sno.setAttribute("style","width:50px");
+			sno.setAttribute("style","width:60px");
+			//添加事件
+			sno.onblur=function() {
+				validateStudent($(this).val());
+			};
 			TdObj2.appendChild(sno);
 
-			//第三列
+			//第三列:姓名
 			var TdObj3 = TrObj.insertCell(2);
 			var sname = document.createElement("input");
 			sname.type = "text";
 			sname.name = "sname";
-			sname.setAttribute("style","width:50px");
+			sname.setAttribute("style","width:60px");
 			TdObj3.appendChild(sname);
-
-			//第四列
+			
+			//第四列：学院
 			var TdObj4 = TrObj.insertCell(3);
-			var profession = document.createElement("select");
-			var pro_1 = document.createElement("option");
-			pro_1.appendChild(document.createTextNode("软件开发"));
-			var pro_2 = document.createElement("option");
-			pro_2.appendChild(document.createTextNode("数字媒体"));
-			var pro_3 = document.createElement("option");
-			pro_3.appendChild(document.createTextNode("软件+英语"));
-			profession.appendChild(pro_1);
-			profession.appendChild(pro_2);
-			profession.appendChild(pro_3);
-			TdObj4.appendChild(profession);
-
-			//第五列
+			//初始化学院select
+			setCollegeData_enter();
+			//加载监听
+			initCollegeListener_enter();
+			//jquery转换成Dom对象
+			var collegeSelect_Dom = collegeSelect_enter.get(0);
+			TdObj4.appendChild(collegeSelect_Dom);			
+			
+			//第五列：专业
 			var TdObj5 = TrObj.insertCell(4);
-			var classname = document.createElement("select");
-			var name1 = document.createElement("option");
-			name1.appendChild(document.createTextNode("软件1101"));
-			var name2 = document.createElement("option");
-			name2.appendChild(document.createTextNode("软件1102"));
-			var name3 = document.createElement("option");
-			name3.appendChild(document.createTextNode("软件1107"));
-			classname.appendChild(name1);
-			classname.appendChild(name2);
-			classname.appendChild(name3);
-			TdObj5.appendChild(classname);
+			//初始化专业select
+			setMajorData_enter();
+			//加载监听
+			initMajorListener_enter();
+			//jquery转换成Dom对象
+			var majorSelect_Dom = majorSelect_enter.get(0);
+			TdObj5.appendChild(majorSelect_Dom);
 
-			//第六列
+			//第六列：班级
 			var TdObj6 = TrObj.insertCell(5);
+			//jquery转换成Dom对象
+			var classSelect_Dom = classSelect_enter.get(0);
+			TdObj6.appendChild(classSelect_Dom);
+
+			//第七列：//性别
+			var TdObj7 = TrObj.insertCell(6);
 			var sex = document.createElement("select");
 			var man = document.createElement("option");
 			man.appendChild(document.createTextNode("男"));
@@ -111,29 +254,25 @@ function entryStuBasicInfo(numsOfRow) {
 			female.appendChild(document.createTextNode("女"));
 			sex.appendChild(man);
 			sex.appendChild(female);
-			TdObj6.appendChild(sex);
+			TdObj7.appendChild(sex);
 
-			//第七列
-			var TdObj7 = TrObj.insertCell(6);
-			var nation = document.createElement("select");
-			var han = document.createElement("option");
-			han.appendChild(document.createTextNode("汉族"));
-			var nohan = document.createElement("option");
-			nohan.appendChild(document.createTextNode("非汉族"));
-			nation.appendChild(han);
-			nation.appendChild(nohan);
-			TdObj7.appendChild(nation);
-
-			//第八列
+			//第八列:民族
 			var TdObj8 = TrObj.insertCell(7);
+			var nation = document.createElement("select");
+			nation.id="nation";
+			TdObj8.appendChild(nation);
+			addNation();
+
+			//第九列:籍贯
+			var TdObj9 = TrObj.insertCell(8);
 			var birthPlace = document.createElement("input");
 			birthPlace.type = "text";
 			birthPlace.name = "birthPlace";	
-			birthPlace.setAttribute("style","width:60px");
-			TdObj8.appendChild(birthPlace);
+			birthPlace.setAttribute("style","width:150px");
+			TdObj9.appendChild(birthPlace);
 
-			//第九列
-			var TdObj9 = TrObj.insertCell(8);
+			//第十列
+			var TdObj10 = TrObj.insertCell(9);
 			var political = document.createElement("select");
 			var p1 = document.createElement("option");
 			p1.appendChild(document.createTextNode("群众"));
@@ -144,17 +283,17 @@ function entryStuBasicInfo(numsOfRow) {
 			political.appendChild(p1);
 			political.appendChild(p2);
 			political.appendChild(p3);
-			TdObj9.appendChild(political);
-
-			//第十列
-			var TdObj10 = TrObj.insertCell(9);
-			var IDCard = document.createElement("input");
-			IDCard.type="text";
-			IDCard.name = "IDCard";
-			TdObj10.appendChild(IDCard);
+			TdObj10.appendChild(political);
 
 			//第十一列
 			var TdObj11 = TrObj.insertCell(10);
+			var IDCard = document.createElement("input");
+			IDCard.type="text";
+			IDCard.name = "IDCard";
+			TdObj11.appendChild(IDCard);
+
+			//第十二列
+			var TdObj12 = TrObj.insertCell(11);
 			var schooling = document.createElement("select");
 			var s_1 = document.createElement("option");
 			var s_2 = document.createElement("option");
@@ -169,10 +308,10 @@ function entryStuBasicInfo(numsOfRow) {
 			schooling.appendChild(s_2);
 			schooling.appendChild(s_3);
 			schooling.appendChild(s_4);
-			TdObj11.appendChild(schooling);
+			TdObj12.appendChild(schooling);
 
-			//第十二列
-			var TdObj12 = TrObj.insertCell(11);
+			//第十三列
+			var TdObj13 = TrObj.insertCell(12);
 			var CET = document.createElement("select");
 			var c_1 = document.createElement("option");
 			var c_2 = document.createElement("option");
@@ -191,14 +330,14 @@ function entryStuBasicInfo(numsOfRow) {
 			CET.appendChild(c_3);
 			CET.appendChild(c_4);
 			CET.appendChild(c_5);
-			TdObj12.appendChild(CET);
+			TdObj13.appendChild(CET);
 
-			//第十三列
+			//第十四列
 
-			var TdObj13 = TrObj.insertCell(12);
+			var TdObj14 = TrObj.insertCell(13);
 			var bandCard = document.createElement("input");
 			bandCard.type = "text";
-			TdObj13.appendChild(bandCard);		
+			TdObj14.appendChild(bandCard);		
 		}
 	}
 		

@@ -3,14 +3,11 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jxau.sms.util.chenjiang.roleVerify">
-	<update id="verify" parameterType="map">
-		update ${mVerify.table} set
-			${mVerify.verify} = #{exameState},
-			${mVerify.remarks} = #{remarks}
-		where ${mVerify.id} in
-		<foreach collection="ids" index="index" item="idIndex" open="(" separator="," close=")">
-			#{idIndex}
-		</foreach>
+	<update id="verify" parameterType="ModuleVerifyAndData">
+			update ${moduleVerify.table} set
+			${moduleVerify.verify} = #{exameState},
+			${moduleVerify.remarks} = #{remark}
+			where ${moduleVerify.id} = #{id};
 	</update>
 	
 	<select id="getVerifyNums" parameterType="map" statementType="CALLABLE" resultType="java.util.Map">

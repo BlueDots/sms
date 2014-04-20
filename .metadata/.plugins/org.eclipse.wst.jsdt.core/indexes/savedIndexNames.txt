@@ -1,11 +1,8 @@
 INDEX VERSION 1.122+G:\studentManagerSystem\sms\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2934782024.index
 4017589347.index
 88528101.index
 217224304.index
 217224304.index
-2552044831.index
 2035872528.index
-14784461.index
 2463150129.index
 1169220604.index

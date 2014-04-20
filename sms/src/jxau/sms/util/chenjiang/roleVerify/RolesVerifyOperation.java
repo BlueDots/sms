@@ -43,7 +43,7 @@ public class RolesVerifyOperation {
 	 * @param operationId：操作编号  "1"：审核通过；"2"：审核不通过；
 	 * @param remarks:备注
 	 */
-	public  <T>  void  roleVerifyOperation(List<T> ids, String moduleId,String roleId,String operationId,String remarks) {
+	public  <T>  void  roleVerifyOperation(List<T> ids, String moduleId,String roleId,String operationId,Object remarks) {
 		ModuleVerify mVerify = null;
 		
 		//得到得到根节点

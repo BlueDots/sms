@@ -54,10 +54,15 @@ public abstract class AbstractionService {
 	 * @param roleId:操作角色
 	 *  		roleId 1:学生  2：班主任 3：院级工作人员 4：校级工作人员 6:活动负责人
 	 * @param operationId：操作编号  "1"：审核通过；"2"：审核不通过；
-	 * @param remarks:备注  (可以为null)
+	 * 				当审核通过时，所有审核数据remarks都会清空
+	 * @param remarks:备注  (
+	 * 			1、为null, 表示所有审核数据无备注
+	 * 			2、为String,表示所有审核数据的备注为所填值
+	 * 			3、为List<String>，表示一条数据一条备注
+	 * 		) 
 	 * 					
 	 */
-	public  <T>  void  verify(List<T> ids, String moduleId,String roleId,String operationId,String remarks){
+	public  <T>  void  verify(List<T> ids, String moduleId,String roleId,String operationId,Object remarks){
 		rolesVerifyOperation.roleVerifyOperation(ids, moduleId, roleId, operationId, remarks);
 	}
 	

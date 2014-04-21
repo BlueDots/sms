@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
 
-	<script src="<%=basePath%>/js/jquery-1.10.2.js"></script>
+	<script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
 	<script src="<%=basePath%>/js/date.js"></script>
 
@@ -84,6 +84,23 @@ function link() {
 	document.getElementById("fom").action = "../addrenwu.htm";
 	document.getElementById("fom").submit();
 }
+
+function searchTecRole(){
+
+	var teacherNo = $("#teacherNo").attr("value");
+	var teacherName = $("#teacherName").attr("value");
+
+	if(teacherNo=='' || teacherName == ''){
+		alert("查询条件不能为空");
+		return;
+	}else {
+		window.location.href= "TecRole/allocation!tecRoleDisplay?teacherNo="+teacherNo+"&teacherName="+teacherName;
+	}
+	
+	
+	
+	
+}
 </script>	
 
   </head>
@@ -117,22 +134,12 @@ function link() {
 												</select>
 												
 												 
-											  教师工号:<input name="teacherNo"  type="text" size="10" />
-											  教师姓名:<input name="teacherName" type="text" size="10" />
-												<input name="Submit4" type="button" class="right-button02" value="查 询" />
-													
-												排序:
-												<select name="排序">
-													<option>
-														教师工号 
-													</option>
-													<option>
-														教师姓名
-													</option>
-												</select>
-												
-											  <img src="<%=basePath%>/images/up[1].png"></img>
-											  
+											  <b>教师工号:</b>
+											  <input name="teacherNo"  type="text" size="10" id="teacherNo"/>
+											  <b>教师姓名:</b>
+											  <input name="teacherName" type="text" size="10" id="teacherName"/>
+											  <input name="search" type="button" class="right-button02" value="查 询" onclick="javascript:searchTecRole();"/>
+														
 											</td>
 											<td width="77" align="center">
 												<div class="suckerdiv">
@@ -141,7 +148,7 @@ function link() {
 															<a href="#">角色分配</a>
 															<ul>
 																<li>
-																<a href="files/college_admin/admin_addUserRole.jsp">分配角色</a>
+																<a href="<%=basePath%>/files/college_admin/admin_addUserRole.jsp">分配角色</a>
 																</li>
 															</ul>
 
@@ -260,16 +267,16 @@ function link() {
 																		cellpadding="0" cellspacing="0" class="right-font08">
 																		<tr>
 																			<td width="50%">
-																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																			共<span class="right-text09">${pageNum}</span> 页 | 
+																			第<span class="right-text09">${currentPage}</span> 页
 																			</td>
 																			<td width="49%" align="right">
 																				[
-																				<a href="#" class="right-font08">首页</a> |
-																				<a href="#" class="right-font08">上一页</a> |
-																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 
+																				<a href="<%=basePath%>/TecRole/allocation!tecRoleDisplay?currentPage=1" class="right-font08">首页</a> |
+																				<a href="<%=basePath%>/TecRole/allocation!tecRoleDisplay?currentPage=${currentPage-1}" class="right-font08">上一页</a> |
+																				<a href="<%=basePath%>/TecRole/allocation!tecRoleDisplay?currentPage=${currentPage+1}" class="right-font08">下一页</a> |
+																				<a href="<%=basePath%>/TecRole/allocation!tecRoleDisplay?currentPage=${pageNum}" class="right-font08">末页</a>
+																				] 
 																				<s:debug></s:debug>
 																			</td>
 																			<td width="1%">

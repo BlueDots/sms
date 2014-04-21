@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.enterprise.inject.New;
 import javax.servlet.http.HttpServletRequest;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.lyx.allocationRole.service.impl.AllocationRoleServiceImpl;
+import jxau.sms.lyx.exception.DataExistException;
 import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TeacherRole;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 import jxau.sms.lyx.vo.VTeacherRole;
 
@@ -33,7 +36,15 @@ public class AllocationRoleAction extends ActionSupport implements ModelDriven<P
 	private AllocationRoleServiceImpl allocationRoleServiceImpl;
 	private List<VTeacherRole> vteacherRoleList = new ArrayList<VTeacherRole>();
 	private RoleServiceImpl roleServiceImpl;
+	private List<RoleInfo> roleInfoList = new ArrayList<RoleInfo>();
 	
+	public List<RoleInfo> getRoleInfoList() {
+		return roleInfoList;
+	}
+	public void setRoleInfoList(List<RoleInfo> roleInfoList) {
+		this.roleInfoList = roleInfoList;
+	}
+
 	@Resource(name="AllocationRoleServiceImpl")
 	public void setAllocationRoleServiceImpl(
 			AllocationRoleServiceImpl allocationRoleServiceImpl) {
@@ -56,9 +67,21 @@ public class AllocationRoleAction extends ActionSupport implements ModelDriven<P
 
 	public String tecRoleDisplay() throws Exception{
 
+		String teacherNo = ServletActionContext.getRequest().getParameter("teacherNo");
+		String teacherName = ServletActionContext.getRequest().getParameter("teacherName");
+
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("teacherNo", teacherNo);
+		map.put("teacherName", teacherName);
+		
 		pageVo.setSize(4);
-		List<VTeacherRole> vTeacherRole = allocationRoleServiceImpl.searchByAccurate(null, pageVo, 0);
+		List<VTeacherRole> vTeacherRole = allocationRoleServiceImpl.searchByAccurate(map, pageVo, 0);
 		this.setVteacherRoleList(vTeacherRole);
+		
+		PageVo page = new PageVo();
+		List<RoleInfo> roleInfo = roleServiceImpl.searchByAccurate(null,page,0);
+		this.setRoleInfoList(roleInfo);
+
 		return SUCCESS;
 	}
 	
@@ -82,5 +105,29 @@ public class AllocationRoleAction extends ActionSupport implements ModelDriven<P
 		return pageVo;
 	}
 
+	public String saveTecRole() throws Exception{
+		
+		try{
+		TeacherRole teacherRole = new TeacherRole();
+		String roleNoStr = ServletActionContext.getRequest().getParameter("roleNo");
+		String teacherNo = ServletActionContext.getRequest().getParameter("teacherNo");		
+		
+		int roleNo = Integer.parseInt(roleNoStr);
+		teacherRole.setRoleNo(roleNo);
+		teacherRole.setTeacherNo(teacherNo);			
+		allocationRoleServiceImpl.add(TeacherRole.class, teacherRole);
+			
+		}catch (DataExistException e) {
+			// TODO: handle exception
+			System.out.println("该用户已存在该角色");
+			return ERROR;
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("数据类型转换异常");
+			return ERROR;
+		}
+			
+		return SUCCESS;
+	}
 	
 }

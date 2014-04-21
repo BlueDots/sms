@@ -1,5 +1,0 @@
-package jxau.sms.lyx.purview.service.impl;
-
-public interface AllocationPurviewStandard {
-
-}

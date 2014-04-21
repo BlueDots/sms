@@ -17,7 +17,7 @@ import jxau.sms.thomas.vo.StuAdvVo;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+
 @Controller  
 @Scope("prototype") 
 public class AdvanceInfoAction extends ActionSupport {

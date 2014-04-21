@@ -1,9 +1,0 @@
-ENDORSED_DIRS="D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0/common/endorsed"
-JDK_HOME=D\:\\JavaEE\\jre
-JDK_INSTALLATION_NAME=JavaEE
-LIBRARY_PATH="D\:\\JavaEE\\jre\\bin;D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0\\bin"
-SERVER_ENABLEMENT=true
-TOMCAT_BASE=D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0
-TOMCAT_HOME=D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0
-TOMCAT_TEMP=D\:\\\u7F16\u7A0B\u8F6F\u4EF6\\TomCat\\tomcat-7.0\\temp
-eclipse.preferences.version=1

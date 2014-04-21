@@ -5,10 +5,11 @@
 <mapper namespace="jxau.sms.advanceinfo.tomas.dao"><!-- namespace必须是与接口的包路径一致，不然会报错误 -->
 
     <!--<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true" /> --><!-- Mybaties内置二级缓存 -->
+    <!-- 查询返回集合类型的配置 -->
+    <!-- 查询返回集合类型的配置 -->
+    <!-- 使用第三方缓存插件实现二级缓存
     
-    <!-- 使用第三方缓存插件实现二级缓存 -->
-    
-   	<resultMap type="StuAdvInfo" id="listStuAdvInfo"><!-- 查询返回集合类型的配置 -->
+   	<resultMap type="StuAdvInfo" id="listStuAdvInfo">
         <id column="awardNo" property="awardNo" />
         <result column="studentNo" property="studentNo" />
         <result column="advanceActivity" property="advanceActivity" />
@@ -18,7 +19,7 @@
         <result column="remarks" property="remarks" />
  	</resultMap>
  	
- 	<resultMap type="StuAdvVo" id="listStuAdvVo"><!-- 查询返回集合类型的配置 -->
+ 	<resultMap type="StuAdvVo" id="listStuAdvVo">
         <result column="studentNo" property="studentNo" />
         <result column="studentName" property="studentName" />
         <result column="sex" property="sex" />
@@ -31,8 +32,8 @@
         <result column="examState" property="examState" />
         <result column="remarks" property="remarks" />
  	</resultMap>
-
-    <select id="queryAdvInfoPage" parameterType="java.util.Map"  resultMap="listStuAdvVo">
+ -->
+ <!--     <select id="queryAdvInfoPage" parameterType="java.util.Map"  resultMap="listStuAdvVo">
 		select 
 		sb.studentNo,
 		sb.studentName,
@@ -115,6 +116,7 @@
 	  	</if>
         	;
     </select>
+    -->
     <!--使用存储过程-->
     <!-- 
     <select id="queryAdvInfoByLevel" parameterType="java.util.Map" statementType="CALLABLE" resultType="int">
@@ -122,6 +124,7 @@
     						   #{numbers,jdbcType=INTEGER,mode=OUT}}  
     </select>
     -->
+    <!-- 
      <insert id="addAdvInfo" parameterType="StuAdvInfo" useGeneratedKeys="true" keyProperty="awardNo">
 		insert into stu_adv_info(awardNo,studentNo,advanceActivity,advLevel,advTime,examState,remarks)
 			values
@@ -188,4 +191,5 @@
 				awardNo = #{item} 
 		</foreach>
     </delete>
+    -->
 </mapper>

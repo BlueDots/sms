@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
 
-		<script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>
+	<script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>
 	<script src="<%=basePath%>/js/testSearch.js"></script>
 
 
@@ -101,11 +101,13 @@ function searchTecRole(){
 
 
 function commitData(teacherNo){
-	
-	alert(teacherNo);
-	alert($("#roleName").val()); 
+		
+	var roleNo = $("#roleName").val();
+
+	window.location.href="TecRole/addTecRole!saveTecRole?roleNo="+roleNo+"&teacherNo="+teacherNo;
 
 }
+
 </script>
 
   </head>
@@ -139,7 +141,7 @@ function commitData(teacherNo){
 											
 											 
 											<td width="77" align="center">
-												<a href="#" onclick="javascript:test();"> <input name="Submit4"
+												<a href="" onclick="javascript:test('0001');"> <input name="Submit4"
 														type="button" class="right-button07" value="导出" /> </a>
 											 
 											</td>
@@ -251,7 +253,7 @@ function commitData(teacherNo){
 																
 																<td colspan="2" align="center" height="30px">			
 																    <input type="button" name="Submit" value="提交"
-																		class="button" onclick="javascript:commitData(<s:property value="#vteacherRole.teacherNo"></s:property>);" />
+																		class="button" onclick="javascript:commitData('<s:property value="#vteacherRole.teacherNo"></s:property>');" />
 																	<input type="button" name="Submit2" value="返回"
 																		class="button" onclick="window.history.go(-1);" />
 																</td>

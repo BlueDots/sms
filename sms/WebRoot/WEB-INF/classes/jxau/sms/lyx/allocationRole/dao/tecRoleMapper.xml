@@ -42,5 +42,10 @@
  				insert into teacher_role (teacherNo,roleNo)   
  				values (#{teacherNo},#{roleNo})	
  		</insert>
+ 		
+ 		<select id="findRoleNoByTeacherNo" resultType="java.lang.Integer">
+ 				select roleNo from teacher_role
+ 				where teacherNo = #{teacherNo}
+ 		</select>
  
 </mapper>

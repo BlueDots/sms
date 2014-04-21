@@ -107,13 +107,24 @@ public class AllocationRoleAction extends ActionSupport implements ModelDriven<P
 
 	public String saveTecRole() throws Exception{
 		
-		TeacherRole teacherRole = new TeacherRole();
-		
 		try{
-			allocationRoleServiceImpl.add(TeacherRole.class, teacherRole);
+		TeacherRole teacherRole = new TeacherRole();
+		String roleNoStr = ServletActionContext.getRequest().getParameter("roleNo");
+		String teacherNo = ServletActionContext.getRequest().getParameter("teacherNo");		
+		
+		int roleNo = Integer.parseInt(roleNoStr);
+		teacherRole.setRoleNo(roleNo);
+		teacherRole.setTeacherNo(teacherNo);			
+		allocationRoleServiceImpl.add(TeacherRole.class, teacherRole);
+			
 		}catch (DataExistException e) {
 			// TODO: handle exception
-			System.out.println("存在");
+			System.out.println("该用户已存在该角色");
+			return ERROR;
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("数据类型转换异常");
+			return ERROR;
 		}
 			
 		return SUCCESS;

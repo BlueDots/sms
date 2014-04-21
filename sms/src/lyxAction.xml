@@ -44,6 +44,11 @@
             <result name="success">/files/college_admin/admin_addUserRole.jsp</result>  
         </action>
         
+        <action name="addTecRole" class="jxau.sms.lyx.allocationRole.action.AllocationRoleAction">
+        	<result name="success">/files/college_admin/admin_userRole.jsp</result>  
+        	<result name="error">/files/college_admin/admin_error.jsp</result>  
+        </action>
+        
          <action name="displayPurview" class="jxau.sms.lyx.allocationRole.action.AllocationRoleAction">  
             <result name="success" type="chain">
             	<param name="namespace">/</param>

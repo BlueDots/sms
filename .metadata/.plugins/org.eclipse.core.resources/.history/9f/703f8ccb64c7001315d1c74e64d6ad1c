@@ -1,5 +1,0 @@
-package jxau.sms.thomas.exception;
-
-public class NullPointerException extends RuntimeException {
-
-}

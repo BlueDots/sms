@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+ 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
+import jxau.sms.lyx.exception.DataExistException;
+import jxau.sms.lyx.exception.InsertErrorException;
+import jxau.sms.lyx.exception.NotFoundDataException;
 import jxau.sms.lyx.vo.VTeacherRole;
 /**
  * 
@@ -48,7 +52,6 @@ public class AllocationRoleServiceImpl implements GlobalServiceInterface {
 	public <VTeacherRole> List<VTeacherRole> searchByAccurate(Map<String, Object> param,
 			PageVo pageVo, int status) {
 		// TODO Auto-generated method stub
-		param = new HashMap<String, Object>();
 		param.put("start",pageVo.getFirstIndex());
 		param.put("nums",pageVo.getSize());
 		List<VTeacherRole> vTeacherRoleList = dao.select("findAllTeacherRoleInfo", param);
@@ -76,8 +79,37 @@ public class AllocationRoleServiceImpl implements GlobalServiceInterface {
 	}
 
 	@Override
-	public <T> int add(Class T, Object object) {
+	public <TeacherRole> int add(Class TeacherRole, Object object) {
 		// TODO Auto-generated method stub
+		
+		if(TeacherRole instanceof Object){
+			
+			jxau.sms.lyx.po.TeacherRole data = (jxau.sms.lyx.po.TeacherRole) object;
+			
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("teacherNo", data.getTeacherNo());	
+			List<Integer> list = dao.select("findRoleNoByTeacherNo", map);
+			
+			if(list.size()>0) {
+				
+				for(int i=0;i<list.size();i++){
+					int roleNo = list.get(i);
+					
+					if(roleNo==data.getRoleNo()){
+						throw new DataExistException("该用户已拥有该角色权限");
+					}
+				}
+				dao.add("addTecRole", data);
+				
+			}else {
+				
+				dao.add("addTecRole", data);
+			}
+			
+			
+			
+		}
+		
 		return 0;
 	}
 

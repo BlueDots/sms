@@ -1,8 +1,10 @@
 <mapping>
-	<view id="0101">
-		<mapper id="searchid" value="" />
-		<mapper id="inputid" value="batchadd" />
-		<mapper id="outputid" value="" />
-		<mapper id="propid" value="" />
+	<view id="0100">
+		<mapper id="searchid" value="jxau.sms.advanceinfo.dao.queryAdvInfo" />
+		<mapper id="inputid" value="jxau.sms.advanceinfo.dao.batchAdd" />
+		<mapper id="outputid" value="jxau.sms.advanceinfo.dao.queryAdvInfo" />
+		<mapper id="propid" >
+			<item type="" level=""></item>
+		</mapper>
 	</view>
 </mapping>

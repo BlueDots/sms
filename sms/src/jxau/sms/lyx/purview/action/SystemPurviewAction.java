@@ -70,19 +70,21 @@ public class SystemPurviewAction extends ActionSupport{
 	public String showPurviewByCondition() throws Exception{
 		
 		Map<String,Object> map = new HashMap<String,Object>();
-		
-		
+				
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
 		String tecRoleNo = String.valueOf(request.getAttribute("tecRoleNo"));
 		
 		if(roleNo==null && tecRoleNo==null){
+
 			map.put("teacherNo", teacherNo);
-		}else if(teacherNo==null && tecRoleNo==null){
-			map.put("roleNo", roleNo);
-		}else if(roleNo==null && teacherNo==null){
+		}else if (roleNo==null && teacherNo==null){
+
 			map.put("roleNo", tecRoleNo);
+		}else {
+
+			map.put("roleNo", roleNo);
 		}
-					
+		
 		List<PurviewInfo> purviewLists = spsi.searchListByAccurate(null, 0);
 		this.setPurviewList(purviewLists);
 		

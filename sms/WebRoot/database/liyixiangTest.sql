@@ -1,10 +1,3 @@
---drop 
-drop table if exists teacher_purview;
-drop table if exists role_purview;
-drop table if exists purview_info;
-drop table if exists role_info;
-drop table if exists teacher_role;
-drop table if exists dep_teacher;
 
 --delete
 delete from role_purview;
@@ -143,4 +136,12 @@ where 1=1 and teacherNo='1234' and teacherName='jack';
 insert into dep_teacher values('1105','1234');
 ##select * from tec_basic_info;
  --  insert into dep_teacher values('1105','5678');
+   
+   --drop 
+drop table if exists teacher_purview;
+drop table if exists role_purview;
+drop table if exists purview_info;
+drop table if exists role_info;
+drop table if exists teacher_role;
+drop table if exists dep_teacher;
    

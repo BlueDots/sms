@@ -17,12 +17,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
 import jxau.sms.commom.vo.AdvanceSearchVo;
 import jxau.sms.globaldao.Dao;
+import jxau.sms.thomas.exception.POIException;
+import jxau.sms.thomas.vo.StuAdvVo;
 
 import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -45,6 +48,7 @@ public class InputHandler{
 	private HSSFSheet sheet;
 	private List<AdvanceSearchVo> inputAttr; //符合条件的属性;
 	private String abstractId;	//视图的抽象编号
+	private String viewType;	//视图的类型
 	private Dao dao;
 	private final String mapperId = "inputid";
 	
@@ -82,11 +86,20 @@ public class InputHandler{
 		{
 			if(itemAttr.getKey().equals(abstractId)){
 				for (int i = 0; i < itemAttr.getValue().size(); i++) {
+					viewType = itemAttr.getValue().get(i).getViewType();
 					inputAttr.add(itemAttr.getValue().get(i));
 				}
 			}
 		}
 		return inputAttr;
+	}
+	public <T> List<T> initiateObject(List<T> attributes,int count) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		//List<viewType> attributes = new ArrayList<StuAdvVo>();
+		for (int i = 0; i < count; i++) {
+			T object = (T)Class.forName(viewType).newInstance();
+			attributes.add(object);
+		}
+		return attributes;
 	}
 	public <T> void transferFormation(Field field, HSSFCell cell,T attribute,int i) throws IllegalArgumentException, IllegalAccessException{
 		//String fieldType = field.getType().getName();
@@ -95,14 +108,16 @@ public class InputHandler{
 		if (cell.getCellType() == 0) {
 			double cellValue = cell.getNumericCellValue();
 			if (columnName.equals("学号")) {
-				field.set(attribute, String.valueOf(cellValue));
+				field.set(attribute, String.valueOf(Math.round(cellValue)));
 			}else if (HSSFDateUtil.isCellDateFormatted(cell)) {
 				if (cell.getCellStyle().getDataFormat() == 14) {
-					DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					DateFormat dateFormat = new SimpleDateFormat("yyyyMM");
 					Date date = cell.getDateCellValue();
+					System.out.print(dateFormat.format(cell.getDateCellValue()));
 					field.set(attribute,dateFormat.format(cell.getDateCellValue()));
 				}else {
-					System.out.print("时间格式错误!");
+					throw new POIException("时间格式错误!");
+					//System.out.print("时间格式错误!");
 				}
 			}else{
 				field.set(attribute, (int)cellValue);
@@ -116,12 +131,17 @@ public class InputHandler{
 				field.set(attribute,cellValue);
 			}
 		}else{
-			System.out.print("数据项不能为空!");
+			throw new POIException("数据项不能为空");
+			//System.out.print("数据项不能为空!");
 		}
 	}
 	
-	public <T> List<T> setAttributes(List<T> attributes){
+	public <T> List<T> setAttributes(List<T> attributes) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		getInAttribute();
+		for (int i = 0; i < getTotalCount(); i++) {
+			T object = (T)Class.forName(viewType).newInstance();
+			attributes.add(object);
+		}
 		Field[] fields = attributes.get(0).getClass().getDeclaredFields();
 		for(int i=1;i<=getTotalCount();i++){
 			 HSSFRow row=sheet.getRow(i);
@@ -145,9 +165,10 @@ public class InputHandler{
 		 return attributes;
 	}
 	
-	public <T> int inputExcel(List<T> attributes,String viewId){	//viewId属于AbstractMapper
-		//inputAttrs = setAttributes(attributes);
-		dao.batchAdd(MapperUtility.getMapperId(viewId,mapperId), setAttributes(attributes));
+	public <T> int inputExcel(List<T> attributes,String viewId,Dao dao) throws InstantiationException, IllegalAccessException, ClassNotFoundException{	//viewId属于AbstractMapper
+		//Map<String, List<T>> lists = new HashMap<>();
+		//lists.put("list", setAttributes(attributes));
+		dao.add(MapperUtility.getMapperId(viewId,mapperId), setAttributes(attributes));
 		return attributes.size();
 	}
 

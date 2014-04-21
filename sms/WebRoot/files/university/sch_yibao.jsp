@@ -49,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-												<form action="" id="collegeList">
-													 <input type="button" value="查询" id="accurateSearch">
+												<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher" id="collegeList" method="post">
+													 <input type="submit" value="查询" id="accurateSearch">
 												</form>
 												
 												
@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="mainfra.html">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(<s:property value="#request.nocheckNum"/>)</span>
 													</th>
 												</tr>
 												<tr>
@@ -534,8 +534,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div id="acceptResultDiv" style="display: none">
         		<h2>录入受理结果<a  id="btnCloseacceptResult">关闭</a></h2>
         		<div class="form">
-        		 <form action="" method="post">
+        		 <form action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!updateHoss" method="post">
             		<input type="hidden" name="hosNo" id="jumingHosNo"> 
+            		<input type="hidden" name="type" value="modifyAcceptOrNotResult"> 
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
             				<td height="22" colspan="4" align="center" style="font-size: 16px">
@@ -640,7 +641,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								递交案子时间			
 							</td>
 							<td colspan="2">
-								<input type="text" name="submitTime"/>
+								<input type="text" name="submitTime" id="submitTime"/>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -648,13 +649,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								未受理原因			
 							</td>
 							<td width="15%">
-								<input type="text" name="refuseReason"/>
+								<input type="text" name="refuseReason" id="refuseReason"/>
 							</td>
 							<td width="15%">
 							    受理结果			
 							</td>
 							<td width="15%">
-								<input type="text" name="resultDeal"/>			
+								<input type="text" name="resultDeal" id="resultDeal"/>			
 							</td>
 						</tr>
 						
@@ -678,8 +679,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 		
-		 <form action="" method="post">
-		 	<input type="hidden" name="bxHosNo">
+		 <form action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!updateHoss" method="post">
+		 	<input type="hidden" name="hosNo" id="bxHosNo">
+		 	<input type="hidden" name="type" value="modifyReimburseStudent">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
             				<td height="22" colspan="4" align="center" style="font-size: 16px">
@@ -771,7 +773,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								医保处已报销金额			
 							</td>
 							<td colspan="2">
-								<input type="text" name="reimbursementAmount"/>
+								<input type="text" name="reimbursementAmount" id="bxReimbursementAmount"/>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -779,7 +781,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								是否有结算清单			
 							</td>
 							<td width="15%">
-								<select name="bill">
+								<select name="bill" id="bxBill">
 									<option value="1">是</option>
 									<option value="0">否</option>
 								</select>
@@ -788,7 +790,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    领卡时间			
 							</td>
 							<td width="15%">
-								<input type="text" name="getcardTime"/>			
+								<input type="text" name="getcardTime" id="bxGetCardTime"/>			
 							</td>
 						</tr>
 						<tr bgcolor="#EEEEEE">
@@ -796,13 +798,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								总费用			
 							</td>
 							<td width="15%">
-								￥500
+								<p id="bxCost"></p>
 							</td>
 							<td width="15%">
 							    备注			
 							</td>
 							<td width="15%">
-								<input type="text" name="jumingRemark"/>			
+								<input type="text" name="jumingRemark" id="jumingRemark"/>			
 							</td>
 						</tr>
             		</table>
@@ -819,8 +821,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div id="acceptMoney" style="display: none">
         		<h2>录入商业理赔结果<a   id="btnCloseMoney">关闭</a></h2>
         		<div class="form">
-        		<form action="">
-        		<input type="hidden" name="companyHosNo">
+        		<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!updateHoss" method="post">
+        		<input type="hidden" name="hosNo" id="companyHosNo">
+        		<input type="hidden" name="type" value="modifyCompany">
             		<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             			<tr class="CTitle">
             				<td height="22" colspan="4" align="center" style="font-size: 16px">
@@ -907,7 +910,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								保险公司接案子的时间			
 							</td>
 							<td colspan="2">
-								<input type="text" name="insurerTime"/>
+								<input type="text" name="insurerTime" id="insurerTime"/>
 							</td>
 						</tr>
 						<tr bgcolor="#FFFFFF">
@@ -915,7 +918,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								除结算单材料是否齐全			
 							</td>
 							<td colspan="2">
-								<select name="complete">
+								<select name="complete" id="complete">
 									<option value="1">是</option>
 									<option value="0">否</option>
 								</select>
@@ -928,7 +931,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td colspan="2">
 								 <p id="companyBankcardID"></p>
 							</td>
-						</tr>
+						</tr>	
 						<tr bgcolor="#FFFFFF">
 						    <td colspan="2">
 								没有结算的原因			
@@ -942,13 +945,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								总费用			
 							</td>
 							<td width="15%">
-								￥500
+								<p id="companyCost"></p>
 							</td>
 							<td width="15%">
 							    备注			
 							</td>
 							<td width="15%">
-								<input type="text" name="companyRemark"/>			
+								<input type="text" name="companyRemark" id="companyRemark"/>			
 							</td>
 						</tr>
             		</table>
@@ -962,89 +965,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		</div>
     		</div>
 		</div>
-		<form name="fom" id="fom" method="post" action="">
+		
+		<form name="fom" id="fom" method="post" action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!queryHosByCondition">
     	<div id="advancedDiv" style="display: none"></div>
     		<div id="advancedSearchDiv" style="display: none">
              	<h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
         	<div class="form">
             	<table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="advancedSearchTab" ><thead>
                       
-            
-					<tr bgcolor="#FFFFFF" align="center">
-					    <td width='15%' name='projectName'> 
-					    	性别
+                      <tr bgcolor="#FFFFFF" align="center">
+					    <td width='15%' > 
+					    	是否领卡
 					    </td>
-					    <td width='35%' name='sex'> 
-					    	<input name="sex" type="radio" value="sex" checked />男 
-							<input name="sex" type="radio" value="sex" />女
-					    </td>
-					</tr>
-					<tr bgcolor="#FFFFFF" align="center">
-					    <td width='15%' name='projectName'> 
-					    	类别
-					    </td>
-					    <td width='35%' name='nation'> 
-					    	<select>
-					    		<option>已受理结果</option>
-					    		<option>已报销名单</option>
-					    		<option>商业理赔结果</option>
+					    <td width='35%' > 
+					    	<select name="collarCard">
+					    		<option value="1">以领卡</option>
+					    		<option value="-1">未领卡</option>
+					    		
 					    	</select>	
 					    </td>
 					</tr>
+            
+				　
 					<tr bgcolor="#FFFFFF" align="center">
-					    <td width='15%'> 
-					    	住院日期
-					    </td >
-					    <td width='35%' name='nation'> 
-					  		 <input type="text"/>
+					    <td width='15%'  > 
+					    	类别
+					    </td>
+					    <td width='35%'  > 
+					    	 <select name="hosType" class="span2">
+                        <optgroup label="居民医保">
+                        	<option  value="居民医保住院未刷卡">已住院未刷卡</option>
+                        	<option  value="居民医保住院已刷卡">已住院已刷卡</option>
+                        	<option  value="居民医保未刷卡">未刷卡</option>
+                        </optgroup>
+                         <optgroup label="大病医保">
+                        	<option value="大病医保住院未刷卡">已住院未刷卡</option>
+                        	<option value="大病医保住院已刷卡">已住院已刷卡</option>
+                        	<option value="大病医保未刷卡">未刷卡</option>
+                        </optgroup>
+                        
+                        
+                         <optgroup label="商业医保" >
+                        	<option value="商业医保住院未刷卡">已住院未刷卡</option>
+                        	<option value="商业医保住院已刷卡">已住院已刷卡</option>
+                        	<option value="商业医保未刷卡">未刷卡</option>
+                        </optgroup>
+                      </select>
 					    </td>
 					</tr>
-					<tr bgcolor="#EEEEEE" align="center">
-					    <td width='15%'> 
-					    	出院日期
-					    </td >
-					    <td width='35%' name='nation'> 
-					  		 <input type="text"/>
-					    </td>
-					</tr>
-					<tr bgcolor="#FFFFFF" align="center">
-					    <td width='15%'> 
-					    	银行卡号
-					    </td >
-					    <td width='35%' name='nation'> 
-					  		 <input type="text"/>
-					    </td>
-					</tr>
-					<tr bgcolor="#EEEEEE" align="center">
-					    <td width='15%'> 
-					    	申请时间
-					    </td >
-					    <td width='35%' name='nation'> 
-					  		 <input type="text"/>
-					    </td>
-					</tr>
+					　
+					 
 					<tr bgcolor="#FFFFFF" align="center">
 					    <td width='15%'> 
 					    	审核状态
 					    </td >
-					    <td width='35%' name='nation'> 
-					  		 <select>
-					    		<option> 未提交</option>
-					    		<option> 通过</option>
-					    		<option>院级审核中</option>
-					    		<option>校级审核中</option>
-					    		<option>院级未通过</option>
-					    		<option>校级未通过</option>
+					    <td width='35%' > 
+					  		 <select name='hosState'>
+					   
+					    		<option value="通过"> 通过</option>
+					    	       <option value="校级审核中">校级审核中</option>
+					    	    <option value="校级未通过">校级未通过</option>
 					    	</select>	
 					    </td>
 					</tr>
 					
 					<tr bgcolor="#FFFFFF" align="center">
-						<td colspan="2"><input type="button" value="查询"/></td>
+						<td colspan="2"><input type="submit" value="查询"/></td>
 					</tr>
             	</table>
+            	
         	</div>
     	</div>
+    	</form>
+    
     
 	</body>
     

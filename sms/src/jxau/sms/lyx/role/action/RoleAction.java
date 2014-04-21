@@ -4,20 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.lyx.exception.NotFoundDataException;
 import jxau.sms.lyx.po.PurviewInfo;
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.purview.service.impl.SystemPurviewServiceImpl;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 

@@ -78,6 +78,7 @@
 	    这里的条件 有学院，班级 ，姓名
 	    需要传入的参数格式为 HashMap<String,Object>
 	                             <college,'江西农大'>
+	                              <major,'major'>
 	                             <className,'1102'>
 	                             <studentName,'熊安平'>
 	                             <fristIndex,0>
@@ -98,6 +99,9 @@
 		<if test="college != null">
 			and  student.college=#{college}
 		</if>
+		<if test="major !=null">
+			and student.major=#{major}
+		</if>
 		<if test="className != null">
 			and  student.className=#{className}
 		</if>
@@ -106,6 +110,12 @@
 		</if>
 		<if test="studentNo != null">
 			and  student.studentNo=#{studentNo}
+		</if>
+			<if test="hosType != null">
+			and  hosType=#{hosType}
+		</if>
+		<if test="collarCard != null">
+			and  collarCard=#{collarCard}
 		</if>
 		order by hosNo desc 
 		<if test="firstIndex != null and size!=null">
@@ -131,6 +141,9 @@
 		<if test="college != null">
 			and  student.college=#{college}
 		</if>
+		<if test="major !=null">
+			and student.major=#{major}
+		</if>
 		<if test="className != null">
 			and  student.className=#{className}
 		</if>
@@ -140,10 +153,23 @@
 		<if test="studentNo != null">
 			and  student.studentNo=#{studentNo}
 		</if>
+		<if test="hosType != null">
+			and  hosType=#{hosType}
+		</if>
+		<if test="collarCard != null">
+			and  collarCard=#{collarCard}
+		</if>
+		
 		  ;
 	</select>
 	
 	
+	
+	<!-- 需找未审核的所有信息 -->
+	<select id="findAllStateIsNoCheckNum" resultType="java.lang.Long">
+		select  count(*) from hos_insurance_info where hosState='校级审核中';
+	
+	</select>
          
 
 

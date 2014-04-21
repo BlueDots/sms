@@ -1,8 +1,0 @@
-package jxau.sms.lyx.purview.service.impl;
-
-import java.util.List;
-
-public interface AllocationPurviewStandard {
-
-	public void handleAllocationPurview(String number,List<Integer> newList,List<Integer> oldList);
-}

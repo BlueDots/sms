@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+
+import com.sun.org.apache.xerces.internal.impl.dv.DatatypeException;
+
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
@@ -84,6 +87,27 @@ public class AllocationRoleServiceImpl implements GlobalServiceInterface {
 		if(TeacherRole instanceof Object){
 			
 			jxau.sms.lyx.po.TeacherRole data = (jxau.sms.lyx.po.TeacherRole) object;
+			
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("teacherNo", data.getTeacherNo());	
+			List<Integer> list = dao.select("findRoleNoByTeacherNo", map);
+			
+			if(list.size()>0) {
+				
+				for(int i=0;i<list.size();i++){
+					int roleNo = list.get(i);
+					
+					if(roleNo==data.getRoleNo()){
+						throw new DataExistException("该用户已拥有该角色权限");
+					}
+				}
+				dao.add("addTecRole", data);
+				
+			}else {
+				
+				dao.add("addTecRole", data);
+			}
+			
 			
 			
 		}

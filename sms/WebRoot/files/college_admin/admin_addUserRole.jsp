@@ -98,6 +98,14 @@ function searchTecRole(){
 	}
 
 }
+
+
+function commitData(teacherNo){
+	
+	alert(teacherNo);
+	alert($("#roleName").val()); 
+
+}
 </script>
 
   </head>
@@ -203,12 +211,13 @@ function searchTecRole(){
 																			<td><s:property value="#vteacherRole.teacherTitle"></s:property></td>
 																			<td><s:property value="#vteacherRole.worktime"></s:property>	</td>
 																			<td>																			
-																					<select>
+																					<select id="roleName">
 																						<s:iterator value="roleInfoList" id="roleInfoList" >
 																							<s:if test="%{#roleInfoList.roleName not in {'学生','校级管理员'}}">
-																								<option>																								
-																										<s:property value="#roleInfoList.roleName"></s:property>																									
+																								<option value="<s:property value="#roleInfoList.roleNo"></s:property>">																								
+																										<s:property value="#roleInfoList.roleName"></s:property>																																																					
 																								</option>
+																								
 																							</s:if>
 																						</s:iterator>
 																					</select>																					
@@ -242,7 +251,7 @@ function searchTecRole(){
 																
 																<td colspan="2" align="center" height="30px">			
 																    <input type="button" name="Submit" value="提交"
-																		class="button" onclick="link();" />
+																		class="button" onclick="javascript:commitData(<s:property value="#vteacherRole.teacherNo"></s:property>);" />
 																	<input type="button" name="Submit2" value="返回"
 																		class="button" onclick="window.history.go(-1);" />
 																</td>

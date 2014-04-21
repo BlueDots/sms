@@ -9,6 +9,7 @@ import java.util.Map;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TeacherRole;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 import jxau.sms.lyx.vo.VTeacherRole;
 
@@ -48,5 +49,17 @@ public class ServiceImplTest {
 		for(int j=0;j<list.size();j++){
 			System.out.print(list.get(j).getRoleName());
 		}	
+	}
+	
+	@Test
+	public void test3() {
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AllocationRoleServiceImpl ars = (AllocationRoleServiceImpl)context.getBean("AllocationRoleServiceImpl");
+		
+		TeacherRole teacherRole = new TeacherRole();
+		teacherRole.setRoleNo(6);
+		teacherRole.setTeacherNo("1234");
+		ars.add(TeacherRole.class, teacherRole);
+		
 	}
 }

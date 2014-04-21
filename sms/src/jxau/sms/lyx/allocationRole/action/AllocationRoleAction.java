@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.lyx.allocationRole.service.impl.AllocationRoleServiceImpl;
+import jxau.sms.lyx.exception.DataExistException;
 import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TeacherRole;
 import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 import jxau.sms.lyx.vo.VTeacherRole;
 
@@ -103,5 +105,18 @@ public class AllocationRoleAction extends ActionSupport implements ModelDriven<P
 		return pageVo;
 	}
 
+	public String saveTecRole() throws Exception{
+		
+		TeacherRole teacherRole = new TeacherRole();
+		
+		try{
+			allocationRoleServiceImpl.add(TeacherRole.class, teacherRole);
+		}catch (DataExistException e) {
+			// TODO: handle exception
+			System.out.println("存在");
+		}
+			
+		return SUCCESS;
+	}
 	
 }

@@ -213,7 +213,7 @@ public class StuBasicInfo {
 		this.telephone = telephone;
 	}
 	public String toString() {
-		return "studentNo:"+studentNo
+		return "studentNo:"+studentNo+",studentName:"+studentName
 				+",className:"+className+",college:"+college
 				+",major:"+major+",studentName:"+studentName
 				+",remarks:"+remarks+",sex:"+sex+",exameState:"+exameState

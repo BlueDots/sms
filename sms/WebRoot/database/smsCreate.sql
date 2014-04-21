@@ -10,7 +10,7 @@ create table stu_basic_info
 (
 	studentNo char(8),
 	studentName varchar(18) not null,
-	birthday date not null,
+	birthday date,
 	className varchar(30) not null,
 	major varchar(30) not null,
 	college varchar(30) not null,
@@ -34,7 +34,7 @@ create table stu_basic_info
 	stuState int default 0,
 	constraint pk_stu_basic_info primary key(studentNo)
 );
-
+##alter table stu_basic_info modify column birthday date;
 ##教师基本信息表2
 create table tec_basic_info(
 	teacherNo char(4) primary key,
@@ -559,9 +559,11 @@ create table award_level(
 
 ##政治面貌表39
 create table political_status(
-	studentNo tinyint primary key,
+	politicalNo tinyint primary key,
 	politicalName varchar(24)
 )ENGINE = MyISAM;
+##alter table political_status CHANGE studentNo politicalNo tinyint;
+##desc political_status;
 ##学生处分信息表40
 create table stu_dis_info(
 

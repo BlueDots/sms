@@ -1,5 +1,5 @@
 select * from stu_basic_info;
-
+desc stu_basic_info;
 select * from dep_teacher;
 
 
@@ -132,3 +132,13 @@ insert into class_info(classNo,className,classBreif,majorNo,classNumber) values(
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201213','软件工程1213','软件1213','11050400',39);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201214','软件工程1214','软件1214','11050400',40);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201215','软件工程1215','软件1215','11050400',38);
+
+
+
+select * from political_status;
+insert into political_status value(1,'共青团员');
+insert into political_status value(2,'中共预备党员');
+insert into political_status value(3,'中共党员');
+insert into political_status value(4,'群众');
+insert into political_status value(5,'其他');
+insert into political_status value(6,'不详');

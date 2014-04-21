@@ -33,8 +33,11 @@ create table stu_basic_info
 	remarks varchar(150) default '',
 	stuState int default 0,
 	constraint pk_stu_basic_info primary key(studentNo)
-);
+);alter table stu_basic_info add index stuBasicInfoMajor(major);
 
+alter table stu_basic_info add index stuBasicInfoCollege(college);
+alter table stu_basic_info add index stuBasicInfoMajor(major);
+alter table stu_basic_info add index stuBasicInfoClass(className);
 ##教师基本信息表2
 create table tec_basic_info(
 	teacherNo char(4) primary key,
@@ -138,6 +141,7 @@ create table class_award_info(
 	awardState tinyint default 0
 )engine=MYISAM;
 
+
 ##创建的是班级奖学金表9
 create table stu_class_grant(
 	studentNo char(8),
@@ -165,15 +169,18 @@ create table stu_class_grant(
 	artEducationTotalRank int,
 	totalScore double,
 	totalScoreRank int,
-	rank tinyint,
+	rank varchar(21),
 	remarks varchar(150),
 	exameState varchar(30),
-	classGrantState int default 0,
+	classGrantState int default 1,
 	primary key(studentNo,term)
 )engine=innodb;
 alter table stu_class_grant
 add foreign key (studentNo) references stu_basic_info(studentNo)
 on delete no action on update cascade;
+
+ 
+
 ##部门学院表10
  create table dep_info(
  	departNo char(4) primary key,

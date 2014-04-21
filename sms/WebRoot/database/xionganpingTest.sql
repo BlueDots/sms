@@ -46,4 +46,6 @@ null,null,null,null,null,null,null,null,null,null,null
 );
  
 
+insert into 
+
 select * from hos_insurance_info  order    by  hosNo desc   ;

@@ -18,6 +18,24 @@ public class ScholarShipSelectTest {
 	Dao dao = (Dao) app.getBean("dao");
 	
 	@Test
+	public void testAwardRank(){
+		Map<String,Object> params = new HashMap<String,Object>(3);
+		
+		params.put("college", "软件学院");
+		params.put("className", "1102");
+		params.put("term", "201402");
+		dao.selectOne(namespace+"updateAwardRand", params);
+	}
+	@Test
+	public void testGetClassMaxStudentNo(){
+		Map<String,Object> params = new HashMap<String,Object>(3);
+		params.put("college", "软件学院");
+		params.put("className", "1102");
+		params.put("term", "201402");
+		dao.selectOne(namespace+"getMaxStudentNoInClass", params);
+	}
+	
+	@Test
 	public void testProceduce(){
 		Map<String,Object> params = new HashMap<String,Object>(3);
 		params.put("college", "软件学院");

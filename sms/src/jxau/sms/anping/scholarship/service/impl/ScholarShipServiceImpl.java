@@ -125,8 +125,12 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 	 * @param college
 	 * @param className
 	 */
-	private void doAwardRand(String college,String className){
-		
+	private void doAwardRand(String college,String className,String term){
+		Map<String,Object> params = new HashMap<String,Object>(3);
+		params.put("college", college);
+		params.put("className", college);
+		params.put("term", college);
+		dao.selectOne(namespace+"updateAwardRand", params);
 	}
 	
 	@Override
@@ -137,7 +141,20 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 		 return dao.selectOne(namespace+"selectSchloarShipByTermAndStudentno", params);
 	}
 
-	
+	/**
+	 * 
+	 * anping
+	 * TODO  拿到某个班级的某个学期库中学号最大的学生
+	 * 下午2:04:47
+	 * @return
+	 */
+	private String getClassMaxStuentNo(String college,String className,String term){
+		Map<String,Object> params = new HashMap<String,Object>(3);
+		params.put("college", college);
+		params.put("className", className);
+		params.put("term", term);
+		return dao.selectOne(namespace+"getMaxStudentNoInClass", params);
+	}
 	
 	/**
 	 * 判断奖学金中部分属性是不是为null
@@ -150,7 +167,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 	 * 上午10:58:49
 	 * @return
 	 */
-	public boolean checkScholarIsNull(List<ScholarShip> scholars){
+	private boolean checkScholarIsNull(List<ScholarShip> scholars){
 	 
 		boolean flag = false;
 		boolean flag2 = false;
@@ -191,5 +208,11 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 		this.dao = dao;
 	}
 	private String namespace="jxau.sms.anping.scholarship.dao.";
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

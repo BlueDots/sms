@@ -592,3 +592,13 @@ create table stu_dis_info(
 	foreign key(studentNo) references stu_basic_info(studentNo)
 );
 
+####班级奖学金等级比例表
+create table classAwardLevel(
+	id int primary key auto_increment,
+	oneLevel double ,
+	twoLevel double,
+	threeLevel double
+);
+insert into classAwardLevel value(null,0.05,0.1,0.15);
+
+

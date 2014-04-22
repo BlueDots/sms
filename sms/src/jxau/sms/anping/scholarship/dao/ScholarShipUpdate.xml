@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jxau.sms.anping.scholarship.dao">
-
 	<!-- 更新班级奖学金数据 除了总分等不能够被修改之外，现在能修改的数据就是那些能录入的 这些是老师只能修改的。 ship.setBaseScore(80); 
 		ship.setAwardScore(90); ship.setPunishScore(90); ship.setLessonScore(90); 
 		ship.setInnovateScore(90); ship.setSkillsScore(80); ship.setSportScore(60); 
@@ -102,5 +101,12 @@
     <![CDATA[ 
 		{call sp_doTotalScoreRank(#{college},#{className},#{term})} ]]>
 
+	</update>
+
+	<!-- 更新班级的奖学金排名 -->
+	<update id="updateAwardRand" parameterType="java.util.Map"
+		statementType="CALLABLE">
+      <![CDATA[ 
+		{call sp_doAwardRank(#{college},#{className},#{term})} ]]>
 	</update>
 </mapper>

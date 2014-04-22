@@ -19,6 +19,11 @@ public class ScholarShipServiceTest {
 	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	ScholarShipServiceImpl scholarShipService = (ScholarShipServiceImpl) context.getBean("scholarShip");
 	
+	@Test
+	public void testSelectSchloarShipAboutAwardRank(){
+		//scholarShipService.doAwardRand("软件学院","1102", "201401");
+	}
+	
 	/**
 	 * 对service的测试　
 	 * 测试通过学号和学期来获取数据
@@ -71,7 +76,7 @@ public class ScholarShipServiceTest {
 	    scholarShip.add(ship);
 	    scholarShip.add(ship2);
 		
-		System.out.println(scholarShipService.checkScholarIsNull(scholarShip));
+		//System.out.println(scholarShipService.checkScholarIsNull(scholarShip));
 		
 	}
 }

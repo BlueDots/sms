@@ -1,7 +1,7 @@
 <mapping>
 	<view id="0100">
 		<mapper id="searchid" value="jxau.sms.advanceinfo.dao.queryAdvInfo" />
-		<mapper id="inputid" value="jxau.sms.advanceinfo.dao.batchAdd" />
+		<mapper id="inputid" value="jxau.sms.advanceinfo.dao.batchAddAdvInfo" />
 		<mapper id="outputid" value="jxau.sms.advanceinfo.dao.queryAdvInfo" />
 		<mapper id="propid" >
 			<item type="" level=""></item>

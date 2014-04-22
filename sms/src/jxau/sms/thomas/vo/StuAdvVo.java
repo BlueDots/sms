@@ -27,7 +27,7 @@ public class StuAdvVo {
 	private String advanceActivity;
 	private String advTime;
 	private String advLevel;
-	private String  examState;
+	private String examState;
 	private String remarks;
 	
 	public String getStudentNo() {

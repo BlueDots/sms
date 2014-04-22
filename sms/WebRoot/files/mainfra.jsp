@@ -1,82 +1,225 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<base href="<%=basePath%>">
+
+<title>My JSP 'mainfra.jsp' starting page</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
 <title>江西农业大学学生工作管理系统</title>
 
-  <link rel="stylesheet" href="../css/zTreeStyle/demo.css" type="text/css" /><!--左侧选项栏的css格式文件-->
-  <link rel="stylesheet" href="../css/zTreeStyle/zTreeStyle.css" type="text/css"/><!--树节点样式文件-->
-  <link href="../css/css.css" rel="stylesheet" type="text/css" />
-    <link href="../css/style.css" rel="stylesheet" type="text/css" /><!--表格样式文件-->
-    <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <link href="../css/arrow.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript" src="../js/jquery.ztree.core-3.5.js"></script>
+<link rel="stylesheet" href="<%=basePath%>/css/zTreeStyle/demo.css" type="text/css">
+<!--左侧选项栏的css格式文件-->
+<link rel="stylesheet" href="<%=basePath%>/css/zTreeStyle/zTreeStyle.css"
+	type="text/css">
+<!--树节点样式文件-->
+<link href="<%=basePath%>/css/css.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>/css/style.css" rel="stylesheet" type="text/css" />
+<!--表格样式文件-->
+<link href="<%=basePath%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>/css/arrow.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=basePath%>/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="<%=basePath%>/js/jquery.ztree.core-3.5.js"></script>
 
 <style type="text/css">
-*{margin:0;padding:0;list-style-type:none;}
-.demo{border:solid 1px #D5D5D5;border-collapse:collapse;width:100%;}
-.demo td{border:1px solid #D5D5D5;font-size:12px;padding:7px 5px;}
-.demo th{background-color:#EEE;border-right:1px solid #D5D5D5;font-size:13.5px;line-height:120%;font-weight:bold;padding:8px 5px;text-align:right;}
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.demo {
+	border: solid 1px #D5D5D5;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.demo td {
+	border: 1px solid #D5D5D5;
+	font-size: 12px;
+	padding: 7px 5px;
+}
+
+.demo th {
+	background-color: #EEE;
+	border-right: 1px solid #D5D5D5;
+	font-size: 13.5px;
+	line-height: 120%;
+	font-weight: bold;
+	padding: 8px 5px;
+	text-align: right;
+}
 </style>
 <SCRIPT type="text/javascript">
-    <!--
-    var setting = {
-      data: {
-        simpleData: {
-          enable: true
-        }
-      }
-    };
+<!--
+	var setting = {
+		data : {
+			simpleData : {
+				enable : true
+			}
+		}
+	};
 
-    var zNodes =[
-      { id:1, pId:0, name:"功能模块", open:true},
-      { id:11, pId:1, name:"学生基本信息",url:"teacher/class_basicInfo.html", target:"mainFrame"},
-      { id:12, pId:1, name:"学生参与活动",url:"teacher/class_activityInfo.html", target:"mainFrame"},
-      { id:13, pId:1, name:"评优评先",url:"teacher/class_advanceInfo.html", target:"mainFrame"},
-      { id:14, pId:1, name:"奖助学金信息",url:"teacher/class_scholarshipInfo.html", target:"mainFrame"},
-      { id:15, pId:1, name:"奖学金评定",url:"teacher/class_scholarshipAssess.html", target:"mainFrame"},
-      { id:16, pId:1, name:"处分信息",url:"teacher/class_punishInfo.html", target:"mainFrame"},
-      { id:17, pId:1, name:"学籍变动",url:"teacher/class_statusInfo.html", target:"mainFrame"},
-      { id:18, pId:1, name:"就业信息",url:"teacher/class_jobInfo.html", target:"mainFrame"},
-      { id:19, pId:1, name:"贫困建档",url:"teacher/class_povertyFile.html", target:"mainFrame"},
-      { id:2, pId:0, name:"软件学院"},
-      { id:21, pId:2, name:"物联网", open:true},
-      { id:211, pId:21, name:"1309",url:"mainfra_test.html", target:"mainFrame"},
-      { id:212, pId:21, name:"1310"},
-      { id:22, pId:2, name:"软件英语"},
-      { id:221, pId:22, name:"软件1111班"},
-      { id:222, pId:22, name:"叶子节点222"},
-      { id:223, pId:22, name:"叶子节点223"},
-      { id:224, pId:22, name:"叶子节点224"},
-      { id:23, pId:2, name:"软件开发"},
-      { id:231, pId:23, name:"叶子节点231"},
-      { id:232, pId:23, name:"叶子节点232"},
-      { id:233, pId:23, name:"叶子节点233"},
-      { id:234, pId:23, name:"叶子节点234"},
-      { id:3, pId:0, name:"外语学院", isParent:true}
-    ];
+	var zNodes = [ {
+		id : 1,
+		pId : 0,
+		name : "功能模块",
+		open : true
+	}, {
+		id : 11,
+		pId : 1,
+		name : "学生基本信息",
+		url : "teacher/class_basicInfo.html",
+		target : "mainFrame"
+	}, {
+		id : 12,
+		pId : 1,
+		name : "学生参与活动",
+		url : "teacher/class_activityInfo.html",
+		target : "mainFrame"
+	}, {
+		id : 13,
+		pId : 1,
+		name : "评优评先",
+		url : "<%=basePath%>/files/tutor/class_advanceInfo.jsp",
+		target : "mainFrame"
+	}, {
+		id : 14,
+		pId : 1,
+		name : "奖助学金信息",
+		url : "<%=basePath%>/files/tutor/class_scholarshipInfo.jsp",
+		target : "mainFrame"
+	}, {
+		id : 15,
+		pId : 1,
+		name : "奖学金评定",
+		url : "teacher/class_scholarshipAssess.html",
+		target : "mainFrame"
+	}, {
+		id : 16,
+		pId : 1,
+		name : "处分信息",
+		url : "teacher/class_punishInfo.html",
+		target : "mainFrame"
+	}, {
+		id : 17,
+		pId : 1,
+		name : "学籍变动",
+		url : "teacher/class_statusInfo.html",
+		target : "mainFrame"
+	}, {
+		id : 18,
+		pId : 1,
+		name : "就业信息",
+		url : "teacher/class_jobInfo.html",
+		target : "mainFrame"
+	}, {
+		id : 19,
+		pId : 1,
+		name : "贫困建档",
+		url : "<%=basePath%>/files/tutor/class_poverty.jsp",
+		target : "mainFrame"
+	}, {
+		id : 2,
+		pId : 0,
+		name : "软件学院"
+	}, {
+		id : 21,
+		pId : 2,
+		name : "物联网",
+		open : true
+	}, {
+		id : 211,
+		pId : 21,
+		name : "1309",
+		url : "mainfra_test.html",
+		target : "mainFrame"
+	}, {
+		id : 212,
+		pId : 21,
+		name : "1310"
+	}, {
+		id : 22,
+		pId : 2,
+		name : "软件英语"
+	}, {
+		id : 221,
+		pId : 22,
+		name : "软件1111班"
+	}, {
+		id : 222,
+		pId : 22,
+		name : "叶子节点222"
+	}, {
+		id : 223,
+		pId : 22,
+		name : "叶子节点223"
+	}, {
+		id : 224,
+		pId : 22,
+		name : "叶子节点224"
+	}, {
+		id : 23,
+		pId : 2,
+		name : "软件开发"
+	}, {
+		id : 231,
+		pId : 23,
+		name : "叶子节点231"
+	}, {
+		id : 232,
+		pId : 23,
+		name : "叶子节点232"
+	}, {
+		id : 233,
+		pId : 23,
+		name : "叶子节点233"
+	}, {
+		id : 234,
+		pId : 23,
+		name : "叶子节点234"
+	}, {
+		id : 3,
+		pId : 0,
+		name : "外语学院",
+		isParent : true
+	} ];
 
-
-    $(document).ready(function(){
-      $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-    });
-    //-->
-  </SCRIPT>
+	$(document).ready(function() {
+		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+	});
+//-->
+</SCRIPT>
 </head>
-
 <body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>
-      <div class="content_wrap">
-          <div class="zTreeDemoBackground left">
-              <ul id="treeDemo" class="ztree"></ul>
-          </div>
-      </div>
-    </td>
-    <td><img src="../images/welcome.gif"></td><!--登陆成功显示的欢迎页面-->
-    <!--
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				<div class="content_wrap">
+					<div class="zTreeDemoBackground left">
+						<ul id="treeDemo" class="ztree"></ul>
+					</div>
+				</div>
+			</td>
+			<td><img src="<%=basePath%>/images/welcome.gif">
+			</td>
+			<!--登陆成功显示的欢迎页面-->
+			<!--
     <td> 点击班级时显示班级所有学生粗略的基本信息
        <div id="allbasicMsg" style="float:left;display:block;margin-top:0px;margin-left:10px;height:565px">使div向左浮动
               <table id="subtree1" style="margin-top:0px;" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -370,8 +513,8 @@
               </table>
             </div>  
      -->
-    </td>
-  </tr>
-</table>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

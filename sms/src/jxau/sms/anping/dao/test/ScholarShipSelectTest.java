@@ -18,6 +18,13 @@ public class ScholarShipSelectTest {
 	Dao dao = (Dao) app.getBean("dao");
 	
 	@Test
+	public void testCompare(){
+		String a = "20111429";
+		String b = "20111499";
+		String c = "20111499";
+		System.out.println(c.compareTo(b));
+	}
+	@Test
 	public void testAwardRank(){
 		Map<String,Object> params = new HashMap<String,Object>(3);
 		

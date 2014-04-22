@@ -20,6 +20,23 @@ public class ScholarShipServiceTest {
 	ScholarShipServiceImpl scholarShipService = (ScholarShipServiceImpl) context.getBean("scholarShip");
 	
 	@Test
+	public void testServiceCheckStudentNoIsChongFu(){
+		List<ScholarShip> scholarShips = new ArrayList<ScholarShip>();
+		ScholarShip scholarShip  = new ScholarShip();
+		ScholarShip scholarShip2  = new ScholarShip();
+		StuBasicInfo  basicInfo =  new StuBasicInfo();
+		basicInfo.setStudentNo("20111429");
+		StuBasicInfo  basicInfo2 =  new StuBasicInfo();
+		basicInfo.setStudentNo("20131429");
+		scholarShip.setStudent(basicInfo);
+		scholarShip2.setStudent(basicInfo2);
+		scholarShips.add(scholarShip);
+		scholarShips.add(scholarShip2);
+		
+		//System.out.println(scholarShipService.checkStudentNoIsDulipe(scholarShips));
+	}
+	
+	@Test
 	public void testSelectSchloarShipAboutAwardRank(){
 		//scholarShipService.doAwardRand("软件学院","1102", "201401");
 	}

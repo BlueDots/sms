@@ -14,6 +14,7 @@ import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.ClassInfo;
 import jxau.sms.anping.po.DepInfo;
 import jxau.sms.anping.po.MajorInfo;
+import jxau.sms.anping.util.ServiceTools;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
@@ -202,8 +203,8 @@ public class CollegeMajorClassServiceImpl implements CollegeMajorClassInterface 
 		
 		Map<String,Object> params  = new HashMap<String,Object>(2);
 		params.put("teacherNo", teacher.getTeacherNo());
-		params.put("roleName", this.getHighLevelRole(roles));
-	    System.out.println(teacher.getTeacherNo()+"------"+this.getHighLevelRole(roles));
+		params.put("roleName", tools.getHighLevelRole(roles));
+	    System.out.println(teacher.getTeacherNo()+"------"+tools.getHighLevelRole(roles));
 		List<DepInfo> depInfos= dao.select(namespace+"findDepByTeacherRole", params);
 		
 		return depInfos;
@@ -215,7 +216,7 @@ public class CollegeMajorClassServiceImpl implements CollegeMajorClassInterface 
 			List<RoleInfo> roles, String departNo) {
 		Map<String,Object> params  = new HashMap<String,Object>(3);
 		params.put("teacherNo", teacher.getTeacherNo());
-		params.put("roleName", this.getHighLevelRole(roles));
+		params.put("roleName", tools.getHighLevelRole(roles));
 	    params.put("departNo", departNo);
 		List<MajorInfo> majorInfos= dao.select(namespace+"findMajorByDeptTeacherRole", params);
 		
@@ -228,36 +229,20 @@ public class CollegeMajorClassServiceImpl implements CollegeMajorClassInterface 
 			List<RoleInfo> roles, String departNo, String majorNo) {
 		Map<String,Object> params  = new HashMap<String,Object>(4);
 		params.put("teacherNo", teacher.getTeacherNo());
-		params.put("roleName", this.getHighLevelRole(roles));
+		params.put("roleName", tools.getHighLevelRole(roles));
 	    params.put("departNo", departNo);
 	    params.put("majorNo",majorNo);
 		List<ClassInfo> majorInfos= dao.select(namespace+"findClassByMajorTeacherRole", params);
 		 return majorInfos;
 	}
 
-	/**
-	 * 拿到最高级别的角色
-	 * anping
-	 * TODO
-	 * 下午6:20:07
-	 * @return
-	 */
-	private String getHighLevelRole(List<RoleInfo> roles){
-		
-		String roleName =null;
-		List<String>  roleNames = new ArrayList<String>(6);
-		for(RoleInfo roleInfo:roles){
-	      	roleNames.add(roleInfo.getRoleName());
-	     
-	 	}
-		roleName = roleNames.contains("班主任")==true?"班主任":null;
-		roleName = roleNames.contains("院级工作人员")==true?"院级工作人员":roleName;
-		roleName = roleNames.contains("院级管理员")==true?"院级管理员":roleName;
-		roleName = roleNames.contains("校级工作人员")==true?"校级工作人员":roleName;
-		roleName = roleNames.contains("校级管理员")==true?"校级管理员":roleName;
-		return roleName;
-	}
+	private ServiceTools  tools;
 
+	@Resource(name="anpingServiceTools")
+	public void setTools(ServiceTools tools) {
+		this.tools = tools;
+	}
+	
 	 
 	
 }

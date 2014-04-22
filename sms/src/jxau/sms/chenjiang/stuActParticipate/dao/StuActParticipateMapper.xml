@@ -454,16 +454,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--增加  -->
 	<insert id="add" parameterType="StuActParticipate" useGeneratedKeys="true" keyProperty="id">
-		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime)
-		 values(#{id},#{stuBasicInfo.studentNo},#{actInfo.actNo},#{sessionYear},#{awardTime,jdbcType=TIMESTAMP},#{activityRating},#{studentPost},#{workingTime,jdbcType=TIMESTAMP}); 
+		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime,exameState)
+		 values(#{id},#{stuBasicInfo.studentNo},#{actInfo.actNo},#{sessionYear},#{awardTime,jdbcType=TIMESTAMP},#{activityRating},#{studentPost},#{workingTime,jdbcType=TIMESTAMP},#{exameState}); 
 	</insert>
 	
 	<!--批量增加  -->
 	<insert id="batchAdd" parameterType="StuActParticipate">
-		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime)
+		insert into stu_act_participate(id,studentNo,actNo,sessionYear,awardTime,activityRating,studentPost,workingTime,exameState)
 		 values
 		 <foreach collection="list" item="item" index="index" separator="," >  
-        	(#{item.id},#{item.stuBasicInfo.studentNo},#{item.actInfo.actNo},#{item.sessionYear},#{item.awardTime,jdbcType=TIMESTAMP},#{item.activityRating},#{item.studentPost},#{item.workingTime,jdbcType=TIMESTAMP})
+        	(#{item.id},#{item.stuBasicInfo.studentNo},#{item.actInfo.actNo},#{item.sessionYear},#{item.awardTime,jdbcType=TIMESTAMP},#{item.activityRating},#{item.studentPost},#{item.workingTime,jdbcType=TIMESTAMP},#{item.exameState})
     	</foreach> 
 	</insert>
 	

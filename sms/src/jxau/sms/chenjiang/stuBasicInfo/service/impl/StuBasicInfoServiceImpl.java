@@ -107,10 +107,10 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		if(jxau.sms.chenjiang.po.StuBasicInfo.class != T )
 			throw new ParamWrongException("传入的参数T 必须是 StuBasicInfo.class");
 		int flag = 0;
+		System.out.println(object);
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
 		if(object.getClass() == T) {
-			System.out.println("sssssssssssss");
 			jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo)object;
 			if(s.getStudentNo() == null || s.getStudentName() == null 
 					|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
@@ -302,6 +302,14 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		count = dao.selectOne(namespace+"queryNums", params);
 		if(count>0) return true;
 		else return false;
+	}
+
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		setExameStateOfEntering(c,entryObject,moduleId,roleId,level);		
+		int count = this.add(c, entryObject);
+		return count;
 	}
 
 }

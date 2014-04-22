@@ -20,6 +20,7 @@
 	<!-- 标准的UI主题，默认的UI主题为xhtml，可以为simple,xhtml或ajax -->
 	<constant name="struts.ui.theme" value="xhtml" />
 
+
 	<include file="anpingAction.xml"></include>
 	<include file="lyxAction.xml"></include>
 	

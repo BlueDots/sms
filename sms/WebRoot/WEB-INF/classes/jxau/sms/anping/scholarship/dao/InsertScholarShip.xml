@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.anping.scholarship.dao">
+
+	<!-- 班级奖学金插入信息 主键为学期和学号的组合 并且状态默认为院级审核中.. 在插入的时候没插入一次对班级的各种排名做一次重排 在插入时需要计算某一个学生是否已经存在过，因为学号默认是有序的存储的， 
+		所有我们可以在数据库中查找出最大的数据如学号，然后将大于这个前部不需要判断直接导入 -->
+	<insert id="insertScholarShip" parameterType="ScholarShip">
+		insert into
+		stu_class_grant values(
+		#{student.studentNo},#{term},#{baseScore},#{awardScore},#{punishScore}
+		,#{moralQualityAssessmentScore},#{moralQualityAssessmentRank},#{lessonScore}
+		,#{innovateScore},#{skillsScore},#{qualityScore},#{qualityRank},#{sportScore}
+		,#{physiqueScore},#{sportMatchScore},#{sportQualityTotalScore},#{sportQualityRank}
+		,#{manageScore},#{cultureScore},#{mediaScore},#{serviceScore},#{artEducationTotalScore}
+		,#{artEducationTotalRank},#{totalScore},#{totalScoreRank},#{rank},#{remarks}
+		,#{exameState},1
+		);
+	</insert>
+
+	<insert id="addScholarShipByBatch" parameterType="List">
+		insert into stu_class_grant values
+		<foreach collection="list" item="item" index="index"
+			separator=","> (
+			#{item.student.studentNo},#{item.term},#{item.baseScore},#{item.awardScore},#{item.punishScore}
+			,#{item.moralQualityAssessmentScore},#{item.moralQualityAssessmentRank},#{item.lessonScore}
+			,#{item.innovateScore},#{item.skillsScore},#{item.qualityScore},#{item.qualityRank},#{item.sportScore}
+			,#{item.physiqueScore},#{item.sportMatchScore},#{item.sportQualityTotalScore},#{item.sportQualityRank}
+			,#{item.manageScore},#{item.cultureScore},#{item.mediaScore},#{item.serviceScore},#{item.artEducationTotalScore}
+			,#{item.artEducationTotalRank},#{item.totalScore},#{item.totalScoreRank},#{item.rank},#{item.remarks}
+			,#{item.exameState},1
+			)
+		</foreach>
+		;
+
+	</insert>
+
+</mapper>

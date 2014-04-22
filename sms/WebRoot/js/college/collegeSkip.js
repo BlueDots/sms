@@ -17,7 +17,7 @@ function getStuBasicInfoList(currentPage){
 		url+="&stuNoOrName="+g_stuNoOrName;
 	//alert(url);
 	
-	$.getJSON("StuBasicInfoJSON/StuBasicInfoActionJSON!getStuBasicInfoLists"+url,function(data){
+	$.getJSON("StuBasicInfoJSON/StuBasicInfoActionJSON!queryStuBasicInfoLists"+url,function(data){
 		//得到StubasicInfoList
 		var stuBaisicInfoLists = data.stuBasicInfoVOlists;
 		

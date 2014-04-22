@@ -172,7 +172,7 @@
 														<table width="150%" border="0" align="center" cellpadding="0" cellspacing="0" id="importStuBasicInfo">
 															<tr>
 																<td height="40" class="font42">
-																	<form action="" method = "post">
+																	<form action="StuBasicInfo/StuBasicInfoAction!entryStuBasicInfoLists" method = "post" id="entryForm">
 																	
 																	<table border="0" cellpadding="4"
 																		cellspacing="1" bgcolor="#464646" class="demo" id = "entryStuBasicInfo">
@@ -183,10 +183,10 @@
 																			</td>
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align = "center">
-																			<th width="3%" >
+																			<th width="1%" >
 																				<center>照片</center>
 																			</th>																				
-																			<th width="4%">
+																			<th width="3%">
 																				<center>学号</center>
 																			</th>
                                                                             <th width="3%">
@@ -195,10 +195,10 @@
 																			<th width="3%">
 																				<center>学院</center>
 																			</th>
-																			<th width="5%">
+																			<th width="4%">
 																				<center>专业</center>
 																			</th>
-																			<th width="5%">
+																			<th width="4%">
 																				<center>班级</center>
 																			</th>
 																			<th width="3%">
@@ -210,25 +210,22 @@
 																			<th width="3%">
 																				<center>籍贯</center>
 																			</th>
-																			<th width="5%">
+																			<th width="3%">
 																				<center>政治面貌</center>
 																			</th>
-																			<th width="7%">
+																			<th width="4%">
 																				<center>身份证号码</center>
 																			</th>
 																			<th width="4%">
 																				<center>学历</center>
-																			</th>
-																			<th width="5%">
-																				<center>英语等级</center>
 																			</th>																			
-																			<th width="7%">
+																			<th width="6%">
 																				<center>银行卡号</center>
 																			</th>		
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align = "center" >
 																			<td colspan="14" style="padding:1px">
-																				<button type="button">提交</button>
+																				<button type="button" id="entrySubmit">提交</button>
 																				<button type="button" onclick="exchange('allbasicMsg','editMsg')">取消</button>
 																			</td>
 																		</tr>
@@ -258,7 +255,7 @@
 																			<td width="2%"  >
 																				<input id = "check1" name="checkbox11" type="checkbox" value="checkbox" onclick = "selectAllAndReverse()"/>
 																			</td>
-																			<td width="3%" >
+																			<td width="2%" >
 																				<center>照片</center>
 																			</td>																				
 																			<td width="4%">
@@ -305,7 +302,100 @@
 																			<td width="4%">
 																				<center>备注</center>
 																			</td>		
-																		</tr>														
+																		</tr>
+																	
+																		
+														<!-- 显示录入的数据 -->
+														<s:if test="%{entryStuBasicInfos != null}">
+															
+																<s:iterator  value="entryStuBasicInfos">
+																	<tr bgcolor="#FFFFFF" align="center">
+																		<td>
+																			<input name="checkbox11" type="checkbox" value="checkbox"/>
+																		</td>
+																		<td>
+																		</td>
+																		<td><s:if test="%{studentNo !=null}">
+																			<s:property value="studentNo"/>
+																		</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{studentName !=null}">
+																				<s:property value="studentName"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{college !=null}">
+																				<s:property value="college"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{major !=null}">
+																				<s:property value="major"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{className !=null}">
+																				<s:property value="className"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{sex ==0}">
+																				男
+																			</s:if>
+																			<s:else>
+																				女
+																			</s:else>
+																		</td>
+																		<td>
+																			<s:if test="%{nation !=null}">
+																				<s:property value="nation"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{hometown !=null}">
+																				<s:property value="hometown"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{political !=null}">
+																				<s:property value="political"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{idCard !=null}">
+																				<s:property value="idCard"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{eduBackground !=null}">
+																				<s:property value="eduBackground"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{englishlevel !=null}">
+																				<s:property value="englishlevel"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{bankCard !=null}">
+																				<s:property value="bankCard"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{exameState !=null}">
+																				<s:property value="exameState"/>
+																			</s:if>
+																		</td>
+																		<td>
+																			<s:if test="%{remarks !=null}">
+																				<s:property value="remarks"/>
+																			</s:if>
+																		</td>
+																	</tr>
+																	
+																</s:iterator>
+														</s:if>													
 																	</table>
 																</td>
 															</tr>

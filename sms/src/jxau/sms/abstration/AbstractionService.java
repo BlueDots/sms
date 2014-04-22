@@ -110,4 +110,44 @@ public abstract class AbstractionService {
 	public <T> void subTableStateUpdate(List<T>  ids,Object subState,String remarks,String subId) {
 		moduleStateOperation.subTableStateUpdate(ids, subState, remarks, subId);
 	}
+	
+	
+	//角色录入抽象类，（自动根据角色来注入审核状态）
+	//实现该方法，在录入所需数据（dao.add）前调用setExameStateOfEntering方法来为记录注入审核状态
+	/**
+	 * 
+	 * 江
+	 * TODO
+	 * 下午8:10:38
+	 * @param c
+	 * @param c 是为了在做添加的时候做判断用户是不是传入了正确的对象
+	 * @param entryObject 录入对象集合,可以是单个对象也可以是集合
+	 * 			
+	 * @param moduleId 模块号
+	 * @param roleId 角色号
+	 * @param level 只有模块03 才填0或1，其他模块通通为null
+	 * @return 录入数据个数
+	 */
+	public abstract <T> int roleEntry(Class<?> c,Object entryObject,String moduleId,String roleId,String level);
+	
+	//角色录入具体实现类，（自动根据角色来注入审核状态）
+	/**
+	 * 
+	 * 江
+	 * TODO
+	 * 下午8:10:38
+	 * @param c
+	 * @param c 是为了在做添加的时候做判断用户是不是传入了正确的对象
+	 * @param entryObject 录入对象集合,可以是单个对象也可以是集合
+	 * 			
+	 * @param moduleId 模块号
+	 * @param roleId 角色号
+	 * @param level 只有模块03 才填0或1，其他模块通通为null
+	 * 
+	 */
+	public <T> void setExameStateOfEntering(Class<?> c,Object entryObject,String moduleId,String roleId,String level) {
+		rolesVerifyOperation.setExameStateOfEntering(c, entryObject, moduleId, roleId, level);
+		
+	}
+	
 }

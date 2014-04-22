@@ -250,5 +250,80 @@ public class TestService {
 		
 	}
 	
+	@Test 
+	public void testEntry() {
+/*		 StuBasicInfo stuBasicInfo = new StuBasicInfo();
+		 stuBasicInfo.setStudentNo("20111738");
+		 stuBasicInfo.setStudentName("李四");
+		 stuBasicInfo.setBirthday(Date.valueOf("1991-02-24"));
+		 stuBasicInfo.setClassName("软件1108");
+		 stuBasicInfo.setMajor("数字媒体");
+		 stuBasicInfo.setCollege("软件学院");
+		 stuBasicInfo.setSex(1);
+		 stuBasicInfo.setNation("汉族");
+		 stuBasicInfo.setHometown("天朝");
+		 stuBasicInfo.setPolitical("群众");
+		 stuBasicInfo.setIdCard("111112211111111111");  */
+	   	 List<StuBasicInfo> lists = new ArrayList<StuBasicInfo>();
+   	   	 StuBasicInfo s1 = new StuBasicInfo();
+   		 s1.setStudentNo("20111556");
+   		 s1.setStudentName("aaa1");
+   		 s1.setBirthday(Date.valueOf("1993-03-26"));
+   		 s1.setClassName("软件1105");
+   		 s1.setMajor("计算机网络");
+   		 s1.setCollege("软件学院");
+   		 s1.setSex(1);
+   		 s1.setNation("汉族");
+   		 s1.setHometown("天朝");
+   		 s1.setPolitical("群众");
+   		 s1.setIdCard("111111111111111111");   
+   		 
+   	   	 StuBasicInfo s2 = new StuBasicInfo();
+   		 s2.setStudentNo("20111557");
+   		 s2.setStudentName("aaa2");
+   		 s2.setBirthday(Date.valueOf("1993-05-24"));
+   		 s2.setClassName("软件1105");
+   		 s2.setMajor("计算机网络");
+   		 s2.setCollege("软件学院");
+   		 s2.setSex(1);
+   		 s2.setNation("汉族");
+   		 s2.setHometown("天朝");
+   		 s2.setPolitical("群众");
+   		 s2.setIdCard("111111111111111111");  
+   		 
+   	   	 StuBasicInfo s3 = new StuBasicInfo();
+   		 s3.setStudentNo("20111558");
+   		 s3.setStudentName("ssss");
+   		 s3.setBirthday(Date.valueOf("1992-04-22"));
+   		 s3.setClassName("软件1105");
+   		 s3.setMajor("计算机网络");
+   		 s3.setCollege("软件学院");
+   		 s3.setSex(1);
+   		 s3.setNation("汉族");
+   		 s3.setHometown("天朝");
+   		 s3.setPolitical("群众");
+   		 s3.setIdCard("111111111111111111");  
+   		 
+   	   	 StuBasicInfo s4 = new StuBasicInfo();
+   		 s4.setStudentNo("20111559");
+   		 s4.setStudentName("嘎啦aa");
+   		 s4.setBirthday(Date.valueOf("1992-04-01"));
+   		 s4.setClassName("软件1105");
+   		 s4.setMajor("计算机网络");
+   		 s4.setCollege("软件学院");
+   		 s4.setSex(1);
+   		 s4.setNation("汉族");
+   		 s4.setHometown("天朝");
+   		 s4.setPolitical("群众");
+   		 s4.setIdCard("111111111111111111"); 
+   		 
+   		 lists.add(s1);
+   		lists.add(s2);
+   		lists.add(s3);
+   		lists.add(s4);
+		
+		int a = ((StuBasicInfoServiceImpl)globalServiceInterface).roleEntry(StuBasicInfo.class, lists, "01", "3", null);
+		System.out.println(a);
+	}
 	
 }

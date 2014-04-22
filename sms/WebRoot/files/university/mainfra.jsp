@@ -34,24 +34,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       }
     };
 
-	var zNodes =[
+	/* var zNodes =[
       { id:1, pId:0, name:"功能模块", open:true},
       { id:11, pId:1, name:"教师基本信息",url:"files/university/sch_teacherBasicInfo.jsp", target:"mainFrame"},
  	 ];
 
 	 $(document).ready(function(){
       	$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-    });
-/*
+    }); */
+
     $(document).ready(function(){
     
-	$.getJSON("display!itemDisplay?uid=1234",function(data){
+	$.getJSON("sysPurviewConfig/sessionPurview!setSessionPurview?roleName=院级工作人员&teacherNo=1234",function(data){
 	
-    	var zNodes =[{id:1,pid:0,name:"功能模块",open:true},{id:2,pid:1,name:"教师基本信息模块",url:"sch_teacherBasicInfo.jsp",open:true}];
+    	var zNodes =[{id:0,pid:0,name:"功能模块",open:true}];
     
 	    for(var o in data){  
 	        
-	        zNodes.push({ id:data[o].id, pId:data[o].pid, name:data[o].purviewName,url:"files/university"+data[o].purviewUrl,target:"mainFrame"});
+	        zNodes.push({ id:data[o].id, pId:data[o].pid-1, name:data[o].purviewName,url:"files/university"+data[o].purviewUrl,target:"mainFrame"});
 	        
      	 }  
     
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       });
       
     }); 
-*/
+
     //-->
     
   </script>
@@ -76,20 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     };
 
     var zNodes =[
-      { id:1, pId:0, name:"功能模块", open:true},
-      { id:11, pId:1, name:"学生基本信息",url:"sch_studentBasicInfo.html", target:"mainFrame"},
-      { id:12, pId:1, name:"教师基本信息",url:"sch_teacherBasicInfo.html", target:"mainFrame"},
-      { id:13, pId:1, name:"学生参与活动",url:"sch_activityInfo.html", target:"mainFrame"},
-      { id:14, pId:1, name:"活动管理",url:"sch_activityManage.html", target:"mainFrame"},
-      { id:15, pId:1, name:"评优评先",url:"sch_advanceInfo.html", target:"mainFrame"},
-      { id:16, pId:1, name:"奖助学金管理",url:"sch_scholarshipInfo.html", target:"mainFrame"},
-      { id:17, pId:1, name:"奖学金评定",url:"sch_scholarshipAssess.html", target:"mainFrame"},
-      { id:18, pId:1, name:"处分信息",url:"sch_punishInfo.html", target:"mainFrame"},
-      { id:19, pId:1, name:"学籍变动",url:"sch_statusInfo.html", target:"mainFrame"},
-      { id:20, pId:1, name:"就业信息",url:"sch_jobInfo.html", target:"mainFrame"},
-      { id:21, pId:1, name:"贫困建档",url:"sch_jiandang.html", target:"mainFrame"},
-      { id:22, pId:1, name:"医保信息",url:"<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher", target:"mainFrame"},
-      { id:23, pId:1, name:"个人简历",url:"", target:"mainFrame"},
+      
       { id:2, pId:0, name:"软件学院"},
       { id:21, pId:2, name:"物联网", open:true},
       { id:22, pId:2, name:"软件英语"},

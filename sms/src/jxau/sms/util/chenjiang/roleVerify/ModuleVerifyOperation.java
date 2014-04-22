@@ -32,7 +32,7 @@ public class ModuleVerifyOperation {
 		List<String> remarkLists = null;
 		//所有记录都是一样的remarks
 		//记录实体
-		List<ModuleVerifyAndData> moduleVerifyAndDatas = new ArrayList<>();;
+		List<ModuleVerifyAndData> moduleVerifyAndDatas = new ArrayList<>();
 		String remarksString = null;
 		if(remarks == null) remarksString="";
 		else {

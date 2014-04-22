@@ -22,7 +22,7 @@ public class LoginService implements GlobalServiceInterface{
 		this.dao = dao;
 	}
 
- 	public boolean whichUser(String userId,String password){
+ 	public Object whichUser(String userId,String password){
 
 		if(userId.length()==8){
 			return this.selectStudent(userId,password);
@@ -31,7 +31,7 @@ public class LoginService implements GlobalServiceInterface{
 		} else throw new LoginException(LoginException.nameOrPsdError);
 	}
 	
-	public boolean selectStudent(String studentNo,String password){
+	public Object selectStudent(String studentNo,String password){
 		Student stu;
 		HashMap<String, Object> student = new HashMap<String,Object>();
 		student.put("studentNo", studentNo);
@@ -41,20 +41,20 @@ public class LoginService implements GlobalServiceInterface{
         	if(stu.getStuState() != 1){
         		throw new LoginException(LoginException.stateDatedError);
         	}
-        	return true;
+        	return stu;          //返回学生部分基本信息，放到session里面去
         } else {
         	throw new LoginException(LoginException.nameOrPsdError);
         }
 	}
 	
-	public boolean selectTeacher(String teacherNo,String password){
+	public String selectTeacher(String teacherNo,String password){
 		int count;
 		HashMap<String, Object> student = new HashMap<String,Object>();
 		student.put("teacherNo", teacherNo);
 		student.put("tecPassword", password);
         count = dao.selectOne("jxau.sms.qing.login.dao.selectTeacher",student);
         if(count == 1){
-        	return true;
+        	return teacherNo;
         } else {
         	throw new LoginException(LoginException.nameOrPsdError);      	
         }

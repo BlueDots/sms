@@ -33,16 +33,16 @@ create table stu_basic_info
 	remarks varchar(150) default '',
 	stuState int default 0,
 	constraint pk_stu_basic_info primary key(studentNo)
-<<<<<<< HEAD
-);alter table stu_basic_info add index stuBasicInfoMajor(major);
+);
+alter table stu_basic_info add index stuBasicInfoMajor(major);
 
 alter table stu_basic_info add index stuBasicInfoCollege(college);
-alter table stu_basic_info add index stuBasicInfoMajor(major);
+
 alter table stu_basic_info add index stuBasicInfoClass(className);
-=======
-);
+
+
 ##alter table stu_basic_info modify column birthday date;
->>>>>>> 8b75d27525aa35b1f96d0e80c7b92eb20d14a910
+
 ##教师基本信息表2
 create table tec_basic_info(
 	teacherNo char(4) primary key,
@@ -167,7 +167,7 @@ create table stu_class_grant(
 	sportQualityTotalScore double,
 	sportQualityRank int,
 	manageScore	double,
-	cultureScore	double,
+	culturstu_class_granteScore	double,
 	mediaScore double,
 	serviceScore	double,
 	artEducationTotalScore	 double,
@@ -591,4 +591,14 @@ create table stu_dis_info(
 	remarks	varchar(150),
 	foreign key(studentNo) references stu_basic_info(studentNo)
 );
+
+####班级奖学金等级比例表
+create table classAwardLevel(
+	id int primary key auto_increment,
+	oneLevel double ,
+	twoLevel double,
+	threeLevel double
+);
+insert into classAwardLevel value(null,0.05,0.1,0.15);
+
 

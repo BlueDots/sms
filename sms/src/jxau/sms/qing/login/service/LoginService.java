@@ -49,6 +49,8 @@ public class LoginService implements GlobalServiceInterface{
 	
 	public boolean selectTeacher(String teacherNo,String password){
 		int count;
+		System.out.println(teacherNo);
+		System.out.println(password);
 		HashMap<String, Object> student = new HashMap<String,Object>();
 		student.put("teacherNo", teacherNo);
 		student.put("tecPassword", password);

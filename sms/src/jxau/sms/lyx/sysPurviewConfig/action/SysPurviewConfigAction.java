@@ -1,6 +1,7 @@
 package jxau.sms.lyx.sysPurviewConfig.action;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class SysPurviewConfigAction extends ActionSupport implements SessionAwar
 	public String setSessionPurview() throws Exception{ 
 		
 		String roleName = ServletActionContext.getRequest().getParameter("roleName");
-		String teacherNo = ServletActionContext.getRequest().getParameter("teacherNo");
+		String teacherNo = ServletActionContext.getRequest().getParameter("username");
 		
 		Map<String,Object> param = new HashMap<String,Object>();
 		param.put("roleName", roleName);
@@ -54,14 +55,17 @@ public class SysPurviewConfigAction extends ActionSupport implements SessionAwar
 			PrintWriter out;  
 	        out = response.getWriter();  
 			List<PurviewInfo> purviewList = sessionPurview.getPurviewInfo();	
+			List<PurviewInfo> purviewPid = new ArrayList<PurviewInfo>();
 			
 			for(int i=0;i<purviewList.size();i++){
 				
+				if(purviewList.get(i).getPid()==1){
+					purviewPid.add(purviewList.get(i));
+				}
 				
 			}
 			
-			
-			String gsonString = gson.toJson(purviewList);
+			String gsonString = gson.toJson(purviewPid);
 			out.print(gsonString);
 			out.flush();  
 			out.close(); 

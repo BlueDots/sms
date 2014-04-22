@@ -1,7 +1,10 @@
-select * from stu_basic_info;
+select * from stu_basic_info where major='软件开发';
+update stu_basic_info set major='应用软件开发方向' where major='软件开发';
+
 desc stu_basic_info;
 select * from dep_teacher;
 
+delete from stu_basic_info where studentNo in ('20111556','20111557','20111558','20111559');
 
 update stu_basic_info set exameState='院级审核中' where studentNo=20111367,
  set exameState='院级不通过' where studentNo=20111429;

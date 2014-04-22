@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.persistence.Id;
 
 import jxau.sms.util.chenjiang.Dom4jXML;
 import jxau.sms.util.chenjiang.exception.*;
@@ -132,9 +133,14 @@ public class RolesVerifyOperation {
 	 * @param lists 录入对象集合
 	 * @param moduleId 模块号
 	 * @param roleId 角色号
+	 * @param level 只有模块03 才填0或1，其他模块通通为null
 	 */
 	
-	public <T> void setExameStateOfEntering(Class<?> c,List<T> lists,String moduleId,String roleId,String level) {
+	public <T> void setExameStateOfEntering(Class<?> c,Object entryObject,String moduleId,String roleId,String level) {
+		
+		if(entryObject == null) 
+			throw new ParamWrongException("参数entryObject不能为null");
+		
 		String operateId=null;
 		//得到得到根节点
 		Element root = dXml.getRootElement(document);
@@ -189,20 +195,30 @@ public class RolesVerifyOperation {
 		}catch(NoSuchMethodException e){
 			e.printStackTrace();
 		}
-		System.out.println(m);
-		for(int i=0;i<lists.size();i++) {
-			T t = lists.get(i);
+		//System.out.println(m);
+		//录入单条数据
+		if(entryObject.getClass() == c) {
 			try {
-				m.invoke(t, exameState);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			}catch( IllegalArgumentException e){
-				e.printStackTrace();
-			}catch(InvocationTargetException e){
+				m.invoke(entryObject, exameState);
+			} catch (IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException e) {
 				e.printStackTrace();
 			}
+		}//录入多条数据
+		else if(entryObject instanceof List<?>) {
+			List<T> lists = (List<T>) entryObject;
+			if(lists.get(0).getClass() != c)
+				throw new TypeNotMatchException("类型不一致");
+			for(int i=0;i<lists.size();i++) {
+				T t = lists.get(i);
+				try {
+					m.invoke(t, exameState);
+				} catch (IllegalAccessException | IllegalArgumentException
+						| InvocationTargetException e) {
+					e.printStackTrace();
+				}
+			}
 		}
-		
-		
+		else throw new TypeNotMatchException("类型不一致");
 	}
 }

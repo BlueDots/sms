@@ -42,6 +42,17 @@
 	</select>
 	
 	
+	<!--  通过学号和学期来查询一个学生的班级奖学金的情况-->
+	<select id="selectSchloarShipByTermAndStudentno" parameterType="java.util.Map" resultMap="ScholarShipResultMap">
+	select ship.*,student.studentName,student.sex,
+		student.college,student.major,student.className
+		from stu_class_grant
+		ship,stu_basic_info student where
+		ship.studentNo=student.studentNo
+		and classGrantState=1
+		and ship.studentNo=#{studentNo}
+		and ship.term=#{term};
+ 	</select>
 	
 
 

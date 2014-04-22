@@ -76,7 +76,8 @@
 	<update id="updateRankInClass" parameterType="ScholarShip">
 		update stu_class_grant
 		<set>
-			<if test="moralQualityAssessmentRank!=0">moralQualityAssessmentRank=#{moralQualityAssessmentRank},</if>
+			<if test="moralQualityAssessmentRank!=0">moralQualityAssessmentRank=#{moralQualityAssessmentRank},
+			</if>
 			<if test="qualityRank!=0">qualityRank=#{qualityRank},</if>
 			<if test="sportQualityRank!=0">sportQualityRank=#{sportQualityRank},</if>
 			<if test="artEducationTotalRank!=0">artEducationTotalRank=#{artEducationTotalRank},</if>
@@ -88,10 +89,18 @@
 
 	<!-- 扫描全班的排名单，并且更新奖学金所获等级 -->
 	<update id="updateAwardRankInClass" parameterType="ScholarShip">
-		update stu_class_grant
+		update
+		stu_class_grant
 		set rank=#{rank}
 		where studentNo=#{student.studentNo}
 		and term=#{term}
-	 </update>
+	</update>
 
+	<!-- 更新班级的总分排序名单 (通过调用存储过程来实现) -->
+	<update id="updateTotalScoreRand" parameterType="java.util.Map"
+		statementType="CALLABLE">
+    <![CDATA[ 
+		{call sp_doTotalScoreRank(#{college},#{className},#{term})} ]]>
+
+	</update>
 </mapper>

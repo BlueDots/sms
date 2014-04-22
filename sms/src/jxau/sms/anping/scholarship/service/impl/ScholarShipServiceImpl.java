@@ -1,15 +1,20 @@
 package jxau.sms.anping.scholarship.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.springframework.stereotype.Service;
 
 import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.po.ScholarShip;
 import jxau.sms.anping.service.ScholarShipService;
 import jxau.sms.commom.vo.PageVo;
+import jxau.sms.globaldao.Dao;
  
 /**
  * 　班级奖学金service类
@@ -29,12 +34,11 @@ import jxau.sms.commom.vo.PageVo;
  * 2014-4-21
  * TODO
  */
+@Service("scholarShip")
 public class ScholarShipServiceImpl extends AbstractionService implements ScholarShipService {
 
 	
 
-	
-	
 		/**
 		 * 添加
 		 * 需要处理的业务逻辑如下
@@ -42,17 +46,18 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 		 *  　2。学号不能重复[采用学院班级比较studentNo的方式插入]
 		 *   ３。其他的成绩部分能为空，但四部分中总分不能为空
 		 *   ４。自动的计算总分
-		 *   ５。统一添加完之后，计算班级的四部分成绩排名
+		 *    
 		 *   ６。统一计算总分排名
 		 *   ７。统一计算奖学金排名(拿取班级可拿奖的人数)
 		 */
 	@Override
-	public void addSchloarShip(List<ScholarShip> scholarShips) {
+	public void addSchloarShip(List<ScholarShip> scholarShips,String term) {
+		
 		 
 	}
 
 	@Override
-	public void exportSchloarShip(POIFSFileSystem excelFileSystem) {
+	public void exportSchloarShip(POIFSFileSystem excelFileSystem,String term) {
 		 
 	}
 
@@ -60,7 +65,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 	 * 更新的业务逻辑如下：
 	 * 　 1. 只能更新四部分中的成绩
 	 *  　2. 自动的计算总分
-	 *    3. 统一修改完之后，计算班级的四部分的成绩排名
+	 *   
 	 *    ４。统一计算总分排名
 	 *    ５。统一计算奖学金排名(...)
 	 */
@@ -78,8 +83,8 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 	}
 
 	@Override
-	public List<HosInsuranceInfo> searchOneStudentByTerm(String studentNo,
-			String term, PageVo pageVo) {
+	public List<HosInsuranceInfo> searchOneStudent(String studentNo
+			 ) {
 		 
 		return null;
 	}
@@ -90,36 +95,101 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 		 return null;
 	}
 	
-	/**
-	 * 
-	 * anping
-	 * TODO计算班级奖学金的排名
-	 * 下午10:52:12
-	 * @param college　　学院
-	 * @param className　班级
-	 */
-	private void doFourPartRank(String college,String className){
-		
-	}
+	 
 	/**
 	 * 
 	 * anping
 	 * TODO计算学生总分的所有排名
+	 * 
+	 * 　首先从数据库中获取所有班级的数据,默认以总分的降序排序，没有并列第一的情况
+	 * 		如果总分相同，那么我先已智育的排序，再以德育排序，再以美育，再以体育
+	 * 	　如果全部相同就数据库随机()
+	 * 	　　然后就直接将排好序的成绩表明排名，入库
+	 * 　　可以通过sql语句的存储过程中的游标来实现
 	 * 下午10:53:32
 	 */
-	private void doTotalScoreRank(String college,String className){
-		
+	private  void doTotalScoreRank(String college,String className,String term){
+		Map<String,Object>  params = new HashMap<String,Object>(3);
+		params.put("college",college);
+		params.put("className", className);
+		params.put("term", term);
+		dao.select(namespace+"updateTotalScoreRand", params);
 	}
 	/**
 	 * 
 	 * anping
 	 * TODO计算获奖情况　需要获取班级的比例分配情况
-	 * 下午10:54:32
+	 * 下午10:54:32	首先从数据库中获取所有的班级信息的排名和备注的数据
+	 * 				然后获取该班被分配的比例数据
+	 * 				然后通过遍历是否有挂科情况来分派班级的奖学金
 	 * @param college
 	 * @param className
 	 */
 	private void doAwardRand(String college,String className){
 		
 	}
+	
+	@Override
+	public ScholarShip searchOneByTerm(String studentNo, String term) {
+		 Map<String,Object> params  = new HashMap<String,Object>(2);
+		 params.put("studentNo", studentNo);
+		 params.put("term",term);
+		 return dao.selectOne(namespace+"selectSchloarShipByTermAndStudentno", params);
+	}
 
+	
+	
+	/**
+	 * 判断奖学金中部分属性是不是为null
+	 * anping
+	 * 比如　学号不能为null 
+	 * 		基准分奖励分惩罚分中基准分不能为null
+	 * 		学业课程分不能为null
+	 * 		体育课程（活动）分要么一个为null要么全部不为null
+	 * TODO
+	 * 上午10:58:49
+	 * @return
+	 */
+	public boolean checkScholarIsNull(List<ScholarShip> scholars){
+	 
+		boolean flag = false;
+		boolean flag2 = false;
+		
+		for(ScholarShip scholarShip:scholars){
+			if(scholarShip.getStudent()==null ||scholarShip.getStudent().getStudentNo()==null){
+				return false;
+			}
+			if(scholarShip.getBaseScore()==0){
+				return false;
+			}
+			
+			if(scholarShip.getLessonScore()==0){
+				return false;
+			}
+			if(!flag && scholarShip.getSportScore()==0){
+				flag=true;
+			}
+			if(flag && scholarShip.getSportScore()!=0){
+				return false;
+			}
+			
+			if(!flag2&& scholarShip.getSportScore()>0){
+				flag2=true;
+			}
+			
+			if(flag2 && scholarShip.getSportScore()==0){
+				return false;
+			}
+			
+		}
+		return true;
+	}
+	 
+	private Dao dao ;
+	@Resource(name="dao")
+ 	public void setDao(Dao dao) {
+		this.dao = dao;
+	}
+	private String namespace="jxau.sms.anping.scholarship.dao.";
+	
 }

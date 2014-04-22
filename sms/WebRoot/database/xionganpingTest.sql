@@ -46,6 +46,20 @@ null,null,null,null,null,null,null,null,null,null,null
 );
  
 
-insert into 
 
 select * from hos_insurance_info  order    by  hosNo desc   ;
+
+ 
+
+insert into stu_class_grant 
+values('20111429','201401',90,90,19,199,0,199,90,90,90,0,19,19,19,19,0,20,20,20,20,20,1,900,0,'111','','院级审核中',1);
+
+insert into stu_class_grant 
+values('20111430','201401',90,90,19,199,0,199,90,90,1000,0,19,19,19,19,0,20,20,20,20,20,1,999,0,'111','','院级审核中',1);
+
+insert into stu_class_grant 
+values('20111431','201401',90,90,19,209,0,199,90,90,1000,0,19,19,19,19,0,20,20,20,20,20,1,999,0,'111','','院级审核中',1);
+
+
+
+

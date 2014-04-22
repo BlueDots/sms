@@ -16,6 +16,15 @@ public class ScholarShipSelectTest {
 			"applicationContext.xml");
 	String namespace = "jxau.sms.anping.scholarship.dao.";
 	Dao dao = (Dao) app.getBean("dao");
+	
+	@Test
+	public void testProceduce(){
+		Map<String,Object> params = new HashMap<String,Object>(3);
+		params.put("college", "软件学院");
+		params.put("className","1102");
+		params.put("term","201401");
+		dao.select(namespace+"updateTotalScoreRand", params);
+	}
 
 	@Test
 	public void selectSchloarShip() {

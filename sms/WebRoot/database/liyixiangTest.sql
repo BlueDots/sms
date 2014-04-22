@@ -77,7 +77,7 @@ insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoLis
 
 --teacher_role
 insert into teacher_role values('1234',4);
-insert into teacher_role values('1234',2);
+insert into teacher_role values('1234',10);
 insert into teacher_role values('5678',2);
 insert into teacher_role values('5678',3);
 insert into teacher_role values('8765',3);
@@ -122,7 +122,7 @@ delete from t_teacher_purview where teacherNo in ('5678') and purviewNo in (2,3)
 --
 select * from dep_info;
 
-select r.roleName 	from role_info r,teacher_role tr
+select r.roleName from role_info r,teacher_role tr
 where r.roleNo = tr.roleNo and teacherNo = '1234';
 select teacherNo,teacherName,sex,political,teacherTitle,worktime 
 from tec_basic_info
@@ -145,3 +145,19 @@ drop table if exists role_info;
 drop table if exists teacher_role;
 drop table if exists dep_teacher;
    
+delete from teacher_role where teacherNo='1234' and roleNo = 4; 
+  
+select p.id,p.pid,p.purviewName,p.purviewUrl
+		from role_purview rp,purview_info p
+		where rp.purviewNo = p.id and
+		rp.roleNo = 4;
+		
+		select r.roleNo,r.roleName from teacher_role tr,role_info r
+		where teacherNo = '1234';
+
+		select r.roleNo,r.roleName from teacher_role tr,role_info r
+		where tr.roleNo = r.roleNo and r.roleName like '%院级工作人员%' and
+		teacherNo = '1234';
+		
+		
+select * from tec_info;

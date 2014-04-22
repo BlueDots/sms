@@ -107,14 +107,14 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		if(jxau.sms.chenjiang.po.StuBasicInfo.class != T )
 			throw new ParamWrongException("传入的参数T 必须是 StuBasicInfo.class");
 		int flag = 0;
+		System.out.println(object);
 		if(object == null) 
 			throw new NullPonterException("传入对象不能为null");
 		if(object.getClass() == T) {
-			
 			jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo)object;
 			if(s.getStudentNo() == null || s.getStudentName() == null 
 					|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
-					|| s.getIdCard() == null || s.getBirthday() == null) {
+					|| s.getIdCard() == null) {
 				throw new ParameterNotMatchException("添加的学生基本信息部分不能为空，请认真重新填写！");
 			}
 			dao.add(namespace+"add", object);
@@ -129,7 +129,7 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 				jxau.sms.chenjiang.po.StuBasicInfo s = (jxau.sms.chenjiang.po.StuBasicInfo) lists.get(i);
 				if(s.getStudentNo() == null || s.getStudentName() == null 
 						|| s.getCollege() == null || s.getClassName() == null || s.getMajor()==null
-						|| s.getIdCard() == null || s.getBirthday() == null) {
+						|| s.getIdCard() == null) {
 					throw new ParameterNotMatchException("添加的学生基本信息部分不能为空，请认真重新填写！");
 				}
 			}
@@ -295,13 +295,21 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		return 0;
 	}
 	
-	public boolean studentNoIsExist(String studentNo) {
+	public Boolean studentNoIsExist(String studentNo) {
 		long count=-1;
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("stuNoOrName", studentNo);
 		count = dao.selectOne(namespace+"queryNums", params);
 		if(count>0) return true;
 		else return false;
+	}
+
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		setExameStateOfEntering(c,entryObject,moduleId,roleId,level);		
+		int count = this.add(c, entryObject);
+		return count;
 	}
 
 }

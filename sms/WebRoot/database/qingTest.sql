@@ -11,5 +11,4 @@ emailOnly,bankCard, stu_info.stuState
 from stu_info,stu_basic_info
 where stu_info.studentNo=stu_basic_info.studentNo and stu_info.studentNo='20111112' ;
 
-
-insert into tec_info values(0000,"11",4,"mm",1);
+insert into tec_info values(1234,"11",4,"mm",1);

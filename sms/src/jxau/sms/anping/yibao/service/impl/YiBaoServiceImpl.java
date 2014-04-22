@@ -345,6 +345,13 @@ public class YiBaoServiceImpl extends AbstractionService implements YiBaoService
 		// TODO Auto-generated method stub
 		return dao.selectOne(namespace+"findAllStateIsNoCheckNum", null);
 	}
+
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }

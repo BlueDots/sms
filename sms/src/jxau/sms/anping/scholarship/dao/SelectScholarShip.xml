@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jxau.sms.anping.scholarship.dao">
+
+	<!-- 查询出所有的班级奖学金信息 通过通过 学院班级查询 学院方向查询 学号查询 学院－专业－班级－姓名查询 姓名查询 -->
+	<select id="selectScholarShipByCondition" parameterType="java.util.Map"
+		resultMap="ScholarShipResultMap">
+		select ship.*,student.studentName,student.sex,
+		student.college,student.major,student.className
+		from stu_class_grant
+		ship,stu_basic_info student where
+		ship.studentNo=student.studentNo
+		and classGrantState=1
+		<if test="college!=null">
+			and student.college=#{college}
+			<if test="major!=null">
+				and student.major=#{major}
+			</if>
+			<if test="className!=null">
+				and student.className=#{className}
+			</if>
+		</if>
+		<if test="studentNo!=null">
+			and ship.studentNo=#{studentNo}
+		</if>
+		<if test="studentName!=null">
+			and ship.studentName=#{studentName}
+		</if>
+		<if test="exameState!=null">
+			and ship.exameState=#{exameState}
+		</if>
+		<if test="term!=null">
+			and ship.term=#{term}
+		</if>
+		
+		order by totalScoreRank desc
+		<if test="firstIndex != null and size!=null">
+			limit #{firstIndex},#{size}
+		</if>
+		;
+	</select>
+	
+	
+	<!--  通过学号和学期来查询一个学生的班级奖学金的情况-->
+	<select id="selectSchloarShipByTermAndStudentno" parameterType="java.util.Map" resultMap="ScholarShipResultMap">
+	select ship.*,student.studentName,student.sex,
+		student.college,student.major,student.className
+		from stu_class_grant
+		ship,stu_basic_info student where
+		ship.studentNo=student.studentNo
+		and classGrantState=1
+		and ship.studentNo=#{studentNo}
+		and ship.term=#{term};
+ 	</select>
+	
+	<!--  获取某一个班级中学号最打的人-->
+	<select id="getMaxStudentNoInClass" parameterType="java.util.Map" resultType="java.lang.String">
+		select classGrant.studentNo 
+		from stu_class_grant classGrant,stu_basic_info student
+		where  
+		classGrant.studentNo=student.studentNo
+		and
+		student.college=#{college} and student.className=#{className}
+		and classGrant.term=#{term}
+		order by classGrant.studentNo desc  
+		limit 0,1
+	</select>
+
+</mapper>

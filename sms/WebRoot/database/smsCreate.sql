@@ -10,7 +10,7 @@ create table stu_basic_info
 (
 	studentNo char(8),
 	studentName varchar(18) not null,
-	birthday date not null,
+	birthday date,
 	className varchar(30) not null,
 	major varchar(30) not null,
 	college varchar(30) not null,
@@ -34,6 +34,14 @@ create table stu_basic_info
 	stuState int default 0,
 	constraint pk_stu_basic_info primary key(studentNo)
 );
+alter table stu_basic_info add index stuBasicInfoMajor(major);
+
+alter table stu_basic_info add index stuBasicInfoCollege(college);
+
+alter table stu_basic_info add index stuBasicInfoClass(className);
+
+
+##alter table stu_basic_info modify column birthday date;
 
 ##教师基本信息表2
 create table tec_basic_info(
@@ -138,6 +146,7 @@ create table class_award_info(
 	awardState tinyint default 0
 )engine=MYISAM;
 
+
 ##创建的是班级奖学金表9
 create table stu_class_grant(
 	studentNo char(8),
@@ -158,22 +167,25 @@ create table stu_class_grant(
 	sportQualityTotalScore double,
 	sportQualityRank int,
 	manageScore	double,
-	cultureScore	double,
+	culturstu_class_granteScore	double,
 	mediaScore double,
 	serviceScore	double,
 	artEducationTotalScore	 double,
 	artEducationTotalRank int,
 	totalScore double,
 	totalScoreRank int,
-	rank tinyint,
+	rank varchar(21),
 	remarks varchar(150),
 	exameState varchar(30),
-	classGrantState int default 0,
+	classGrantState int default 1,
 	primary key(studentNo,term)
 )engine=innodb;
 alter table stu_class_grant
 add foreign key (studentNo) references stu_basic_info(studentNo)
 on delete no action on update cascade;
+
+ 
+
 ##部门学院表10
  create table dep_info(
  	departNo char(4) primary key,
@@ -559,9 +571,11 @@ create table award_level(
 
 ##政治面貌表39
 create table political_status(
-	studentNo tinyint primary key,
+	politicalNo tinyint primary key,
 	politicalName varchar(24)
 )ENGINE = MyISAM;
+##alter table political_status CHANGE studentNo politicalNo tinyint;
+##desc political_status;
 ##学生处分信息表40
 create table stu_dis_info(
 
@@ -577,4 +591,14 @@ create table stu_dis_info(
 	remarks	varchar(150),
 	foreign key(studentNo) references stu_basic_info(studentNo)
 );
+
+####班级奖学金等级比例表
+create table classAwardLevel(
+	id int primary key auto_increment,
+	oneLevel double ,
+	twoLevel double,
+	threeLevel double
+);
+insert into classAwardLevel value(null,0.05,0.1,0.15);
+
 

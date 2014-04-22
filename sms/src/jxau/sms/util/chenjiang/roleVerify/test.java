@@ -49,7 +49,10 @@ public class test {
 		 
 		 lists.add(s1);
 		 lists.add(s2);
-		rolesVerifyOperation.setExameStateOfEntering(StuActParticipate.class,lists, "04", "4",null);
+			for(int i=0;i<lists.size();i++) {
+				System.out.println(lists.get(i));
+			}
+		rolesVerifyOperation.setExameStateOfEntering(StuActParticipate.class,lists, "04", "3",null);
 		
 		for(int i=0;i<lists.size();i++) {
 			System.out.println(lists.get(i));

@@ -9,7 +9,7 @@
 		<!-- 需要配置hosNo,才知道返回多少条数据，并且不合并相同数据 -->
 		<id column="hosNo" property="hosNo"></id>
 		<!-- 配置学生 -->
-		<association property="student" javaType="StuBasicInfo">
+		<association property="student" javaType="StuBasicInfo" >
 			<id property="studentNo" column="studentNo" />
 			<result column="studentName" property="studentName" />
 			<result column="sex" property="sex" />

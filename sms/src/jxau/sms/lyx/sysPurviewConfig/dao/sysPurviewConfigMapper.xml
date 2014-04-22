@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="jxau.sms.lyx.sysPurviewConfig.dao">
+	
+	<select id="findRoleByTeacherNo" resultType="RoleInfo">
+		select r.roleNo,r.roleName from teacher_role tr,role_info r
+		where tr.roleNo = r.roleNo and r.roleName like Concat('%',#{roleName},'%') and
+		teacherNo = #{teacherNo}
+	</select>
+
+
+	<select id="findSessionPurviewByRoleNo" resultType="PurviewInfo">
+		select p.id,p.pid,p.purviewName,p.purviewUrl
+		from role_purview rp,purview_info p
+		where rp.purviewNo = p.id and
+		rp.roleNo = #{roleNo};
+				
+	</select>
+	
+</mapper>

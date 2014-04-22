@@ -246,16 +246,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!--增加  -->
 	<insert id="add" parameterType="StuBasicInfo">
-		insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard)
-			values(#{studentNo},#{studentName},#{birthday},#{className},#{major},#{college},#{sex},#{nation},#{hometown},#{political},#{idCard});
+		insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard,exameState)
+			values(#{studentNo},#{studentName},#{birthday},#{className},#{major},#{college},#{sex},#{nation},#{hometown},#{political},#{idCard},#{exameState});
 	</insert>
 	
 	<!--批量增加  -->
 	<insert id="batchAdd" parameterType="java.util.List">
-		insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard)
+		insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard,exameState)
 		values
 		<foreach collection="list" item="item" index="index" separator="," >  
-        	(#{item.studentNo},#{item.studentName},#{item.birthday},#{item.className},#{item.major},#{item.college},#{item.sex},#{item.nation},#{item.hometown},#{item.political},#{item.idCard}) 
+        	(#{item.studentNo},#{item.studentName},#{item.birthday},#{item.className},#{item.major},#{item.college},#{item.sex},#{item.nation},#{item.hometown},#{item.political},#{item.idCard},#{item.exameState}) 
     	</foreach>
 	</insert>
 	

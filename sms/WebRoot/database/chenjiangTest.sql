@@ -1,7 +1,10 @@
-select * from stu_basic_info;
+select * from stu_basic_info where major='软件开发';
+update stu_basic_info set major='应用软件开发方向' where major='软件开发';
+
 desc stu_basic_info;
 select * from dep_teacher;
 
+delete from stu_basic_info where studentNo in ('20111556','20111557','20111558','20111559');
 
 update stu_basic_info set exameState='院级审核中' where studentNo=20111367,
  set exameState='院级不通过' where studentNo=20111429;
@@ -65,6 +68,7 @@ desc class_info;
 ##delete from class_info;
 select * from class_info;
 ##软件开发方向
+insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('21050100200903','1102','软件0903','11050100',44);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050100200903','软件工程0903','软件0903','11050100',44);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050100200904','软件工程0904','软件0904','11050100',45);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050100200905','软件工程0905','软件0905','11050100',45);

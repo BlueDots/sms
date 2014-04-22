@@ -343,6 +343,15 @@ public class ActivityManageServiceImpl extends AbstractionService implements Glo
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		setExameStateOfEntering(c,entryObject,moduleId,roleId,level);
+		
+		int count = this.add(c, entryObject);
+		return count;
+	}
 	
 	
 	

@@ -118,6 +118,35 @@ public class StuBasicInfoAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String verify() {
+		String[] idsString=(String[])params.get("ids");
+		String[] operationIdString = (String[])params.get("operationId");
+		String[] remarksString = (String[])params.get("remarks");
+		if(idsString==null || idsString.equals("") || idsString[0] == null || idsString[0].equals("")){
+			verifyFlag = false;
+			return ERROR;
+		}
+		
+		String[] ids = idsString[0].split(",");
+		//id  List
+		List<String> idList = new ArrayList<>();
+		
+		for(int i=0;i<ids.length;i++)
+			idList.add(ids[i]);
+		String operationId = operationIdString[0];
+		String remarks = remarksString[0];
+		
+		System.out.println(idList);
+		System.out.println(operationId);
+		System.out.println(remarks);
+		
+		stuBasicInfoServiceImpl.verify(idList, "01", "3", operationId, remarks);
+		
+		verifyFlag = true;
+		
+		return SUCCESS;
+	}
+	
 	public String loadTeacher() {
 		TecBasicInfo teacher = (TecBasicInfo) session.get("teacher");
 		List<RoleInfo> roles = (List<RoleInfo>) session.get("roles");
@@ -186,6 +215,8 @@ public class StuBasicInfoAction extends ActionSupport {
 	private List<String> waitingForClassName;
 	//待审核班级名称
 	private String className;
+	//审核成功的标志
+	private Boolean verifyFlag = false;
 
 	//待审核信息列表
 	private List<StuBasicInfoVO> waitingForLists;
@@ -197,6 +228,10 @@ public class StuBasicInfoAction extends ActionSupport {
 
 	public int getWaitingForNum() {
 		return waitingForNum;
+	}
+	
+	public Boolean getVerifyFlag() {
+		return verifyFlag;
 	}
 	
 	public List<StuBasicInfoVO> getWaitingForLists() {
@@ -239,4 +274,7 @@ public class StuBasicInfoAction extends ActionSupport {
 	public List<StuBasicInfoVO> getStuBasicInfoVOlists() {
 		return stuBasicInfoVOlists;
 	}
+	
+	
+	
 }

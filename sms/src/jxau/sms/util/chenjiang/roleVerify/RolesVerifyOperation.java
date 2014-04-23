@@ -65,7 +65,7 @@ public class RolesVerifyOperation {
 		if(roleElement == null) 
 			throw new RoleNotFoundException("模块"+moduleId+"没有该角色编号:"+roleId);
 		//得到operation节点
-		if(operationId !="1" && operationId !="2")
+		if(!operationId.equals("1") && !operationId.equals("2"))
 			throw new VerifyOperationErrorException("operationId输入有误，只能为1或者2");
 		Element operationElement = dXml.getOperationElement(roleElement, operationId);
 		if(operationElement == null)

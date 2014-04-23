@@ -1,9 +1,5 @@
 package jxau.sms.qing.login.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-
 import javax.annotation.Resource;
  
 import jxau.sms.qing.exception.LoginException;
@@ -46,12 +42,12 @@ public class LoginAction extends ActionSupport  {
 		this.loginService = loginService;
 	}
 
- 
 	 
 	 @Override  
 	 public String execute() throws Exception {  		 	
 	        System.out.println("HelloAction.execute is executing..."); 
 	        Boolean bool;
+	        
 	        try{
 	        	this.getLoginService().whichUser(username, password);
 	        } catch (LoginException e) {

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jxau.sms.anping.scholarship.dao">
-
 	<!-- 更新班级奖学金数据 除了总分等不能够被修改之外，现在能修改的数据就是那些能录入的 这些是老师只能修改的。 ship.setBaseScore(80); 
 		ship.setAwardScore(90); ship.setPunishScore(90); ship.setLessonScore(90); 
 		ship.setInnovateScore(90); ship.setSkillsScore(80); ship.setSportScore(60); 
@@ -76,7 +75,8 @@
 	<update id="updateRankInClass" parameterType="ScholarShip">
 		update stu_class_grant
 		<set>
-			<if test="moralQualityAssessmentRank!=0">moralQualityAssessmentRank=#{moralQualityAssessmentRank},</if>
+			<if test="moralQualityAssessmentRank!=0">moralQualityAssessmentRank=#{moralQualityAssessmentRank},
+			</if>
 			<if test="qualityRank!=0">qualityRank=#{qualityRank},</if>
 			<if test="sportQualityRank!=0">sportQualityRank=#{sportQualityRank},</if>
 			<if test="artEducationTotalRank!=0">artEducationTotalRank=#{artEducationTotalRank},</if>
@@ -88,10 +88,25 @@
 
 	<!-- 扫描全班的排名单，并且更新奖学金所获等级 -->
 	<update id="updateAwardRankInClass" parameterType="ScholarShip">
-		update stu_class_grant
+		update
+		stu_class_grant
 		set rank=#{rank}
 		where studentNo=#{student.studentNo}
 		and term=#{term}
-	 </update>
+	</update>
 
+	<!-- 更新班级的总分排序名单 (通过调用存储过程来实现) -->
+	<update id="updateTotalScoreRand" parameterType="java.util.Map"
+		statementType="CALLABLE">
+    <![CDATA[ 
+		{call sp_doTotalScoreRank(#{college},#{className},#{term})} ]]>
+
+	</update>
+
+	<!-- 更新班级的奖学金排名 -->
+	<update id="updateAwardRand" parameterType="java.util.Map"
+		statementType="CALLABLE">
+      <![CDATA[ 
+		{call sp_doAwardRank(#{college},#{className},#{term})} ]]>
+	</update>
 </mapper>

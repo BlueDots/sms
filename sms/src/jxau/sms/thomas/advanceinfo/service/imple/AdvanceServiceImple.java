@@ -71,7 +71,7 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 	}
 	
 	@Override
-	public <T> List<T> searchByAccurate(Map<String, Object> param,
+	public <StuAdvVo> List<StuAdvVo> searchByAccurate(Map<String, Object> param,
 			PageVo pageVo, int status) {
 		// TODO Auto-generated method stub
 		List<StuAdvVo> stuAdvVo = null;
@@ -85,7 +85,7 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 				param.put("number", pageVo.getSize());
 				stuAdvVo = new ArrayList<StuAdvVo>();
 				stuAdvVo = dao.select(nameSpace+"queryAdvInfoPage", param);
-				long totalNumv = (long)dao.selectOne(nameSpace+"queryAdvInfo", param);
+				long totalNumv = (long)dao.selectOne(nameSpace+"queryTotalNumber", param);
 				pageVo.setCount(totalNumv);
 			}else{
 				throw new CommonErrorException("查询条件不存在！");
@@ -93,7 +93,7 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 		}else {
 			throw new NullPointerException("查询条件不能为空！");
 		}
-		return (List<T>) stuAdvVo;
+		return stuAdvVo;
 	}
 
 	@Override

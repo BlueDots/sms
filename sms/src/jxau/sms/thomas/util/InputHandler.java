@@ -44,25 +44,25 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  */
 public class InputHandler{
 
-	private String filePath;
+	//private String filePath;
 	private HSSFSheet sheet;
 	private List<AdvanceSearchVo> inputAttr; //符合条件的属性;
 	private String abstractId;	//视图的抽象编号
 	private String viewType;	//视图的类型
-	private Dao dao;
+	//private Dao dao;
 	private final String mapperId = "inputid";
 	
-	public InputHandler(String filePath,String abstractId){
-		this.filePath = filePath;
+	public InputHandler(String abstractId){
+		//this.filePath = filePath;
 		this.abstractId = abstractId;
 	}
 	
-	@Resource(name="dao")
+	/*@Resource(name="dao")
 	public void setDao(Dao dao){
 		this.dao = dao;
-	}
+	}*/
 
-	private int getTotalCount(){
+	private int getTotalCount(String filePath){
 		FileInputStream fin;
 		int totalRow = 0;
 		try {
@@ -101,7 +101,7 @@ public class InputHandler{
 		}
 		return attributes;
 	}
-	public <T> void transferFormation(Field field, HSSFCell cell,T attribute,int i) throws IllegalArgumentException, IllegalAccessException{
+	public <T> void transferFormation(Field field, HSSFCell cell,T attribute) throws IllegalArgumentException, IllegalAccessException{
 		//String fieldType = field.getType().getName();
 		HSSFRow firstRow=sheet.getRow(0);
 		String columnName = firstRow.getCell(cell.getCellNum()).getStringCellValue();
@@ -136,21 +136,21 @@ public class InputHandler{
 		}
 	}
 	
-	public <T> List<T> setAttributes(List<T> attributes) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public <T> List<T> setAttributes(List<T> attributes,String filePath) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		getInAttribute();
-		for (int i = 0; i < getTotalCount(); i++) {
+		for (int i = 0; i < getTotalCount(filePath); i++) {
 			T object = (T)Class.forName(viewType).newInstance();
 			attributes.add(object);
 		}
 		Field[] fields = attributes.get(0).getClass().getDeclaredFields();
-		for(int i=1;i<=getTotalCount();i++){
+		for(int i=1;i<=getTotalCount(filePath);i++){
 			 HSSFRow row=sheet.getRow(i);
 			 for (int j = 0; j < fields.length; j++) {
 				 HSSFCell cell=row.getCell(j);
 				 System.out.print(cell.getCellType());
 				fields[j].setAccessible(true);
 				try {
-					 transferFormation(fields[j], cell, attributes.get(i - 1),i);
+					 transferFormation(fields[j], cell, attributes.get(i - 1));
 						//fields[j].set(attributes.get(i-1),cell.getRichStringCellValue().toString());
 						//转化属性的格式
 					} catch (IllegalArgumentException e) {
@@ -165,10 +165,8 @@ public class InputHandler{
 		 return attributes;
 	}
 	
-	public <T> int inputExcel(List<T> attributes,String viewId,Dao dao) throws InstantiationException, IllegalAccessException, ClassNotFoundException{	//viewId属于AbstractMapper
-		//Map<String, List<T>> lists = new HashMap<>();
-		//lists.put("list", setAttributes(attributes));
-		dao.add(MapperUtility.getMapperId(viewId,mapperId), setAttributes(attributes));
+	public <T> int inputExcel(List<T> attributes,String filePath,Dao dao) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		dao.batchAdd(MapperUtility.getMapperId(abstractId,mapperId),setAttributes(attributes,filePath));
 		return attributes.size();
 	}
 

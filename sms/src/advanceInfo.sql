@@ -268,6 +268,7 @@ from stu_basic_info sb inner join stu_des_info sd on sb.studentNo = sd.studentNo
  	end
 	
 	update sch_prop_distribution set awardNum = 250 where propNo = 101 and term = '201302';
+	
 	create trigger colPropDistribution after update on col_prop_distribution 
  	for each row begin
  		declare i int;

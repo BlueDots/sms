@@ -61,4 +61,12 @@
         
     </package>
     
+    <package name="sysPurviewConfig" namespace="/" extends="struts-default">  
+    	<action name="sessionPurview" class="jxau.sms.lyx.sysPurviewConfig.action.SysPurviewConfigAction">
+    		<result name="success">/index_school.jsp</result>
+    		<result name="error">/error.jsp</result>
+    	</action>  
+    </package>
+    
+    
 </struts>

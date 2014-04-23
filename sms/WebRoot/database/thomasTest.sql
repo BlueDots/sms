@@ -1,7 +1,25 @@
 ##
+update stu_basic_info set studentName='小辉辉',sex=1 where studentNo = '20111826';
 select * from stu_basic_info;
 select * from stu_adv_info;
 delete from stu_adv_info where awardNo = 30 or awardNo = 31; 
+##学院信息
+insert into dep_info values('3212','中科软件学院','软件学院','成立于2004',2500,500,600,600,600,700,1);
+insert into dep_info values('3121','外国语学院','外语学院','成立于1960',1000,850,300,300,300,100,1);
+##专业信息
+insert into major_info values('32120201','网络应用方向','网络应用方向','3212','成立于2004',300,1);
+insert into major_info values('32120202','软件加英语','软件英语','3212','成立于1960',500,1);
+
+insert into major_info values('31210201','英语','英语','3212','成立于2004',300,1);
+insert into major_info values('31210202','日语','日语','3121','成立于1960',200,1);
+##班级信息
+select * from class_info;
+insert into class_info values('321202012001','软件1107班','软件1107班','32120201',38,18,'2011-09-01',4,1);
+insert into class_info values('321202022001','软件1111班','软件1111班','32120202',38,18,'2011-09-01',4,1);
+
+insert into class_info values('312102012001','英语1101班','英语1101班','31210201',38,18,'2011-09-01',4,1);
+insert into class_info values('312102022001','日语1101班','日语1101班','31210202',38,18,'2011-09-01',4,1);
+
 ##评优评先项目信息
 insert into adv_item values(400,'优秀三好学生','2011-09-02','省级',null,null);
 insert into adv_item values(401,'优秀学生干部','2011-09-02','省级',null,null);
@@ -28,6 +46,7 @@ insert into des_item values(null,'乙等',null);
 insert into stu_des_Info values(null,'20111826','家庭较贫困','甲等','201301','校级已通过','无');
 insert into stu_des_Info values(null,'20111827','家庭特贫困','乙等','201302','校级已通过','无');
 ##校级工作人员分配项目信息
+delete from sch_prop_distribution;
 select * from sch_prop_distribution;
 insert into sch_prop_distribution values(null,100,100,0.10,'2014-09-08','2014-09-08','2014-09-28','201301');
 insert into sch_prop_distribution values(null,101,100,0.10,'2014-09-08','2014-09-08','2014-09-28','201302');
@@ -36,7 +55,7 @@ select * from col_prop_distribution;
 insert into col_prop_distribution values(null,'3212',101,2,0.60,1.0,1.0,1.0,1.0,'2014-09-08','2014-09-08','2014-09-28','201302');
 ##班级分配人数表
 select * from cla_prop_distribution;
-insert into cla_prop_distribution values(null,'32120101','3212',101,10,'201302');
+insert into cla_prop_distribution values(null,'321202012001','3212',101,10,'201302');
 
 ##创建视图(视图的列名是唯一的，当创建视图的时候必须保证去除重复的列)
 ##评优评先模块-学生评优评先记录视图
@@ -55,3 +74,74 @@ create view stu_desInfo_View
 as
 select sb.studentNo,sb.stuName,sb.sex,sb.stuCollege,sb.stuMajor,sb.stuClass,sb.address,sd.economy,sd.desLevel,sd.term,sd.examState,sd.remarks
 from stu_basic_info sb inner join stu_des_info sd on sb.studentNo = sd.studentNo order by sd.term,sd.studentNo;
+
+##创建触发器(加强约束以及规范相应的级联关系)
+ 	##注意:
+ 	##delimtier |
+ 	create trigger schPropDistribution after update on sch_prop_distribution 
+ 	for each row begin
+ 		declare i int;
+ 		declare schoolNum int;
+ 		declare collegeNumber int;
+ 		declare numOfCollege int;
+ 		declare depNo char(4);
+ 		declare schProp decimal(3,2);
+ 		set i = 1;
+ 		select count(*) into schoolNum from stu_basic_info;  
+ 		select count(*) into numOfCollege from dep_info;
+ 		
+ 		drop temporary table if exists depInfoTb;
+ 		create temporary table depInfoTb
+ 		(
+ 			autoNo int auto_increment primary key,
+			departNo char(4) not null
+ 		);
+ 		
+ 		insert into depInfoTb select null,departNo from col_prop_distribution where propNo = new.propNo and term = new.term;
+ 		
+ 		if new.awardNum != old.awardNum then 
+ 			set schProp = ROUND(new.awardNum/1000,2);
+ 			while i<=numOfCollege do
+ 			select departNo into depNo from depInfoTb where autoNo = i;
+ 			select depNumber into collegeNumber from dep_info where departNo = depNo;
+ 			set collegeNumber = ROUND(collegeNumber*schProp,0);
+ 			update col_prop_distribution set awardNum = collegeNumber,proposition = schProp where departNo = depNo and propNo = old.propNo and term = old.term;
+ 			set i = i + 1;
+ 			end while;
+ 		end if;
+ 	end
+	
+	update sch_prop_distribution set awardNum = 250 where propNo = 100 and term = '201301';
+	
+	create trigger colPropDistribution after update on col_prop_distribution 
+ 	for each row begin
+ 		declare i int;
+ 		declare collegeNum int;
+ 		declare proposition decimal(3,2);
+ 		declare classNum int;
+ 		declare numOfClass int;
+ 		declare classes char(14);
+ 		set i = 1;
+ 		select depNumber into collegeNum from dep_info where departNo = old.departNo;
+ 		select count(*) into numOfClass from class_info where departNo = old.departNo;
+ 		drop temporary table if exists classInfoTb;
+ 		create temporary table classInfoTb
+ 		(
+ 			autoNo int auto_increment primary key,
+			classNo char(14) not null
+ 		);
+ 		insert into classInfoTb select null,classNo from cla_prop_distribution where propNo = old.propNo and term = old.term;
+ 		if new.awardNum != old.awardNum then 
+ 			set proposition = ROUND(new.awardNum/collegeNum,2);
+ 			while i<=numOfClass do
+ 			select classNo into classes from classInfoTb where autoNo = i;
+ 			select classNumber into classNum from class_info where classNo = classes;
+ 			set classNum = ROUND(classNum*proposition,0);
+ 			update cla_prop_distribution set awardNum = classNum where classNo = classes and propNo = old.propNo and term = old.term;
+ 			set i = i + 1;
+ 			end while;
+ 		end if;
+ 	end
+
+ 	select * from col_prop_distribution;
+ 	update col_prop_distribution set awardNum = 1 where propNo = 100 and departNo = '3212' and term = '201302';

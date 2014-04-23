@@ -1,6 +1,6 @@
-校级工作人员 hosInsuranceInfo/hosInsuranceQuery!queryHosByCondition 查询医保   
+校级工作人员 	 hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher 查询医保   
              hosInsuranceInfo/hosInsuranceInfo!updateHoss　教师更新医保
-             hosInsuranceInfo/hosInsuranceInfo!checkHosByTeacher　审核
+             hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher　审核
 			 hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher　教师获取全部医保
 
 

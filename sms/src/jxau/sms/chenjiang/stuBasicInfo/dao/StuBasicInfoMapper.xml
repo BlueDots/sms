@@ -200,6 +200,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             limit #{start},#{nums}
 	</select>
 	
+	
+	<select id="selectListByIds" parameterType="map" resultType="StuBasicInfo">
+		select * from stu_basic_info where studentNo in
+		<foreach collection="ids"  item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach> 
+	</select>
 		
 	<!--审核  -->
 	<!--查询待审核信息  以班级为组 -->

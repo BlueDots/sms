@@ -24,6 +24,18 @@ public class TestService {
 	private AbstractionService abstractionService = (AbstractionService)applicationContext.getBean("stuBasicInfoServiceImpl");
 	
 	@Test
+	public void testSelectListByIds(){
+		List<StuBasicInfo> lists = null;
+		List<String> ids = new ArrayList<>();
+		ids.add("20111113");
+		ids.add("20111114");
+		ids.add("20111115");
+		lists = ((StuBasicInfoServiceImpl)globalServiceInterface).selectListByIds(ids);
+		for(int i=0;i<ids.size();i++)
+			System.out.println(lists.get(i));
+	}
+	
+	@Test
 	public void testQuery() {
 	   	List<StuBasicInfo> lists = null;
 	   	Map<String,Object> params = new HashMap<String, Object>();

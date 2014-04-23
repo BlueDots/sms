@@ -51,7 +51,7 @@ function getStuBasicInfoList(currentPage){
 			//第一列
 			var TdObj1 = TrObj.insertCell(0);
 			var checkBox = document.createElement("input");
-			checkBox.type="checkBox";
+			checkBox.type="checkbox";
 			checkBox.id=stuBasicInfo.studentNo;
 			TdObj1.appendChild(checkBox);
 			//第二列：照片

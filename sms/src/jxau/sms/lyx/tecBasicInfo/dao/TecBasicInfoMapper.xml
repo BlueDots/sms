@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="jxau.sms.lyx.tecBasicInfo.dao">
+
+	
+
+	<select id="findATecBasicInfo" resultMap="TecList">
+		select teacherNo,teacherName,sex,nation,hometown,political,tecState,teacherTitle,titleTime,worktime,eduBackground,exameState,remarks
+		from tec_basic_info
+		where 1=1
+		and teacherNo = #{teacherNo}
+	</select>
+		
+	<resultMap type="TecBasicInfo" id="TecList">
+		  <id column="teacherNo" property="teacherNo" />
+		  <result column="teacherName" property="teacherName" />
+		  <result column="sex" property="sex" />		  
+		  <result column="nation" property="nation" />
+		  <result column="hometown" property="hometown" />
+		  <result column="political" property="political" />
+		  <result column="tecState" property="tecState" />
+		  <result column="teacherTitle" property="teacherTitle" />
+		  <result column="titleTime" property="titleTime" />
+		  <result column="worktime" property="worktime" />
+		  <result column="eduBackground" property="eduBackground" />
+		  <result column="exameState" property="exameState" />
+  		  <result column="remarks" property="remarks" />
+  	</resultMap>
+ 
+</mapper>

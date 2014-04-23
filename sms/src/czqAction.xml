@@ -8,7 +8,11 @@
           
     <package name="defalut" namespace="/" extends="struts-default">  
         <action name="login" class="jxau.sms.qing.login.action.LoginAction">  
-            <result name="success">index_school.jsp</result>  
+            <result name="学生">index_student.jsp</result>
+            <result name="班主任">index_tutor.jsp</result>
+            <result name="院级工作人员">index_college.jsp</result>
+            <result name="校级工作人员">index_school.jsp</result>
+            <result name="院级管理员">index_admin.jsp</result>  
             <result name="error">login.jsp</result>  
         </action>  
     </package> 

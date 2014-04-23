@@ -9,32 +9,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<base href="<%=basePath%>"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- 
-<script language="javascript" type="text/javascript">
-		function checkForm() {
-
-				var teacherNo = $("#teacherNo").attr("value");
-				var roleName = $("#roleName").attr("value");
-				alert(teacherNo);
-				alert(roleName);
-				alert(roleName=='校级工作人员');
-				if(roleName == '学生') {
-					window.location.href = "index_student.jsp";
-				} else if(roleName == '班主任') {
-					window.location.href = "index_tutor.html";
-				} else if(roleName == '院级工作人员') {
-					window.location.href = "index_college.html";
-				} else if(roleName == '校级工作人员') {
-					window.location.href = "index_school.jsp";
-				} else if(roleName == '院级管理员') {
-					window.location.href = "files/college_admin/index_admin.html";
-				}else if(roleName== '校级管理员' ){
-				    window.location.href="files/schollManager/admin_index.html";
-				}
-				//return true;
-			}	
-			
-</script>
 
 <link href="<%=basePath%>/css/css.css" rel="stylesheet" type="text/css" />
 <script src="<%=basePath%>/js/admin/jquery-1.7.2.min.js"></script>

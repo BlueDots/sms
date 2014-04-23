@@ -55,28 +55,7 @@ public class VirtualLogin implements Filter{
 		}
 		
 		
-		if(session.getAttribute("teacher")==null){
-			TecBasicInfo teacher = new TecBasicInfo();
-			//先虚拟的存储这点东西
-			teacher.setTeacherNo("1234");
-			teacher.setTeacherName("jack");
-			session.setAttribute("teacher",teacher);
-		    //虚拟的存储一点点角色
-			RoleInfo  role  = new RoleInfo();
-		    role.setRoleName("班主任");
-		    
-		    RoleInfo  role3  = new RoleInfo();
-		    role3.setRoleName("院级工作人员");
-		    
-		    List<RoleInfo> roles = new ArrayList<RoleInfo>(2);
-		    roles.add(role);
-		    roles.add(role3);
-		
-		    roles.add(role);
-		    session.setAttribute("roles", roles);
-		    System.out.println("以模拟教师登陆");
-		}
-
+		 
 		chain.doFilter(request, response);
 	}
 

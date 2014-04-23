@@ -21,6 +21,36 @@ public class ScholarShipServiceTest {
 	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	ScholarShipServiceImpl scholarShipService = (ScholarShipServiceImpl) context.getBean("scholarShip");
 	
+	
+	/**
+	 * 测试　　　拿到某个工作人员需要审核的所有信息
+	 * anping
+	 * TODO
+	 * 下午6:48:35
+	 */
+	@Test
+	public void testGetAllWaitMes(){
+		TecBasicInfo tea = new TecBasicInfo();
+		tea.setTeacherNo("1234");
+		List<RoleInfo> roleInfos = new ArrayList<>();  
+		RoleInfo  roleInfo  = new RoleInfo();
+		 roleInfo.setRoleName("院级工作人员");
+		roleInfos.add(roleInfo);
+		scholarShipService.getAllWaitCheckData(roleInfos, tea);
+	}
+	
+	/**
+	 * 测试　查询一个学生的数据
+	 * anping
+	 * TODO
+	 * 下午5:12:39
+	 */
+	@Test
+ 	public void testSearchSchloarShipOneStudent(){
+		
+ 	   scholarShipService.searchOneStudent("20111429");
+	}
+	
 	/**
 	 * 测试批量增加，需要添加的数据都市一个班级的
 	 * anping
@@ -33,9 +63,9 @@ public class ScholarShipServiceTest {
 		ScholarShip scholarShip  = new ScholarShip();
 		scholarShip.setBaseScore(99);
 		StuBasicInfo  basicInfo =  new StuBasicInfo();
-		basicInfo.setStudentNo("20111431");
+		basicInfo.setStudentNo("20111429");
 		scholarShip.setStudent(basicInfo);
-		scholarShip.setTerm("201403");
+		scholarShip.setTerm("201404");
 		
 		scholarShips.add(scholarShip);
 		TecBasicInfo tea = new TecBasicInfo();

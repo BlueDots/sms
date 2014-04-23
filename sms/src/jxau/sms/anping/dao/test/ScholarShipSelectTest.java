@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import jxau.sms.anping.po.ScholarShip;
+import jxau.sms.commom.vo.WaitCheckVo;
 import jxau.sms.globaldao.Dao;
 
 import org.junit.Test;
@@ -17,6 +18,21 @@ public class ScholarShipSelectTest {
 	String namespace = "jxau.sms.anping.scholarship.dao.";
 	Dao dao = (Dao) app.getBean("dao");
 	
+	
+	/**
+	 * 查询出某一个需要待审核的班级
+	 * anping
+	 * TODO
+	 * 下午6:30:08
+	 */
+	@Test
+	public void testSchloarShipSelect(){
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("college", "软件学院");
+	    params.put("exameState", "院级审核中");
+		
+		List<WaitCheckVo> waiting =  dao.select(namespace+"getWaitData", params);
+	}
 	@Test
 	public void testCompare(){
 		String a = "20111429";

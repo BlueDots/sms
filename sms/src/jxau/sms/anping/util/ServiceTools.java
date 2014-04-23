@@ -13,6 +13,29 @@ import jxau.sms.lyx.po.RoleInfo;
 
 @Component("anpingServiceTools")
 public class ServiceTools {
+	
+	/**
+	 * 核对
+	 * anping
+	 * TODO
+	 * 下午5:20:35
+	 * @return
+	 */
+	 public boolean  checkRoleIsRight(String role,String examState){
+		 System.out.println(role+"----"+examState);
+		 boolean  result = true;
+		 if(examState.equals("通过")){
+			 result =false;
+		 }
+		 
+		 if(examState.equals("校级审核中") && role.equals("班主任")){
+			 result = false;
+		 }
+		 
+		 return result;
+	 }
+	
+	
 	/**
 	 * 检测分数是否合法
 	 * anping TODO 下午4:38:19

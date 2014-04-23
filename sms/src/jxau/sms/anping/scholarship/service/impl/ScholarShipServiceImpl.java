@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.ClassInfo;
+import jxau.sms.anping.po.DepInfo;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.po.ScholarShip;
 import jxau.sms.anping.service.ScholarShipService;
@@ -26,6 +27,7 @@ import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.po.TecBasicInfo;
+import jxau.sms.qing.po.Teacher;
 import jxau.sms.util.service.impl.CollegeMajorClassInterface;
 
 /**
@@ -137,7 +139,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	/**
 	 * 更新的业务逻辑如下： 　 1. 只能更新四部分中的成绩 　2. 自动的计算总分
 	 * 
-	 * ４。统一计算总分排名 ５。统一计算奖学金排名(...)
+	 * ４。统一计算总分排名 ５。统一计算奖学金排名(...) 6.只能修该对应审核中的数据
 	 */
 	@Override
 	public void updateSchloarShip(List<ScholarShip> scholarShips,
@@ -178,7 +180,10 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 			throw new ParameterNotMatchException(checkStudentIsInClass);
 		}
 
-		this.updateForSideScore(scholarShips);
+		String  checkHefaState=this.updateForSideScore(scholarShips,roleInfos);
+		if(null!=checkHefaState){
+			throw new ParameterNotMatchException(checkHefaState);
+		}
 		System.out.println("111111111111111111");
 
 		tools.computerTotalScoreAndIsertTerm(scholarShips, null);
@@ -191,11 +196,21 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 
 	}
 
-	private void updateForSideScore(List<ScholarShip> scholarShips) {
-
+	private String updateForSideScore(List<ScholarShip> scholarShips,List<RoleInfo> roleInfos) {
+		String result = null;
 		for (ScholarShip ship : scholarShips) {
 			ScholarShip studentShipInDataBase = this.searchOneByTerm(ship
 					.getStudent().getStudentNo(), ship.getTerm());
+			 
+			   if(studentShipInDataBase==null){
+				   result="你需要修改的数据在数据库中不存在";
+				   break;
+			   }
+		      if(!tools.checkRoleIsRight(tools.getHighLevelRole(roleInfos), studentShipInDataBase.getExameState())){
+		    	  result="现在不能修改学号为："+ship.getStudent().getStudentNo()+"的学生";
+		    	  break;	
+		      }
+			
 			if (ship.getBaseScore() == 0
 					&& studentShipInDataBase.getBaseScore() != 0) {
 				ship.setBaseScore(studentShipInDataBase.getBaseScore());
@@ -263,6 +278,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 			tools.computerTotalScoreAndIsertTerm(datas, null);
 
 		}
+		return result;
 
 	}
 
@@ -271,17 +287,23 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	 * 
 	 */
 	@Override
-	public List<HosInsuranceInfo> Search(Map<String, Object> param,
+	public List<ScholarShip> Search(Map<String, Object> param,
 			PageVo pageVo, int type) {
-
-		return null;
+		
+		param.put("firstIndex", pageVo.getFirstIndex());
+		param.put("size",pageVo.getSize() );
+		List<ScholarShip> scholars =  dao.select(namespace+"selectScholarShipByCondition", param);
+		long  nums = dao.selectOne(namespace+"selectScholarShipByConditionNums", param);
+		pageVo.setCount(nums);
+		
+		return scholars;
 	}
 
 	/**
 	 * 查询某一个学生的所有的数据
 	 */
 	@Override
-	public List<HosInsuranceInfo> searchOneStudent(String studentNo) {
+	public List<ScholarShip> searchOneStudent(String studentNo) {
 		
 		Map<String,Object> params  = new HashMap<String,Object>();
 		params.put("studentNo", studentNo);
@@ -293,9 +315,18 @@ public class ScholarShipServiceImpl extends AbstractionService implements
       *通过角色获取所有的待审核的数据 
       */
 	@Override
-	public List<WaitCheckVo> getAllWaitCheckData(List<RoleInfo> infos) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<WaitCheckVo> getAllWaitCheckData(List<RoleInfo> infos,TecBasicInfo teacher) {
+		Map<String,Object> params = new HashMap<String,Object>();
+		if(tools.getHighLevelRole(infos).equals("院级工作人员")){
+			List<DepInfo> depinfos = classMajorService.searchCollegeByTeacher(teacher, infos);
+			params.put("college",depinfos.get(0).getDepartment());
+			params.put("exameState","院级审核中");
+		}else if(tools.getHighLevelRole(infos).equals("校级工作人员")){
+			params.put("exameState","校级审核中");
+		}
+		
+		
+		return dao.select(namespace+"getWaitData", params);
 	}
 
 	@Override

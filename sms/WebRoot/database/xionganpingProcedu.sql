@@ -104,6 +104,7 @@ delimiter ;
 
 ##call sp_doAwardRank('软件学院','1102','201401');
 ##select * from stu_class_grant;
+##update stu_class_grant set exameState='通过' where studentNo='20111429' and term='201404';
 
  ## delete from stu_class_grant;
  

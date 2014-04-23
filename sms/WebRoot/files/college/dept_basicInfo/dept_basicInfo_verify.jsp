@@ -119,13 +119,13 @@
 												<div class="suckerdiv">
 													<ul id="suckertree1">
 														<li>
-															<a href="#">审核</a>
+															<a>审核</a>
 															<ul>
 																<li>
-																	<a onclick="edit()" href="#">通过</a>
+																	<a onclick="verify(1)" >通过</a>
 																</li>
 																<li>
-																	<a onclick="edit()" href="#">不通过</a>
+																	<a onclick="verify(2)" >不通过</a>
 																</li>
 															</ul>
 														</li>

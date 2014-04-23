@@ -101,22 +101,7 @@ function save(id) {
   		  }
 	 }
 
-	/*检测是否选择复选框*/
-function checkChooseCheck(){
-	   var inputs = document.getElementsByTagName("input");
-	   var  temp   = false;
-	   
-		for(var i=0;i<inputs.length;i++){
-		if(inputs.item(i).getAttribute("type") == "checkbox") {
-			if(inputs.item(i).checked == true) {
-				temp =true;
-				break;
-			}  
-		}
-      }
-	  return  temp;
-	
-	} 
+
 
 //悬浮效果
 var menuids = [ "suckertree1" ]

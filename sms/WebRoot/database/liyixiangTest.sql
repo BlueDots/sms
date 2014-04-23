@@ -158,3 +158,6 @@ select p.id,p.pid,p.purviewName,p.purviewUrl
 		select r.roleNo,r.roleName from teacher_role tr,role_info r
 		where tr.roleNo = r.roleNo and r.roleName like '%院级工作人员%' and
 		teacherNo = '1234';
+		
+		
+select * from tec_info;

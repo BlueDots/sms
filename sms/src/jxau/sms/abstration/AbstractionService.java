@@ -1,5 +1,6 @@
 package jxau.sms.abstration;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,8 @@ import javax.annotation.Resource;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import jxau.sms.thomas.util.InputHandler;
+import jxau.sms.thomas.util.OutputHandler;
 import jxau.sms.util.chenjiang.moduleStateUpdate.ModuleStateOperation;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
@@ -17,6 +20,8 @@ import jxau.sms.util.chenjiang.roleVerify.RolesVerifyOperation;
 public abstract class AbstractionService {
 	private RolesVerifyOperation rolesVerifyOperation;
 	private ModuleStateOperation moduleStateOperation;
+	private InputHandler inputHandler;
+	private OutputHandler outputHandler;
 	
 	@Resource(name="rolesVerifyOperation")
 	public void setRolesVerifyOperation(RolesVerifyOperation rolesVerifyOperation) {
@@ -54,12 +59,7 @@ public abstract class AbstractionService {
 	 * @param roleId:操作角色
 	 *  		roleId 1:学生  2：班主任 3：院级工作人员 4：校级工作人员 6:活动负责人
 	 * @param operationId：操作编号  "1"：审核通过；"2"：审核不通过；
-	 * 				当审核通过时，所有审核数据remarks都会清空
-	 * @param remarks:备注  (
-	 * 			1、为null, 表示所有审核数据无备注
-	 * 			2、为String,表示所有审核数据的备注为所填值
-	 * 			3、为List<String>，表示一条数据一条备注
-	 * 		) 
+	 * @param remarks:备注  (可以为null)
 	 * 					
 	 */
 	public  <T>  void  verify(List<T> ids, String moduleId,String roleId,String operationId,Object remarks){
@@ -111,6 +111,22 @@ public abstract class AbstractionService {
 		moduleStateOperation.subTableStateUpdate(ids, subState, remarks, subId);
 	}
 	
+
+	public <T> List<T> inputExcel(String abstractId,List<T> attributes,String filePath) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		InputHandler input = new InputHandler(abstractId);
+		return input.setAttributes(attributes, filePath);
+	}
+	public int exportExcel(String filePath,String abstractId,Map params) throws IOException {
+		OutputHandler output = new OutputHandler(abstractId);
+		output.exportExcel(filePath,params);
+		return 0;
+	}
+	public <T> int exportExcel(String filePath,String abstractId,List<T> attributes) throws IOException {
+		OutputHandler output = new OutputHandler(abstractId);
+		output.exportExcel(filePath, attributes);
+		return 0;
+	}
+
 	
 	//角色录入抽象类，（自动根据角色来注入审核状态）
 	//实现该方法，在录入所需数据（dao.add）前调用setExameStateOfEntering方法来为记录注入审核状态

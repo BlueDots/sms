@@ -7,12 +7,41 @@ import org.springframework.stereotype.Component;
 
 import jxau.sms.anping.po.ClassInfo;
 import jxau.sms.anping.po.ScholarShip;
+import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.lyx.po.RoleInfo;
 
 @Component("anpingServiceTools")
 public class ServiceTools {
+	/**
+	 * 测试学生是不是在存在这个班级中
+	 * anping
+	 * TODO
+	 * 下午10:13:18
+	 * @return
+	 */
+	public String checkStudentIsInDataBase(List<ScholarShip> scholarShips,List<StuBasicInfoVO> student){
+		String result =null;
+		
+		for(ScholarShip ship :scholarShips){
+			
+			if(!this.checkStudentIsInList(ship.getStudent().getStudentNo(), student)){
+				 result = "学号为:"+ship.getStudent().getStudentNo()+"不存在班级中";
+				 break;
+			 }
+		}
+		return result;
+	}
 	
-
+	private boolean checkStudentIsInList(String studentNo,List<StuBasicInfoVO> student){
+		boolean flag = false;
+		for(StuBasicInfoVO stu:student){
+			if(studentNo.equals(stu.getStudentNo())){
+				flag = true;
+			 }
+		}
+		return flag;
+	}
 
 	/**
 	 * 判断学号是否重复了 anping TODO 下午7:06:23

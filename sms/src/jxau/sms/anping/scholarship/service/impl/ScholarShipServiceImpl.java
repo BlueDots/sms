@@ -18,6 +18,8 @@ import jxau.sms.anping.po.ScholarShip;
 import jxau.sms.anping.service.ScholarShipService;
 import jxau.sms.anping.util.ServiceTools;
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl;
+import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
@@ -64,14 +66,8 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 
 		
 		// 获取第一个学生的信息用来检测是不是和传过来班级一致
-		HashMap<String, Object> params = new HashMap<String, Object>(1);
-		params.put("stuNoOrName", scholarShips.get(0).getStudent()
-				.getStudentNo());
-		PageVo pagevo = new PageVo();
-		pagevo.setCurrentPage(1);
-		List<StuBasicInfo> students = studentService.searchByAccurate(params,
-				pagevo, -1);
-		StuBasicInfo student = students.get(0);
+		
+		StuBasicInfo student = studentService.getOneById(scholarShips.get(0).getStudent().getStudentNo());
 		
 
 		//首先核对是不是班主任。如果是的话，那么需要判断是不是有修改这个班级权利
@@ -92,9 +88,16 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 		
 	    
 		//判断学号是不是都是一个班的
+		List<StuBasicInfoVO> stuBasics = studentService.getListsByCollegeAndClassName(college, className);
 		
+		String checkStudentIsInClass = tools.checkStudentIsInDataBase(scholarShips, stuBasics);
 		
+		if(checkStudentIsInClass==null){
+			throw new ParameterNotMatchException(checkStudentIsInClass);
+		}
 
+		//终于可以添加了
+		//,,,,
 	}
 
 	@Override
@@ -208,7 +211,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	}
 
 	@Resource(name = "stuBasicInfoServiceImpl")
-	public void setStudentService(GlobalServiceInterface studentService) {
+	public void setStudentService(StuBasicInfoServiceImpl studentService) {
 		this.studentService = studentService;
 	}
 
@@ -239,7 +242,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 
 	private ServiceTools tools;
 	private Dao dao;
-	private GlobalServiceInterface studentService;
+	private StuBasicInfoServiceImpl studentService;
 	private CollegeMajorClassInterface classMajorService;
 	
 
@@ -252,6 +255,6 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	
- 
 }

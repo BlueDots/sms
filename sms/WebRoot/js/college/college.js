@@ -1,20 +1,10 @@
 
-//点击查看审核详细信息
-function verifyDetail(id) {
-	var verifyObj = document.getElementById(id);
-	if(verifyObj.style.display == "block") {
-		verifyObj.style.display = "none";
-	}
-	else {
-		verifyObj.style.display = "block";
-	}
-}
 
-//多选框全选、反选
-function selectAllAndReverse() {
+//多选框全选、反选(id 为id 的table下的多选框)
+function selectAllAndReverse(id) {
 
-	var checkboks = $("input");
-	if(!isAllSelected() && isSelected()) {
+	var checkboks = $("#"+id+" input");
+	if(!isAllSelected(checkboks) && isSelected(checkboks)) {
 
 		for (var i = 1; i <checkboks.length; i++) {
 			if(checkboks[i].type == "checkbox") {
@@ -31,9 +21,8 @@ function selectAllAndReverse() {
 	}
 }
 //判断除第一个多选框外其他是否都被选中
-function isAllSelected() {
+function isAllSelected(checkboks) {
 	var flag = true;
-	var checkboks = $("input");
 	for (var i = 1; i <checkboks.length; i++) {
 		if(checkboks[i].type == "checkbox" && checkboks[i].checked == false) {
 			flag = false;
@@ -44,10 +33,9 @@ function isAllSelected() {
 	return flag;
 }
 //判断第一个多选框是否被选中
-function isSelected() {
-	var objectC = document.getElementById("check1");
+function isSelected(checkboks) {
 	var flag = false;
-	if(objectC.checked) flag = true;
+	if(checkboks[0].checked) flag = true;
 	else flag = false;
 	return flag;
 }

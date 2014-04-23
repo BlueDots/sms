@@ -91,7 +91,7 @@ public class AdvanceInfoTest {
 		//stuAdvInfos.add(stuAdvInfo);
 		dao.batchDelete("jxau.sms.advanceinfo.dao.deleteAdvInfo", awardNos);
 	}
-	
+	@Test
 	public void testSelectService(){
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		GlobalServiceInterface globalServiceInterface = (GlobalServiceInterface) applicationContext.getBean("advanceServiceImple");

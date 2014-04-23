@@ -101,17 +101,11 @@
 	$(document).ready(function() {
 	
 		$("#accurateSearch").click(function() {
-		   window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=1";
+		   window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826&currentPage=1";
 		});
 		
 		$("#nextPage").click(function() {
-		   var currentPage = <s:property value="#pageVo.currentPage"/> + 1;	
-		   var pageNum = <s:property value="#pageVo.pageNum"/>;
-		   if(currentPage<=pageNum){
-		   		window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage="+currentPage;
-		   }else{
-		   		alert("已经是最后一页");
-		  	}
+		   window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=2";
 		  });
 		$("#tableID").chromatable({
 			width : "100%",

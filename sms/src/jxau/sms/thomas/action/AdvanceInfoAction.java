@@ -25,7 +25,7 @@ public class AdvanceInfoAction extends ActionSupport{
 	
 		private AdvanceServiceImple advanceServiceImple;
 		private StuAdvVo stuAdvVo;
-		private int currentPage;
+		private int currentPage = 1;
 		private PageVo pageVo = new PageVo();
 		private Map<String, Object> session = ActionContext.getContext()
 				.getSession();	// 获取strtus2的request
@@ -58,6 +58,9 @@ public class AdvanceInfoAction extends ActionSupport{
 		
 		public void setCurrentPage(int currentPage){
 			this.currentPage = currentPage;
+		}
+		public int getCurrentPage(){
+			return currentPage;
 		}
 
 }

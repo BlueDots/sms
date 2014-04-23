@@ -55,6 +55,7 @@ public class VirtualLogin implements Filter{
 		}
 		
 		
+ 
 		if(session.getAttribute("teacher")==null){
 			TecBasicInfo teacher = new TecBasicInfo();
 			//先虚拟的存储这点东西
@@ -71,6 +72,7 @@ public class VirtualLogin implements Filter{
 		    System.out.println("以模拟教师登陆");
 		}
 
+ 
 		chain.doFilter(request, response);
 	}
 

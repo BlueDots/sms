@@ -212,6 +212,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         		and className=#{className}
         	</if>
             limit #{start},#{nums}
+            
 	</select>	
 	
 	<!--查询待审核信息人数  以班级为组-->
@@ -231,6 +232,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    <if test="exameState != null">
         		and exameState=#{exameState}
         	</if>
+        	order by className
         	limit #{start},#{nums}
 	</select>	
 	

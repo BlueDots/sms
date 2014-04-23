@@ -20,7 +20,12 @@
             <result name="success">
             	/files/college/dept_basicInfo.jsp
             </result>
-        </action>          
+        </action>    
+        <action name="StuBasicInfoVerifyAction" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
+            <result name="success">
+            	/files/college/dept_basicInfo/dept_basicInfo_verify.jsp
+            </result>
+        </action>               
     </package> 
     
     

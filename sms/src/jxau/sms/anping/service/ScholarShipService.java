@@ -29,6 +29,8 @@ public interface ScholarShipService {
 	public  ScholarShip  searchOneByTerm(String studentNo,
 			String term);
 	
-	 public List<WaitCheckVo>  getAllWaitCheckData(List<RoleInfo> infos,TecBasicInfo teacher);
+	public List<WaitCheckVo>  getAllWaitCheckData(List<RoleInfo> infos,TecBasicInfo teacher);
+	 
+	 
  
 }

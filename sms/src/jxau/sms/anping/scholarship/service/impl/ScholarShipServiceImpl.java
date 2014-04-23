@@ -290,6 +290,8 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	public List<ScholarShip> Search(Map<String, Object> param,
 			PageVo pageVo, int type) {
 		
+		
+		
 		param.put("firstIndex", pageVo.getFirstIndex());
 		param.put("size",pageVo.getSize() );
 		List<ScholarShip> scholars =  dao.select(namespace+"selectScholarShipByCondition", param);
@@ -421,7 +423,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	@Override
 	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
 			String roleId, String level) {
-		// TODO Auto-generated method stub
+	
 		return 0;
 	}
 

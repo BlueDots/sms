@@ -5,6 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -76,7 +77,8 @@
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-										 <form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher" id="collegeList" method="post">
+										 <form action="<%=basePath%>scholarShip/scholarShip!showSchloarShipForTeacher" id="collegeList" method="post">
+													 
 													 <input type="submit" value="查询" id="accurateSearch">
 												</form>
 												 
@@ -138,8 +140,10 @@
 				</tr>
 				<tr>
 					<td>
+				
+					
 						<div style="display: block">
-							<table id="subtree1" style="DISPLAY: " width="100%" border="0"
+							<table id="subtree1" style="DISPLAY: <s:if test="%{#request.pageVo=null}">none</s:if>;" width="100%" border="0"
 								cellspacing="0" cellpadding="0">
 								<tr>
 									<td class="CPanel">
@@ -148,9 +152,9 @@
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：奖学金页面<span style="position:relative;left:950px"><a href="dept_scholarshipAssess/dept_scholarshipAssess_verify.html"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置：<a href="<%=basePath%>/files/college/dept_scholarshipAssess.jsp">首页</a><span style="position:relative;left:950px"><a href="dept_scholarshipAssess/dept_scholarshipAssess_verify.html"><font color = "red" >待审核信息</font></a>(3)</span>
 													</th>
-													</th>
+													 
 												</tr>
 												<tr id="editMsg"  style="display:none">
 													<td  class="CPanel" align="center">
@@ -219,6 +223,8 @@
 												</tr>												
 												<tr id="allbasicMsg">
 													<td class="CPanel">
+														
+														
 														<table width="100%" border="0" align="center"
 															cellpadding="0" cellspacing="0">
 															
@@ -226,7 +232,7 @@
 															  <td height="40" class="font42"><table width="100%" border="0" cellpadding="4"
 																		cellspacing="1" bgcolor="#464646" class="newfont03">
                                                             <tr class="CTitle">
-                                                                 <td height="22" colspan="24" align="center"
+                                                                 <td height="22" colspan="26" align="center"
 																				style="font-size: 16px"> 奖学金信息表 </td>
                                                                 </tr>
                                                                 <tr bgcolor="#EEEEEE" align = "center">
@@ -239,7 +245,8 @@
                                                                   <td colspan="4">美育素质测评（15%）</td>
                                                                   <td colspan="2" rowspan="2">综合测评</td>
                                                                   <td width="2%" rowspan="3"> 奖学金等级</td>
-                                                                  <td width="2%" rowspan="3">审核</td>
+                                                                  <td width="2%" rowspan="3">状态</td>
+                                                                   <td width="2%" rowspan="3">备注</td>
                                                                 </tr>
                                                                 <tr bgcolor="#EEEEEE" align = "center">
                                                                   <td width="4%" rowspan="2">基准分</td>
@@ -264,39 +271,43 @@
                                                                   <td width="7%">公选课惩罚分</td>
                                                                   <td width="2%">总得分</td>
                                                                   <td width="4%">排名</td>
+                                                                  
                                                                 </tr>
+                                                             <s:iterator value="#request.scholars">
                                                                 <tr bgcolor="#FFFFFF" align = "center">
                                                                   <td><input type="checkbox" /></td>
-                                                                  <td><a href="#" onclick="">20101428</a> </td>
-                                                                  <td> 陈鹏 </td>
-                                                                  <td >16 </td>
+                                                                  <td><a  onclick=""><s:property value="student.studentNo"/></a> </td>
+                                                                  <td> <s:property value="student.studentName"/></td>
+                                                                  <td ><s:property value="baseScore"/></td>
+                                                                  <td><s:property value="awardScore"/></td>
+                                                                  <td><s:property value="punishScore"/></td>
+                                                                  <td><s:property value="moralQualityAssessmentScore"/></td>
+                                                                  <td><s:property value="lessonScore"/></td>
                                                                   <td>0</td>
-                                                                  <td>0</td>
-                                                                  <td>16</td>
-                                                                  <td>51</td>
-                                                                  <td>2</td>
-                                                                  <td>1.2</td>
-                                                                  <td></td>
-                                                                  <td>52.20</td>
-                                                                  <td>2</td>
-                                                                  <td>2</td>
-                                                                  <td>2</td>
-                                                                  <td>6</td>
-                                                                  <td>10</td>
-                                                                  <td>6</td>
-                                                                  <td>6</td>
-                                                                  <td>22</td>
-                                                                  <td>80.20</td>
-                                                                  <td>1</td>
-                                                                  <td>一等</td>
-                                                                  <td>院级审核通过</td>
+                                                                  <td><s:property value="innovateScore"/></td>
+                                                                  <td><s:property value="skillsScore"/></td>
+                                                                  <td><s:property value="qualityScore"/></td>
+                                                                  <td><s:property value="sportScore"/></td>
+                                                                  <td><s:property value="physiqueScore"/></td>
+                                                                  <td><s:property value="sportMatchScore"/></td>
+                                                                  <td><s:property value="sportQualityTotalScore"/></td>
+                                                                  <td><s:property value="manageScore"/></td>
+                                                                  <td><s:property value="cultureScore"/></td>
+                                                                  <td><s:property value="mediaScore"/></td>
+                                                                  <td><s:property value="serviceScore"/></td>
+                                                                  <td><s:property value="totalScore"/></td>
+                                                                  <td><s:property value="totalScoreRank"/></td>
+                                                                  <td><s:property value="exameState"/></td>
+                                                                  <td><s:property value="rank"/></td>
+  																	<td><s:property value="remarks"/></td>
                                                                 </tr>
-															</tr>
+                                                                </s:iterator>
+															
 														</table>
 														<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="6">
-																	<img src="../../images/spacer.gif" width="1" height="1" />
+																	<img src="<%=basePath%>images/spacer.gif" width="1" height="1" />
 																</td>
 															</tr>
 															<tr>
@@ -306,15 +317,24 @@
 																		<tr>
 																			<td width="50%">
 																				共
-																				<span class="right-text09">5</span> 页 | 第
-																				<span class="right-text09">1</span> 页
+																				 
+																				<span class="right-text09"><s:property value="#request.pagevo.pageNum"/></span> 页 | 第
+																				<span class="right-text09"><s:property value="#request.pagevo.currentPage"/></span> 页
 																			</td>
 																			<td width="49%" align="right">
-																				[
-																				<a href="#" class="right-font08">首页</a> |
-																				<a href="#" class="right-font08">上一页</a> |
-																				<a href="#" class="right-font08">下一页</a> |
-																				<a href="#" class="right-font08">末页</a>] 
+																		<form action="<%=basePath%>scholarShip/scholarShip!showSchloarShipForTeacher" method="post">
+																				<input type="hidden"	id="currentPage" name="currentPage">
+																				<input type="hidden"	 name="department" value="<s:property value="#request.params['college']"/>">
+																				<input type="hidden"	 name="major" value="<s:property value="#request.params['major']"/>">
+																				<input type="hidden"	 name="className" value="<s:property value="#request.params['className']"/>">
+																				<input type="hidden"	 name="term" value="<s:property value="#request.params['term']"/>">
+																				 
+																			 	[
+																				<a onclick="$('#currentPage').val(1);$(this).closest('form').submit();" class="right-font08">首页</a> |
+																				<a onclick="$('#currentPage').val(<s:property value="#request.pagevo.currentPage-1"/>);$(this).closest('form').submit();"  class="right-font08">上一页</a> |
+																				<a  onclick="$('#currentPage').val(<s:property value="(#request.pagevo.currentPage+1)<#request.pagevo.pageNum?(#request.pagevo.currentPage+1):#request.pagevo.pageNum"/>);$(this).closest('form').submit();" class="right-font08">下一页</a> |
+																				<a onclick="$('#currentPage').val(<s:property value="#request.pagevo.pageNum"/>);$(this).closest('form').submit();" class="right-font08">末页</a>] 
+																			</form>
 																			</td>
 																			 
 																		</tr>
@@ -334,7 +354,7 @@
 					</td>
 				</tr>
 			</table>
-		</form>
+	 
     	<div id="StuPastAdvInfoDiv" style="display: none">
         	<h2>评优评先<a href="#" id="ClosePastAdvInfo">关闭</a></h2>
         	<div class="form">
@@ -454,6 +474,7 @@
 <script src="<%=basePath%>js/college/college.js"></script>
 <script src="<%=basePath%>js/college/entry.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/util/loadCollegeClass.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/college/xionganping_schloarship.js"></script>
 <script type="text/javascript">
    
    $(document).ready(function(){ 

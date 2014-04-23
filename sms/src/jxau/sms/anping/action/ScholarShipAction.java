@@ -41,19 +41,19 @@ public class ScholarShipAction extends ActionSupport {
 		int currentPage;
 		Map<String, Object> params = new HashMap<String, Object>(6);
 
-		if (deparments != null && deparments[0] != null) {
+		if (deparments != null && deparments[0] != null&&!deparments[0].equals("-1")&&!deparments[0].equals("")) {
 			params.put("college", deparments[0]);
 		}
 
-		if (major != null && major[0] != null) {
+		if (major != null && major[0] != null && !major[0].equals("-1")&&!major[0].equals("")) {
 			params.put("major", major[0]);
 		}
 
-		if (className != null && className[0] != null) {
+		if (className != null && className[0] != null && !className[0].equals("-1")&&!className[0].equals("")) {
 			params.put("className", className[0]);
 		}
 
-		if (student != null && student[0] != null) {
+		if (student != null && student[0] != null&& !student[0].equals("输入学号或者姓名")) {
 			try {
 				Integer.parseInt(student[0]);
 				params.put("studentNo", student[0]);
@@ -73,15 +73,18 @@ public class ScholarShipAction extends ActionSupport {
 
 		PageVo pageVo = new PageVo();
 		pageVo.setCurrentPage(currentPage);
-		pageVo.setCount(6);
+		pageVo.setSize(6);
 		List<ScholarShip> scholars=null;
 		try {
 			 scholars= scholarShipService.Search(params, pageVo, 0);
 		} catch (Exception e) {
 			 request.put("error",e.getMessage() );
+			 result="error";
 		}
+		
+		 
 		request.put("scholars", scholars);
-		request.put("pageVo",pageVo );
+		request.put("pagevo",pageVo );
 		request.put("params", params);
 		return result;
 	}

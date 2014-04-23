@@ -122,4 +122,11 @@ public class ScholarShipServiceImpl extends AbstractionService implements Schola
 		
 	}
 
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

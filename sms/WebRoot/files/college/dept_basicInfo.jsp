@@ -63,6 +63,9 @@
 		getStuBasicInfoList(1);
 	});
    	
+   	//得到待审核人数
+   	getWaitingForNum();
+   	
  	//getStuBasicInfoList(1);
 	$("#tableOfShowStuBasicInfoLists").chromatable({
 		width: "100%",
@@ -163,7 +166,7 @@
 											<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：学生基本信息<span style="position:relative;left:950px"><a href="<%=basePath%>files/college/dept_basicInfo/dept_basicInfo_verify.jsp"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置：学生基本信息<span style="position:relative;left:950px"><a href="StuBasicInfo/StuBasicInfoVerifyAction!gainWaitingForClassName?currentPage=1"><font color = "red" >待审核信息</font></a>(<span id="verifyNum">0</span>)</span>
 													</th>
 												</tr>
 												<tr id="editMsg"  style="display:none">
@@ -183,7 +186,7 @@
 																			</td>
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align = "center">
-																			<th width="1%" >
+																			<th width="2%" >
 																				<center>照片</center>
 																			</th>																				
 																			<th width="3%">
@@ -252,10 +255,10 @@
 																		cellspacing="1" bgcolor="#464646" class="demo" id="tableOfShowStuBasicInfoLists" >
 																			
 																		<tr bgcolor="#6795B4" align = "center" >
-																			<td width="2%"  >
-																				<input id = "check1" name="checkbox11" type="checkbox" value="checkbox" onclick = "selectAllAndReverse()"/>
+																			<td width="1%"  >
+																				<input id = "check1" name="checkbox11" type="checkbox" value="checkbox" onclick = "selectAllAndReverse('tableOfShowStuBasicInfoLists')"/>
 																			</td>
-																			<td width="2%" >
+																			<td width="3%" >
 																				<center>照片</center>
 																			</td>																				
 																			<td width="4%">
@@ -270,7 +273,7 @@
 																			<td width="5%">
 																				<center>专业</center>
 																			</td>
-																			<td width="5%">
+																			<td width="4%">
 																				<center>班级</center>
 																			</td>
 																			<td width="3%">
@@ -285,7 +288,7 @@
 																			<td width="5%">
 																				<center>政治面貌</center>
 																			</td>
-																			<td width="7%">
+																			<td width="6%">
 																				<center>身份证号码</center>
 																			</td>
 																			<td width="4%">
@@ -609,7 +612,7 @@
     	</div>    			
 	</body>
 
-<script type="text/javascript" src="<%=basePath%>/js/college/collegeSkip.js">
+<script type="text/javascript" src="<%=basePath%>/js/college/collegeJSON.js">
 </script>
 <script type="text/javascript" src="<%=basePath%>/js/util/loadCollegeClass.js">
 </script>

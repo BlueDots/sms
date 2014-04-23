@@ -24,6 +24,8 @@ public class ScholarShipSelectTest {
 		String c = "20111499";
 		System.out.println(c.compareTo(b));
 	}
+	
+	
 	@Test
 	public void testAwardRank(){
 		Map<String,Object> params = new HashMap<String,Object>(3);
@@ -38,8 +40,8 @@ public class ScholarShipSelectTest {
 		Map<String,Object> params = new HashMap<String,Object>(3);
 		params.put("college", "软件学院");
 		params.put("className", "1102");
-		params.put("term", "201402");
-		dao.selectOne(namespace+"getMaxStudentNoInClass", params);
+		params.put("term", "201401");
+		dao.select(namespace+"getStudentNoInClass", params);
 	}
 	
 	@Test

@@ -9,6 +9,8 @@ import jxau.sms.anping.po.ScholarShip;
 import jxau.sms.anping.scholarship.service.impl.ScholarShipServiceImpl;
 import jxau.sms.anping.service.ScholarShipService;
 import jxau.sms.chenjiang.po.StuBasicInfo;
+import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
 import jxau.sms.qing.po.Student;
 
 import org.junit.Test;
@@ -18,6 +20,74 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ScholarShipServiceTest {
 	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	ScholarShipServiceImpl scholarShipService = (ScholarShipServiceImpl) context.getBean("scholarShip");
+	
+	/**
+	 * 测试批量增加，需要添加的数据都市一个班级的
+	 * anping
+	 * TODO
+	 * 下午4:00:25
+	 */
+	@Test
+	public void testSchloarShipUpdate(){
+		List<ScholarShip> scholarShips = new ArrayList<ScholarShip>();
+		ScholarShip scholarShip  = new ScholarShip();
+		scholarShip.setBaseScore(99);
+		StuBasicInfo  basicInfo =  new StuBasicInfo();
+		basicInfo.setStudentNo("20111431");
+		scholarShip.setStudent(basicInfo);
+		scholarShip.setTerm("201403");
+		
+		scholarShips.add(scholarShip);
+		TecBasicInfo tea = new TecBasicInfo();
+		tea.setTeacherNo("1234");
+		List<RoleInfo> roleInfos = new ArrayList<>();  
+		RoleInfo  roleInfo  = new RoleInfo();
+		 roleInfo.setRoleName("班主任");
+		roleInfos.add(roleInfo);
+		scholarShipService.updateSchloarShip(scholarShips, tea, roleInfos);
+	}
+	
+	@Test
+	public void testServiceAddSchloarShip(){
+		List<ScholarShip> scholarShips = new ArrayList<ScholarShip>();
+		ScholarShip scholarShip  = new ScholarShip();
+		scholarShip.setBaseScore(20);
+		scholarShip.setLessonScore(20);
+		StuBasicInfo  basicInfo =  new StuBasicInfo();
+		basicInfo.setStudentNo("20111429");
+		scholarShip.setStudent(basicInfo);
+		scholarShip.setExameState("院级审核中");
+		ScholarShip scholarShip2  = new ScholarShip();
+		scholarShip2.setBaseScore(20);
+		scholarShip2.setLessonScore(20);
+		scholarShip2.setExameState("院级审核中");
+		StuBasicInfo  basicInfo2 =  new StuBasicInfo();
+		basicInfo2.setStudentNo("20111430");
+		scholarShip2.setStudent(basicInfo2);
+		
+		ScholarShip scholarShip3  = new ScholarShip();
+		scholarShip3.setBaseScore(20);
+		scholarShip3.setLessonScore(20);
+		scholarShip3.setExameState("院级审核中");
+		StuBasicInfo  basicInfo3 =  new StuBasicInfo();
+		basicInfo3.setStudentNo("20111431");
+		scholarShip3.setStudent(basicInfo3);
+		
+		
+		
+		scholarShips.add(scholarShip);
+		scholarShips.add(scholarShip2);
+		scholarShips.add(scholarShip3);
+		TecBasicInfo tea = new TecBasicInfo();
+		tea.setTeacherNo("1234");
+		List<RoleInfo> roleInfos = new ArrayList<>();  
+		RoleInfo  roleInfo  = new RoleInfo();
+		 roleInfo.setRoleName("院级工作人员");
+		roleInfos.add(roleInfo);
+		System.out.println(scholarShips.size());
+		scholarShipService.addSchloarShip(scholarShips, tea, roleInfos,"软件学院", "1102","201403");
+		
+	}
 	
 	@Test
 	public void testServiceCheckStudentNoIsChongFu(){
@@ -50,8 +120,8 @@ public class ScholarShipServiceTest {
 	 */
 	@Test
 	public void testSelectScholarShipSelectSchloarShipByStudentNoAndTerm(){
-		ScholarShip schloarShip = scholarShipService.searchOneByTerm("20111429","201401");
-		System.out.println(schloarShip.getStudent().getStudentNo());
+		ScholarShip schloarShip = scholarShipService.searchOneByTerm("20111429","201404");
+		System.out.println(schloarShip.getStudent().getStudentNo()+schloarShip.getBaseScore());
 	}
 	
 	

@@ -130,6 +130,7 @@ where 1=1 and teacherNo='1234' and teacherName='jack';
 
 --update教师属于那个部门
 
+--update class_info set teacherNo='1234' where  classNo='21050100200903';
 --update class_info set teacherNo='1234' where  classNo='11050100200908';
 --update class_info set teacherNo='5678' where  classNo='11050101201013';
      

@@ -9,6 +9,7 @@ import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.po.ScholarShip;
 
 import jxau.sms.commom.vo.PageVo;
+import jxau.sms.commom.vo.WaitCheckVo;
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.po.TecBasicInfo;
 
@@ -26,5 +27,7 @@ public interface ScholarShipService {
  
 	public  ScholarShip  searchOneByTerm(String studentNo,
 			String term);
+	
+	 public List<WaitCheckVo>  getAllWaitCheckData(List<RoleInfo> infos);
  
 }

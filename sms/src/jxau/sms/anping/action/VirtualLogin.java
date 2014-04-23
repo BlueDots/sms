@@ -65,14 +65,8 @@ public class VirtualLogin implements Filter{
 			RoleInfo  role  = new RoleInfo();
 		    role.setRoleName("班主任");
 		    
-		    RoleInfo  role3  = new RoleInfo();
-		    role3.setRoleName("院级工作人员");
-		    
-		    List<RoleInfo> roles = new ArrayList<RoleInfo>(2);
-		    roles.add(role);
-		    roles.add(role3);
-		
-		    roles.add(role);
+		     List<RoleInfo> roles= new ArrayList<RoleInfo>(1);
+		     roles.add(role);
 		    session.setAttribute("roles", roles);
 		    System.out.println("以模拟教师登陆");
 		}

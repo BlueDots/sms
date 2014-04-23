@@ -76,7 +76,7 @@ insert into purview_info values(34,3,'审核教师基本信息','/auditTeacherIn
 insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoList');
 
 --teacher_role
-insert into teacher_role values('1234',4);
+insert into teacher_role values('1234',5);
 insert into teacher_role values('1234',10);
 insert into teacher_role values('5678',2);
 insert into teacher_role values('5678',3);
@@ -98,6 +98,15 @@ insert into role_purview values(4,28);
 insert into role_purview values(4,29);
 insert into role_purview values(4,30);
 insert into role_purview values(4,31);
+
+insert into role_purview values(5,2);
+insert into role_purview values(5,3);
+insert into role_purview values(5,4);
+insert into role_purview values(5,27);
+insert into role_purview values(5,28);
+insert into role_purview values(5,29);
+insert into role_purview values(5,30);
+insert into role_purview values(5,31);
 
 insert into role_purview values(3,2);
 insert into role_purview values(3,5);

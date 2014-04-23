@@ -12,6 +12,10 @@ public class PageVo {
 	
 	private int firstIndex;
 
+	public String toString() {
+		return "count:"+count+",size:"+size+",currentPage:"+currentPage+",pageNum:"+pageNum;
+	}
+	
 	public int getFirstIndex() {
 		return (this.getCurrentPage() - 1) * this.getSize();
 	}
@@ -42,6 +46,10 @@ public class PageVo {
 				/ this.getSize() : this.count / this.getSize() + 1);
 	}
 
+	public long getCount() {
+		return this.count;
+	}
+	
 	public int getPageNum() {
 		return pageNum;
 	}

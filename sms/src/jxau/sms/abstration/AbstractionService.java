@@ -111,7 +111,7 @@ public abstract class AbstractionService {
 		moduleStateOperation.subTableStateUpdate(ids, subState, remarks, subId);
 	}
 	
-<<<<<<< HEAD
+
 	public <T> List<T> inputExcel(String abstractId,List<T> attributes,String filePath) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		InputHandler input = new InputHandler(abstractId);
 		return input.setAttributes(attributes, filePath);
@@ -126,7 +126,7 @@ public abstract class AbstractionService {
 		output.exportExcel(filePath, attributes);
 		return 0;
 	}
-=======
+
 	
 	//角色录入抽象类，（自动根据角色来注入审核状态）
 	//实现该方法，在录入所需数据（dao.add）前调用setExameStateOfEntering方法来为记录注入审核状态
@@ -166,5 +166,4 @@ public abstract class AbstractionService {
 		
 	}
 	
->>>>>>> f31ed4e78f664d4a15cae297d7490fe2b7be40d3
 }

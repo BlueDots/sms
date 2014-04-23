@@ -84,12 +84,39 @@ public class StuBasicInfoAction extends ActionSupport {
 		
 		
 		if(entryLists!=null) {
-			stuBasicInfoServiceImpl.add(StuBasicInfo.class, entryLists);
+			stuBasicInfoServiceImpl.roleEntry(StuBasicInfo.class, entryLists, "01", "3", null);
 			entryStuBasicInfos = entryLists;
 		}
 		return SUCCESS;	
 	}
 	
+	public String gainWaitingForNum() {
+		waitingForNum = stuBasicInfoServiceImpl.getWaitingVerifyNums("01", "3");
+		return SUCCESS;
+	}
+	
+	public String gainWaitingForClassName() {
+		
+		Map<String, Object> params = new HashMap<>();
+		params.put("exameState", "院级审核中");
+		pageVo = new PageVo();
+		pageVo.setSize(5);
+		pageVo.setCurrentPage(currentPage);
+		waitingForClassName = stuBasicInfoServiceImpl.getWaitForClassName(params, pageVo);
+		//System.out.println(pageVo.getCount());
+		return SUCCESS;
+	}
+	
+	public String gainWaitingForLists() {
+		Map<String, Object> params = new HashMap<>();
+		params.put("exameState", "院级审核中");
+		params.put("className", className);
+		pageVo = new PageVo();
+		pageVo.setSize(8);
+		pageVo.setCurrentPage(currentPage);
+		waitingForLists = stuBasicInfoServiceImpl.getWaitingForLists(params, pageVo);
+		return SUCCESS;
+	}
 	
 	public String loadTeacher() {
 		TecBasicInfo teacher = (TecBasicInfo) session.get("teacher");
@@ -101,7 +128,6 @@ public class StuBasicInfoAction extends ActionSupport {
 	//查询学生基本信息
 	@JSON(serialize=false)
 	public String queryStuBasicInfoLists() {
-		System.out.println("ssssssssssssssssssssssssssss");
 		String[] college=(String[])params.get("college");
 		String[] major = (String[])params.get("major");
 		String[] className = (String[])params.get("className");
@@ -123,6 +149,7 @@ public class StuBasicInfoAction extends ActionSupport {
 		else params.put("stuNoOrName",stuNoOrName[0]);
 	   	
 		
+		pageVo = new PageVo();
 	   	//设置当前页数
 	   	pageVo.setCurrentPage(currentPage);
 	   	
@@ -137,7 +164,8 @@ public class StuBasicInfoAction extends ActionSupport {
 	private Map<String, Object> parameters = ActionContext.getContext()
 			.getParameters();
 	
-	private PageVo pageVo= new PageVo();
+	//当前分页信息
+	private PageVo pageVo;
 	//学生基本信息VO列表
 	private List<StuBasicInfoVO> stuBasicInfoVOlists=null;
 	
@@ -148,8 +176,40 @@ public class StuBasicInfoAction extends ActionSupport {
 
 	//当前页面
 	private int currentPage = 0;
-	//学号
+	//学号(学号验证)
 	private long studentNo;
+	//学号是否存在
+	private Boolean studentNoIsExist = true;
+	//待审核数量
+	private int waitingForNum;
+	//待审核班级列表
+	private List<String> waitingForClassName;
+	//待审核班级名称
+	private String className;
+
+	//待审核信息列表
+	private List<StuBasicInfoVO> waitingForLists;
+	
+	private Map<String, Object> session = ActionContext.getContext()
+			.getSession();
+	private Map<String, Object> params = ActionContext.getContext()
+			.getParameters();	
+
+	public int getWaitingForNum() {
+		return waitingForNum;
+	}
+	
+	public List<StuBasicInfoVO> getWaitingForLists() {
+		return waitingForLists;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}	
+	
+	public List<String> getWaitingForClassName() {
+		return waitingForClassName;
+	}
 	
 	public Boolean getStudentNoIsExist() {
 		return studentNoIsExist;
@@ -158,24 +218,10 @@ public class StuBasicInfoAction extends ActionSupport {
 	public void setStudentNo(long studentNo) {
 		this.studentNo = studentNo;
 	}
-
-	//学号是否存在
-	private Boolean studentNoIsExist = true;
-	
-	private Map<String, Object> session = ActionContext.getContext()
-			.getSession();
-	private Map<String, Object> params = ActionContext.getContext()
-			.getParameters();
-	
-	
+		
 	public int getCurrentPage() {
 		return currentPage;
 	}
-
-	public void setPageVo(PageVo pageVo) {
-		this.pageVo = pageVo;
-	}
-
 
 	
 	public PageVo getPageVo() {

@@ -252,3 +252,13 @@ function setCollegeMajorClassStuNoOrName(college,major,className,stuNoOrName) {
 	g_className=className;
 	g_stuNoOrName=stuNoOrName;
 }
+
+function getWaitingForNum() {
+	var num;
+	var spanObj = document.getElementById("verifyNum");
+	$.ajaxSettings.async = false;
+	$.getJSON("StuBasicInfoJSON/StuBasicInfoActionJSON!gainWaitingForNum",function(data) {
+		num = data.waitingForNum;
+	});
+	spanObj.innerText = num;
+}

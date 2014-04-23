@@ -46,6 +46,31 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		return null;
 	}
 
+	public jxau.sms.chenjiang.po.StuBasicInfo getOneById(String studentNo) {
+		List<StuBasicInfoVO> list = null;
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("stuNoOrName", studentNo);
+		PageVo pageVo = new PageVo();
+		list = this.searchByAccurate(params, pageVo, 0);
+		if(list==null)
+			throw new ParamWrongException("查无此人！");
+		return list.get(0).getStuBasicInfo();
+	}
+	
+	public List<StuBasicInfoVO> getListsByCollegeAndClassName(String college,String className) {
+		List<StuBasicInfoVO> list = null;
+		Map<String,Object> params = new HashMap<String,Object>();
+		params.put("college",college);
+		params.put("className", className);
+		PageVo pageVo = new PageVo();
+		pageVo.setSize(100);
+		list = this.searchByAccurate(params, pageVo, 0);
+		if(list==null)
+			throw new ParamWrongException("查询结果为null！");
+		return list;
+	}
+	
+	
 	/**
 	 * 
 	 * @param param  你需要查询的条件

@@ -52,7 +52,22 @@ public class VirtualLogin implements Filter{
 
 			System.out.println("学生已经登陆账号为20111429，详细请见jxau.sms.anping.action.VirtualLogin");
 		}
-		
+		if(session.getAttribute("teacher")==null){
+			TecBasicInfo teacher = new TecBasicInfo();
+			//先虚拟的存储这点东西
+			teacher.setTeacherNo("1234");
+			teacher.setTeacherName("jack");
+			session.setAttribute("teacher",teacher);
+		    //虚拟的存储一点点角色
+			RoleInfo  role  = new RoleInfo();
+		    role.setRoleName("班主任");
+		    
+		    
+		     List<RoleInfo> roles= new ArrayList<RoleInfo>(1);
+		     roles.add(role);
+		    session.setAttribute("roles", roles);
+		    System.out.println("以模拟教师登陆");
+		}
 		
  
 		if(session.getAttribute("teacher")==null){

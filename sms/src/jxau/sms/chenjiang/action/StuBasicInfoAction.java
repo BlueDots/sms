@@ -59,6 +59,10 @@ public class StuBasicInfoAction extends ActionSupport {
 		String[] IDCard = (String[])params.get("IDCard");//idCard
 		String[] bankCard = (String[])params.get("bankCard");//银行卡号
 		
+		
+		String[] roleId = (String[])params.get("roleId");//角色编号
+		
+		System.out.println("roleId:"+roleId[0]);
 		//学生基本信息
 		List<StuBasicInfo> entryLists = null;
 		
@@ -84,7 +88,7 @@ public class StuBasicInfoAction extends ActionSupport {
 		
 		
 		if(entryLists!=null) {
-			stuBasicInfoServiceImpl.roleEntry(StuBasicInfo.class, entryLists, "01", "3", null);
+			stuBasicInfoServiceImpl.roleEntry(StuBasicInfo.class, entryLists, "01", roleId[0], null);
 			entryStuBasicInfos = entryLists;
 		}
 		return SUCCESS;	
@@ -151,8 +155,27 @@ public class StuBasicInfoAction extends ActionSupport {
 		TecBasicInfo teacher = (TecBasicInfo) session.get("teacher");
 		List<RoleInfo> roles = (List<RoleInfo>) session.get("roles");
 		
-		return SUCCESS;
+		RoleInfo role = roles.get(0);
+		int flag=0;
+		
+		if(role.getRoleName().equals("院级工作人员"))
+			flag = 3;
+		else if(role.getRoleName().equals("班主任")) 
+			flag = 2;
+		if(teacher!=null && flag==2){
+			session.put("roleId", 2);
+			return "tutor";
+		}
+		else if(teacher!=null && flag==3) {
+			session.put("roleId", 3);
+			return "college";
+		}
+		else {
+			session.put("roleId", 4);
+			return "school";
+		}
 	}
+	
 	
 	//查询学生基本信息
 	@JSON(serialize=false)
@@ -163,20 +186,17 @@ public class StuBasicInfoAction extends ActionSupport {
 		String[] stuNoOrName = (String[])params.get("stuNoOrName");
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		if(college==null||college[0]==null||college[0].equals("无")||college[0].trim().equals("")) {
-			params.put("college", null);
-		}
-		else params.put("college", college[0]);
-		if(major==null||major[0]==null||major[0].equals("全部")||major[0].trim().equals(""))
-			params.put("major", null);
-		else params.put("major", major[0]);
-		if(className == null||className[0]==null||className[0].equals("全部")||className[0].trim().equals(""))
-			params.put("className", null);
-		else params.put("className", className[0]);
-		if(stuNoOrName == null || stuNoOrName[0]==null||stuNoOrName[0].equals("输入学号或者姓名")||stuNoOrName[0].trim().equals(""))
-	   		params.put("stuNoOrName", null);
+		if(college!=null&&college[0]!=null&&!college[0].trim().equals(""))
+			params.put("college", college[0]);
+		if(major!=null&&major[0]!=null&&!major[0].trim().equals(""))
+			params.put("major", major[0]);
+		if(className != null&&className[0]!=null&&!className[0].trim().equals(""))
+			params.put("className", className[0]);
+		if(stuNoOrName == null||stuNoOrName[0]==null||stuNoOrName[0].equals("输入学号或者姓名")||stuNoOrName[0].trim().equals(""))
+			params.put("stuNoOrName",null);
 		else params.put("stuNoOrName",stuNoOrName[0]);
-	   	
+		System.out.println(params);
+		
 		
 		pageVo = new PageVo();
 	   	//设置当前页数

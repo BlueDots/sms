@@ -262,3 +262,42 @@ function getWaitingForNum() {
 	});
 	spanObj.innerText = num;
 }
+
+function updateStuBasicInfo() {
+	var checkedSelectedList = checkChooseCheck();
+	if(checkedSelectedList.length == 0) {
+		alert("请勾选要编辑的记录");
+		return;
+	}
+	
+	var ids = "";
+	for(var i=0;i<checkedSelectedList.length;i++){
+		if(checkedSelectedList[i].id != "check1")
+			ids+=checkedSelectedList[i].id+",";
+	}
+	
+	
+	
+	
+	
+}
+
+
+
+
+/*检测是否选择复选框 并返回选中的checkbox*/
+function checkChooseCheck(){
+	   var inputs = document.getElementsByTagName("input");
+	   //存放勾选的checkbox
+	   var checkedSelectedList = new Array();
+	   
+		for(var i=0;i<inputs.length;i++){
+		if(inputs.item(i).getAttribute("type") == "checkbox") {
+			if(inputs.item(i).checked == true && inputs.item(i).id !="check1") {
+				checkedSelectedList.push(inputs.item(i));
+			}  
+		}
+      }
+	  return  checkedSelectedList;
+} 
+

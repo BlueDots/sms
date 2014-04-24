@@ -1,9 +1,15 @@
 select * from stu_basic_info where exameState='软件1115';
 update stu_basic_info set exameState='院级审核中';
 
+select * from
+
 
 desc stu_basic_info;
 select * from dep_teacher;
+select * from class_info;
+update class_info set teacherNo = '1234' where classNo='11050100200901';
+update class_info set teacherNo = '1234' where classNo='11050100200902';
+
 
 delete from stu_basic_info where studentNo in ('20111556','20111557','20111558','20111559');
 

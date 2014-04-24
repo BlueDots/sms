@@ -8,6 +8,27 @@
           
     
     <package name="RoleManager" namespace="/" extends="struts-default">  
+        
+        <interceptors>
+        	<!-- 声明拦截器 -->
+        	<interceptor name="CheckPurview" class="jxau.sms.lyx.sysPurviewConfig.Interceptor.CheckPurviewInterceptor"></interceptor>
+        
+        	<interceptor-stack name="myStack">
+        		<interceptor-ref name="CheckPurview"></interceptor-ref>
+        		<interceptor-ref name="defaultStack"></interceptor-ref>
+        	</interceptor-stack>
+        
+        </interceptors>
+        
+        <!-- 指定默认使用的拦截器集合 -->
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+        
+        <!-- 定义全局结果 -->
+        <global-results>
+        	<result name="loginUI">login.jsp</result>
+        	<result name="purviewErrorUI">purviewError.jsp</result>
+        </global-results>
+        
         <action name="role" class="jxau.sms.lyx.role.action.RoleAction">  
             <result name="success">/files/college_admin/admin_RoleManager.jsp</result>  
         </action>

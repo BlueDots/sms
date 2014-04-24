@@ -21,6 +21,7 @@
 	<constant name="struts.ui.theme" value="xhtml" />
 
 
+
 	<include file="anpingAction.xml"></include>
 	<include file="lyxAction.xml"></include>
 	<include file="thomasAction.xml"></include>

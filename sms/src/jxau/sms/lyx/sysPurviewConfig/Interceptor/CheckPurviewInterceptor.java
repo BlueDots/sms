@@ -1,6 +1,7 @@
 package jxau.sms.lyx.sysPurviewConfig.Interceptor;
 
 import jxau.sms.lyx.po.TecBasicInfo;
+import jxau.sms.lyx.vo.SessionPurview;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
@@ -35,44 +36,38 @@ public class CheckPurviewInterceptor implements Interceptor {
 		// TODO Auto-generated method stub
 		//获取当前登陆的用户
 		TecBasicInfo teacher = (TecBasicInfo) ActionContext.getContext().getSession().get("teacher");
-				
+		SessionPurview sessionPurview = (SessionPurview) ActionContext.getContext().getSession().get("sessionPurview");
+		
 		String actionName = invocation.getProxy().getActionName();
 		String namespace = invocation.getProxy().getNamespace();
+		String method = invocation.getProxy().getMethod();
 		
-		String url = namespace + actionName;  //当前访问的url
+		String url = namespace + actionName + method;  //当前访问的url
 		
-		System.out.println(url+"aaaaaaaaaaaaaa");
-		/*//如果未登陆
+		System.out.println(url);
+		//如果未登陆
 		if(teacher == null) {
 			
 			//如果正在使用的是登陆功能，就放行
-			if(url.startsWith("/login")){
+			if(url.startsWith("/login")){			
+				return invocation.invoke();				
+			//如果正在使用的是不是登陆功能，就转到登陆页面	
+			}else {				
+				return "loginUI";				
+			}
+					
+		//如果已登录	
+		}else {			
+			//有权限，就放行
+			if(sessionPurview.getPurviewInfo().contains(url)){	
 				
 				return invocation.invoke();
-				
-			//如果正在使用的是不是登陆功能，就转到登陆页面	
-			}else {
-				
-				return "loginUI";
-				
-			}
 			
-			
-		
-		//如果已登录	
-		}else {
-			
-			//有权限，就放行
-			if(){
-				
-			}else {
+			//没权限，就转到error页面
+			}else {	
 				
 				return "purviewErrorUI";
-			}
-			//没权限，就转到error页面
-			
-		}*/
-		return invocation.invoke();
+			}					
+		}		
 	}
-
 }

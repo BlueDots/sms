@@ -77,7 +77,7 @@ insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoLis
 
 --teacher_role
 insert into teacher_role values('1234',5);
-insert into teacher_role values('1234',10);
+insert into teacher_role values('4321',10);
 insert into teacher_role values('5678',2);
 insert into teacher_role values('5678',3);
 insert into teacher_role values('8765',3);
@@ -169,5 +169,5 @@ select p.id,p.pid,p.purviewName,p.purviewUrl
 		where tr.roleNo = r.roleNo and r.roleName like '%院级工作人员%' and
 		teacherNo = '1234';
 		
-		
+insert into tec_info values('4321','11',4,"mm",1);		
 select * from tec_info;

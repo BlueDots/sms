@@ -59,10 +59,9 @@ insert into purview_info values(25,2,'学生基本信息审核','/StuBasicInfoVe
 insert into purview_info values(26,2,'录入学生基本信息','/StuBasicInfoAction!entryStuBasicInfoLists');
 insert into purview_info values(27,9,'查询医保信息','/hosInsuranceQuery!getAllHosByTeacher');
 insert into purview_info values(28,9,'录入医保信息','/hosInsuranceInfo!updateHoss');
-insert into purview_info values(29,9,'审核医保','/hosInsuranceInfo!getAllHosByTeacher');
+insert into purview_info values(29,9,'审核医保','/hosInsuranceInfo!checkHosByTeacher');
 insert into purview_info values(30,16,'','');
 insert into purview_info values(31,16,'','');
-
 
 insert into teacher_role values('1234',3);
 

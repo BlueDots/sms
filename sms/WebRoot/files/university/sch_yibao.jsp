@@ -139,15 +139,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<th class="tablestyle_title">
 														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">学生医保信息查询</font>
 													
-											<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
-												<s:if test="'/hosInsuranceInfo!getAllHosByTeacher' in {#purviewList.purviewUrl}">												
+																							
 														<span style="position:relative;left:600px">														
 														<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>">
 														<font color = "red" >待审核信息</font>
 														</a>(<s:property value="#request.nocheckNum"/>)
 														</span>
-												</s:if>	
-											</s:iterator>	
+													
 														
 														
 														

@@ -1,12 +1,13 @@
 package jxau.sms.chenjiang.po;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * 
  * @author 江 学生基本信息
  */
-public class StuBasicInfo {
+public class StuBasicInfo implements Serializable{
 	private String address;// 家庭地址
 	private String bankCard;// 银行卡号
 	private Date birthday;// 出生日期

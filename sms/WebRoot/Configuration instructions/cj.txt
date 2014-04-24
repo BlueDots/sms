@@ -1,10 +1,5 @@
-StuBasicInfoTutorAction!loadTutor 学生基本信息 模块，教师进入模块url
+StuBasicInfoAction!loadTeacher 瀛︾敓鍩烘湰淇℃伅 妯″潡锛岃繘鍏ユā鍧梪rl
 
-StuBasicInfoCollegeWorkerAction!loadCollegeWorker 学生基本信息 模块,院级工作人员进入模块url
+StuBasicInfoVerifyAction!gainWaitingForClassName 瀛︾敓鍩烘湰淇℃伅 妯″潡锛岃繘鍏ュ鏍搁〉闈rl
 
-StuBasicInfoVerifyAction!gainWaitingForClassName 学生基本信息 模块，进入审核页面url
-
-
-StuBasicInfoCollegeWorkerAction!entryStuBasicInfoLists 学生基本信息 模块 ,院级工作人员录入基本信息
-
-StuBasicInfoTutorAction!entryStuBasicInfoLists 学生基本信息 模块 ,班主任录入基本信息
+StuBasicInfoAction!entryStuBasicInfoLists 瀛︾敓鍩烘湰淇℃伅 妯″潡 ,褰曞叆鍩烘湰淇℃伅

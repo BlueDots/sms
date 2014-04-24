@@ -1,5 +1,8 @@
 package jxau.sms.lyx.sysPurviewConfig.Interceptor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jxau.sms.lyx.po.TecBasicInfo;
 import jxau.sms.lyx.vo.SessionPurview;
 
@@ -42,7 +45,7 @@ public class CheckPurviewInterceptor implements Interceptor {
 		String namespace = invocation.getProxy().getNamespace();
 		String method = invocation.getProxy().getMethod();
 		
-		String url = namespace + actionName + method;  //当前访问的url
+		String url = namespace + actionName + "!" +  method;  //当前访问的url
 		
 		System.out.println(url);
 		//如果未登陆
@@ -57,9 +60,20 @@ public class CheckPurviewInterceptor implements Interceptor {
 			}
 					
 		//如果已登录	
-		}else {			
+		}else {		
+			
+			//存放所有权限url
+			List<String> purviewUrl = new ArrayList<String>();
+			
+			//ADD权限
+			for(int i=0;i<sessionPurview.getPurviewInfo().size();i++){
+				
+				purviewUrl.add(sessionPurview.getPurviewInfo().get(i).getPurviewUrl());
+				
+			}
+			
 			//有权限，就放行
-			if(sessionPurview.getPurviewInfo().contains(url)){	
+			if(purviewUrl.contains(url)){	
 				
 				return invocation.invoke();
 			

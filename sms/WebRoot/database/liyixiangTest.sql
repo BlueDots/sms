@@ -1,3 +1,6 @@
+select count(*) from teacher_role tr,role_info r 
+		where tr.roleNo = r.roleNo and tr.teacherNo = '4321' and r.roleName like '%校级工作人员%' ; 
+
 
 --delete
 delete from role_purview;

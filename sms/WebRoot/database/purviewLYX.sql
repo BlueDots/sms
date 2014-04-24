@@ -32,14 +32,14 @@ insert into role_info values(null,'院级管理员',now(),'院级管理员角色
 insert into role_info values(null,'活动负责人',now(),'活动管理中的特殊角色');
 
 insert into purview_info values(1,null,'功能模块','null');
-insert into purview_info values(2,1,'学生基本信息模块','');
+insert into purview_info values(2,1,'学生基本信息模块','/StuBasicInfoAction!loadTeacher');
 insert into purview_info values(3,1,'教师基本信息模块','');
 insert into purview_info values(4,1,'评优评先模块','');
 insert into purview_info values(5,1,'奖助学信息模块','');
 insert into purview_info values(6,1,'学生参与活动模块','');
 insert into purview_info values(7,1,'活动管理模块','');
 insert into purview_info values(8,1,'班级奖学金模块','');
-insert into purview_info values(9,1,'医保信息模块','');
+insert into purview_info values(9,1,'医保信息模块','/hosInsuranceInfo!getAllHosByTeacher');
 insert into purview_info values(10,1,'贫困生建档模块','');
 insert into purview_info values(11,1,'个人简历模块','');
 insert into purview_info values(12,1,'学生就业信息模块','');
@@ -55,11 +55,11 @@ insert into purview_info values(21,15,'查看角色权限','');
 insert into purview_info values(22,16,'查询教师角色信息','');
 insert into purview_info values(23,16,'教师分配角色','');
 insert into purview_info values(24,16,'教师移除角色','');
-insert into purview_info values(25,16,'','');
-insert into purview_info values(26,16,'','');
-insert into purview_info values(27,16,'','');
-insert into purview_info values(28,16,'','');
-insert into purview_info values(29,16,'','');
+insert into purview_info values(25,2,'学生基本信息审核','/StuBasicInfoVerifyAction!gainWaitingForClassName');
+insert into purview_info values(26,2,'录入学生基本信息','/StuBasicInfoAction!entryStuBasicInfoLists');
+insert into purview_info values(27,9,'查询医保信息','/hosInsuranceQuery!getAllHosByTeacher');
+insert into purview_info values(28,9,'录入医保信息','/hosInsuranceInfo!updateHoss');
+insert into purview_info values(29,9,'审核医保','/hosInsuranceInfo!getAllHosByTeacher');
 insert into purview_info values(30,16,'','');
 insert into purview_info values(31,16,'','');
 

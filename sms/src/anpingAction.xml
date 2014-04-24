@@ -76,10 +76,33 @@
 			<result name="success">/files/college/dept_scholarshipAssess.jsp
 			</result>
 			<result name="error">/error.html</result>
+			
+			<result name="gaoJiquery">/files/college/dept_scholarshipAssessQuery.jsp</result>
+		</action>
+
+	</package>
+	
+	<package name="scholarShipAjxa" namespace="/" extends="json-default">
+
+		<!-- 配置属于的拦截器 -->
+		<action name="scholarShipAjxa" class="jxau.sms.anping.action.ScholarShipByAJAX">
+				<result type="json" />
+		 
 		</action>
 
 	</package>
 
+   <package name="scholarShipUpdate" namespace="/" extends="struts-default">
+
+		<!-- 配置属于的拦截器 -->
+		<action name="scholarShipUpdate" class="jxau.sms.anping.action.ScholarShipOpreation">
+			<result name="success">/files/college/dept_scholarshipAssess.jsp
+			</result>
+			<result name="error">/error.html</result>
+			 <result name="input">/error.html</result>
+		</action>
+
+	</package>
 
 	<package name="hosInsurance" namespace="/" extends="json-default">
 

@@ -18,6 +18,41 @@ body, h2
             -moz-opacity: 0.5;
         }
         
+        
+        #modifyInfoDiv
+        {
+            position: absolute;
+            width: 1000px;
+            left: 50%;
+            top: 50%;
+            margin-left: -500px;
+            height: auto;
+            z-index: 100;
+            background-color: #fff;
+            border: 1px #8FA4F5 solid;
+            padding: 1px;
+        }
+        #modifyInfoDiv h2
+        {
+            height: 25px;
+            font-size: 14px;
+            background-color: #8FA4F5;
+            position: relative;
+            padding-left: 10px;
+            line-height: 25px;
+        }
+        #modifyInfoDiv h2 a
+        {
+            position: absolute;
+            right: 5px;
+            font-size: 12px;
+            color: #000000;
+        }
+        #modifyInfoDiv .form 
+        {
+            padding: 10px;
+        }
+	
 	#projectProportionDiv
         {
             position: absolute;

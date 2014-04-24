@@ -15,6 +15,7 @@ import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.exception.DataExistException;
 import jxau.sms.lyx.exception.InsertErrorException;
 import jxau.sms.lyx.exception.NotFoundDataException;
+import jxau.sms.lyx.exception.NotUserRoleException;
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.purview.service.impl.PurviewListPackage;
 import jxau.sms.lyx.purview.service.impl.RoleHandlePurview;
@@ -42,10 +43,22 @@ public class RoleServiceImpl implements GlobalServiceInterface{
 		this.dao = dao;
 	}
 
+	
+	public long checkUserRole(Map<String, Object> param){
+		
+		int count = dao.selectOne("checkLoginRole", param);
+		
+		if(count == 0){
+			throw new NotUserRoleException("找不到用户对应的角色");
+		}
+		
+		return count;
+	}
 
 	@Override
 	public <T> T searchByAccurate(Map<String, Object> param, int status) {
 		// TODO Auto-generated method stub
+	
 		return null;
 	}
 

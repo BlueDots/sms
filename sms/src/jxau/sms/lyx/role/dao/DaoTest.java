@@ -55,5 +55,16 @@ public class DaoTest {
 		dao.add("saveRole", roleInfo);
 		
 	}
+	
+	@Test
+	public void test4() {
+		ApplicationContext context  = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Dao dao = (Dao)context.getBean("dao");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("teacherNo", "4321");
+		map.put("roleName", "校级工作人员");
+		int count = dao.selectOne("checkLoginRole", map);
+		System.out.println(count);
+	}
 
 }

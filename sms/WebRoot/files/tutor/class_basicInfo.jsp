@@ -63,8 +63,6 @@
 		getStuBasicInfoList(1);
 	});
    	
-   	//得到待审核人数
-   	getWaitingForNum();
    	
  	//getStuBasicInfoList(1);
 	$("#tableOfShowStuBasicInfoLists").chromatable({
@@ -103,7 +101,7 @@
 													</option>
 												</select> --%>
 											</td>
-											<td width="15%" align="center" style="position:relative;left:-120px">
+											<td width="15%" align="center" style="position:relative;left:-140px">
 												<div class="suckerdiv">
 													<ul id="suckertree1">
 														<li>
@@ -114,10 +112,7 @@
 																	<ul>
 																		<li>
 																			<a onclick="updateStuBasicInfo()" >修改</a>
-																		</li>																		
-																		<li>
-																			<a onclick="edit()" >删除</a>
-																		</li>																		
+																		</li>																																			
 																	</ul>	
 																</li>
 																<li>
@@ -166,7 +161,7 @@
 											<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：学生基本信息<span style="position:relative;left:950px"><a href="StuBasicInfo/StuBasicInfoVerifyAction!gainWaitingForClassName?currentPage=1"><font color = "red" >待审核信息</font></a>(<span id="verifyNum">0</span>)</span>
+														当前位置：学生基本信息<span style="position:relative;left:900px"><a ><font color = "red" >审核不通过信息</font></a>(<span id="verifyNum">0</span>)</span>
 													</th>
 												</tr>
 												<tr id="editMsg"  style="display:none">
@@ -226,8 +221,10 @@
 																				<center>银行卡号</center>
 																			</th>		
 																		</tr>
+																		
 																		<tr bgcolor="#EEEEEE" align = "center" >
 																			<td colspan="14" style="padding:1px">
+																				<input type="hidden" value="<s:property value="#session.roleId"/>" name="roleId"/>
 																				<button type="button" id="entrySubmit">提交</button>
 																				<button type="button" onclick="exchange('allbasicMsg','editMsg')">取消</button>
 																			</td>
@@ -417,6 +414,7 @@
 																		cellpadding="0" cellspacing="0" class="right-font08">
 																		<tr>
 																			<td width="50%">
+																				<s:property value="#session.teacher"/>
 																				共<s:debug></s:debug>
 																				<span class="right-text09" id="pageNums">5</span> 页 | 第
 																				<span class="right-text09" id="currentPage">1</span> 页

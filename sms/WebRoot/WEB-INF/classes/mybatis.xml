@@ -22,6 +22,7 @@
 		<typeAlias alias="HosInsuranceInfo" type="jxau.sms.anping.po.HosInsuranceInfo" />
 		<typeAlias alias="MajorInfo" type="jxau.sms.anping.po.MajorInfo" />
 		<typeAlias alias="ScholarShip" type="jxau.sms.anping.po.ScholarShip" />
+		<typeAlias alias="waitCheckVo" type="jxau.sms.commom.vo.WaitCheckVo" />
 		<!-- 熊安平部分结束 -->
 		<!--陈江部分开始  -->
 		<typeAlias alias="StuBasicInfo" type="jxau.sms.chenjiang.po.StuBasicInfo" />

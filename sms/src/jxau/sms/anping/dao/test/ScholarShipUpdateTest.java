@@ -20,7 +20,7 @@ public class ScholarShipUpdateTest {
 		StuBasicInfo  stuBasicInfo = new StuBasicInfo();
 		stuBasicInfo.setStudentNo("20111430");
 		ship.setStudent(stuBasicInfo);
-		ship.setTerm("201401");
+		ship.setTerm("201404");
  ;
 	 
 		ship.setManageScore(100);

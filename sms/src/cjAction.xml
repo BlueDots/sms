@@ -17,15 +17,18 @@
     
     <package name="StuBasicInfo" namespace="/" extends="struts-default">  
         <action name="StuBasicInfoAction" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
-            <result name="success">
+            <result name="college">
             	/files/college/dept_basicInfo.jsp
+            </result>
+            <result name="tutor">
+            	/files/tutor/class_basicInfo.jsp
             </result>
         </action>    
         <action name="StuBasicInfoVerifyAction" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
             <result name="success">
             	/files/college/dept_basicInfo/dept_basicInfo_verify.jsp
             </result>
-        </action>               
+        </action>                      
     </package> 
     
     

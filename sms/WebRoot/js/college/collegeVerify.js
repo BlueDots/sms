@@ -270,7 +270,7 @@ function checkChooseCheck(){
 	   
 		for(var i=0;i<inputs.length;i++){
 		if(inputs.item(i).getAttribute("type") == "checkbox") {
-			if(inputs.item(i).checked == true) {
+			if(inputs.item(i).checked == true && inputs.item(i).id !="check1") {
 				checkedSelectedList.push(inputs.item(i));
 			}  
 		}

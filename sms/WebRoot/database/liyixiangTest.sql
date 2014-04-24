@@ -26,7 +26,7 @@ insert into tec_basic_info(teacherNo,teacherName,sex,nation,hometown,political,t
 insert into tec_basic_info values('8765','arron',1,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
 insert into tec_basic_info values('4321','tom',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
 insert into tec_basic_info values('0000','admin',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
-
+select * from role_info;
 --role_info
 insert into role_info values(null,'校级管理员',now(),'校级管理员角色,默认所有系统权限');
 insert into role_info values(null,'学生',now(),'学生角色，固定权限');

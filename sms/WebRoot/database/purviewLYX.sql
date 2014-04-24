@@ -38,6 +38,6 @@ insert into role_purview values(7,4);
 insert into role_purview values(7,5);
 
 
-insert into teacher_role values('1234',7);
+insert into teacher_role values('1234',3);
 
 insert into dep_teacher values('1105','1234');

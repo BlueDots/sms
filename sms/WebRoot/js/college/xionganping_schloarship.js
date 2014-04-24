@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var form = $("#className");
 	
 	console.log(form);
-	var select = $("<font>学期</font><select name='term'>");
+	var select = $("<font>学期</font><select name='term' id='term'>");
 	var option1 = $("<option vaule='201402'>201404</option>");
 	var option2 = $("<option vaule='201401'>201403</option>");
 	var option3 = $("<option vaule='201302'>201302</option>");

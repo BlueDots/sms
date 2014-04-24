@@ -3,6 +3,98 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jxau.sms.anping.scholarship.dao">
 
+	<!-- 高级查询出学生的所有的数据 -->
+	<select id="selectScholarShipByGaoJiCondition" parameterType="java.util.Map"
+		resultMap="ScholarShipResultMap">
+		select ship.*,student.studentName,student.sex,
+		student.college,student.major,student.className
+		from stu_class_grant
+		ship,stu_basic_info student where
+		ship.studentNo=student.studentNo
+		and
+		classGrantState=1
+		<if test="college!=null">
+			and student.college=#{college}
+			<if test="major!=null">
+				and student.major=#{major}
+			</if>
+			<if test="className!=null">
+				and student.className=#{className}
+			</if>
+		</if>
+
+		<if test="exameState!=null">
+			and ship.exameState=#{exameState}
+		</if>
+		<if test="term!=null">
+			and ship.term=#{term}
+		</if>
+		<if test="sex!=null">
+			and student.sex=#{sex}
+		</if>
+		<if test="rank!=null">
+			and ship.rank=#{rank}
+		</if>
+		<if test="totalScoreRank!=null">
+			and ship.totalScoreRank>#{totalScoreRank}
+		</if>
+		<if test="totalScore!=null">
+			and ship.totalScore >#{totalScore}
+		</if>
+		order by totalScoreRank desc
+		<if test="firstIndex != null and size!=null">
+			limit #{firstIndex},#{size}
+		</if>
+		;
+	</select>
+
+		<!--  条件查询出数量-->
+
+	<select id="selectScholarShipByGaoJiConditionNums" parameterType="java.util.Map"
+		resultMap="ScholarShipResultMap">
+		select count(*) from stu_class_grant
+		ship,stu_basic_info student where
+		ship.studentNo=student.studentNo
+		and
+		classGrantState=1
+		<if test="college!=null">
+			and student.college=#{college}
+			<if test="major!=null">
+				and student.major=#{major}
+			</if>
+			<if test="className!=null">
+				and student.className=#{className}
+			</if>
+		</if>
+
+		<if test="exameState!=null">
+			and ship.exameState=#{exameState}
+		</if>
+		<if test="term!=null">
+			and ship.term=#{term}
+		</if>
+		<if test="sex!=null">
+			and student.sex=#{sex}
+		</if>
+		<if test="rank!=null">
+			and ship.rank=#{rank}
+		</if>
+		<if test="totalScoreRank!=null">
+			and ship.totalScoreRank>#{totalScoreRank}
+		</if>
+		<if test="totalScore!=null">
+			and ship.totalScore >#{totalScore}
+		</if>
+		order by totalScoreRank desc
+		<if test="firstIndex != null and size!=null">
+			limit #{firstIndex},#{size}
+		</if>
+		;
+	</select>
+
+
+
+
 	<!-- 查询出所有的班级奖学金信息 通过通过 学院班级查询 学院方向查询 学号查询 学院－专业－班级－姓名查询 姓名查询 -->
 	<select id="selectScholarShipByCondition" parameterType="java.util.Map"
 		resultMap="ScholarShipResultMap">
@@ -111,7 +203,8 @@
 		classGrant.studentNo desc
 	</select>
 
-	<select id="getWaitData" parameterType="java.util.Map" resultType="waitCheckVo">
+	<select id="getWaitData" parameterType="java.util.Map"
+		resultType="waitCheckVo">
 		select distinct student.college,student.className,classgrant.term from
 		stu_class_grant classgrant,stu_basic_info student where
 		classgrant.studentNo=student.studentNo
@@ -119,10 +212,10 @@
 		and
 		classgrant.exameState=#{exameState}
 		<if test="college!=null">
-		
-		and student.college=#{college}
+
+			and student.college=#{college}
 		</if>
-		
+
 		;
 	</select>
 

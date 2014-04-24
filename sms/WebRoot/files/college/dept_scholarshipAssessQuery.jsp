@@ -77,7 +77,7 @@
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-										 <form action="<%=basePath%>scholarShip/scholarShip!showSchloarShipForTeacher" id="collegeList" method="post" onsubmit="if(($('#className').val()=='-1'||$('#className').val()==undefined)){alert('需要选择班级和学期');return false;}">
+										 <form action="<%=basePath%>scholarShip/scholarShip!showSchloarShipForTeacher" id="collegeList" method="post">
 													 
 													 <input type="submit" value="查询" id="accurateSearch">
 												</form>
@@ -121,8 +121,8 @@
 											</td>
 											<td width="6%" align="center">
 
-												<a > <input name="Submit3"
-														type="button" class="right-button07" value="高级搜索" onclick="$('#advancedSearchDiv').show()"/> </a>
+												<a href="#" onclick="sousuo()"> <input name="Submit3"
+														type="button" class="right-button07" value="高级搜索" onclick="popup('#advancedDiv', '#advancedSearchDiv', '#CloseadvancedSearch')"/> </a>
 											</td>
 
 											</td>											
@@ -152,7 +152,7 @@
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：<a href="<%=basePath%>/files/college/dept_scholarshipAssess.jsp">首页</a><span style="position:relative;left:950px"><a href="dept_scholarshipAssess/dept_scholarshipAssess_verify.html"><font color = "red" >待审核信息</font></a>(3)</span>
+														当前位置：<a href="<%=basePath%>/files/college/dept_scholarshipAssess.jsp">首页</a><span style="position:relative;left:950px"><a href="dept_scholarshipAssess/dept_scholarshipAssess_verify.html"><font color = "red" >高级查询</font></a></span>
 													</th>
 													 
 												</tr>
@@ -355,25 +355,75 @@
 				</tr>
 			</table>
 	 
+    	<div id="StuPastAdvInfoDiv" style="display: none">
+        	<h2>评优评先<a href="#" id="ClosePastAdvInfo">关闭</a></h2>
+        	<div class="form">
+            	<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="pastAdvInfoTab" ><thead>
+            		<tr class="CTitle">
+            			<td height="22" colspan="10" align="center" style="font-size: 16px">
+            				学生曾获荣誉信息表
+						</td>
+					</tr>
+            
+					<tr bgcolor="#FFFFFF" align="center">
+					    <th width='15%' name='projectName'> 
+					    	先进项目类型
+					    </th>
+					    <th width='15%' name='projectName'> 
+					    	级别
+					    </th>
+					    <th width='15%' name='projectName'> 
+					    	时间
+					    </th>
+					    <th width='20%' name='projectName'> 
+					    	备注
+					    </th>
+					</tr>
+					<tr bgcolor="#FFFFFF" align="center">
+					    <td width='15%' name='projectName'> 
+					    	优秀三好学生
+					    </td>
+					    <td width='15%' name='projectName'> 
+					    	校级
+					    </td>
+					    <td width='15%' name='projectName'> 
+					    	2011-5-30
+					    </td>
+					    <td width='20%' name='projectName'> 
+					    	无
+					    </td>
+					</tr>
+					<tr bgcolor="#FFFFFF" align="center">
+					     <td width='15%' name='projectName'> 
+					    	优秀学生干部
+					    </td>
+					    <td width='15%' name='projectName'> 
+					    	校级
+					    </td>
+					    <td width='15%' name='projectName'> 
+					    	2012-4-23
+					    </td>
+					    <td width='20%' name='projectName'> 
+					    	无
+					    </td>
+					</tr>	
+            	</table>
+        	</div>
+    	</div>
 
-  <form action="<%=basePath%>scholarShip/scholarShip!querySchloarShipForTeacher" method="post">
+
     	<div id="advancedSearchDiv" style="display: none">
              	<h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
-        	<input type="hidden" id="qdepartment" name="department"/>
-            		<input type="hidden" id="qmajor" name="major"/>
-            		<input type="hidden" id="qclass" name="className"/>
-            		<input type="hidden" id="qterm" name="term"/>
         	<div class="form">
             	<table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="advancedSearchTab" ><thead>
-            		
+            
 					<tr bgcolor="#FFFFFF" align="center">
 					    <td width='15%'> 
 					    	性别
 					    </td>
 					    <td width='35%' name='sex'> 
-					    	<input name="sex" type="radio" value="1" checked />男 
-							<input name="sex" type="radio" value="0" />女
-							<input name="sex" type="radio"   />全部
+					    	<input name="sex" type="radio" value="sex" checked />男 
+							<input name="sex" type="radio" value="sex" />女
 					    </td>
 					</tr>
 					<tr bgcolor="#FFFFFF" align="center">
@@ -382,11 +432,10 @@
 					    </td>
 					    <td width='35%'> 
 					    	<select name="advLevel">
+					    		<option>一等</option>
+					    		<option>二等</option>
+					    		<option>三等</option>
 					    		<option>全部</option>
-					    		<option value="一等奖">一等</option>
-					    		<option value="二等奖">二等</option>
-					    		<option value="三等奖">三等</option>
-					    		
 					    	</select>	
 					    </td>
 					</tr>
@@ -395,7 +444,7 @@
 					    	排名
 					    </td >
 					    <td width='35%'> 
-					  		前<input name="advRank" type="text"   />
+					  		前<input name="advRank" type="text" value="14" />
 					    </td>
 					</tr>
 					<tr bgcolor="#FFFFFF" align="center">
@@ -404,21 +453,20 @@
 					    </td >
 					    <td width='35%'> 
 					  		 <select name="advScore">
-					  		 	<option  >全部</option>
-					    		<option value="90">优秀(90以上)</option>
-					    		<option value="80">良好(80以上)</option>
-					    		<option value="60">及格(60以上)</option>
-					    		<option value="40">不及格(60以下)</option>
+					    		<option>优秀(90以上)</option>
+					    		<option>良好(80以上)</option>
+					    		<option>及格(60以上)</option>
+					    		<option>不及格(60以下)</option>
 					    	</select>	
 					    </td>
 					</tr>
 					<tr bgcolor="#FFFFFF" align="center">
-						<td colspan="2"><input type="button" value="查询" onclick="if(($('#className').val()=='-1'||$('#className').val()==undefined)){alert('需要选择班级和学期');return;};$('#qdepartment').val($('#department').val());$('#qmajor').val($('#major').val());$('#qclass').val($('className').val());$('#qterm').val($('#term').val());$(this).closest('form').submit();"/></td>
+						<td colspan="2"><input type="button" value="查询"/></td>
 					</tr>
             	</table>
         	</div>
     	</div>
-</form>
+
 	</body>
 	
 </body>

@@ -21,8 +21,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
+  <link rel="stylesheet" type="text/css" href="<%=basePath%>images/main.css">
+  <script type="text/javascript" src="<%=basePath%>js/jquery-1.10.2.js"></script>
+<script>
+function changetoen(){
+	document.getElementById("main").style.display='block';
+	$(".zh").hide();
+}
+function changetozh(){
+	$(".zh").show();
+	document.getElementById("main").style.display='none';
+}
+</script>
   
   <body>
-    	您没有该权限！ <br>
+    	<div id="main">
+    <header id="header">
+      <h1><span class="icon">!</span>ERROR<span class="sub">权限不足</span></h1>
+    </header>
+    <div id="content">
+      <h2>你所访问的页面因为权限不足而被拒绝</h2>
+      <p>访问的权限和您登陆的角色有关，请以相应的角色登陆!</p>
+      <div class="utilities">
+        <form>
+          <div class="input-container">
+           
+          </div>
+        </form>
+        <a class="button right" href="#" onClick="history.go(-1);return true;">Go Back...</a>
+        <div class="clear"></div>
+      </div>
+    </div>
+   
+  </div>
+  <!-- zh -->
+    <div id="main" class="zh" style="display:none">
+    <header id="header">
+      <h1><span class="icon">!</span>ERROR<span class="sub">权限不足</span></h1>
+    </header>
+    <div id="content">
+      <h2><br>您所请求的页面因为权限不足被拒绝访问</h2>
+      <p><br>
+      　　访问权限和您登陆的角色有关，请以相应的角色登陆！</p>
+      <div class="utilities">
+        <form>
+          <div class="input-container">
+            <input type="text" class="left" id="search" placeholder="搜索..." />
+            <button id="search"></button>
+          </div>
+        </form>
+        <a class="button right" href="#" onClick="history.go(-1);return true;">返回...</a>
+        <div class="clear"></div>
+      </div>
+  </div>
+  </div>
   </body>
 </html>

@@ -1,5 +1,7 @@
 package jxau.sms.qing.po;
 
+import java.util.Date;
+
 public class Student {
 	private String studentNo;
 	private String studentName;
@@ -12,6 +14,35 @@ public class Student {
 	private int emailOnly;
 	private String bankCard;
 	private int stuState;
+	private String nation;
+	private String hometown;
+	private String political;	
+	private Date birthday;
+	
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getNation() {
+		return nation;
+	}
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+	public String getHometown() {
+		return hometown;
+	}
+	public void setHometown(String hometown) {
+		this.hometown = hometown;
+	}
+	public String getPolitical() {
+		return political;
+	}
+	public void setPolitical(String political) {
+		this.political = political;
+	}
 	public String getStudentNo() {
 		return studentNo;
 	}

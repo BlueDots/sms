@@ -4,7 +4,7 @@
 <mapper namespace="jxau.sms.qing.login.dao">  
   <select id="selectStudent"  parameterType= "HashMap"  resultType="jxau.sms.qing.po.Student">
   		select 
-  			stu_info.studentNo, studentName, 
+  			stu_info.studentNo, studentName, nation,hometown,political,birthday, 
   			className,  major, college, sex,
   			telephone,email,
 			emailOnly,bankCard, stu_info.stuState 
@@ -27,7 +27,7 @@
   
   <select id="selectStudentBasicInfo"  parameterType= "HashMap"  resultType="jxau.sms.qing.po.Student">
   		select 
-  			stu_info.studentNo, studentName, 
+  			stu_info.studentNo, studentName, nation,hometown,political,birthday,
   			className,  major, college, sex,
   			telephone,email,
 			emailOnly,bankCard, stu_info.stuState 

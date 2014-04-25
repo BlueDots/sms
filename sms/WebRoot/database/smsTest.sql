@@ -1,4 +1,6 @@
 
+##学生登录信息
+insert into stu_info values(20111812,'123456',4,'mm',1);
 ##学生基本信息
 insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard,eduBackground,exameState) values
 ('20111812','王丽秋','1992-10-20','软件工程1111','英语方向','软件学院',1,'汉族','屯昌县','共青团员','460026199210203923','本科','通过');
@@ -663,8 +665,21 @@ insert into tec_basic_info values('1809','庞咏兰',1,'汉族','四川武昌','
 insert into tec_basic_info values('1810','杨键川',0,'汉族','吉林长春','中共党员','在职','副教授','2012-12-01','2000-09-01','博士研究生','通过','无');
 
 ##test
-insert into teacher_role values('1807',3);
-insert into teacher_role values('1806',4);
-insert into teacher_role values('1801',1);
-insert into dep_teacher values('1105','1805');
-update class_info set teacherNo = '1805' where classNo='11050101201111';
+select * from role_info;
+select * from stu_info;
+insert into teacher_role values('1805',3);		 ##班主任
+insert into teacher_role values('1806',4);		 ##院级工作人员
+insert into teacher_role values('1801',1);       ##超级管理工作人员
+insert into dep_teacher values('1105','1805');   ##班主任指定院系
+insert into dep_teacher values('1105','1806');	 ##院级工作人员指定院系
+update class_info set teacherNo = '1805' where classNo='11050101201111'; ##班级指定班主任
+
+##1学生基本信息待审核人数(eState:院级审核中,校级审核中)
+DELIMITER //
+create procedure verifyNumsOfStuBasicInfo(IN eState varchar(30),
+										  OUT nums int)
+begin 
+	select count(*) into nums from stu_basic_info where exameState=eState ;
+end
+//
+DELIMITER ;

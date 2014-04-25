@@ -91,6 +91,7 @@ public class StuBasicInfoAction extends ActionSupport {
 			stuBasicInfoServiceImpl.roleEntry(StuBasicInfo.class, entryLists, "01", roleId[0], null);
 			entryStuBasicInfos = entryLists;
 		}
+		
 		if(roleId[0].equals("2")){
 			return "tutor";
 		}

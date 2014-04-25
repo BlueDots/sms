@@ -62,11 +62,7 @@ public class LoginAction extends ActionSupport  implements SessionAware{
 		String password = ServletActionContext.getRequest().getParameter("password");
 		String roleName = ServletActionContext.getRequest().getParameter("roleName");
 		
-		
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(roleName);
-		
+
 		//指定输出内容类型和编码  
         ServletActionContext.getResponse().setContentType(contentType);   
         //获取输出流，然后使用  
@@ -75,21 +71,34 @@ public class LoginAction extends ActionSupport  implements SessionAware{
 	        	        
 	        try{
 	        	this.getLoginService().whichUser(username, password);
+	        			        	
+	        	
+	        	if(roleName.equals("学生")){
 	        		
-	        	Map<String,Object> param = new HashMap<String,Object>();
-	        	param.put("teacherNo", username);
-	        	TecBasicInfo teacher = sessionTecBasicInfoServiceImpl.searchByAccurate(param, 0);
-	        	param.put("roleName", roleName);	
-	        	List<RoleInfo> roles = roleServiceImpl.searchListByAccurate(param, 0);        	
-	        	roleServiceImpl.checkUserRole(param);
-	        	  	
-	        	for(int i=0;i<roles.size();i++){
+	        		session.put("studentNo", username);
+		        	    	
+	        	}else {
 	        		
-	        		roles.get(i).setRoleName(roleName);
-	        	}
+	        		Map<String,Object> param = new HashMap<String,Object>();
+		        	param.put("teacherNo", username);
+		        	TecBasicInfo teacher = sessionTecBasicInfoServiceImpl.searchByAccurate(param, 0);
+	        		param.put("roleName", roleName);	
+		        	List<RoleInfo> roles = roleServiceImpl.searchListByAccurate(param, 0);        	
+		        	roleServiceImpl.checkUserRole(param);
+		        	  	
+		        	for(int i=0;i<roles.size();i++){
+		        		
+		        		roles.get(i).setRoleName(roleName);
+		        	}
+		        	
+		        	session.put("roles", roles);
+		        	session.put("teacher", teacher);
+	        		
+				}
+	        	
 	        
-	        	session.put("teacher", teacher);
-	        	session.put("roles", roles);
+	        	
+	        	
 	        	out.print("登录成功");
 	        	
 	        } catch (LoginException e) {

@@ -1,4 +1,4 @@
-insert into stu_info values(20111112,"mm",4,"mm",1);
+insert into stu_info values(20111112,'m',4'mm',1);
 insert into stu_basic_info 
 values('20111112','熊安平','1992-02-06','1102','软件工程',
 '软件学院',0,'汉族','江西','团员','6222202100','133333333',

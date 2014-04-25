@@ -41,8 +41,8 @@ public class VitaAction extends ActionSupport implements RequestAware,SessionAwa
 	      // Map req = (Map)ActionContext.getContext().get("request");
 	     //  req.put("name", "yfct+=========");
 		
-		Student student = (Student)session.get("studentNo");
-		request.put("vita", vitaService.VitaInfo(student.getStudentNo()));
+		String studentNo = (String) session.get("studentNo");
+		request.put("vita", vitaService.VitaInfo(studentNo));
 	       System.out.println("mmmmm ==========");
 	     //  System.out.println(vitaService.VitaInfo("20111112").getStudentInfo().getStudentName()+"哈哈");
 	        

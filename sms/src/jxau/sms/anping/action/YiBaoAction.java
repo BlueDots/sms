@@ -159,7 +159,7 @@ public class YiBaoAction extends ActionSupport implements
 	 */
 	public String modifyStu() {
 		this.print();
-		String result = "applyYiBaoAndModify";
+		String result = "YiBaoAndModify";
 		String[] types = (String[]) parameters.get("type");
 
 		if (types != null && types[0].equals("show")
@@ -210,7 +210,7 @@ public class YiBaoAction extends ActionSupport implements
 	 */
 	public String applyYiBao() {
 
-		String result = "applyYiBaoAndModify";
+		String result = "YiBaoAndModify";
 		this.print();
 		StuBasicInfo student = (StuBasicInfo) session.get("student");
 		hosInsuranceInfo.setStudent(student);

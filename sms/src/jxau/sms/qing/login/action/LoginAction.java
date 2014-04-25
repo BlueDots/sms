@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 
+import jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl;
 import jxau.sms.lyx.exception.NotFoundDataException;
 import jxau.sms.lyx.exception.NotUserRoleException;
 import jxau.sms.lyx.po.RoleInfo;
@@ -14,6 +15,7 @@ import jxau.sms.lyx.role.service.impl.RoleServiceImpl;
 import jxau.sms.lyx.tecBasicInfo.service.impl.SessionTecBasicInfoServiceImpl;
 import jxau.sms.qing.exception.LoginException;
 import jxau.sms.qing.login.service.LoginService;
+import jxau.sms.qing.po.Student;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
@@ -54,6 +56,12 @@ public class LoginAction extends ActionSupport  implements SessionAware{
 		this.roleServiceImpl = roleServiceImpl;
 	}
 	
+	private  StuBasicInfoServiceImpl  stuBasicInfoServiceImpl;
+	@Resource(name="stuBasicInfoServiceImpl")
+	public void setStuBasicInfoServiceImpl(
+			StuBasicInfoServiceImpl stuBasicInfoServiceImpl) {
+		this.stuBasicInfoServiceImpl = stuBasicInfoServiceImpl;
+	}
 	@Override  
 	 public String execute() throws Exception {  		 	
 	        
@@ -76,7 +84,8 @@ public class LoginAction extends ActionSupport  implements SessionAware{
 	        	if(roleName.equals("学生")){
 	        		
 	        		session.put("studentNo", username);
-		        	    	
+	        		session.put("student", stuBasicInfoServiceImpl.getOneById(username) ) ;
+	        			
 	        	}else {
 	        		
 	        		Map<String,Object> param = new HashMap<String,Object>();

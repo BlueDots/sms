@@ -108,7 +108,7 @@
 		id : 15,
 		pId : 1,
 		name : "奖学金评定",
-		url : "teacher/class_scholarshipAssess.html",
+		url : "<%=basePath%>/files/college/dept_scholarshipAssess.jsp",
 		target : "mainFrame"
 	}, {
 		id : 16,

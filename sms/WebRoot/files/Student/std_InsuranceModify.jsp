@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						　
 						<tr>
 						<td>
-	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!modifyStu" method="post">
+	<form name="MedApplication" id="yibaoForm" action="<%=basePath%>stdhosInsuranceInfo/stdhosInsuranceInfo!modifyStu" method="post">
 	<input type="hidden" name="hosNo" value="<s:property value="#request.hos.hosNo"/>">
 	<table width="100%" border="0" cellpadding="8" cellspacing="0" class="newfont03">
   

@@ -54,7 +54,7 @@
 			<if test="reimbursementAmount != null">
 				,reimbursementAmount=#{reimbursementAmount}
 			</if>
-			<if test="bill != null">,bill=#{bill},</if>
+			<if test="bill != null">,bill=#{bill}</if>
 			<if test="jumingRemark != null">,jumingRemark=#{jumingRemark}</if>
 		</set>
 		where
@@ -69,7 +69,7 @@
 			<if test="complete != null">
 				complete=#{complete}
 			</if>
-			<if test="insurerTime != null">,insurerTime=#{insurerTime},</if>
+			<if test="insurerTime != null">,insurerTime=#{insurerTime}</if>
 			<if test="notinsurerReason != null">
 				,notinsurerReason=#{notinsurerReason}
 			</if>

@@ -245,7 +245,7 @@ function list(idstr){
         <td><s:if test="%{collarCard==-1}">待受理</s:if><s:elseif test="%{collarCard==1}">已领卡</s:elseif><s:else >未领卡</s:else></td>
         <td><s:property value="hosState"/>　	</td>
         <td><s:property value="stateRemark"/></td>
-        <td><s:if test="%{hosState!='通过'}"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!modifyStu?type=show&hosNo=<s:property value="hosNo"/>">修改</a></s:if></td>
+        <td><s:if test="%{hosState!='通过'}"><a href="<%=basePath%>stdhosInsuranceInfo/stdhosInsuranceInfo!modifyStu?type=show&hosNo=<s:property value="hosNo"/>">修改</a></s:if></td>
       </tr>
       </s:iterator>
      

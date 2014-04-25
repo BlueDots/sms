@@ -1,6 +1,8 @@
 
 use sms;
 
+
+
 ############################班级奖学金的测试数据###########################
 
 insert into stu_class_grant(studentNo,term,baseScore,awardScore,punishScore,moralQualityAssessmentScore,

@@ -39,8 +39,12 @@ if (window.addEventListener)
 	window.addEventListener("load", buildsubmenus, false)
 else if (window.attachEvent)
 	window.attachEvent("onload", buildsubmenus)</script>
-	<script language=JavaScript>
 <script language=JavaScript>
+//window.setTimeout(output,2000);
+function output(){
+	alert("导出成功!");
+}
+
 function viewmypic(mypic,imgfile) {
 if (imgfile.value){
 mypic.src=imgfile.value;
@@ -108,7 +112,7 @@ div {
 	     <div align="left">
 	          <span class="STYLE1">基本信息</span>
            <input type="button" name="Otput" value="导出"
-									onclick="alert('导出成功');" />
+									onclick="output()" />
 		  </div>
 	 </td>
 	

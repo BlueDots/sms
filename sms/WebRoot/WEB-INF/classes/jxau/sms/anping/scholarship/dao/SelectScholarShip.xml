@@ -86,10 +86,8 @@
 		<if test="totalScore!=null">
 			and ship.totalScore >=#{totalScore}
 		</if>
-		order by totalScoreRank desc
-		<if test="firstIndex != null and size!=null">
-			limit #{firstIndex},#{size}
-		</if>
+		 
+	 
 		;
 	</select>
 
@@ -168,11 +166,7 @@
 		<if test="term!=null">
 			and ship.term=#{term}
 		</if>
-
-		order by totalScoreRank desc
-		<if test="firstIndex != null and size!=null">
-			limit #{firstIndex},#{size}
-		</if>
+ 
 		;
 	</select>
 

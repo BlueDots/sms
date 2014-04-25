@@ -91,7 +91,12 @@ public class StuBasicInfoAction extends ActionSupport {
 			stuBasicInfoServiceImpl.roleEntry(StuBasicInfo.class, entryLists, "01", roleId[0], null);
 			entryStuBasicInfos = entryLists;
 		}
-		return SUCCESS;	
+		if(roleId[0].equals("2")){
+			return "tutor";
+		}
+		else {
+			return "college";
+		}
 	}
 	
 	public String gainWaitingForNum() {
@@ -176,6 +181,8 @@ public class StuBasicInfoAction extends ActionSupport {
 			flag = 3;
 		else if(role.getRoleName().equals("班主任")) 
 			flag = 2;
+		
+		System.out.println(flag);
 		if(teacher!=null && flag==2){
 			session.put("roleId", 2);
 			return "tutor";

@@ -1,4 +1,4 @@
-select * from stu_basic_info where exameState='软件1115';
+select * from stu_basic_info where exameState='软件1107';
 update stu_basic_info set exameState='院级审核中';
 
 select  sbi.* from class_info ai,stu_basic_info sbi where ai.className=sbi.className and ai.teacherNo='1234' and sbi.exameState='院级未通过';

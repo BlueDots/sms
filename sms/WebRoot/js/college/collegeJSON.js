@@ -489,11 +489,30 @@ function getTutorWatingForUpdate(teacherNo,currentPage) {
 
 
 function updateStuBasicInfo(roleId){
-	alert(roleId);
 	var inputLists = $("#stuBasicInfo input");
-	alert(inputLists[0].type);
-	for(var i=0;i<inputLists.length;i++){
-		
+	var trObj = document.getElementById("updateTr");
+	if(trObj.style.display=="none") {
+		trObj.style.display="block";
+		for(var i=0;i<inputLists.length;i++){
+			if(inputLists[i].type=="text") {
+				inputLists[i].readOnly=false;
+				var inputJquery = $(inputLists[i]);
+				inputJquery.removeClass("readonly");
+			}
+		}			
 	}
+	else if(trObj.style.display=="block") {
+		trObj.style.display="none";
+		for(var i=0;i<inputLists.length;i++){
+			if(inputLists[i].type=="text") {
+				inputLists[i].readOnly=true;
+				var inputJquery = $(inputLists[i]);
+				inputJquery.addClass("readonly");
+			}
+		}		
+	}
+	
+
+
 }
 

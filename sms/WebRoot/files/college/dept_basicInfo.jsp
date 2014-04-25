@@ -418,8 +418,8 @@
 																		<tr>
 																			<td width="50%">
 																				共<s:debug></s:debug>
-																				<span class="right-text09" id="pageNums">5</span> 页 | 第
-																				<span class="right-text09" id="currentPage">1</span> 页
+																				<span class="right-text09" id="pageNums"></span> 页 | 第
+																				<span class="right-text09" id="currentPage"></span> 页
 																			</td>
 																			<td width="49%" align="right">
 																				[

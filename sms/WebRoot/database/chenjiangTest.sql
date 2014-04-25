@@ -4,15 +4,18 @@ update stu_basic_info set exameState='院级审核中';
 select  sbi.* from class_info ai,stu_basic_info sbi where ai.className=sbi.className and ai.teacherNo='1234' and sbi.exameState='院级未通过';
 
 
+insert into teacher_role values('1805',3);
+insert into teacher_role values('1805',4);
 
-
-
+select * from tec_info;
+insert into tec_info(teacherNo,tecPassword) values('1805','1805');
 desc stu_basic_info;
 select * from dep_teacher;
+insert into dep_teacher values('1105','1805');
 select * from class_info;
-update class_info set teacherNo = '1234' where classNo='11050100200901';
-update class_info set teacherNo = '1234' where classNo='11050100200902';
+update class_info set teacherNo = '1805' where classNo='11050101201111';
 
+insert into tec_basic_info values('1805','彭莹琼',1,'汉族','江西萍乡','中共党员','在职','副教授','2012-12-01','2000-09-01','硕士研究生','通过','无');
 
 delete from stu_basic_info where studentNo in ('20111556','20111557','20111558','20111559');
 
@@ -102,11 +105,7 @@ select *  from dep_info;
 ##delete from dep_info;
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1105','软件学院','','');
-	
-insert into dep_info(departNo,department,departBrief,departInfo) 
-	values('1106','计信院','','');	
-desc major_info;
-select * from major_info;
+##专业	
 insert into major_info(majorNo,major,departNo) values('11050101','网络应用方向','1105');
 insert into major_info(majorNo,major,departNo) values('11050102','商务与政务应用方向','1105');
 insert into major_info(majorNo,major,departNo) values('11050103','数字媒体技术方向','1105');
@@ -115,9 +114,6 @@ insert into major_info(majorNo,major,departNo) values('11050105','专升本','11
 insert into major_info(majorNo,major,departNo) values('11050100','应用软件开发方向','1105');
 insert into major_info(majorNo,major,departNo) values('11050400','英语方向','1105');
 
-desc class_info;
-##delete from class_info;
-select * from class_info;
 ##软件开发方向
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('21050100200903','1102','软件0903','11050100',44);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050100200903','软件工程0903','软件0903','11050100',44);
@@ -172,8 +168,7 @@ insert into class_info(classNo,className,classBreif,majorNo,classNumber) values(
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201207','软件工程1207','软件1207','11050104',40);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201208','软件工程1208','软件1208','11050104',40);
 
-
---英语方向
+##英语方向
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201012','软件工程1012','软件1012','11050400',45);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201013','软件工程1013','软件1013','11050400',41);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201014','软件工程1014','软件1014','11050400',37);
@@ -279,32 +274,32 @@ insert into major_info(majorNo,major,departNo) values('11060700','电子商务�
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1107','经济管理学院','','');
 ##专业
-insert into major_info(majorNo,major,departNo) values('11060100','农林经济管理','1107');
-insert into major_info(majorNo,major,departNo) values('11060200','经济学','1107');
-insert into major_info(majorNo,major,departNo) values('11060201','房地产经营方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060202','投资金融方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060300','会计学','1107');
-insert into major_info(majorNo,major,departNo) values('11060301','注册会计师方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060302','国际会计方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060400','国际经济与贸易','1107');
-insert into major_info(majorNo,major,departNo) values('11060500','工商管理','1107');
-insert into major_info(majorNo,major,departNo) values('11060600','财务管理','1107');
-insert into major_info(majorNo,major,departNo) values('11060700','市场营销','1107');
-insert into major_info(majorNo,major,departNo) values('11060800','金融学','1107');
-insert into major_info(majorNo,major,departNo) values('11060801','证券投资与理财方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060802','国际金融方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060900','劳动与社会保障','1107');
-insert into major_info(majorNo,major,departNo) values('11061000','会计学(专升本)','1107');
-insert into major_info(majorNo,major,departNo) values('11061100','工商管理双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061200','国际经济与贸易双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061300','会计学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061400','经济学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061500','金融学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061600','会计学(国际班)','1107');
-insert into major_info(majorNo,major,departNo) values('11061700','财务管理(专升本)','1107');
-insert into major_info(majorNo,major,departNo) values('11061800','会计学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061900','工商管理双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11062000','金融学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11070100','农林经济管理','1107');
+insert into major_info(majorNo,major,departNo) values('11070200','经济学','1107');
+insert into major_info(majorNo,major,departNo) values('11070201','房地产经营方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070202','投资金融方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070300','会计学','1107');
+insert into major_info(majorNo,major,departNo) values('11070301','注册会计师方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070302','国际会计方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070400','国际经济与贸易','1107');
+insert into major_info(majorNo,major,departNo) values('11070500','工商管理','1107');
+insert into major_info(majorNo,major,departNo) values('11070600','财务管理','1107');
+insert into major_info(majorNo,major,departNo) values('11070700','市场营销','1107');
+insert into major_info(majorNo,major,departNo) values('11070800','金融学','1107');
+insert into major_info(majorNo,major,departNo) values('11070801','证券投资与理财方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070802','国际金融方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070900','劳动与社会保障','1107');
+insert into major_info(majorNo,major,departNo) values('11071000','会计学(专升本)','1107');
+insert into major_info(majorNo,major,departNo) values('11071100','工商管理双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071200','国际经济与贸易双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071300','会计学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071400','经济学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071500','金融学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071600','会计学(国际班)','1107');
+insert into major_info(majorNo,major,departNo) values('11071700','财务管理(专升本)','1107');
+insert into major_info(majorNo,major,departNo) values('11071800','会计学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071900','工商管理双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11072000','金融学双学位','1107');
 
 
 ##理学院
@@ -441,5 +436,5 @@ insert into dep_info(departNo,department,departBrief,departInfo)
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1120','商学院','','');
 
-
+select * from dep_info;
 

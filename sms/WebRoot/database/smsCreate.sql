@@ -1,4 +1,5 @@
 drop database sms;
+
 create database sms;
 use sms;
 
@@ -167,7 +168,7 @@ create table stu_class_grant(
 	sportQualityTotalScore double,
 	sportQualityRank int,
 	manageScore	double,
-	culturstu_class_granteScore	double,
+	cultureScore	double,
 	mediaScore double,
 	serviceScore	double,
 	artEducationTotalScore	 double,

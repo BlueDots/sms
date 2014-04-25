@@ -71,12 +71,8 @@ function login(){
 
 </head>
 
-<body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td height="147" background="<%=basePath%>/images/top02.gif"><img src="images/top03.gif" width="776" height="147" /></td>
-  </tr>
-</table>
+<body  style="margin-top: 0px" >
+<img src="images/logo.jpg" width="100%" height="140" align="top"  style="margin-top: 0px"/>
 
 <table width="562" border="0" align="center" cellpadding="0" cellspacing="0" class="right-table03">
   <tr>

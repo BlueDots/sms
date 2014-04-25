@@ -39,6 +39,7 @@ insert into role_info values(null,'校级工作人员',now(),'校级工作人员
 insert into role_info values(null,'院级管理员',now(),'院级管理员角色');
 insert into role_info values(null,'活动负责人',now(),'活动管理中的特殊角色');
 
+
 --purview_info
 insert into purview_info values(1,null,'功能模块','null');
 insert into purview_info values(2,1,'学生基本信息模块','/studentInfo.jsp');
@@ -79,6 +80,7 @@ insert into purview_info values(34,3,'审核教师基本信息','/auditTeacherIn
 insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoList');
 
 --teacher_role
+
 insert into teacher_role values('1234',5);
 insert into teacher_role values('4321',10);
 insert into teacher_role values('5678',2);

@@ -73,19 +73,3 @@ insert into purview_info values(39,5,'添加奖学金项目','');
 insert into purview_info values(40,10,'班级贫困生比例分配','');
 
 
-insert into role_purview values(7,9);
-insert into role_purview values(7,10);
-insert into role_purview values(7,12);
-insert into role_purview values(7,14);
-insert into role_purview values(9,2);
-insert into role_purview values(9,6);
-insert into role_purview values(9,7);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);
-insert into role_purview values(,);

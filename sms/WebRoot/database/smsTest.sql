@@ -359,19 +359,10 @@ insert into dep_info(departNo,department,departBrief,departInfo)
 	values('1120','商学院','','');
 	
 ##评优评先信息
+select * from stu_adv_Info;
 insert into stu_adv_Info values(null,'20111812','优秀三好学生','省级','201301','通过','无');
 insert into stu_adv_Info values(null,'20111813','优秀学生干部','省级','201302','通过','无');
 insert into stu_adv_Info values(null,'20111814','优秀共青团员','院级','201301','通过','无');
-insert into stu_adv_Info values(null,'20111815','最佳三好学生','校级','201302','通过','无');
-insert into stu_adv_Info values(null,'20111816','最佳学生干部','省级','201301','通过','无');
-insert into stu_adv_Info values(null,'20111817','优秀团干部','厅级','201302','通过','无');
-insert into stu_adv_Info values(null,'20111826','优秀共青团员','省级','201301','通过','无');
-insert into stu_adv_Info values(null,'20111819','优秀学生干部','省级','201302','通过','无');
-insert into stu_adv_Info values(null,'20111825','优秀三好学生','省级','201301','通过','无');
-insert into stu_adv_Info values(null,'20111821','优秀学生干部','国家级','201302','通过','无');
-insert into stu_adv_Info values(null,'20111822','优秀共青团员','校级','201301','通过','无');
-insert into stu_adv_Info values(null,'20111823','优秀学生干部','省级','201302','通过','无');
-insert into stu_adv_Info values(null,'20111824','优秀三好学生','省级','201301','通过','无');
 
 
 ############################班级奖学金的测试数据###########################
@@ -647,7 +638,33 @@ insert into role_info values(null,'活动负责人',now(),'活动管理中的特
 ##学生简历
 insert into act_info values (null,'江西农业大学软件创新设计大赛','科技类','校级','校团委','软件学院',null,'陈振清',CURDATE(),null,null,null,1);      /* 活动表 */
 insert into stu_act_participate values(null,'20111812',1,9,CURDATE(),'一等奖','科技部部长',CURDATE(),null,null,1);
-insert into stu_adv_info values(null,'20111812','最佳优秀干部','市级','20132','','');
 insert into stu_grant_info values(null,'20111812','国家奖学金','国家',8000,'20131','','');
+##教师登录信息
+insert into tec_info values('1801','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1802','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1803','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1804','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1805','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1806','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1807','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1808','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1809','123456','您父亲的姓名？','曹国平',1);
+insert into tec_info values('1810','123456','您父亲的姓名？','曹国平',0);
+##教师基本信息
+insert into tec_basic_info values('1801','王映龙',0,'汉族','江西萍乡','中共党员','在职','教授','2012-12-01','2000-09-01','博士研究生','通过','无');
+insert into tec_basic_info values('1802','邓泓',0,'汉族','江西赣州','中共党员','在职','副教授','2012-12-01','2000-09-01','博士研究生','通过','无');
+insert into tec_basic_info values('1803','李佳航',1,'汉族','江西南昌','中共党员','在职','副教授','2012-12-01','2000-09-01','博士研究生','通过','无');
+insert into tec_basic_info values('1804','艾施荣',0,'汉族','江西萍乡','中共党员','在职','教授','2012-12-01','2000-09-01','博士研究生','通过','无');
+insert into tec_basic_info values('1805','彭莹琼',1,'汉族','江西萍乡','中共党员','在职','副教授','2012-12-01','2000-09-01','硕士研究生','通过','无');
+insert into tec_basic_info values('1806','胡昶',0,'汉族','江西萍乡','中共党员','在职','副教授','2012-12-01','2000-09-01','硕士研究生','通过','无');
+insert into tec_basic_info values('1807','吴沧海',1,'汉族','江西萍乡','中共党员','在职','教授','2012-12-01','2000-09-01','硕士研究生','通过','无');
+insert into tec_basic_info values('1808','邓松',0,'汉族','江西萍乡','中共党员','在职','副教授','2012-12-01','2000-09-01','博士研究生','通过','无');
+insert into tec_basic_info values('1809','庞咏兰',1,'汉族','四川武昌','中共党员','在职','副教授','2012-12-01','2000-09-01','博士研究生','通过','无');
+insert into tec_basic_info values('1810','杨键川',0,'汉族','吉林长春','中共党员','在职','副教授','2012-12-01','2000-09-01','博士研究生','通过','无');
 
-
+##test
+insert into teacher_role values('1807',3);
+insert into teacher_role values('1806',4);
+insert into teacher_role values('1801',1);
+insert into dep_teacher values('1105','1805');
+update class_info set teacherNo = '1805' where classNo='11050101201111';

@@ -62,6 +62,11 @@ public class LoginAction extends ActionSupport  implements SessionAware{
 		String password = ServletActionContext.getRequest().getParameter("password");
 		String roleName = ServletActionContext.getRequest().getParameter("roleName");
 		
+		
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(roleName);
+		
 		//指定输出内容类型和编码  
         ServletActionContext.getResponse().setContentType(contentType);   
         //获取输出流，然后使用  

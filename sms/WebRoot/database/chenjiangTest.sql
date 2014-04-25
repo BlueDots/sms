@@ -7,6 +7,10 @@ select  sbi.* from class_info ai,stu_basic_info sbi where ai.className=sbi.class
 insert into teacher_role values('1805',3);
 insert into teacher_role values('1805',4);
 
+select * from role_info;
+select * from teacher_role;
+select * from tec_basic_info;
+
 select * from tec_info;
 insert into tec_info(teacherNo,tecPassword) values('1805','1805');
 desc stu_basic_info;

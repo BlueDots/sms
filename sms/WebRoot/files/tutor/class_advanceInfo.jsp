@@ -40,7 +40,7 @@
 <script src="<%=basePath%>/js/jquery.chromatable.js"></script>
 <script src="<%=basePath%>js/tutor/tutor_advanceInfo.js"></script>
 <script src="<%=basePath%>js/college/college.js"></script>
-<script src="<%=basePath%>js/util/loadCollegeClass.js"></script>
+
 <!--用于生成编辑的内容-->
 <style type="text/css">
 * {
@@ -102,10 +102,6 @@
 <script type="text/javascript">
 	function getDefalutInfo(){
 		window.location.href=encodeURI(encodeURI("stuAdvInfoAction!showStuAdvInfo?stuAdvVo.className=软件1111班&currentPage=1"));
-		/* $.getJSON("encodeURI(encodeURI('stuAdvInfoAction!showStuAdvInfo?stuAdvVo.className=软件1111班&currentPage=1')",
-		  function(data) {
-		    
-		  }); */
 	}
 	function showStuAdvInfo(){
 		   var condition = $("#condition").val();
@@ -184,7 +180,7 @@
 </script>
 
 <body>
-	<form name="fom" id="fom" method="post" action="">
+	 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 			<tr>
@@ -199,7 +195,7 @@
 											width="20" height="18" />
 										</td>
 										<td width="75%">
-										<form id="collegeList">
+										<form id="collegeList" >
 												<input type="button" value="查询" id="accurateSearch">
 										</form>
 										</td>
@@ -236,7 +232,7 @@
 										</td>
 										<td width="7%" align="left"><input name="export"
 											type="button" class="right-button07" value="导出"
-											onclick="browseFolder(this)" />
+											onclick="exportFile()" />
 										</td>
 									</tr>
 								</table>
@@ -535,4 +531,5 @@
 	</div>
 	<s:debug></s:debug>
 </body>
+<script src="<%=basePath%>js/util/loadCollegeClass.js"></script>
 </html>

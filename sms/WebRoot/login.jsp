@@ -47,7 +47,7 @@ function login(){
 				} else if(roleName == '院级管理员') {
 					window.location.href = "index_admin.jsp";
 				} else if(roleName == '校级管理员'){
-				    window.location.href="admin_index.jsp";
+				    window.location.href="index_admin.jsp";
 				}
 	        	
 	        	

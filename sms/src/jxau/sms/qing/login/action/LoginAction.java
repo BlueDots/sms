@@ -81,9 +81,8 @@ public class LoginAction extends ActionSupport  implements SessionAware{
 	        	for(int i=0;i<roles.size();i++){
 	        		
 	        		roles.get(i).setRoleName(roleName);
-	        		
 	        	}
-	        	     	
+	        
 	        	session.put("teacher", teacher);
 	        	session.put("roles", roles);
 	        	out.print("登录成功");

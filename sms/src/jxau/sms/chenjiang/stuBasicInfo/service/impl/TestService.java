@@ -24,6 +24,15 @@ public class TestService {
 	private AbstractionService abstractionService = (AbstractionService)applicationContext.getBean("stuBasicInfoServiceImpl");
 	
 	@Test
+	public void testSelectTutorWattingForUpdate(){
+		List<StuBasicInfo> lists = null;
+		PageVo pageVo = new PageVo();
+		lists = ((StuBasicInfoServiceImpl)globalServiceInterface).selectTutorWattingForUpdate("1234",pageVo);
+		for(int i=0;i<lists.size();i++)
+			System.out.println(lists.get(i));
+	}
+	
+	@Test
 	public void testSelectListByIds(){
 		List<StuBasicInfo> lists = null;
 		List<String> ids = new ArrayList<>();

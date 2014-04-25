@@ -98,7 +98,7 @@ public class AdvanceInfoTest {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("studentNo", "20111827");
 		//params.put("studentName", "赖辉强");
-		params.put("examState", "校级已通过");
+		//params.put("examState", "校级已通过");
 		PageVo pageVo = new PageVo();
 		pageVo.setCurrentPage(1);
 		globalServiceInterface.searchByAccurate(params, pageVo,0);

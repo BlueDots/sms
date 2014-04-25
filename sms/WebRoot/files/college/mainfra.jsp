@@ -478,7 +478,7 @@
 </body>
 
 
-<script type="text/javascript" src="<%=basePath %>js/college/collegeSkip.js" >
+<script type="text/javascript" src="<%=basePath %>js/college/collegeJSON.js" >
 
 	
 </script>

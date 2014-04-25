@@ -7,9 +7,12 @@
 
 package jxau.sms.thomas.util;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,6 +36,7 @@ import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 /** 
  * @ClassName: InputHandler
@@ -63,11 +67,16 @@ public class InputHandler{
 	}*/
 
 	private int getTotalCount(String filePath){
-		FileInputStream fin;
+		//POIFSFileSystem fs;
+		File file = new File(filePath);
+		FileInputStream fin = null;
 		int totalRow = 0;
 		try {
 			fin = new FileInputStream(filePath);
-			HSSFWorkbook workbook=new HSSFWorkbook(fin);//创建工作薄
+			//fs = new POIFSFileSystem(fin);
+			byte[] buf = org.apache.commons.io.IOUtils.toByteArray(fin);
+			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buf);
+			HSSFWorkbook workbook=new HSSFWorkbook(byteArrayInputStream);//创建工作薄
 			sheet=workbook.getSheetAt(0);//得到工作表
 			totalRow =sheet.getLastRowNum();//得到excel的总记录条数
 		} catch (FileNotFoundException e) {
@@ -138,10 +147,12 @@ public class InputHandler{
 	
 	public <T> List<T> setAttributes(List<T> attributes,String filePath) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		getInAttribute();
-		for (int i = 0; i < getTotalCount(filePath); i++) {
+		int count = getTotalCount(filePath);
+		for (int i = 0; i < count; i++) {
 			T object = (T)Class.forName(viewType).newInstance();
 			attributes.add(object);
 		}
+		//System.out.print(b)
 		Field[] fields = attributes.get(0).getClass().getDeclaredFields();
 		for(int i=1;i<=getTotalCount(filePath);i++){
 			 HSSFRow row=sheet.getRow(i);

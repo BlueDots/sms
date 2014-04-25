@@ -25,7 +25,7 @@ public class PropHandler {
 		boolean flag = true;
 		HashMap<String, Object> params = new HashMap<>();
 		if(propVo.getLevel() == 0){
-			List<SchPropDistribution> = dao.select()
+			//List<SchPropDistribution> = dao.select()
 		}else{
 			
 		}

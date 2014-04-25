@@ -33,6 +33,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 	
+	<!-- 查询班主任待修改信息 -->
+	<select id="selectTutorWattingForUpdate" parameterType="java.lang.String" resultType="StuBasicInfo">
+		select  sbi.* 
+		from class_info ai,stu_basic_info sbi 
+		where ai.className=sbi.className and  sbi.exameState='院级未通过' and sbi.stuState=0
+		and ai.teacherNo= #{teacherNo}  
+		limit #{start},#{nums}
+	</select>
+	
+	<!-- 查询班主任待修改信息数量 -->
+	<select id="selectTutorWattingForUpdateNums"  resultType="java.lang.Long">
+		select  count(*) 
+		from class_info ai,stu_basic_info sbi 
+		where ai.className=sbi.className and  sbi.exameState='院级未通过' and sbi.stuState=0
+		and ai.teacherNo= #{teacherNo}  
+	</select>
+	
 	<!--查询  -->
 	<select id="query" parameterType="map" resultMap="StuBasicInfoVOResultMap">
 		select * from stu_basic_info where 1=1

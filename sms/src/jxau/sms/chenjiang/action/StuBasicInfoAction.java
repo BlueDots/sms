@@ -111,6 +111,20 @@ public class StuBasicInfoAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String gainTutorWatingForUpdateNum() {
+		String[] teacherNoString=(String[])params.get("teacherNo");
+		tutorWatingForUpdateNum = stuBasicInfoServiceImpl.selectTutorWattingForUpdateNum(teacherNoString[0]);
+		return SUCCESS;
+	}
+	
+	public String gainTutorWatingForUpdate() {
+		String[] teacherNoString=(String[])params.get("teacherNo");
+		pageVo = new PageVo();
+		pageVo.setCurrentPage(currentPage);
+		tutorWatingForUpdateList = stuBasicInfoServiceImpl.selectTutorWattingForUpdate(teacherNoString[0], pageVo);
+		return SUCCESS;
+	}	
+	
 	public String gainWaitingForLists() {
 		Map<String, Object> params = new HashMap<>();
 		params.put("exameState", "院级审核中");
@@ -201,7 +215,7 @@ public class StuBasicInfoAction extends ActionSupport {
 		pageVo = new PageVo();
 	   	//设置当前页数
 	   	pageVo.setCurrentPage(currentPage);
-	   	
+	   	pageVo.setSize(5);
 	   	
 		stuBasicInfoVOlists = stuBasicInfoServiceImpl.searchByAccurate(params, pageVo, 0);
 		//System.out.println(lists);
@@ -237,15 +251,31 @@ public class StuBasicInfoAction extends ActionSupport {
 	private String className;
 	//审核成功的标志
 	private Boolean verifyFlag = false;
-
+	
 	//待审核信息列表
 	private List<StuBasicInfoVO> waitingForLists;
 	
+	//班主任待修改信息数量
+	private long tutorWatingForUpdateNum=0;
+	//班主任待修改信息列表
+	private List<StuBasicInfo> tutorWatingForUpdateList = null;
+	
+
+
+
 	private Map<String, Object> session = ActionContext.getContext()
 			.getSession();
 	private Map<String, Object> params = ActionContext.getContext()
 			.getParameters();	
 
+	public List<StuBasicInfo> getTutorWatingForUpdateList() {
+		return tutorWatingForUpdateList;
+	}	
+	
+	public long getTutorWatingForUpdateNum() {
+		return tutorWatingForUpdateNum;
+	}	
+	
 	public int getWaitingForNum() {
 		return waitingForNum;
 	}

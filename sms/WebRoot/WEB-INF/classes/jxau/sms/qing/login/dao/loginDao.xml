@@ -13,13 +13,30 @@
 		where 
 			stu_info.studentNo=stu_basic_info.studentNo
 		and
-			stu_info.studentNo=#{studentNo};
+			stu_info.studentNo=#{studentNo}
+		and 
+			stu_info.stuPassword=#{stuPassword};			
   </select>
-  
+
+ 
   
    <select id="selectTeacher"  parameterType="HashMap" resultType="int">
   		select count(1) from tec_info where teacherNo = #{teacherNo}
   		and tecPassword = #{tecPassword};
   </select> 
+  
+  <select id="selectStudentBasicInfo"  parameterType= "HashMap"  resultType="jxau.sms.qing.po.Student">
+  		select 
+  			stu_info.studentNo, studentName, 
+  			className,  major, college, sex,
+  			telephone,email,
+			emailOnly,bankCard, stu_info.stuState 
+		from 
+			stu_info,stu_basic_info
+		where 
+			stu_info.studentNo=stu_basic_info.studentNo
+		and
+			stu_info.studentNo=#{studentNo};		
+  </select>
    
  </mapper>

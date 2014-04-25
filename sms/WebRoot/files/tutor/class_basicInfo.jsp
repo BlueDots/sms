@@ -41,6 +41,8 @@
 <script type="text/javascript">
    $(document).ready(function(){ 
    
+   //得到班主任待修改信息
+   	getTutorWatingForUpdate(<s:property value="#session.teacher.teacherNo"/>,1);
    	//为查询按钮添加点击事件
    	
    	$("#accurateSearch").click(function(){
@@ -54,7 +56,8 @@
 		var major=$("#major").find("option:selected").text();
 		var className=$("#className").find("option:selected").text();
 		var studentNoOrName=$("#studentNoOrName").val();
-
+	
+		
 		//alert(college);
 		//alert(major);
 		//alert(className);
@@ -161,7 +164,7 @@
 											<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置：学生基本信息<span style="position:relative;left:900px"><a ><font color = "red" >审核不通过信息</font></a>(<span id="verifyNum">0</span>)</span>
+														当前位置：学生基本信息<span style="position:relative;left:900px"><a id="waitingForUpdate"><font color = "red" >审核不通过信息</font></a>(<span id="waitingForUpdateNum">0</span>)</span>
 													</th>
 												</tr>
 												<tr id="editMsg"  style="display:none">
@@ -303,7 +306,6 @@
 																				<center>备注</center>
 																			</td>		
 																		</tr>
-																	
 																		
 														<!-- 显示录入的数据 -->
 														<s:if test="%{entryStuBasicInfos != null}">
@@ -414,7 +416,7 @@
 																		cellpadding="0" cellspacing="0" class="right-font08">
 																		<tr>
 																			<td width="50%">
-																				<s:property value="#session.teacher"/>
+																				<s:property value="#session.tutorWatingForUpdateList"/>
 																				共<s:debug></s:debug>
 																				<span class="right-text09" id="pageNums">5</span> 页 | 第
 																				<span class="right-text09" id="currentPage">1</span> 页

@@ -92,9 +92,9 @@
 		sa.examState,
 		sa.remarks 
 		from stu_basic_info sb inner join stu_adv_info sa on 
-	   	sb.studentNo = sa.studentNo where 
+	   	sb.studentNo = sa.studentNo where 1 = 1
 	  	<if test="studentNo != null">
-	  		sb.studentNo = #{studentNo}
+	  		and sb.studentNo = #{studentNo}
 	  	</if>
 	  	<if test="studentName != null">
 	  		and sb.studentName = #{studentName}
@@ -132,7 +132,7 @@
 		select 
 		count(*)
 		from stu_basic_info sb inner join stu_adv_info sa on 
-	   	sb.studentNo = sa.studentNo where 
+	   	sb.studentNo = sa.studentNo where 1 = 1
 	  	<if test="studentNo != null">
 	  		sb.studentNo = #{studentNo}
 	  	</if>

@@ -40,6 +40,7 @@
 <script src="<%=basePath%>/js/jquery.chromatable.js"></script>
 <script src="<%=basePath%>js/tutor/tutor_advanceInfo.js"></script>
 <script src="<%=basePath%>js/college/college.js"></script>
+<script src="<%=basePath%>js/util/loadCollegeClass.js"></script>
 <!--用于生成编辑的内容-->
 <style type="text/css">
 * {
@@ -99,9 +100,15 @@
 </head>
 
 <script type="text/javascript">
-	 
+	function getDefalutInfo(){
+		window.location.href=encodeURI(encodeURI("stuAdvInfoAction!showStuAdvInfo?stuAdvVo.className=软件1111班&currentPage=1"));
+		/* $.getJSON("encodeURI(encodeURI('stuAdvInfoAction!showStuAdvInfo?stuAdvVo.className=软件1111班&currentPage=1')",
+		  function(data) {
+		    
+		  }); */
+	}
 	function showStuAdvInfo(){
-			var condition =  $("#condition").val();
+		   var condition = $("#condition").val();
 		   var currentPage = 1;
 		   if(condition!=""||condition!=""){
 		   	if(!isNaN(condition)){
@@ -131,6 +138,8 @@
 	}
 	
 	$(document).ready(function() {
+		//window.location.href=encodeURI(encodeURI("stuAdvInfoAction!showStuAdvInfo?stuAdvVo.className=软件1111班&currentPage=1"));
+		
 		/*精确查询*/
 		$("#accurateSearch").click(function() {
 		   showStuAdvInfo();
@@ -190,39 +199,9 @@
 											width="20" height="18" />
 										</td>
 										<td width="75%">
-										<span class="collegeName">学院 
-										<select name="college" size="1" id="collegeId">
-													<option value="selected">请选择学院</option>
-													<option value="agri_college">农学院</option>
-													<option value="garden_art">园林与艺术学院</option>
-													<option value="animal_science_tech">动物科学技术学院</option>
-													<option value="engin_college">工学院</option>
-													<option value="science_college">理学院</option>
-													<option value="land_resources">国土资源与环境学院</option>
-													<option value=" computer_information">计算机与信息工程学院</option>
-													<option value=" economics_management">经济管理学院</option>
-													<option value="food_science_engin">食品科学与工程学院</option>
-													<option value="normal_college">职业师范（技术）学院</option>
-													<option value="biological_science_engine">
-														生物科学与工程学院</option>
-													<option value="foreign_languages">外国语学院</option>
-													<option value="software">软件学院</option>
-													<option value="marxism_college">马克思主义学院（政治学院）</option>
-													<option value="continu_education">继续教育学院</option>
-											</select> </span> <span class="majorName">专业方向 <select name="major"
-												id="majorId">
-													<option value="selected">请选择专业方向</option>
-											</select> </span> <span class="className">班级 <select name="class"
-												id="classId">
-													<option value="selected">请选择班级</option>
-											</select> </span> 
-											<input id="condition" name="condition" type="text" size="16" value=""/>
-											 <input name="find" type="button"
-											class="right-button02" value="查询" id = "accurateSearch" "/> &nbsp;&nbsp;排序 <select
-											name="rank">
-												<option>学号升序</option>
-												<option>学号降序</option>
-										</select>
+										<form id="collegeList">
+												<input type="button" value="查询" id="accurateSearch">
+										</form>
 										</td>
 										<td width="9%" align="left">
 											<div class="suckerdiv" style="padding-right:-20px">
@@ -410,8 +389,8 @@
 																			页 | 第 <span class="right-text09"><s:property value="#pageVo.currentPage"/></span> 页</td>
 																		<td width="49%" align="right">[ <a href="#"
 																			class="right-font08">首页</a> | <a href="#"
-																			class="right-font08">上一页</a> | <a href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=<s:property value="#pageVo.currentPage"/>"
-																			class="right-font08">下一页</a> <a href="#"
+																			class="right-font08">上一页</a> | <a href="#"
+																			class="right-font08">下一页</a> <a href="stuAdvInfoAction?currentPage=<s:property value="#pageVo.pageNum"/>"
 																			class="right-font08">末页</a>] 转至：</td>
 																		<td width="1%">
 																			<table width="20" border="0" cellspacing="0"

@@ -77,10 +77,10 @@
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-										 <form action="<%=basePath%>scholarShip/scholarShip!showSchloarShipForTeacher" id="collegeList" method="post" onsubmit="if(($('#className').val()=='-1'||$('#className').val()==undefined)){alert('需要选择班级和学期');return false;}">
-													 
+										 	<form action="<%=basePath%>scholarShip/scholarShip!showSchloarShipForTeacher" id="collegeList" method="post" onsubmit="if(($('#className').val()=='-1'||$('#className').val()==undefined)){alert('需要选择班级和学期');return false;}">
+					 
 													 <input type="submit" value="查询" id="accurateSearch">
-												</form>
+											</form>
 												 
 											</td>
 											<s:if test="%{#session.roles[0].roleName!='班主任'}">

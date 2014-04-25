@@ -2,6 +2,8 @@ package jxau.sms.thomas.action;
 
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,14 +33,16 @@ public class AdvanceInfoAction extends ActionSupport{
 		private String filePath;
 		private String outFilePath;
 		private String flag;
-	
 		private int currentPage = 1;
+		
 		private PageVo pageVo = new PageVo();
 		private Map<String, Object> session = ActionContext.getContext()
 				.getSession();	// 获取strtus2的request
 		@SuppressWarnings("unchecked")
 		private Map<String, Object> request = (Map<String, Object>) ActionContext
 				.getContext().get("request");
+		private Map<String, Object> parameters = ActionContext.getContext()
+				.getParameters();
 		
 		@Resource(name="advanceServiceImple")
 		public void setAdvanceServiceImple(AdvanceServiceImple advanceServiceImple) {
@@ -49,15 +53,22 @@ public class AdvanceInfoAction extends ActionSupport{
 			
 			List<StuAdvVo> stuAdvVos = new ArrayList<StuAdvVo>();
 			pageVo.setCurrentPage(currentPage);
+			//System.out.print("currentPage==="+(String) parameters.get("currentPage"));
 			Map<String, Object> param = new HashMap<String, Object>();
 			param.put("studentNo",stuAdvVo.getStudentNo());
+			param.put("examState", stuAdvVo.getExamState());
+			/*try {
+				param.put("className",URLDecoder.decode(URLDecoder.decode(stuAdvVo.getClassName(),"utf-8"), "utf-8") );
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				return "error";
+			}*/
 			//param.put("studentName",stuAdvVo.getStudentName());
 			stuAdvVos = advanceServiceImple.searchByAccurate(param, pageVo,0);
 			request.put("listStuAdvVo",stuAdvVos);
 			session.put("condition", param);
 			ActionContext.getContext().put("pageVo", pageVo);
 			return SUCCESS;
-			
 		}
 
 		public String importFile(){
@@ -86,8 +97,7 @@ public class AdvanceInfoAction extends ActionSupport{
 			if (conditions==null) {
 				return "error";
 			}
-			System.out.print(fileName);
-			System.out.println(conditions);
+			
 			try {
 				int flag = advanceServiceImple.exportExcel(fileName, abstractId, conditions);
 				//int flag = advanceServiceImple.exportExcel(fileName,abstractId,stuAdvVos);
@@ -138,4 +148,5 @@ public class AdvanceInfoAction extends ActionSupport{
 		public void setFlag(String flag) {
 			this.flag = flag;
 		}
+
 }

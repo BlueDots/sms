@@ -46,11 +46,26 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 		return null;
 	}
 	
-	//查询教师待修改信息（即：审核不通过信息）
-	public List<jxau.sms.chenjiang.po.StuBasicInfo> selectTutorWattingForUpdate() {
+	//查询班主任待修改信息（即：审核不通过信息）
+	public List<jxau.sms.chenjiang.po.StuBasicInfo> selectTutorWattingForUpdate(String teacherNo,PageVo pageVo) {
 		List<jxau.sms.chenjiang.po.StuBasicInfo> list = null;
-		
+		Map<String, Object> params = new HashMap<>();
+		params.put("teacherNo", teacherNo);
+		params.put("start", pageVo.getFirstIndex());
+		params.put("nums", pageVo.getSize());
+		list = dao.select(namespace+"selectTutorWattingForUpdate", params);
+		long count = dao.selectOne(namespace+"selectTutorWattingForUpdateNums", params);
+		pageVo.setCount(count);
 		return list;
+	}
+	
+	//查询班主任待修改信息数量（即：审核不通过信息的数量）
+	public long selectTutorWattingForUpdateNum(String teacherNo) {
+		List<jxau.sms.chenjiang.po.StuBasicInfo> list = null;
+		Map<String, Object> params = new HashMap<>();
+		params.put("teacherNo", teacherNo);
+		long count = dao.selectOne(namespace+"selectTutorWattingForUpdateNums", params);
+		return count;
 	}
 	
 

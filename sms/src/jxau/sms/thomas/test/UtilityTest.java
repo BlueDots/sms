@@ -21,24 +21,25 @@ public class UtilityTest {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Dao dao = (Dao) applicationContext.getBean("dao");
 		HashMap<String, Object> cons = new HashMap<>();
-		cons.put("studentNo", "20111826");
+		cons.put("studentNo","20111826");
 		OutputHandler outputHandler = new OutputHandler("0100");
 		try {
 			outputHandler.exportExcel("D://test.xls",cons);
+			//outputHandler.exportExcel("D://test.xls",cons);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
-	
+	@Test
 	public void testInput() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Dao dao = (Dao) applicationContext.getBean("dao");
 		InputHandler inputHandler = new InputHandler("0100");
 		List<StuAdvVo> attributes = new ArrayList<StuAdvVo>();
-		System.out.print(inputHandler.inputExcel(attributes,"D://test.xls",dao));
+		System.out.print(inputHandler.inputExcel(attributes,"D://outworkbook.xls",dao));
 	}
-	
+	@Test
 	public void testInitiateObject() throws ClassNotFoundException{
 		InputHandler inputHandler = new InputHandler("0100");
 		List<StuAdvVo> attributes = new ArrayList<StuAdvVo>();
@@ -50,7 +51,7 @@ public class UtilityTest {
 			e.printStackTrace();
 		}
 	}
-	
+	@Test
 	public void testMapperUtility(){
 		System.out.print(MapperUtility.getMapperId("0100", "inputid"));
 	}

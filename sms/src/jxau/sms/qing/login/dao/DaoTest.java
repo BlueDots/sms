@@ -20,7 +20,8 @@ public class DaoTest {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("teacherNo", "1234");
 		map.put("tecPassword", "11");
-		int count = dao.selectOne("selectTeacher",map);
+		int count = dao.selectOne("jxau.sms.qing.login.dao.selectTeacher",map);
+	
 		System.out.println(count);
 	}
 

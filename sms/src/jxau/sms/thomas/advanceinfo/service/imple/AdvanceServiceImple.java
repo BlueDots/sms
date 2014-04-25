@@ -1,5 +1,6 @@
 package jxau.sms.thomas.advanceinfo.service.imple;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,12 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
-
 import com.mchange.v1.identicator.IdList;
 
+import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.commom.vo.PageVo;
 import jxau.sms.globalService.GlobalServiceInterface;
@@ -20,15 +20,18 @@ import jxau.sms.globaldao.Dao;
 import jxau.sms.thomas.exception.ClassNotFoundException;
 import jxau.sms.thomas.exception.CommonErrorException;
 import jxau.sms.thomas.exception.NullPointerException;
+import jxau.sms.thomas.exception.POIException;
 import jxau.sms.thomas.po.AdvItem;
 import jxau.sms.thomas.po.StuAdvInfo;
+import jxau.sms.thomas.util.InputHandler;
+import jxau.sms.thomas.util.OutputHandler;
 import jxau.sms.thomas.vo.StuAdvVo;
 import jxau.sms.util.chenjiang.exception.NullPonterException;
 import jxau.sms.util.chenjiang.exception.ParamWrongException;
 import jxau.sms.util.chenjiang.exception.TypeNotMatchException;
 
 @Service("advanceServiceImple")
-public class AdvanceServiceImple implements GlobalServiceInterface {
+public class AdvanceServiceImple extends AbstractionService implements GlobalServiceInterface{
 
 	private Dao dao;
 	private final String nameSpace = "jxau.sms.advanceinfo.dao.";
@@ -192,6 +195,47 @@ public class AdvanceServiceImple implements GlobalServiceInterface {
 			throw new CommonErrorException("key必须是awardNo");
 		}
 		return  flag;
+	}
+
+	@Override
+	public <T> List<T> getWaitingForLists(Map<String, Object> params,
+			PageVo pageVo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
+			String roleId, String level) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public <T> List<T> getInputExcel(String abstractId,List<T> attributes,String filePath) throws InstantiationException, IllegalAccessException{
+		try {
+			super.inputExcel(abstractId, attributes, filePath);
+		}catch (java.lang.ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return attributes;
+	}
+	
+	public <T> int inputExcel(List<T> attributes) throws InstantiationException, IllegalAccessException{
+		int flag = 1;
+		if (attributes == null) {
+			flag = 0;
+			throw new POIException("属性不能为空!");
+		}
+		dao.batchAdd(nameSpace+"batchAddAdvInfo",attributes);
+		return flag;
+	}
+	
+	public <T> int exportExcel(String filePath,String abstractId,List<T> rows) throws IOException {
+		if (rows == null||rows.size()==0) {
+			throw new POIException("属性不能为空！");
+		}
+		return super.exportExcel(filePath,abstractId,rows);
 	}
 	
 }

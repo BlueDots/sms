@@ -24,7 +24,8 @@ import org.apache.log4j.Logger;
 public class XmlPathUtility {
 
 	public static String getPath(String fileName,String page){
-		String filepath = Thread.currentThread().getClass().getResource("/"+page).getPath() + "/" + fileName;
+		String filepath = Thread.currentThread().getContextClassLoader().getResource("/"+page).getPath() + "/" + fileName;
+		System.out.print(filepath);
 		filepath = filepath.replaceAll("%20", " ");
         try {
 			filepath = URLDecoder.decode(filepath, "UTF-8");

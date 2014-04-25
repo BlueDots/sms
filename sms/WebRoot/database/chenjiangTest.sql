@@ -103,8 +103,6 @@ select *  from dep_info;
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1105','软件学院','','');
 	
-insert into dep_info(departNo,department,departBrief,departInfo) 
-	values('1106','计信院','','');	
 desc major_info;
 select * from major_info;
 insert into major_info(majorNo,major,departNo) values('11050101','网络应用方向','1105');
@@ -172,8 +170,7 @@ insert into class_info(classNo,className,classBreif,majorNo,classNumber) values(
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201207','软件工程1207','软件1207','11050104',40);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201208','软件工程1208','软件1208','11050104',40);
 
-
---英语方向
+##英语方向
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201012','软件工程1012','软件1012','11050400',45);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201013','软件工程1013','软件1013','11050400',41);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201014','软件工程1014','软件1014','11050400',37);
@@ -441,5 +438,5 @@ insert into dep_info(departNo,department,departBrief,departInfo)
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1120','商学院','','');
 
-
+select * from dep_info;
 

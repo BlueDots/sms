@@ -121,69 +121,71 @@ div {
                   </tr>
                   <tr>
                     <td width="125" bgcolor="#FFFFFF"><div align="center"><span  class="STYLE9"><b>姓名</b><br /></span></div><br /></td>
-                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>��ΰ��</div></td>
+                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.studentName"/></div></td>
                     <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"><b>性别</b><br /> </span></div><br /></td>
-                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>����</div></td>
+                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:if test="%{#request.vita.studentInfo.sex='1'}">女</s:if>
+                    　<s:else>男</s:else></div></td>
                     <td width="90" height="120" rowspan="4" bgcolor="#FFFFFF" align="center" style="padding-left:50px"><img src="img/luoweifu.jpg" alt="protrait" width="90" height="120" /></td>
                   </tr>
                   <tr>
                     <td width="125" bgcolor="#FFFFFF"><div align="center"><span  class="STYLE9"><b>名族</b><br /></span></div><br /></td>
-                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>����</div></td>
+                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"><s:property value="#request.vita.studentInfo.nation"/></span></div></td>
                     <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"><b>籍贯</b><br /> </span></div><br /></td>
-                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>����</div></td>
+                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.hometown"/></div></td>
                   </tr>
                   <tr>
                     <td width="125" bgcolor="#FFFFFF"><div align="center"><span  class="STYLE9"><b>政治面貌</b><br /></span></div><br /></td>
-                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>������</div></td>
+                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.studentName"/></div></td>
                     <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"><b>出生年月</b><br /> </span></div><br /></td>
-                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>��Ա</div></td>
+                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.birthday"/></div></td>
                   </tr>
                   <tr>
                     <td width="125" bgcolor="#FFFFFF"><div align="center"><span  class="STYLE9"><b>专业</b><br /></span></div><br /></td>
-                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>����</div></td>
+                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.major"/></div></td>
                     <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"><b>学制</b><br /> </span></div><br /></td>
-                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>���</div></td>
+                    <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>四年</div></td>
                   </tr>
                  
                   <tr>
                     <td width="125" bgcolor="#FFFFFF"><div align="center"><span  class="STYLE9">手机号<br /></span></div><br /></td>
-                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span>18070514222</div></td>
+                    <td width="162" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.telephone"/></div></td>
                     <td width="153" bgcolor="#FFFFFF"><div align="center"><span align="center" class="STYLE9"><b>个人邮箱</b><br /> </span></div><br /></td>
-                    <td width="153" bgcolor="#FFFFFF" colspan = "3"><div align="center"><span align="center" class="STYLE9"></span>4��</div></td>
+                    <td width="153" bgcolor="#FFFFFF" colspan = "3"><div align="center"><span align="center" class="STYLE9"></span><s:property value="#request.vita.studentInfo.email"/></div></td>
                   </tr>
                           
-               </div></td>
-                   
-                
+               </div></td>                   
+                   <tr>
+                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>学生活动</b><br /> </span></div><br /></td>
+                  </tr>
+                  <tr> 
+                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><span style="color: rgb(0, 0, 0); font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 16px; font-style: normal;
+                     font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 24px; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255); 
+                     display: inline ! important; float: none;">
+                    学生干部职位和任职时间：<s:property value="#request.vita.participate.studentPost"/>
+                    <s:property value="#request.vita.participate.workingTime"/>
+                    <br>活动名称和等级： <s:property value="#request.vita.participate.activityName"/>
+                   <s:property value="#request.vita.participate.activityRating"/>
+                    </span></td>
+                  </tr>
+                   <tr>
+                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>评优评先</b><br /> </span></div><br /></td>
+                  </tr>
+                  <tr> 
+                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><div><span  class="STYLE9"> </span>
+                先进项目和时间:     <s:property value="#request.vita.advance[0].advanceActivity"/>&nbsp;&nbsp;&nbsp;
                   
-                   <tr>
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>ѧ��</b> </span></div></td>
-                  </tr>
-                  <tr> 
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><div><span  class="STYLE9"><b></b> </span>ѧ��ɲ�ְλ����ְʱ�䣺<br>���ƣ�<br>�μ�ʱ�䣺<br>����֣�<br></div></td>
-                  </tr>
-                   <tr>
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>��������</b> </span></div></td>
-                  </tr>
-                  <tr> 
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><div><span  class="STYLE9"><b></b> </span>�Ƚ���Ŀ��<br>ʱ�䣺<br>��ע��<br></div></td>
-                  </tr>
-                   <tr>
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>
-                      ����ѧ��</b> </span></div></td>
-                  </tr>
-                  <tr> 
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><div><span  class="STYLE9"><b></b> </span>��ƣ�<br>ʱ�䣺<br></div></td>
-                  </tr>
-                  <tr>
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>
-                      �༶��ѧ��</b> </span></div></td>
-                  </tr>
-                  <tr> 
-                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><div><span  class="STYLE9"><b></b> </span>�ȼ���<br></div></td>
-                  </tr>
-
                   
-  
+                  </tr>
+                   <tr>
+                    <td width="125" bgcolor="#FFFFFF" colspan = "5"><div align="center"><span  class="STYLE9"><b>奖助学金<br /> 
+                      </b> </span></div><br /></td>
+                  </tr>
+                  <tr> 
+                    <td width="125" bgcolor="#FFFFFF" colspan = "5" rolspan="5" style="line-height: 150%"><div><span  class="STYLE9"><b></b> </span>
+                   名称和金额： <s:property value="#request.vita.advance[0].activityName"/>
+                     <s:property value="#request.vita.advance[0].grantMoney"/>元
+                    <br></div></td>
+                  </tr>
+            
 </body>
 </html>

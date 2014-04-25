@@ -12,5 +12,10 @@
         </action>  
     </package> 
     
+     <package name="qing" namespace="/" extends="struts-default">  
+        <action name="vitaAction" class="jxau.sms.qing.vita.action.VitaAction">  
+            <result name="success">/files/Student/std_ResumeModel1.jsp</result>  
+        </action>  
+    </package> 
     
 </struts>

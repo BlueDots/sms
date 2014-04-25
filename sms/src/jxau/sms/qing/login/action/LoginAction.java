@@ -1,10 +1,16 @@
 package jxau.sms.qing.login.action;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
  
 import jxau.sms.qing.exception.LoginException;
 import jxau.sms.qing.login.service.LoginService;
+import jxau.sms.qing.po.Student;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -45,15 +51,28 @@ public class LoginAction extends ActionSupport  {
 	 
 	 @Override  
 	 public String execute() throws Exception {  		 	
-	        System.out.println("HelloAction.execute is executing..."); 
-	        Boolean bool;
-	        
+	        System.out.println("HelloAction.execute is executing...");
+	        HttpServletRequest req = ServletActionContext.getRequest();
+	        HttpServletResponse response = ServletActionContext.getResponse();
+	    //    ServletContext application = ServletActionContext.getServletContext();
+	        HttpSession session =req.getSession();
+	        Object obj;
+	        Student student;
+	       
 	        try{
-	        	this.getLoginService().whichUser(username, password);
+	        	obj = this.getLoginService().whichUser(username, password);
 	        } catch (LoginException e) {
-	        	e.printStackTrace();
+	        	//e.printStackTrace();
+	        	
 	        	return ERROR;
 	        }
+	        if(username.length() == 4){
+	        	student = (Student)obj;
+	        	session.setAttribute("student", student);
+	        } else if(username.length() == 8) {
+	        	session.setAttribute("teacher", username);
+	        }
+
 	        return SUCCESS; 
 	      
 	 }  

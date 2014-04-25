@@ -69,7 +69,7 @@ create table act_info
 	activityLevel varchar(30) not null,
 	sponsor varchar(60) not null,
 	organize varchar(60) not null,
-	teacherNo char(4) not null,
+	teacherNo char(4),
 	studentName varchar(30),
 	createTime date not null,
 	info varchar(150),

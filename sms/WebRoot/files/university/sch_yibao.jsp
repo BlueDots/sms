@@ -49,10 +49,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
-												<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher" id="collegeList" method="post">
-													 <input type="submit" value="查询" id="accurateSearch">
-												</form>
-												
+											
+											<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
+												<s:if test="'/hosInsuranceQuery!getAllHosByTeacher' in {#purviewList.purviewUrl}">												
+													<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher" id="collegeList" method="post">
+														 <input type="submit" value="查询" id="accurateSearch">
+													</form>
+												</s:if>	
+											</s:iterator>
 												
 											</td>
 											
@@ -68,8 +72,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<ul>
 																
 																<li>
-																	<a>录入</a>
-																		<ul>
+																	<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
+																		<s:if test="'/hosInsuranceInfo!updateHoss' in {#purviewList.purviewUrl}">
+																		<a>录入</a>
+																			<ul>
+																	
 																			<li>
 																			<!-- popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult') -->
 																				<a onclick="updateDataAboutAcceptResult()">录入受理结果</a>
@@ -82,8 +89,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																			<!--popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney')  -->
 																				<a onclick="updateDataAboutCompany()">录入商业理赔结果</a>
 																				
-																			</li>
+																			</li>			
 																		</ul>
+																		</s:if>
+																	</s:iterator>
 																</li>
 																<li>
 																	<a href="">导入</a>
@@ -128,7 +137,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												class="CContent">
 												<tr>
 													<th class="tablestyle_title">
-														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">学生医保信息查询</font><span style="position:relative;left:600px"><a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>"><font color = "red" >待审核信息</font></a>(<s:property value="#request.nocheckNum"/>)</span>
+														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">学生医保信息查询</font>
+													
+																							
+														<span style="position:relative;left:600px">														
+														<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>">
+														<font color = "red" >待审核信息</font>
+														</a>(<s:property value="#request.nocheckNum"/>)
+														</span>
+													
+														
+														
+														
 													</th>
 												</tr>
 												<tr>

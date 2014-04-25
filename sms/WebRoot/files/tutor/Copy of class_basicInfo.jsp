@@ -1,21 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %> 
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
 	<head>
+		<base href="<%=basePath%>">
+
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>学生工作管理系统</title>
-		<link href="../../css/css.css" rel="stylesheet" type="text/css" />
-		<link href="../../css/style.css" rel="stylesheet" type="text/css" />
-		<link href="../../css/arrow.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" type="text/css" href="../../css/school/tanchu.css"><!-- 需要放到公共的js包下-->
+		<link href="<%=basePath%>css/css.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />
+		<link href="<%=basePath%>css/arrow.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>css/school/tanchu.css"><!-- 需要放到公共的js包下-->
 
-		<script src="../../js/jquery-1.10.2.min.js"></script>
-		<script src="../../js/jquery-1.10.2.js"></script>
-		<script src="../../js/testSearch.js"></script>
-		<script src="../../js/provincesdata.js"></script>
-		<script src="../../js/jquery.provincesCity.js"></script>
-		<script src="../../js/jquery.chromatable.js"></script>
-		<script type="text/javascript" src="../../js/school/jquery-1.10.2-vsdoc2.js"></script>
-		<script type="text/javascript" src="../../js/school/school.js"></script><!--用于修改学生的基本信息，需要修改为自己的相应的文件-->
+		<script src="<%=basePath%>js/jquery-1.10.2.js"></script>
+		<script src="<%=basePath%>js/testSearch.js"></script>
+		<script src="<%=basePath%>js/jquery.provincesCity.js"></script>
+		<script src="<%=basePath%>js/jquery.chromatable.js"></script>
+		<script type="text/javascript" src="<%=basePath%>js/school/school.js"></script><!--用于修改学生的基本信息，需要修改为自己的相应的文件-->
 <style type="text/css">
 *{margin:0;padding:0;list-style-type:none;}
 .demo{border:solid 1px #D5D5D5;border-collapse:collapse;width:100%;}
@@ -34,13 +47,13 @@
 					<td height="30">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td height="62" background="../../images/nav04.gif">
+								<td height="62" background="<%=basePath%>images/nav04.gif">
 
 									<table width="98%" border="0" align="center" cellpadding="0"
 										cellspacing="0">
 										<tr>
 											<td width="21">
-												<img src="../../images/ico07.gif" width="20" height="18" />
+												<img src="<%=basePath%>images/ico07.gif" width="20" height="18" />
 											</td>
 											<td width="538">
 												<span class="collegeName">学院
@@ -252,7 +265,7 @@
 															cellpadding="0" cellspacing="0">
 															<tr>
 																<td height="6">
-																	<img src="../../images/spacer.gif" width="1" height="1" />
+																	<img src="<%=basePath%>images/spacer.gif" width="1" height="1" />
 																</td>
 															</tr>
 															<tr>
@@ -309,7 +322,7 @@
 		<!--查看学生详细基本信息-->
 		<div id="SchStuBasicInfoDiv" style="display: none"></div>
     		<div id="getSchStuBasicInfoDiv" style="display: none">
-        	<h2>学生基本信息<a href="#" id="CloseBasicInfo">关闭</a></h2>
+        	<h2>学生基本信息<a href="" id="CloseBasicInfo">关闭</a></h2>
         	<div class="form">
             	<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="tableID" ><thead>
             		<tr class="CTitle">
@@ -384,7 +397,7 @@
     <form name="fom" id="fom" method="post" action="">
     	<div id="advancedDiv" style="display: none"></div>
     		<div id="advancedSearchDiv" style="display: none">
-             	<h2>高级查询选项<a href="#" id="CloseadvancedSearch">关闭</a></h2>
+             	<h2>高级查询选项<a href="" id="CloseadvancedSearch">关闭</a></h2>
         	<div class="form">
             	<table width="50%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="advancedSearchTab" ><thead>
             

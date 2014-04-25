@@ -103,7 +103,7 @@
 													</option>
 												</select> --%>
 											</td>
-											<td width="15%" align="center" style="position:relative;left:-80px">
+											<td width="15%" align="center" style="position:relative;left:-120px">
 												<div class="suckerdiv">
 													<ul id="suckertree1">
 														<li>
@@ -113,7 +113,7 @@
 																	<a >编辑</a>
 																	<ul>
 																		<li>
-																			<a onclick="edit()" >修改</a>
+																			<a onclick="updateStuBasicInfo()" >修改</a>
 																		</li>																		
 																		<li>
 																			<a onclick="edit()" >删除</a>

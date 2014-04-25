@@ -303,7 +303,7 @@ function entryStuBasicInfo(numsOfRow) {
 			var TrObj = tableObj.insertRow(trLength-1);
 			TrObj.setAttribute("bgcolor","#EEEEEE");
 			TrObj.setAttribute("align","center");
-
+			
 			//第一列:照片
 			var TdObj1 = TrObj.insertCell(0);
 			var photo = document.createElement("input");

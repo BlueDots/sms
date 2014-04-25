@@ -1,5 +1,6 @@
 package jxau.sms.anping.action;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,8 @@ public class DisplayCollegeAction extends ActionSupport {
 
 		TecBasicInfo teacher = (TecBasicInfo) session.get("teacher");
 		@SuppressWarnings("unchecked")
-		List<RoleInfo> roles = (List<RoleInfo>) session.get("roles");
+		List<RoleInfo> roles  = (List<RoleInfo>)session.get("roles");
+		
 		// 拿到参数为　主要用来判断是拿取学院、方向还是班级type 的数据
 		String[] type = (String[]) params.get("type");
 		String[] departNo = (String[]) params.get("departNo");

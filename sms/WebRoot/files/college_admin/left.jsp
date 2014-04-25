@@ -145,7 +145,7 @@ function list(idstr){
 					<tr>
 						<td width="8%"><img name="img8" id="img8" src="<%=basePath%>/images/ico04.gif" width="8" height="11" /></td>
 						<td width="92%">
-								<a href="<%=basePath%>/RoleManager/role!roleExecute" target="mainFrame" class="left-font03">角色管理</a></td>
+								<a href="<%=basePath%>/role!roleExecute" target="mainFrame" class="left-font03">角色管理</a></td>
 					</tr>
 				</table>
 			</td>

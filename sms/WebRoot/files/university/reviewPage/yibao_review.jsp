@@ -55,7 +55,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</td>
 											<td width="47" align="center">
 												<div class="suckerdiv" style="padding-right:-90px">
+													
+											<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
+												<s:if test="'/hosInsuranceInfo!checkHosByTeacher' in {#purviewList.purviewUrl}">	
 													<ul id="suckertree1">
+	
+														
 														<li>
 															<a href="#">审核管理</a>
 															<ul>
@@ -66,9 +71,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																</li>
 																　
 															</ul>
-														</li>
-
+														</li>													
 													</ul>
+													
+												</s:if>
+											</s:iterator>
 												</div>
 											</td>
 										   

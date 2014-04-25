@@ -31,8 +31,8 @@ begin
 end;//
 delimiter ;
 
-##call sp_doTotalScoreRank('软件学院','1102','201401');
-##select * from stu_class_grant;
+##call sp_doTotalScoreRank('软件学院','1102','201501');
+##select * from stu_class_grant where term='201501';
 
 ########################班级奖学金分配奖学金的存储过程####################
 drop PROCEDURE if exists sp_doAwardRank;
@@ -54,7 +54,7 @@ begin
   FROM stu_class_grant classGrant ,stu_basic_info student 
   where  classGrant.studentNo=student.studentNo 
   and  classGrant.term=term  and  student.college=college and student.className=className
-  and classGrant.remarks!='挂科'
+  and classGrant.remarks is  null
   order by   classGrant.totalScore desc 
   ;
   
@@ -81,6 +81,7 @@ begin
   repeat
   	Fetch cur2 into studentNo2,term2;
   	IF NOT done THEN
+  	 
   		IF  rank between 1 and oneCount then
   			update stu_class_grant set rank='一等奖'
   			where studentNo=studentNo2 and term=term2;
@@ -103,7 +104,8 @@ delimiter ;
 
 ##call sp_doAwardRank('软件学院','1102','201401');
 ##select * from stu_class_grant;
+##update stu_class_grant set exameState='通过' where studentNo='20111429' and term='201404';
 
+ ## delete from stu_class_grant;
  
-
 

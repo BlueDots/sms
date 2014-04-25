@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import jxau.sms.abstration.AbstractionService;
 import jxau.sms.anping.exception.ParameterNotMatchException;
 import jxau.sms.anping.po.ClassInfo;
+import jxau.sms.anping.po.DepInfo;
 import jxau.sms.anping.po.HosInsuranceInfo;
 import jxau.sms.anping.po.ScholarShip;
 import jxau.sms.anping.service.ScholarShipService;
@@ -21,10 +22,12 @@ import jxau.sms.chenjiang.po.StuBasicInfo;
 import jxau.sms.chenjiang.stuBasicInfo.service.impl.StuBasicInfoServiceImpl;
 import jxau.sms.chenjiang.vo.StuBasicInfoVO;
 import jxau.sms.commom.vo.PageVo;
+import jxau.sms.commom.vo.WaitCheckVo;
 import jxau.sms.globalService.GlobalServiceInterface;
 import jxau.sms.globaldao.Dao;
 import jxau.sms.lyx.po.RoleInfo;
 import jxau.sms.lyx.po.TecBasicInfo;
+import jxau.sms.qing.po.Teacher;
 import jxau.sms.util.service.impl.CollegeMajorClassInterface;
 
 /**
@@ -58,46 +61,85 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 					"学号或者基准分或者学业课程分不能为空，体育课程（活动）要么全部为空要么全部给分！");
 		}
 
+		String checkScore = tools.checkScoreHeFa(scholarShips);
+		if (checkScore != null) {
+			throw new ParameterNotMatchException(checkScore);
+		}
 		// 核对是不是有重复的学号
 		String checkIsDuipt = tools.checkStudentNoIsDulipe(scholarShips);
 		if (checkIsDuipt != null) {
 			throw new ParameterNotMatchException(checkIsDuipt);
 		}
 
-		
 		// 获取第一个学生的信息用来检测是不是和传过来班级一致
-		
-		StuBasicInfo student = studentService.getOneById(scholarShips.get(0).getStudent().getStudentNo());
-		
 
-		//首先核对是不是班主任。如果是的话，那么需要判断是不是有修改这个班级权利
-        String 	maxLevel  =  tools.getHighLevelRole(roleInfos);
-		if(maxLevel.equals("班主任")){
-			List<ClassInfo>  classes = classMajorService.searchClassByTeacher(teacher, roleInfos, null,null);
-			if(!tools.checkTeacherIsClassLoader(student.getClassName(), classes)){
+		StuBasicInfo student = studentService.getOneById(scholarShips.get(0)
+				.getStudent().getStudentNo());
+
+		// 首先核对是不是班主任。如果是的话，那么需要判断是不是有修改这个班级权利
+		String maxLevel = tools.getHighLevelRole(roleInfos);
+		if (maxLevel.equals("班主任")) {
+			List<ClassInfo> classes = classMajorService.searchClassByTeacher(
+					teacher, roleInfos, null, null);
+			if (!tools.checkTeacherIsClassLoader(student.getClassName(),
+					classes)) {
 				throw new ParameterNotMatchException("你已班主任身份登陆，没有权限去修改其它班级");
+			}else{
+				
+				for(ScholarShip ship:scholarShips){
+					ship.setExameState("院级审核中");
+				}
 			}
-			
-	 	}else{
-			//如果不是班主任则判断需要添加的数据是不是一致的
-			if(!(student.getCollege().equals(college)&& student.getClass().equals(className))){
+
+		} else {
+			System.out.println(student.getCollege() + "----"
+					+ student.getClassName());
+			// 如果不是班主任则判断需要添加的数据是不是一致的
+			if (!(student.getCollege().equals(college) && student
+					.getClassName().equals(className))) {
 				throw new ParameterNotMatchException("你需要添加的班级和你选择的班级不一致，请重新选择");
+			}else if(tools.getHighLevelRole(roleInfos).equals("院级工作人员")) {
+				for(ScholarShip ship:scholarShips){
+					ship.setExameState("校级审核中");
+				}
+			}else if(tools.getHighLevelRole(roleInfos).equals("校级工作人员")){
+				for(ScholarShip ship:scholarShips){
+					ship.setExameState("通过");
+				}
 			}
-			
-	 	}
-		
-	    
-		//判断学号是不是都是一个班的
-		List<StuBasicInfoVO> stuBasics = studentService.getListsByCollegeAndClassName(college, className);
-		
-		String checkStudentIsInClass = tools.checkStudentIsInDataBase(scholarShips, stuBasics);
-		
-		if(checkStudentIsInClass==null){
+
+		}
+
+		// 判断学号是不是都是一个班的
+		List<StuBasicInfoVO> stuBasics = studentService
+				.getListsByCollegeAndClassName(student.getCollege(),
+						student.getClassName());
+
+		String checkStudentIsInClass = tools.checkStudentIsInDataBase(
+				scholarShips, stuBasics);
+
+		if (checkStudentIsInClass != null) {
 			throw new ParameterNotMatchException(checkStudentIsInClass);
 		}
 
-		//终于可以添加了
-		//,,,,
+		// 检测记录是不是在数据库中已经存在过了
+		String checkRecordIsExists = tools.checkStudentIsInTermRecord(
+				scholarShips,
+				this.getClassMaxStuentNo(student.getCollege(),
+						student.getClassName(), term));
+
+		if (checkRecordIsExists != null) {
+			throw new ParameterNotMatchException(checkRecordIsExists);
+		}
+
+		// 计算总分和插入term
+		tools.computerTotalScoreAndIsertTerm(scholarShips, term);
+		// 终于可以添加了
+
+		dao.add(namespace + "addScholarShipByBatch", scholarShips);
+		this.doTotalScoreRank(student.getCollege(), student.getClassName(),
+				term);
+		this.doAwardRand(student.getCollege(), student.getClassName(), term);
 	}
 
 	@Override
@@ -110,25 +152,196 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	/**
 	 * 更新的业务逻辑如下： 　 1. 只能更新四部分中的成绩 　2. 自动的计算总分
 	 * 
-	 * ４。统一计算总分排名 ５。统一计算奖学金排名(...)
+	 * ４。统一计算总分排名 ５。统一计算奖学金排名(...) 6.只能修该对应审核中的数据
 	 */
 	@Override
 	public void updateSchloarShip(List<ScholarShip> scholarShips,
 			TecBasicInfo teacher, List<RoleInfo> roleInfos) {
 
+		// 核对学期和学号是不是为null
+		if (!tools.checkScholarTermIsNull(scholarShips)) {
+			throw new ParameterNotMatchException("学期不能为空！");
+		}
+		String checkScore = tools.checkScoreHeFa(scholarShips);
+		if (checkScore != null) {
+			throw new ParameterNotMatchException(checkScore);
+		}
+		// 获取第一个学生的信息用来检测是不是和传过来班级一致
+		StuBasicInfo student = studentService.getOneById(scholarShips.get(0)
+				.getStudent().getStudentNo());
+
+		// 首先核对是不是班主任。如果是的话，那么需要判断是不是有修改这个班级权利
+		String maxLevel = tools.getHighLevelRole(roleInfos);
+		if (maxLevel.equals("班主任")) {
+			List<ClassInfo> classes = classMajorService.searchClassByTeacher(
+					teacher, roleInfos, null, null);
+			if (!tools.checkTeacherIsClassLoader(student.getClassName(),
+					classes)) {
+				throw new ParameterNotMatchException("你已班主任身份登陆，没有权限去修改其它班级");
+			}
+		}
+
+		// 判断学号是不是都是一个班的
+		List<StuBasicInfoVO> stuBasics = studentService
+				.getListsByCollegeAndClassName(student.getCollege(),
+						student.getClassName());
+
+		String checkStudentIsInClass = tools.checkStudentIsInDataBase(
+				scholarShips, stuBasics);
+
+		if (checkStudentIsInClass != null) {
+			throw new ParameterNotMatchException(checkStudentIsInClass);
+		}
+
+		String  checkHefaState=this.updateForSideScore(scholarShips,roleInfos);
+		if(null!=checkHefaState){
+			throw new ParameterNotMatchException(checkHefaState);
+		}
+		System.out.println("111111111111111111");
+
+		tools.computerTotalScoreAndIsertTerm(scholarShips, null);
+		dao.batchUpdate(namespace + "updateScholarShipByTeacher", scholarShips);
+
+		this.doTotalScoreRank(student.getCollege(), student.getClassName(),
+				scholarShips.get(0).getTerm());
+		this.doAwardRand(student.getCollege(), student.getClassName(),
+				scholarShips.get(0).getTerm());
+
 	}
 
+	private String updateForSideScore(List<ScholarShip> scholarShips,List<RoleInfo> roleInfos) {
+		String result = null;
+		for (ScholarShip ship : scholarShips) {
+			ScholarShip studentShipInDataBase = this.searchOneByTerm(ship
+					.getStudent().getStudentNo(), ship.getTerm());
+			 
+			   if(studentShipInDataBase==null){
+				   result="你需要修改的数据在数据库中不存在";
+				   break;
+			   }
+		      if(!tools.checkRoleIsRight(tools.getHighLevelRole(roleInfos), studentShipInDataBase.getExameState())){
+		    	  result="现在不能修改学号为："+ship.getStudent().getStudentNo()+"的学生";
+		    	  break;	
+		      }
+			
+			if (ship.getBaseScore() == 0
+					&& studentShipInDataBase.getBaseScore() != 0) {
+				ship.setBaseScore(studentShipInDataBase.getBaseScore());
+			}
+			if (ship.getAwardScore() == 0
+					&& studentShipInDataBase.getAwardScore() != 0) {
+				ship.setAwardScore(studentShipInDataBase.getAwardScore());
+			}
+			if (ship.getPunishScore() == 0
+					&& studentShipInDataBase.getPunishScore() != 0) {
+				ship.setPunishScore(studentShipInDataBase.getPunishScore());
+			}
+
+			if (ship.getLessonScore() == 0
+					&& studentShipInDataBase.getLessonScore() != 0) {
+				ship.setLessonScore(studentShipInDataBase.getLessonScore());
+			}
+			if (ship.getInnovateScore() == 0
+					&& studentShipInDataBase.getInnovateScore() != 0) {
+				ship.setInnovateScore(studentShipInDataBase.getInnovateScore());
+			}
+
+			if (ship.getSkillsScore() == 0
+					&& studentShipInDataBase.getSkillsScore() != 0) {
+				ship.setSkillsScore(studentShipInDataBase.getSkillsScore());
+			}
+
+			if (ship.getSportScore() == 0
+					&& studentShipInDataBase.getSportScore() != 0) {
+				ship.setSportScore(studentShipInDataBase.getSportScore());
+			}
+
+			if (ship.getPhysiqueScore() == 0
+					&& studentShipInDataBase.getPhysiqueScore() != 0) {
+				ship.setPhysiqueScore(studentShipInDataBase.getPhysiqueScore());
+			}
+			if (ship.getSportMatchScore() == 0
+					&& studentShipInDataBase.getSportMatchScore() != 0) {
+				ship.setSportMatchScore(studentShipInDataBase
+						.getSportMatchScore());
+			}
+
+			if (ship.getManageScore() == 0
+					&& studentShipInDataBase.getManageScore() != 0) {
+				ship.setManageScore(studentShipInDataBase.getManageScore());
+			}
+
+			if (ship.getCultureScore() == 0
+					&& studentShipInDataBase.getCultureScore() != 0) {
+				ship.setCultureScore(studentShipInDataBase.getCultureScore());
+			}
+
+			if (ship.getMediaScore() == 0
+					&& studentShipInDataBase.getMediaScore() != 0) {
+				ship.setMediaScore(studentShipInDataBase.getMediaScore());
+			}
+
+			if (ship.getServiceScore() == 0
+					&& studentShipInDataBase.getServiceScore() != 0) {
+				ship.setServiceScore(studentShipInDataBase.getServiceScore());
+			}
+
+			List<ScholarShip> datas = new ArrayList<ScholarShip>(1);
+			datas.add(ship);
+			tools.computerTotalScoreAndIsertTerm(datas, null);
+
+		}
+		return result;
+
+	}
+
+	/**
+	 * 获取所有的班级奖学金的信息 可以通过查询的方式有:通过学院专业班级查询全班数据 通过学号姓名查询数据
+	 * 
+	 */
 	@Override
-	public List<HosInsuranceInfo> Search(Map<String, Object> param,
+	public List<ScholarShip> Search(Map<String, Object> param,
 			PageVo pageVo, int type) {
-
-		return null;
+		
+		
+		
+		param.put("firstIndex", pageVo.getFirstIndex());
+		param.put("size",pageVo.getSize() );
+		List<ScholarShip> scholars =  dao.select(namespace+"selectScholarShipByCondition", param);
+		long  nums = dao.selectOne(namespace+"selectScholarShipByConditionNums", param);
+		pageVo.setCount(nums);
+		
+		return scholars;
 	}
 
+	/**
+	 * 查询某一个学生的所有的数据
+	 */
 	@Override
-	public List<HosInsuranceInfo> searchOneStudent(String studentNo) {
+	public List<ScholarShip> searchOneStudent(String studentNo) {
+		
+		Map<String,Object> params  = new HashMap<String,Object>();
+		params.put("studentNo", studentNo);
+		
+		return dao.select(namespace+"selectScholarShipByCondition", params);
+	}
 
-		return null;
+	/**
+      *通过角色获取所有的待审核的数据 
+      */
+	@Override
+	public List<WaitCheckVo> getAllWaitCheckData(List<RoleInfo> infos,TecBasicInfo teacher) {
+		Map<String,Object> params = new HashMap<String,Object>();
+		if(tools.getHighLevelRole(infos).equals("院级工作人员")){
+			List<DepInfo> depinfos = classMajorService.searchCollegeByTeacher(teacher, infos);
+			params.put("college",depinfos.get(0).getDepartment());
+			params.put("exameState","院级审核中");
+		}else if(tools.getHighLevelRole(infos).equals("校级工作人员")){
+			params.put("exameState","校级审核中");
+		}
+		
+		
+		return dao.select(namespace+"getWaitData", params);
 	}
 
 	@Override
@@ -163,8 +376,8 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	private void doAwardRand(String college, String className, String term) {
 		Map<String, Object> params = new HashMap<String, Object>(3);
 		params.put("college", college);
-		params.put("className", college);
-		params.put("term", college);
+		params.put("className", className);
+		params.put("term", term);
 		dao.selectOne(namespace + "updateAwardRand", params);
 	}
 
@@ -176,37 +389,10 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 		return dao.selectOne(namespace + "selectSchloarShipByTermAndStudentno",
 				params);
 	}
-	
-	/**
-	 *  对需要插入的数据和库中的数据做对比，然后分批次插入
-	 * 判断的方式如下：　先去数据库中查询在库的所有最高的，然后将那些比在库的数据大的插入进去
-	 * 小的则需要一一比较再入库
-	 * anping
-	 * TODO
-	 * 下午8:08:59
-	 * @return 返回的数据如下<bigData,List<>>
-	 *                     <smallData,List<>>
-	 *                     
-	 */
-	private Map<String,List<ScholarShip>> checkStudentNoIsDulipeInDataBase(List<ScholarShip> scholarShips,String college,String className,String term){
-		Map<String,List<ScholarShip>>  scholars = new HashMap<String,List<ScholarShip>>(3);
-		
-		String studentNo =   this.getClassMaxStuentNo(college, className, term);
-		//如果为null表示记录为null可以插入
-		if(studentNo==null){
-			scholars.put("bigData", scholarShips);
-		}else{
-			
-			
-		}
-		
-		return scholars;
-	}
 
-
-	
-	@Resource(name="collegeMajorClassServiceImpl")
-	public void setClassMajorService(CollegeMajorClassInterface classMajorService) {
+	@Resource(name = "collegeMajorClassServiceImpl")
+	public void setClassMajorService(
+			CollegeMajorClassInterface classMajorService) {
 		this.classMajorService = classMajorService;
 	}
 
@@ -219,8 +405,8 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	public void setDao(Dao dao) {
 		this.dao = dao;
 	}
-	
-	
+
+	@Resource(name = "anpingServiceTools")
 	public void setTools(ServiceTools tools) {
 		this.tools = tools;
 	}
@@ -231,30 +417,49 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 	 * 
 	 * @return
 	 */
-	private String getClassMaxStuentNo(String college, String className,
+	private List<String> getClassMaxStuentNo(String college, String className,
 			String term) {
 		Map<String, Object> params = new HashMap<String, Object>(3);
 		params.put("college", college);
 		params.put("className", className);
 		params.put("term", term);
-		return dao.selectOne(namespace + "getMaxStudentNoInClass", params);
+		return dao.select(namespace + "getStudentNoInClass", params);
 	}
 
 	private ServiceTools tools;
 	private Dao dao;
 	private StuBasicInfoServiceImpl studentService;
 	private CollegeMajorClassInterface classMajorService;
-	
-
 
 	private String namespace = "jxau.sms.anping.scholarship.dao.";
 
 	@Override
 	public <T> int roleEntry(Class<?> c, Object entryObject, String moduleId,
 			String roleId, String level) {
-		// TODO Auto-generated method stub
+	
 		return 0;
 	}
 
-	
+	@Override
+	public List<ScholarShip> queryByGaoJi(Map<String, Object> params,PageVo pagevo) {
+		params.put("firstIndex", pagevo.getFirstIndex());
+		params.put("size", pagevo.getSize());
+		List<ScholarShip> ships = dao.select(namespace+"selectScholarShipByGaoJiCondition", params);
+		long count = dao.selectOne(namespace+"selectScholarShipByGaoJiConditionNums", params);
+		pagevo.setCount(count);
+		return ships;
+	}
+
+	@Override
+	public List<ScholarShip> searchOneClassByOneStudent(String studentNo,PageVo pagevo,String term) {
+		Map<String,Object> params = new HashMap<String,Object>(1);
+		params.put("studentNo",studentNo );
+		 String className=dao.selectOne(namespace+"getClassNameByStudentNo",params);
+		Map<String,Object>  data = new HashMap<String,Object>(2);
+		data.put("className",className);
+		data.put("term",term);
+		return  this.Search(data, pagevo, 0);
+		 
+	}
+
 }

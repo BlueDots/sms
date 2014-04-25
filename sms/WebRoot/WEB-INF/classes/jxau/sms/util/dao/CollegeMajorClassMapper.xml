@@ -115,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="findDepByTeacherRole" parameterType="map"
 		resultType="DepInfo">
-		select d.departNo ,d.department,d.depState
+		select distinct d.departNo ,d.department,d.depState
 		<if test="roleName =='班主任' or roleName =='院级工作人员' or roleName =='院级管理员'">
 			from dep_teacher t,dep_info d where
 			t.teacherNo=#{teacherNo} and
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<String ,object> <'roleName','班主任'> <'teacherNo','1234'> <'departNo','111'> -->
 	<select id="findMajorByDeptTeacherRole" parameterType="map"
 		resultType="MajorInfo">
-		select m.majorNo,m.major from
+		select distinct m.majorNo,m.major from
 		<if test="roleName =='班主任'">
 			major_info m,class_info c where
 			c.teacherNo=#{teacherNo}
@@ -149,7 +149,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<'teacherNo','1234'> <'majorNo','111'> <'departNo','111'> -->
 	<select id="findClassByMajorTeacherRole" parameterType="map"
 		resultType="ClassInfo">
-		select classNo,className from class_info
+		select distinct classNo,className from class_info
 		<if test="roleName =='班主任'">
 			where teacherNo=#{teacherNo} 
 		</if>

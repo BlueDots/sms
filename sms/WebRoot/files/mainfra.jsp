@@ -84,7 +84,7 @@
 		id : 11,
 		pId : 1,
 		name : "学生基本信息",
-		url : "teacher/class_basicInfo.html",
+		url : "StuBasicInfo/StuBasicInfoAction!loadTeacher",
 		target : "mainFrame"
 	}, {
 		id : 12,

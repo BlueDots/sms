@@ -279,32 +279,32 @@ insert into major_info(majorNo,major,departNo) values('11060700','电子商务�
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1107','经济管理学院','','');
 ##专业
-insert into major_info(majorNo,major,departNo) values('11060100','农林经济管理','1107');
-insert into major_info(majorNo,major,departNo) values('11060200','经济学','1107');
-insert into major_info(majorNo,major,departNo) values('11060201','房地产经营方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060202','投资金融方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060300','会计学','1107');
-insert into major_info(majorNo,major,departNo) values('11060301','注册会计师方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060302','国际会计方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060400','国际经济与贸易','1107');
-insert into major_info(majorNo,major,departNo) values('11060500','工商管理','1107');
-insert into major_info(majorNo,major,departNo) values('11060600','财务管理','1107');
-insert into major_info(majorNo,major,departNo) values('11060700','市场营销','1107');
-insert into major_info(majorNo,major,departNo) values('11060800','金融学','1107');
-insert into major_info(majorNo,major,departNo) values('11060801','证券投资与理财方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060802','国际金融方向','1107');
-insert into major_info(majorNo,major,departNo) values('11060900','劳动与社会保障','1107');
-insert into major_info(majorNo,major,departNo) values('11061000','会计学(专升本)','1107');
-insert into major_info(majorNo,major,departNo) values('11061100','工商管理双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061200','国际经济与贸易双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061300','会计学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061400','经济学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061500','金融学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061600','会计学(国际班)','1107');
-insert into major_info(majorNo,major,departNo) values('11061700','财务管理(专升本)','1107');
-insert into major_info(majorNo,major,departNo) values('11061800','会计学双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11061900','工商管理双学位','1107');
-insert into major_info(majorNo,major,departNo) values('11062000','金融学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11070100','农林经济管理','1107');
+insert into major_info(majorNo,major,departNo) values('11070200','经济学','1107');
+insert into major_info(majorNo,major,departNo) values('11070201','房地产经营方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070202','投资金融方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070300','会计学','1107');
+insert into major_info(majorNo,major,departNo) values('11070301','注册会计师方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070302','国际会计方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070400','国际经济与贸易','1107');
+insert into major_info(majorNo,major,departNo) values('11070500','工商管理','1107');
+insert into major_info(majorNo,major,departNo) values('11070600','财务管理','1107');
+insert into major_info(majorNo,major,departNo) values('11070700','市场营销','1107');
+insert into major_info(majorNo,major,departNo) values('11070800','金融学','1107');
+insert into major_info(majorNo,major,departNo) values('11070801','证券投资与理财方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070802','国际金融方向','1107');
+insert into major_info(majorNo,major,departNo) values('11070900','劳动与社会保障','1107');
+insert into major_info(majorNo,major,departNo) values('11071000','会计学(专升本)','1107');
+insert into major_info(majorNo,major,departNo) values('11071100','工商管理双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071200','国际经济与贸易双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071300','会计学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071400','经济学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071500','金融学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071600','会计学(国际班)','1107');
+insert into major_info(majorNo,major,departNo) values('11071700','财务管理(专升本)','1107');
+insert into major_info(majorNo,major,departNo) values('11071800','会计学双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11071900','工商管理双学位','1107');
+insert into major_info(majorNo,major,departNo) values('11072000','金融学双学位','1107');
 
 
 ##理学院

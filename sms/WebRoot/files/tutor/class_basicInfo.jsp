@@ -32,11 +32,11 @@
 .demo td{border:1px solid #D5D5D5;font-size:12px;padding:7px 5px;}
 .demo th{background-color:#EEE;border-right:1px solid #D5D5D5;font-size:13.5px;line-height:120%;font-weight:bold;padding:8px 5px;text-align:left;
 <!--只读形式-->
+}
 .readonly{
 border:none; 
 background-color:inherit;
-width:50px;
-}
+width:150px;
 }
  
 </style>
@@ -142,14 +142,12 @@ width:50px;
 											</td>
 											<td width="6%" align="center">
 
-												<a onclick="sousuo()"> <input name="Submit3"
-														type="button" class="right-button07" value="高级搜索"  onclick="popup('#advancedDiv', '#advancedSearchDiv', '#CloseadvancedSearch')" id='advancedBtn'/> </a>
+											<input name="Submit3" type="button" class="right-button07" value="高级搜索"  onclick="popup('#advancedDiv', '#advancedSearchDiv', '#CloseadvancedSearch')" id='advancedBtn'/>
 											</td>
-
-											</td>											
+											
 											<td width="6%" align="center">
-												<a href="#" onclick="sousuo()"> <input name="Submit4"
-														type="button" class="right-button07" value="导出" /> </a>
+												 <input name="Submit4"
+														type="button" class="right-button07" value="导出" />
 
 											</td>
 										</tr>
@@ -395,7 +393,7 @@ width:50px;
 																				<s:property value="exameState"/>
 																			</s:if>
 																		</td>
-																		<td>
+																		<td>&nbsp;
 																			<s:if test="%{remarks !=null}">
 																				<s:property value="remarks"/>
 																			</s:if>
@@ -529,14 +527,14 @@ width:50px;
 								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="email" class="readonly"></td>
 								<td width="6%"><b>学历</b></td>
 								<td width="6%" ><input type="text" readonly="readonly" id="eduBackground" class="readonly"></td>
-							</tr>
-							<tr bgcolor="#EEEEEE" align="center" style="display:none" id="updateStuBasicInfoSubmitTr" class="readonly">
-								<td colspan="7">
-									<input type="submit" value="提交">
-									<input type="reset" value="重置">
-								</td>
-							</tr>
-		            	</table>
+							</tr>													
+						</table>
+						<div id="updateTr" style="display:none">
+							<div align="center">
+								<input type='submit' value='保存'/> &nbsp;&nbsp;&nbsp;&nbsp; <input
+									type='reset' value='取消' onclick="cancel()" />
+							</div>
+						</div>
 		            	</form>
 		        	</div>
 		    	</div>

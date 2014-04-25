@@ -125,7 +125,7 @@ function showVerifyTable(id,currentPage) {
 		var firstPage = document.getElementById(id+"firstPage");
 		//添加点击事件
 		firstPage.onclick=function() {
-			verifyDetail(id,1);
+			showVerifyTable(id,1);
 		};
 		//总页数
 		var pageNums = document.getElementById(id+"pageNums"); 
@@ -141,7 +141,7 @@ function showVerifyTable(id,currentPage) {
 		previousPage.onclick=function() {
 			var currentPage=data.pageVo.currentPage;
 			if(currentPage>1)
-				verifyDetail(id,currentPage-1);
+				showVerifyTable(id,currentPage-1);
 		};
 		//下一页
 		var nextPage = document.getElementById(id+"nextPage");
@@ -149,7 +149,7 @@ function showVerifyTable(id,currentPage) {
 		nextPage.onclick=function() {
 			var currentPage=data.pageVo.currentPage;
 			if(currentPage<data.pageVo.pageNum)
-				verifyDetail(id,currentPage+1);
+				showVerifyTable(id,currentPage+1);
 		};
 		
 		//最后一页
@@ -158,7 +158,7 @@ function showVerifyTable(id,currentPage) {
 		lastPage.onclick=function() {
 			var currentPage=data.pageVo.currentPage;
 			if(currentPage!=data.pageVo.pageNum)
-				verifyDetail(id,data.pageVo.pageNum);
+				showVerifyTable(id,data.pageVo.pageNum);
 		};
 		
 		//跳转
@@ -169,7 +169,7 @@ function showVerifyTable(id,currentPage) {
 			var currentPage=data.pageVo.currentPage;
 			var page = gotoPage.value;
 			if(!isNaN(page) && page!=currentPage && page >=1 && page <= data.pageVo.pageNum) 
-				verifyDetail(id,page);
+				showVerifyTable(id,page);
 		};
 		
 	
@@ -195,11 +195,11 @@ function verifyDetail(id,currentPage) {
 
 function flushPage(id) {
 	var verifyTableObj= document.getElementById("verifyList");
-	//alert(id);
 	var verifyTableTrObj = document.getElementById(id);
-	for(var i=3;i<13;i+=2) {
+	for(var i=3;i<verifyTableObj.rows.length;i+=2) {
 		if(verifyTableObj.rows[i] != verifyTableTrObj){
-			verifyTableObj.rows[i].style.display="none";
+			var verifyTrObj = verifyTableObj.rows[i];
+			verifyTrObj.style.display="none";
 		}
 	}
 }

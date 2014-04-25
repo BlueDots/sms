@@ -63,7 +63,7 @@ body {
           </tr>
           <tr>
           <td height="22" class="left-font01">
-            [&nbsp;<a href="<%=basePath%>login.html" target="_top" class="left-font01">退出</a>&nbsp;]
+            [&nbsp;<a href="<%=basePath%>login.jsp" target="_top" class="left-font01">退出</a>&nbsp;]
             </td>
             <td></td>
           </tr>

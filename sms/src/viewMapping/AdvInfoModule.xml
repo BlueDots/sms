@@ -12,8 +12,8 @@
 		<column name="studentName" value="姓名" multiply="false">
 		</column>
 		<column name="sex" value="性别" multiply="true">
-			<property value="男"  type="1"/>	
-			<property value="女" type="0"/> 
+			<property value="男"  type="0"/>	
+			<property value="女" type="1"/> 
 		</column>
 		<column name="college" value="学院" multiply="false">
 		</column>

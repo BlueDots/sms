@@ -464,66 +464,74 @@
 		<div id="StuBasicInfoDiv" style="display: none">
 		        	<h2>学生基本信息<a id="btnCloseStuBasicInfoDiv">关闭</a></h2>
 		        	<div class="form">
+		        	<form action="" id="updateStuBasicInfoForm">
 		            	<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="demo" id="stuBasicInfo" ><thead>
 		            		<tr class="CTitle">
 		            			<td height="22" colspan="12" align="center" style="font-size: 16px">
-		            				学生基本信息表
+		            				学生基本信息表 <input id="updateStuBasicInfoButton" type="button" value="编辑" style="position:relative;left:300px" onclick="updateStuBasicInfo(<s:property value="#session.roleId"/>)"> 
 								</td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>学号</b></td>
-								<td width="6%" id="studentNo">20112222</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="studentNo"></td>
 								<td width="6%"><b>姓名</b></td>
-								<td width="6%" id="studentName">张三</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="studentName"></td>
 								<td width="6%" ><b>性别</b></td>
-								<td width="6%" id="sex">男</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="sex"></td>
 								<td width="8%" rowspan="4"><img src="" id="photo"></td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="6%"><b>学院</b></td>
-								<td width="6%" id="college">软件学院</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="college"/></td>
 								<td width="6%"><b>专业</b></td>
-								<td width="6%" id="major">软件开发</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="major_detail"/></td>
 								<td width="6%"><b>班级</b></td>
-								<td width="6%" id="className">1001</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="className_detail"/></td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>出生日期</b></td>
-								<td width="6%" id="birthday">1991/3/4</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="birthday"></td>
 								<td width="6%"><b>民族</b></td>
-								<td width="6%" id="nation">汉族</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="nation"></td>
 								<td width="6%"><b>籍贯</b></td>
-								<td width="6%" id="hometown">山区</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="hometown"></td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="6%" colspan="3"><b>政治面貌</b></td>
-								<td width="6%" colspan="3" id="political">党员</td>
+								<td width="6%" colspan="3" ><input type="text" readonly="readonly" id="political"></td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>手机号码</b></td>
-								<td width="6%" id="telephone">1234567</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="telephone"></td>
 								<td width="6%"><b>银行卡号</b></td>
-								<td colspan="2" width="6%" id="bankCard">2132032039023902</td>
+								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="bankCard"></td>
 								<td width="6%"><b>身份证号</b></td>
-								<td width="6%" id="idCard">32435358989</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="idCard"></td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="6%"><b>家庭联系人</b></td>
-								<td width="6%" id="family">父亲</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="family"></td>
 								<td width="6%"><b>家庭现住址</b></td>
-								<td colspan="2" width="6%" id="address">江西南昌</td>
+								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="address"></td>
 								<td width="6%"><b>家庭联系电话</b></td>
-								<td width="6%" id="fphone">23242434</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="fphone"></td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>英语等级</b></td>
-								<td width="6%" id="englishlevel">4</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="englishlevel"></td>
 								<td width="6%"><b>个人邮箱</b></td>
-								<td colspan="2" width="6%" id="email">12323234@qq.com</td>
+								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="email"></td>
 								<td width="6%"><b>学历</b></td>
-								<td width="6%" id="eduBackground">本科在读</td>
+								<td width="6%" ><input type="text" readonly="readonly" id="eduBackground"></td>
+							</tr>
+							<tr bgcolor="#EEEEEE" align="center" style="display:none" id="updateStuBasicInfoSubmitTr">
+								<td colspan="7">
+									<input type="submit" value="提交">
+									<input type="reset" value="重置">
+								</td>
 							</tr>
 		            	</table>
+		            	</form>
 		        	</div>
 		    	</div>
 

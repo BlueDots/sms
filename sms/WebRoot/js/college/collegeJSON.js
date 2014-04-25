@@ -189,61 +189,61 @@ function getStuBasicInfoList(currentPage){
 function stuBasicInfoDetail(stuBasicInfo) {
 	//学号
 	var studentNo = stuBasicInfo.studentNo;
-	document.getElementById("studentNo").innerText=(studentNo!=null?studentNo:"");
+	document.getElementById("studentNo").value=(studentNo!=null?studentNo:"");
 	//姓名
 	var studentName = stuBasicInfo.studentName;
-	document.getElementById("studentName").innerText=(studentName!=null?studentName:"");
+	document.getElementById("studentName").value=(studentName!=null?studentName:"");
 	//性别
 	var sex = stuBasicInfo.sex;
-	document.getElementById("sex").innerText=(sex!=0?"女":"男");
+	document.getElementById("sex").value=(sex!=0?"女":"男");
 	//学院
 	var college = stuBasicInfo.college;
-	document.getElementById("college").innerText=(college!=null?college:"");
+	document.getElementById("college").value=(college!=null?college:"");
 	//专业
 	var major = stuBasicInfo.major;
-	document.getElementById("major").innerText=(major!=null?major:"");
+	document.getElementById("major_detail").value=(major!=null?major:"");
 	//班级
 	var className = stuBasicInfo.className;
-	document.getElementById("className").innerText=(className!=null?className:"");
+	document.getElementById("className_detail").value=(className!=null?className:"");
 	//出生日期
 	var birthday = stuBasicInfo.birthday;
-	document.getElementById("birthday").innerText=(birthday!=null?birthday:"");
+	document.getElementById("birthday").value=(birthday!=null?birthday:"");
 	//民族
 	var nation = stuBasicInfo.nation;
-	document.getElementById("nation").innerText=(nation!=null?nation:"");
+	document.getElementById("nation").value=(nation!=null?nation:"");
 	//籍贯
 	var hometown = stuBasicInfo.hometown;
-	document.getElementById("hometown").innerText=(hometown!=null?hometown:"");
+	document.getElementById("hometown").value=(hometown!=null?hometown:"");
 	//政治面貌
 	var political = stuBasicInfo.political;
-	document.getElementById("political").innerText=(political!=null?political:"");
+	document.getElementById("political").value=(political!=null?political:"");
 	//手机号码
 	var telephone = stuBasicInfo.telephone;
-	document.getElementById("telephone").innerText=(telephone!=null?telephone:"");
+	document.getElementById("telephone").value=(telephone!=null?telephone:"");
 	//银行卡号
 	var bankCard = stuBasicInfo.bankCard;
-	document.getElementById("bankCard").innerText=(bankCard!=null?bankCard:"");
+	document.getElementById("bankCard").value=(bankCard!=null?bankCard:"");
 	//身份证号码
 	var idCard = stuBasicInfo.idCard;
-	document.getElementById("idCard").innerText=(idCard!=null?idCard:"");
+	document.getElementById("idCard").value=(idCard!=null?idCard:"");
 	//家庭联系人
 	var family = stuBasicInfo.family;
-	document.getElementById("family").innerText=(family!=null?family:"");
+	document.getElementById("family").value=(family!=null?family:"");
 	//家庭住址
 	var address = stuBasicInfo.address;
-	document.getElementById("address").innerText=(address!=null?addrss:"");
+	document.getElementById("address").value=(address!=null?addrss:"");
 	//家庭联系电话
 	var fphone = stuBasicInfo.fphone;
-	document.getElementById("fphone").innerText=(fphone!=null?fphone:"");
+	document.getElementById("fphone").value=(fphone!=null?fphone:"");
 	//英语等级
 	var englishlevel = stuBasicInfo.englishlevel;
-	document.getElementById("englishlevel").innerText=(englishlevel!=null?englishlevel:"");
+	document.getElementById("englishlevel").value=(englishlevel!=null?englishlevel:"");
 	//个人邮箱
 	var email = stuBasicInfo.email;
-	document.getElementById("email").innerText=(email!=null?email:"");
+	document.getElementById("email").value=(email!=null?email:"");
 	//学历
 	var eduBackground = stuBasicInfo.eduBackground;
-	document.getElementById("eduBackground").innerText=(eduBackground!=null?eduBackground:"");
+	document.getElementById("eduBackground").value=(eduBackground!=null?eduBackground:"");
 }
 
 function setCollegeMajorClassStuNoOrName(college,major,className,stuNoOrName) {
@@ -485,5 +485,12 @@ function getTutorWatingForUpdate(teacherNo,currentPage) {
 		};
 	}
 	
+}
+
+
+function updateStuBasicInfo(roleId){
+	alert(roleId);
+	var inputLists = $("#stuBasicInfo input");
+	alert(inputLists.length);
 }
 

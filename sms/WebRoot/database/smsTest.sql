@@ -356,3 +356,4 @@ insert into dep_info(departNo,department,departBrief,departInfo)
 ##商学院
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1120','商学院','','');
+	

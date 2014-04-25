@@ -4,15 +4,18 @@ update stu_basic_info set exameState='院级审核中';
 select  sbi.* from class_info ai,stu_basic_info sbi where ai.className=sbi.className and ai.teacherNo='1234' and sbi.exameState='院级未通过';
 
 
+insert into teacher_role values('1805',3);
+insert into teacher_role values('1805',4);
 
-
-
+select * from tec_info;
+insert into tec_info(teacherNo,tecPassword) values('1805','1805');
 desc stu_basic_info;
 select * from dep_teacher;
+insert into dep_teacher values('1105','1805');
 select * from class_info;
-update class_info set teacherNo = '1234' where classNo='11050100200901';
-update class_info set teacherNo = '1234' where classNo='11050100200902';
+update class_info set teacherNo = '1805' where classNo='11050101201111';
 
+insert into tec_basic_info values('1805','彭莹琼',1,'汉族','江西萍乡','中共党员','在职','副教授','2012-12-01','2000-09-01','硕士研究生','通过','无');
 
 delete from stu_basic_info where studentNo in ('20111556','20111557','20111558','20111559');
 

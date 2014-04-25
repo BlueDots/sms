@@ -1,64 +1,4 @@
-select * from stu_basic_info where exameState='软件1115';
-update stu_basic_info set exameState='院级审核中';
-
-select  sbi.* from class_info ai,stu_basic_info sbi where ai.className=sbi.className and ai.teacherNo='1234' and sbi.exameState='院级未通过';
-
-
-
-
-
-desc stu_basic_info;
-select * from dep_teacher;
-select * from class_info;
-update class_info set teacherNo = '1234' where classNo='11050100200901';
-update class_info set teacherNo = '1234' where classNo='11050100200902';
-
-
-delete from stu_basic_info where studentNo in ('20111556','20111557','20111558','20111559');
-
-update stu_basic_info set exameState='院级审核中' where studentNo=20111367,
- set exameState='院级不通过' where studentNo=20111429;
-       where studentNo in (20111367,20111429,20111635);
-
-update act_info set exameState = '校级审核中',remarks='aa' where actNo=1; update act_info set exameState = '校级审核中' where actNo =2;
-       where actNo in (1,2,3);
-       
-select * from act_info;
-
-select * from act_hold;
-
-insert into act_hold values(null,2,1,'2000-11-11','2000-11-11','ss1');
-insert into act_hold values(null,2,2,'2001-11-11','2001-11-11','ss2');
-insert into act_hold values(null,3,1,'2010-11-11','2010-11-11','ss3');
-insert into act_hold values(null,3,2,'2011-11-11','2011-11-11','ss4');
-
-select * from tec_basic_info;
-
-select * from stu_act_participate;
-
-select count(distinct activityName) from stu_act_participate sap,act_info, ai where sap.actno=ai.actno
-
-		select  ah.* from stu_act_participate sap,act_hold ah,act_info ai
- 			where sap.actno=ah.actno and ai.actNo=ah.actNo and sap.sessionYear=ah.sessionYear
- and sap.exameState='院级审核中' and organize = '软件学院' order by actNo;
-
-update stu_act_participate set exameState = '通过' where id in (1,14,16);
-
-insert into tec_basic_info(teacherNo,teacherName,sex,hometown) values('4610','嘎嘎',0,'江西');
-insert into tec_basic_info(teacherNo,teacherName,sex,hometown) values('4611','啦啦',0,'江西');
-
-
-select * from act_category;
---insert into act_category(actNo,actType) values(null,'文艺体育类');
---insert into act_category(actNo,actType) values(null,'学术科技类');
---insert into act_category(actNo,actType) values(null,'社会公益类');
---insert into act_category(actNo,actType) values(null,'实践创新类');
---insert into act_category(actNo,actType) values(null,'理论学习类');
---insert into act_category(actNo,actType) values(null,'其他类');
-
-
-select * from stu_basic_info;
-##delete from stu_basic_info;
+##学生基本信息
 insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard,eduBackground,exameState) values
 ('20111812','王丽秋','1992-10-20','软件工程1111','英语方向','软件学院',1,'汉族','屯昌县','共青团员','460026199210203923','本科','通过');
 insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard,eduBackground,exameState) values
@@ -94,12 +34,7 @@ insert into stu_basic_info(studentNo,studentName,birthday,className,major,colleg
 insert into stu_basic_info(studentNo,studentName,birthday,className,major,college,sex,nation,hometown,political,idCard,eduBackground,exameState) values
 ('20111829','吴文龙','1993-4-1','软件工程1111','英语方向','软件学院',1,'汉族','临川区一','共青团员','361002199304012016','本科','通过');
 
-
-
-
-
-select *  from dep_info;
-##delete from dep_info;
+##学院专业班级信息
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1105','软件学院','','');
 ##专业	
@@ -179,17 +114,6 @@ insert into class_info(classNo,className,classBreif,majorNo,classNumber) values(
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201213','软件工程1213','软件1213','11050400',39);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201214','软件工程1214','软件1214','11050400',40);
 insert into class_info(classNo,className,classBreif,majorNo,classNumber) values('11050101201215','软件工程1215','软件1215','11050400',38);
-
-
-
-select * from political_status;
-insert into political_status value(1,'共青团员');
-insert into political_status value(2,'中共预备党员');
-insert into political_status value(3,'中共党员');
-insert into political_status value(4,'群众');
-insert into political_status value(5,'其他');
-insert into political_status value(6,'不详');
-
 
 ##农学院
 insert into dep_info(departNo,department,departBrief,departInfo) 
@@ -432,6 +356,58 @@ insert into dep_info(departNo,department,departBrief,departInfo)
 ##商学院
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1120','商学院','','');
+	
+##权限信息
 
-select * from dep_info;
-
+insert into purview_info values(1,null,'功能模块','null');
+insert into purview_info values(2,1,'学生基本信息模块','/StuBasicInfoAction!loadTeacher');
+insert into purview_info values(3,1,'教师基本信息模块','/files/university/sch_teacherBasicInfo.jsp');
+insert into purview_info values(4,1,'评优评先模块','/class_advanceInfo.jsp');
+insert into purview_info values(5,1,'奖助学信息模块','/files/university/sch_scholarshipInfo.html');
+insert into purview_info values(6,1,'学生参与活动模块','/files/university/sch_activityInfo.html');
+insert into purview_info values(7,1,'活动管理模块','/files/university/sch_activityManage.html');
+insert into purview_info values(8,1,'班级奖学金模块','');
+insert into purview_info values(9,1,'医保信息模块','/hosInsuranceInfo!getAllHosByTeacher');
+insert into purview_info values(10,1,'贫困生建档模块','/files/university/sch_jiandang.html');
+insert into purview_info values(11,1,'个人简历模块','');
+insert into purview_info values(12,1,'学生就业信息模块','');
+insert into purview_info values(13,1,'处分信息模块','/files/university/sch_punishInfo.html');
+insert into purview_info values(14,1,'学籍变动信息模块','');
+insert into purview_info values(15,1,'角色管理模块','/role!roleExecute');
+insert into purview_info values(16,1,'分配角色管理模块','/allocation!tecRoleDisplay');
+insert into purview_info values(17,1,'分配权限模块','');
+insert into purview_info values(18,1,'院系专业班级管理模块','');
+insert into purview_info values(19,15,'添加角色','');
+insert into purview_info values(20,15,'删除角色','');
+insert into purview_info values(21,15,'查看角色权限','');
+insert into purview_info values(22,16,'查询教师角色信息','');
+insert into purview_info values(23,16,'教师分配角色','');
+insert into purview_info values(24,16,'教师移除角色','');
+insert into purview_info values(25,2,'学生基本信息审核','/StuBasicInfoVerifyAction!gainWaitingForClassName');
+insert into purview_info values(26,2,'录入学生基本信息','/StuBasicInfoAction!entryStuBasicInfoLists');
+insert into purview_info values(27,9,'查询医保信息','/hosInsuranceQuery!getAllHosByTeacher');
+insert into purview_info values(28,9,'录入医保信息','/hosInsuranceInfo!updateHoss');
+insert into purview_info values(29,9,'审核医保','/hosInsuranceInfo!checkHosByTeacher');
+insert into purview_info values(30,4,'导入评优评先信息','');
+insert into purview_info values(31,4,'导出评优评先信息','');
+insert into purview_info values(32,4,'比例分配','');
+insert into purview_info values(33,4,'添加评优评先记录','');
+insert into purview_info values(34,2,'修改学生基本信息','');
+insert into purview_info values(35,3,'导入教师基本信息','');
+insert into purview_info values(36,3,'审核教师基本信息','');
+insert into purview_info values(37,8,'查询学生奖学金信息','');
+insert into purview_info values(38,8,'添加班级奖学金信息','');
+insert into purview_info values(39,5,'添加奖学金项目','');
+insert into purview_info values(40,10,'班级贫困生比例分配','');
+##角色信息
+insert into role_info values(null,'校级管理员',now(),'校级管理员角色,默认拥有系统所有权限');
+insert into role_info values(null,'学生',now(),'学生角色，固定权限');
+insert into role_info values(null,'班主任',now(),'班主任角色，负责某班级');
+insert into role_info values(null,'院级工作人员1',now(),'院级工作人员之一，主要负责某院系贫困生建档等');
+insert into role_info values(null,'院级工作人员2',now(),'院级工作人员之一，主要负责某院系奖惩信息');
+insert into role_info values(null,'院级工作人员3',now(),'院级工作人员之一，主要负责某院系基本信息管理');
+insert into role_info values(null,'校级工作人员1',now(),'校级工作人员之一，主要负责全校医保等');
+insert into role_info values(null,'校级工作人员2',now(),'校级工作人员之一，主要负责全校系奖惩信息');
+insert into role_info values(null,'校级工作人员3',now(),'校级工作人员之一，主要负责全校系基本信息管理');
+insert into role_info values(null,'院级管理员',now(),'院级管理员角色，每院有且只有一名');
+insert into role_info values(null,'活动负责人',now(),'活动管理中的特殊角色');

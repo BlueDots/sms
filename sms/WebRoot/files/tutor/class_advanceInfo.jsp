@@ -102,10 +102,8 @@
 	 
 	function showStuAdvInfo(){
 			var condition =  $("#condition").val();
-		   //var condition = 20111826;
 		   var currentPage = 1;
-		   alert(condition);
-		   if(condition!=" "||condition!=" "){
+		   if(condition!=""||condition!=""){
 		   	if(!isNaN(condition)){
 		   		window.location.href="stuAdvInfoAction!showStuAdvInfo?flag=true&stuAdvVo.studentNo="+condition+"&currentPage="+currentPage;
 		   	}else{
@@ -120,6 +118,7 @@
 	function exportFile(){
 		var filePath = "D://";
 		window.location.href="stuAdvInfoAction!exportFile?abstractId=0100&outFilePath="+filePath;
+		alert("导出成功:D://学生评优评先表.xls");
 	}
 	function showImportInfo(){
 		var filePath = "D://outworkbook.xls";
@@ -129,9 +128,6 @@
 		var filePath = "D://outworkbook.xls";
 		window.location.href="stuAdvInfoAction!importFile?flag=true&abstractId=0100&filePath="+filePath;
 		alert("导入成功！");
-		
-		//showStuAdvInfo();
-		//window.location.href="files/tutor/class_advanceInfo.jsp";
 	}
 	
 	$(document).ready(function() {
@@ -152,7 +148,6 @@
 			$(this).parents('#stuAdvInfoForm') // For each element, pick the ancestor that's a form tag.
 				.find(':input') // Find all the input elements under those.
 			    .each(function(i) {
-				//$(this).prop("readonly",true);
 				$("input").attr("readonly","readonly");
 				$(this).removeClass("readonly");
 			});	
@@ -415,7 +410,7 @@
 																			页 | 第 <span class="right-text09"><s:property value="#pageVo.currentPage"/></span> 页</td>
 																		<td width="49%" align="right">[ <a href="#"
 																			class="right-font08">首页</a> | <a href="#"
-																			class="right-font08">上一页</a> | <a href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=2"
+																			class="right-font08">上一页</a> | <a href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=<s:property value="#pageVo.currentPage"/>"
 																			class="right-font08">下一页</a> <a href="#"
 																			class="right-font08">末页</a>] 转至：</td>
 																		<td width="1%">

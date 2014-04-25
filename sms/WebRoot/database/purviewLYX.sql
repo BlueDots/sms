@@ -33,8 +33,8 @@ insert into role_info values(null,'活动负责人',now(),'活动管理中的特
 
 insert into purview_info values(1,null,'功能模块','null');
 insert into purview_info values(2,1,'学生基本信息模块','/StuBasicInfoAction!loadTeacher');
-insert into purview_info values(3,1,'教师基本信息模块','');
-insert into purview_info values(4,1,'评优评先模块','');
+insert into purview_info values(3,1,'教师基本信息模块','/sch_teacherBasicInfo.jsp');
+insert into purview_info values(4,1,'评优评先模块','/dept_advanceInfo.jsp');
 insert into purview_info values(5,1,'奖助学信息模块','');
 insert into purview_info values(6,1,'学生参与活动模块','');
 insert into purview_info values(7,1,'活动管理模块','');
@@ -43,7 +43,7 @@ insert into purview_info values(9,1,'医保信息模块','/hosInsuranceInfo!getA
 insert into purview_info values(10,1,'贫困生建档模块','');
 insert into purview_info values(11,1,'个人简历模块','');
 insert into purview_info values(12,1,'学生就业信息模块','');
-insert into purview_info values(13,1,'处分信息模块','');
+insert into purview_info values(13,1,'处分信息模块','/sch_punishInfo.html');
 insert into purview_info values(14,1,'学籍变动信息模块','');
 insert into purview_info values(15,1,'角色管理模块','/role!roleExecute');
 insert into purview_info values(16,1,'分配角色管理模块','/allocation!tecRoleDisplay');
@@ -60,11 +60,41 @@ insert into purview_info values(26,2,'录入学生基本信息','/StuBasicInfoAc
 insert into purview_info values(27,9,'查询医保信息','/hosInsuranceQuery!getAllHosByTeacher');
 insert into purview_info values(28,9,'录入医保信息','/hosInsuranceInfo!updateHoss');
 insert into purview_info values(29,9,'审核医保','/hosInsuranceInfo!checkHosByTeacher');
-insert into purview_info values(30,16,'','');
-insert into purview_info values(31,16,'','');
+insert into purview_info values(30,4,'导入评优评先信息','');
+insert into purview_info values(31,4,'导出评优评先信息','');
+insert into purview_info values(32,4,'','');
+insert into purview_info values(33,16,'','');
+insert into purview_info values(34,16,'','');
+insert into purview_info values(35,16,'','');
+insert into purview_info values(36,16,'','');
+insert into purview_info values(37,16,'','');
+insert into purview_info values(38,16,'','');
+insert into purview_info values(39,16,'','');
+insert into purview_info values(40,16,'','');
+insert into purview_info values(41,16,'','');
+insert into purview_info values(42,16,'','');
+insert into purview_info values(43,16,'','');
+insert into purview_info values(44,16,'','');
+insert into purview_info values(45,16,'','');
+insert into purview_info values(46,16,'','');
+insert into purview_info values(47,16,'','');
+insert into purview_info values(48,16,'','');
+insert into purview_info values(49,16,'','');
+insert into purview_info values(50,16,'','');
 
-insert into teacher_role values('1234',3);
-
-insert into dep_teacher values('1105','1234');
-
-insert into dep_info values('','');
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);
+insert into role_purview values(,);

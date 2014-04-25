@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         (function($){
     $(document).ready(function(){
         $(".redirect").doRedirect(3);
+        
     });
  
     /*
@@ -49,20 +50,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 timeout--;
                 if(timeout == 0) {
                     clearInterval($.redirectTimer);
-                    location.href = $This.attr("link");
+                    location.href = $This.attr("href");
                 } else {            
                     $This.text(timeout);
                 }
             }, 1000);
         }
     });
-})(jQuery);  
+})(jQuery); 
+
+
+function returns(){
+
+	window.open('index_admin.jsp','_top');
+
+} 
 </script>
 
 </head>
   
   <body>  	  
          操作成功<br/>  
-    <div class="redirect">3</div>秒后跳转  
+    <a class="redirect" onclick="javascript:returns();">3</a>秒后跳转  
   </body>
 </html>

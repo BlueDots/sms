@@ -41,6 +41,8 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.dom4j.Element;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import sun.misc.Unsafe;
 
@@ -60,18 +62,13 @@ public class OutputHandler {
 	private List<AdvanceSearchVo> outputAttr; //符合条件的属性;
 	private String abstractId;	//视图的抽象编号
 	private final String mapperId = "outputid"; //导出操作的id
-	private Dao dao;
+	//private Dao dao;
 	
 	private static HSSFWorkbook demoWorkBook = new HSSFWorkbook();
 	private static HSSFSheet demoSheet = demoWorkBook.createSheet("学生工作管理系统");
 
 	public OutputHandler(String abstractId){
 		this.abstractId = abstractId;
-	}
-
-	@Resource(name="dao")
-	public void setDao(Dao dao){
-		this.dao = dao;
 	}
 	
 	private List<AdvanceSearchVo> getOutAttribute(){
@@ -203,7 +200,8 @@ public class OutputHandler {
 	public <T> int exportExcel(String filePath,Map params) throws IOException {
 		int flag = 0;
 		FileOutputStream fos = new FileOutputStream(filePath);
-		@SuppressWarnings("unchecked")
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Dao dao = (Dao) applicationContext.getBean("dao");
 		List<T> rows = (List<T>)dao.select(MapperUtility.getMapperId(abstractId,mapperId), params);
 		getOutAttribute();
 		createExcelSheeet(rows);

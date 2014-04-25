@@ -47,7 +47,7 @@ $(document).ready(function () {
  		$("#1101table").slideToggle();
  	});
 
-
+ 	
 
 });
 
@@ -455,3 +455,4 @@ function manually() {
 		
 	}
 };
+

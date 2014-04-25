@@ -9,6 +9,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import jxau.sms.lyx.po.PurviewInfo;
+import jxau.sms.lyx.po.RoleInfo;
+import jxau.sms.lyx.po.TecBasicInfo;
 import jxau.sms.lyx.sysPurviewConfig.service.impl.SysPurviewConfigserviceimpl;
 import jxau.sms.lyx.vo.SessionPurview;
 import org.apache.struts2.ServletActionContext;
@@ -35,12 +37,14 @@ public class SysPurviewConfigAction extends ActionSupport implements SessionAwar
 
 	public String setSessionPurview() throws Exception{ 
 		
-		String roleName = ServletActionContext.getRequest().getParameter("roleName");
-		String teacherNo = ServletActionContext.getRequest().getParameter("username");
-		
 		Map<String,Object> param = new HashMap<String,Object>();
-		param.put("roleName", roleName);
-		param.put("teacherNo", teacherNo);
+		TecBasicInfo teacher = new TecBasicInfo();
+		teacher = (TecBasicInfo) session.get("teacher");
+		
+		List<RoleInfo> role = (List<RoleInfo>) session.get("roles");
+		
+		param.put("roleName", role.get(0).getRoleName());
+		param.put("teacherNo", teacher.getTeacherNo());
 		
 		try{
 			

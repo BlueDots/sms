@@ -23,6 +23,7 @@
 			<if test="moralQualityAssessmentScore!=0">
 				moralQualityAssessmentScore=#{moralQualityAssessmentScore},
 			</if>
+			 
 			<if test="lessonScore!=0">
 				lessonScore=#{lessonScore},
 			</if>
@@ -35,6 +36,7 @@
 			<if test="qualityScore!=0">
 				qualityScore=#{qualityScore},
 			</if>
+		 
 			<if test="sportScore!=0">
 				sportScore=#{sportScore},
 			</if>
@@ -47,6 +49,7 @@
 			<if test="sportQualityTotalScore!=0">
 				sportQualityTotalScore=#{sportQualityTotalScore},
 			</if>
+			 
 			<if test="manageScore!=0">
 				manageScore=#{manageScore},
 			</if>
@@ -60,11 +63,13 @@
 			<if test="serviceScore!=0">
 				serviceScore=#{serviceScore},
 			</if>
-
-			<if test="artEducationTotalScore!=0">
+  
+  			<if test="artEducationTotalScore!=0">
 				artEducationTotalScore=#{artEducationTotalScore},
 			</if>
-			totalScore=#{totalScore}
+			<if test="totalScore!=0">
+				totalScore=#{totalScore},
+			</if>
 		</set>
 		where studentNo=#{student.studentNo}
 		and term=#{term}

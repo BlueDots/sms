@@ -45,7 +45,25 @@ public class StuBasicInfoServiceImpl extends AbstractionService implements Globa
 	public <T> T searchByAccurate(Map<String, Object> param, int status) {
 		return null;
 	}
+	
+	//查询教师待修改信息（即：审核不通过信息）
+	public List<jxau.sms.chenjiang.po.StuBasicInfo> selectTutorWattingForUpdate() {
+		List<jxau.sms.chenjiang.po.StuBasicInfo> list = null;
+		
+		return list;
+	}
+	
 
+	public List<jxau.sms.chenjiang.po.StuBasicInfo> selectListByIds(List<String> ids) {
+		if(ids == null || ids.size() == 0)
+			throw new ParamWrongException("参数ids不能为null 或 ids必须有值");
+		List<jxau.sms.chenjiang.po.StuBasicInfo> list = null;
+		Map<String, Object> params = new HashMap<>();
+		params.put("ids", ids);
+		list = dao.select(namespace+"selectListByIds", params);
+		return list;
+	}
+	
 	public jxau.sms.chenjiang.po.StuBasicInfo getOneById(String studentNo) {
 		List<StuBasicInfoVO> list = null;
 		Map<String,Object> params = new HashMap<String,Object>();

@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
 
+<<<<<<< HEAD
  <frameset rows="59,*" cols="*" frameborder="no" border="0" framespacing="0">
   <frame src="files/top.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
   <frameset cols="*" frameborder="no" border="0" framespacing="0">
@@ -34,6 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   </noframes>
 =======
+=======
+>>>>>>> aab3a46d68c6c65160eaa279b22e6abbd7c1872a
   <frameset rows="59,*" cols="*" frameborder="no" border="0" framespacing="0">
   		<frame src="files/university/top.jsp" name="topFrame"  noresize="noresize" id="topFrame" title="topFrame" />
 		<frameset cols="*" frameborder="no" border="0" framespacing="0">
@@ -42,5 +45,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</frameset>
   <body>
   </body>
->>>>>>> f31ed4e78f664d4a15cae297d7490fe2b7be40d3
+
 </html>

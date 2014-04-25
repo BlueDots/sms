@@ -7,9 +7,12 @@
 <struts>  
           
     <package name="/" namespace="/" extends="struts-default">  
-        <action name="stuAdvInfoAction" class="jxau.sms.thomas.action.AdvanceInfoAction" method="showStuAdvInfo">  
+        <action name="stuAdvInfoAction" class="jxau.sms.thomas.action.AdvanceInfoAction">  
             <result>
             	/files/tutor/class_advanceInfo.jsp
+            </result>
+            <result name="error">
+            	/files/tutor/error.jsp
             </result>
         </action>          
     </package> 

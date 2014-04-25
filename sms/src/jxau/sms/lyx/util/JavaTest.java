@@ -7,16 +7,26 @@ import java.util.List;
 public class JavaTest {
 
 	/**
-	 * Administrator
+	 * lyx test
 	 * TODO
 	 * 上午10:39:24
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<Integer> oldList = new ArrayList<Integer>();;
-		System.out.println(oldList.size());
+		List<String> str = new ArrayList<String>();
 		
+		str.add("/hosInsuranceInfo!getAllHosByTeacher");
+		str.add("/hosInsuranceQuery!getAllHosByTeacher");
+		str.add("/hosInsuranceInfo!updateHoss");
+		
+		String url = "/hosInsuranceInfo!getAllHosByTeacher";
+		
+		if(str.contains(url)){
+			System.out.println("对的");
+		}else {
+			System.out.println("错的");
+		}
 	}
 
 }

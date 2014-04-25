@@ -1,3 +1,6 @@
+select count(*) from teacher_role tr,role_info r 
+		where tr.roleNo = r.roleNo and tr.teacherNo = '4321' and r.roleName like '%校级工作人员%' ; 
+
 
 --delete
 delete from role_purview;
@@ -26,7 +29,7 @@ insert into tec_basic_info(teacherNo,teacherName,sex,nation,hometown,political,t
 insert into tec_basic_info values('8765','arron',1,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
 insert into tec_basic_info values('4321','tom',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
 insert into tec_basic_info values('0000','admin',0,null,'江西',null,'在职',null,'2011-1-1',now(),'本科','已通过','无');
-
+select * from role_info;
 --role_info
 insert into role_info values(null,'校级管理员',now(),'校级管理员角色,默认所有系统权限');
 insert into role_info values(null,'学生',now(),'学生角色，固定权限');
@@ -76,8 +79,8 @@ insert into purview_info values(34,3,'审核教师基本信息','/auditTeacherIn
 insert into purview_info values(35,3,'教师基本信息列表','/teacherInfoList');
 
 --teacher_role
-insert into teacher_role values('1234',4);
-insert into teacher_role values('1234',10);
+insert into teacher_role values('1234',5);
+insert into teacher_role values('4321',10);
 insert into teacher_role values('5678',2);
 insert into teacher_role values('5678',3);
 insert into teacher_role values('8765',3);
@@ -98,6 +101,15 @@ insert into role_purview values(4,28);
 insert into role_purview values(4,29);
 insert into role_purview values(4,30);
 insert into role_purview values(4,31);
+
+insert into role_purview values(5,2);
+insert into role_purview values(5,3);
+insert into role_purview values(5,4);
+insert into role_purview values(5,27);
+insert into role_purview values(5,28);
+insert into role_purview values(5,29);
+insert into role_purview values(5,30);
+insert into role_purview values(5,31);
 
 insert into role_purview values(3,2);
 insert into role_purview values(3,5);
@@ -130,6 +142,7 @@ where 1=1 and teacherNo='1234' and teacherName='jack';
 
 --update教师属于那个部门
 
+--update class_info set teacherNo='1234' where  classNo='21050100200903';
 --update class_info set teacherNo='1234' where  classNo='11050100200908';
 --update class_info set teacherNo='5678' where  classNo='11050101201013';
      
@@ -159,5 +172,5 @@ select p.id,p.pid,p.purviewName,p.purviewUrl
 		where tr.roleNo = r.roleNo and r.roleName like '%院级工作人员%' and
 		teacherNo = '1234';
 		
-		
+insert into tec_info values('4321','11',4,"mm",1);		
 select * from tec_info;

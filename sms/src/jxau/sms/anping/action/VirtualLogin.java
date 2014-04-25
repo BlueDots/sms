@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
- 
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -53,8 +52,6 @@ public class VirtualLogin implements Filter{
 
 			System.out.println("学生已经登陆账号为20111429，详细请见jxau.sms.anping.action.VirtualLogin");
 		}
-		
-		
 		if(session.getAttribute("teacher")==null){
 			TecBasicInfo teacher = new TecBasicInfo();
 			//先虚拟的存储这点东西
@@ -65,18 +62,31 @@ public class VirtualLogin implements Filter{
 			RoleInfo  role  = new RoleInfo();
 		    role.setRoleName("班主任");
 		    
-		    RoleInfo  role3  = new RoleInfo();
-		    role3.setRoleName("院级工作人员");
 		    
-		    List<RoleInfo> roles = new ArrayList<RoleInfo>(2);
-		    roles.add(role);
-		    roles.add(role3);
+		     List<RoleInfo> roles= new ArrayList<RoleInfo>(1);
+		     roles.add(role);
+		    session.setAttribute("roles", roles);
+		    System.out.println("以模拟教师登陆");
+		}
 		
-		    roles.add(role);
+ 
+		if(session.getAttribute("teacher")==null){
+			TecBasicInfo teacher = new TecBasicInfo();
+			//先虚拟的存储这点东西
+			teacher.setTeacherNo("1234");
+			teacher.setTeacherName("jack");
+			session.setAttribute("teacher",teacher);
+		    //虚拟的存储一点点角色
+			RoleInfo  role  = new RoleInfo();
+		    role.setRoleName("班主任");
+		    
+		     List<RoleInfo> roles= new ArrayList<RoleInfo>(1);
+		     roles.add(role);
 		    session.setAttribute("roles", roles);
 		    System.out.println("以模拟教师登陆");
 		}
 
+ 
 		chain.doFilter(request, response);
 	}
 

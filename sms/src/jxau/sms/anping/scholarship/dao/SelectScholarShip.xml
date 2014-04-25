@@ -36,10 +36,10 @@
 			and ship.rank=#{rank}
 		</if>
 		<if test="totalScoreRank!=null">
-			and ship.totalScoreRank>#{totalScoreRank}
+		 <![CDATA[	and ship.totalScoreRank<=#{totalScoreRank}]]>
 		</if>
 		<if test="totalScore!=null">
-			and ship.totalScore >#{totalScore}
+			and ship.totalScore >=#{totalScore}
 		</if>
 		order by totalScoreRank desc
 		<if test="firstIndex != null and size!=null">
@@ -51,7 +51,7 @@
 		<!--  条件查询出数量-->
 
 	<select id="selectScholarShipByGaoJiConditionNums" parameterType="java.util.Map"
-		resultMap="ScholarShipResultMap">
+		resultType="java.lang.Long">
 		select count(*) from stu_class_grant
 		ship,stu_basic_info student where
 		ship.studentNo=student.studentNo
@@ -80,10 +80,11 @@
 			and ship.rank=#{rank}
 		</if>
 		<if test="totalScoreRank!=null">
-			and ship.totalScoreRank>#{totalScoreRank}
+		 <![CDATA[
+			and ship.totalScoreRank<=#{totalScoreRank}]]> 
 		</if>
 		<if test="totalScore!=null">
-			and ship.totalScore >#{totalScore}
+			and ship.totalScore >=#{totalScore}
 		</if>
 		order by totalScoreRank desc
 		<if test="firstIndex != null and size!=null">
@@ -110,10 +111,11 @@
 			<if test="major!=null">
 				and student.major=#{major}
 			</if>
-			<if test="className!=null">
+			
+		</if>
+		<if test="className!=null">
 				and student.className=#{className}
 			</if>
-		</if>
 		<if test="studentNo!=null">
 			and ship.studentNo=#{studentNo}
 		</if>
@@ -149,10 +151,11 @@
 			<if test="major!=null">
 				and student.major=#{major}
 			</if>
-			<if test="className!=null">
+			
+		</if>
+		<if test="className!=null">
 				and student.className=#{className}
 			</if>
-		</if>
 		<if test="studentNo!=null">
 			and ship.studentNo=#{studentNo}
 		</if>
@@ -219,5 +222,9 @@
 		;
 	</select>
 
+	<!--  听过学号拿到班级名称-->
+	<select id="getClassNameByStudentNo" parameterType="java.util.Map" resultType="java.lang.String">
+		select  className from stu_basic_info where studentNo = #{studentNo};
+	</select>
 
 </mapper>

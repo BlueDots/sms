@@ -31,8 +31,8 @@ begin
 end;//
 delimiter ;
 
-##call sp_doTotalScoreRank('软件学院','1102','201402');
-##select * from stu_class_grant;
+##call sp_doTotalScoreRank('软件学院','1102','201501');
+##select * from stu_class_grant where term='201501';
 
 ########################班级奖学金分配奖学金的存储过程####################
 drop PROCEDURE if exists sp_doAwardRank;

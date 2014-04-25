@@ -31,6 +31,9 @@ public interface ScholarShipService {
 	
 	public List<WaitCheckVo>  getAllWaitCheckData(List<RoleInfo> infos,TecBasicInfo teacher);
 	 
-	 
+	
+	public List<ScholarShip> queryByGaoJi(Map<String,Object> params,PageVo pagevo);
+	
+	public List<ScholarShip> searchOneClassByOneStudent(String studentNo,PageVo pagevo,String term);
  
 }

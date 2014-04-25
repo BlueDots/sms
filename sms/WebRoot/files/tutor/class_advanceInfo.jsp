@@ -39,6 +39,7 @@
 <script src="<%=basePath%>/js/jquery.provincesCity.js"></script>
 <script src="<%=basePath%>/js/jquery.chromatable.js"></script>
 <script src="<%=basePath%>js/tutor/tutor_advanceInfo.js"></script>
+<script src="<%=basePath%>js/college/college.js"></script>
 <!--用于生成编辑的内容-->
 <style type="text/css">
 * {
@@ -71,7 +72,7 @@
 </style>
 
 <script type="text/javascript">
-	var menuids = [ "suckertree1" ]
+	var menuids = [ "suckertree1"]
 	function buildsubmenus() {
 		for ( var i = 0; i < menuids.length; i++) {
 			var ultags = document.getElementById(menuids[i])
@@ -89,30 +90,74 @@
 	}
 
 	if (window.addEventListener)
-		window.addEventListener("load", buildsubmenus, false)
+		window.addEventListener("load", buildsubmenus, false);
 	else if (window.attachEvent)
-		window.attachEvent("onload", buildsubmenus)
+		window.attachEvent("onload", buildsubmenus);
+	
 </script>
 
 </head>
 
 <script type="text/javascript">
-
-	$(document).ready(function() {
-	
-		$("#accurateSearch").click(function() {
-		   window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=1";
-		});
-		
-		$("#nextPage").click(function() {
-		   var currentPage = <s:property value="#pageVo.currentPage"/> + 1;	
-		   var pageNum = <s:property value="#pageVo.pageNum"/>;
-		   if(currentPage<=pageNum){
-		   		window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage="+currentPage;
+	 
+	function showStuAdvInfo(){
+			var condition =  $("#condition").val();
+		   //var condition = 20111826;
+		   var currentPage = 1;
+		   alert(condition);
+		   if(condition!=" "||condition!=" "){
+		   	if(!isNaN(condition)){
+		   		window.location.href="stuAdvInfoAction!showStuAdvInfo?flag=true&stuAdvVo.studentNo="+condition+"&currentPage="+currentPage;
+		   	}else{
+		   		window.location.href="stuAdvInfoAction!showStuAdvInfo?flag=true&stuAdvVo.studentName="+condition+"&currentPage="+currentPage;
+		   	}
 		   }else{
-		   		alert("已经是最后一页");
-		  	}
+		   	  alert("查询条件不能为空！");
+		   	  return;	
+		   }
+	}
+	
+	function exportFile(){
+		var filePath = "D://";
+		window.location.href="stuAdvInfoAction!exportFile?abstractId=0100&outFilePath="+filePath;
+	}
+	function showImportInfo(){
+		var filePath = "D://outworkbook.xls";
+		window.location.href="stuAdvInfoAction!importFile?flag=false&abstractId=0100&filePath="+filePath;
+	}
+	function ensureImportFile(){
+		var filePath = "D://outworkbook.xls";
+		window.location.href="stuAdvInfoAction!importFile?flag=true&abstractId=0100&filePath="+filePath;
+		alert("导入成功！");
+		
+		//showStuAdvInfo();
+		//window.location.href="files/tutor/class_advanceInfo.jsp";
+	}
+	
+	$(document).ready(function() {
+		/*精确查询*/
+		$("#accurateSearch").click(function() {
+		   showStuAdvInfo();
+		});
+		/*下一页*/
+		$("#nextPage").click(function() {
+		   window.location.href="stuAdvInfoAction?stuAdvVo.studentNo=20111826&currentPage=2";
 		  });
+		  /*确定导入*/
+		 $('#ensureImportFile').click(function(){
+			var filePath = "D://outworkbook.xls";
+			window.location.href="stuAdvInfoAction!importFile?flag=true&abstractId=0100&filePath="+filePath;
+			alert("导入成功！");
+			//alert("11111");
+			$(this).parents('#stuAdvInfoForm') // For each element, pick the ancestor that's a form tag.
+				.find(':input') // Find all the input elements under those.
+			    .each(function(i) {
+				//$(this).prop("readonly",true);
+				$("input").attr("readonly","readonly");
+				$(this).removeClass("readonly");
+			});	
+			
+		});
 		$("#tableID").chromatable({
 			width : "100%",
 
@@ -131,31 +176,7 @@
 						"",
 						"depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
 	}
-	function selectAll() {
-		var obj = document.fom.elements;
-		for ( var i = 0; i < obj.length; i++) {
-			if (obj[i].name == "delid") {
-				obj[i].checked = true;
-			}
-		}
-	};
-
-	function unselectAll() {
-		var obj = document.fom.elements;
-		for ( var i = 0; i < obj.length; i++) {
-			if (obj[i].name == "delid") {
-				if (obj[i].checked == true)
-					obj[i].checked = false;
-				else
-					obj[i].checked = true;
-			}
-		}
-	};
-
-	function link() {
-		document.getElementById("fom").action = "../addrenwu.htm";
-		document.getElementById("fom").submit();
-	}
+	 
 </script>
 
 <body>
@@ -167,15 +188,15 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td height="62" background="<%=basePath%>/images/nav04.gif">
-
 								<table width="100%" border="0" align="center" cellpadding="0"
 									cellspacing="0">
 									<tr>
 										<td width="2%"><img src="<%=basePath%>/images/ico07.gif"
 											width="20" height="18" />
 										</td>
-										<td width="75%"><span class="collegeName">学院 <select
-												name="college" size="1" id="collegeId">
+										<td width="75%">
+										<span class="collegeName">学院 
+										<select name="college" size="1" id="collegeId">
 													<option value="selected">请选择学院</option>
 													<option value="agri_college">农学院</option>
 													<option value="garden_art">园林与艺术学院</option>
@@ -200,9 +221,9 @@
 												id="classId">
 													<option value="selected">请选择班级</option>
 											</select> </span> 
-											<input name="condition" type="text" size="16" value="请输入学号或者姓名" />
+											<input id="condition" name="condition" type="text" size="16" value=""/>
 											 <input name="find" type="button"
-											class="right-button02" value="查询" id = "accurateSearch" /> &nbsp;&nbsp;排序 <select
+											class="right-button02" value="查询" id = "accurateSearch" "/> &nbsp;&nbsp;排序 <select
 											name="rank">
 												<option>学号升序</option>
 												<option>学号降序</option>
@@ -215,7 +236,7 @@
 														<ul>
 															<li><a>编辑</a>
 																<ul>
-																	<li><a onclick="" id='manuallyId'>修改</a>
+																	<li><a onclick="importFile()" id='manuallyId'>修改</a>
 																	</li>
 																	<li><a onclick=''>删除</a>
 																	</li>
@@ -225,7 +246,8 @@
 																<ul>
 																	<li><a onclick="manually()" id='manuallyId'>手动录入</a>
 																	</li>
-																	<li><a onclick=''>导入</a>
+																	<li>
+																		<input type="file" name="import" onchange="showImportInfo()" />
 																	</li>
 																</ul>
 															</li>
@@ -240,7 +262,7 @@
 										</td>
 										<td width="7%" align="left"><input name="export"
 											type="button" class="right-button07" value="导出"
-											onclick="exportData()" />
+											onclick="browseFolder(this)" />
 										</td>
 									</tr>
 								</table>
@@ -271,7 +293,7 @@
 															<td height="40" class="font42">
 																<table width="100%" border="0" cellpadding="4"
 																	cellspacing="1" bgcolor="#464646" class="demo"
-																	id="tableID">
+																	id="stuAdvInfoTab">
 																	<thead>
 																		<tr class="CTitle">
 																			<td height="22" colspan="12" align="center"
@@ -279,7 +301,7 @@
 																		</tr>
 																		<tr bgcolor="#EEEEEE" align="center">
 																			<th width="2%"><center>
-																					<input type="checkbox" />
+																					<input type="checkbox" id="choice" onClick="selectAllAndReverse('stuAdvInfoTab')"/>
 																				</center></th>
 																			<th width="3%">
 																				<center>学号</center>
@@ -339,9 +361,39 @@
 																			<td><s:property value="#advInfo.advTime"/></td>
 																			<td><s:property value="#advInfo.advLevel"/></td>
 																			<td><s:property value="#advInfo.examState"/></td>
-																			<td><s:property value="#advInfo.remarks"/></td>
+																			<td><br></td>
 																		</tr>
 																</s:iterator>
+															<form id="stuAdvInfoForm" action="" method="get">
+																<s:iterator value="#request['inputStuAdvVos']" id="inputadvInfo" status="status">
+																		<tr bgcolor="#FFFFFF" align="center">
+																			<td><input type="checkbox" /></td>
+																			<td><input style="width:100px" type="text" value=<s:property value="#inputadvInfo.studentNo" />></td>
+																			<td><input style="width:100px" type="text" value=<s:property value="#inputadvInfo.studentName" />></td>
+																			<td>
+																			<select name="sex">
+																				<s:if test="#advInfo.sex==1">
+																					<option selected="selected">女</option>
+																					<option>男</option>
+																			</s:if>
+																			<s:else>
+																					<option>女</option>
+																					<option selected="selected">男</option>
+																			</s:else>
+																			</select>
+																			</td>
+																			<td><input style="width:100px" type="text" value=<s:property value="#inputadvInfo.college" />></td>
+																			<td><input style="width:100px" type="text" value=<s:property value="#inputadvInfo.major" />></td>
+																			<td><input style="width:100px" type="text" value=<s:property value="#inputadvInfo.className" />></td>
+																			<td><input style="width:100px" type="text"  value=<s:property value="#inputadvInfo.advanceActivity" />></td>
+																			<td><input style="width:100px" type="text"  value=<s:property value="#inputadvInfo.advTime" />></td>
+																			<td><input style="width:100px" type="text"  value=<s:property value="#inputadvInfo.advLevel" />></td>
+																			<td><input style="width:100px" type="text"  value=<s:property value="#inputadvInfo.examState" />></td>
+																			<td><br></td>
+																		</tr>
+											
+																</s:iterator>
+															</form>
 																</table>
 															</td>
 														</tr>
@@ -357,12 +409,13 @@
 															<td height="33">
 																<table width="100%" border="0" align="center"
 																	cellpadding="0" cellspacing="0" class="right-font08">
+																<s:if test="#request['inputStuAdvVos'] == null">
 																	<tr>
 																		<td width="50%">共 <span class="right-text09"><s:property value="#pageVo.pageNum"/></span>
-																			页 | 第 <span class="right-text09">1</span> 页</td>
+																			页 | 第 <span class="right-text09"><s:property value="#pageVo.currentPage"/></span> 页</td>
 																		<td width="49%" align="right">[ <a href="#"
 																			class="right-font08">首页</a> | <a href="#"
-																			class="right-font08">上一页</a> | <a href="#"
+																			class="right-font08">上一页</a> | <a href="stuAdvInfoAction?stuAdvVo.studentNo=20111826?currentPage=2"
 																			class="right-font08">下一页</a> <a href="#"
 																			class="right-font08">末页</a>] 转至：</td>
 																		<td width="1%">
@@ -379,6 +432,14 @@
 																			</table>
 																		</td>
 																	</tr>
+																</s:if>
+																<s:else>
+																	<tr align="right">
+																		<input type="button" id="ensureImportFile" value="确定" />
+																		&nbsp;&nbsp;&nbsp;
+																		<input type="button" id="cancel" value="取消" onclick="showStuAdvInfo()" />  
+																	</tr>
+																</s:else>
 																</table>
 															</td>
 														</tr>

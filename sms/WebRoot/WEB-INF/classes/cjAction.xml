@@ -16,7 +16,8 @@
     
     
     <package name="StuBasicInfo" namespace="/" extends="struts-default">  
-        <action name="StuBasicInfoAction" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
+         
+       <action name="StuBasicInfoAction" class="jxau.sms.chenjiang.action.StuBasicInfoAction">  
             <result name="college">
             	/files/college/dept_basicInfo.jsp
             </result>

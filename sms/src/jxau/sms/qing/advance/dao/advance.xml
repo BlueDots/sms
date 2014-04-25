@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="jxau.sms.qing.advance.dao">  
+  <select id="selectAdvance"  parameterType= "HashMap"  resultType="jxau.sms.qing.po.Advance">
+  	select a.studentNo,a.advanceActivity,a.advTime,c.activityName,c.grantMoney,c.grantTime
+    from stu_adv_info a,stu_basic_info b,stu_grant_info c
+    where a.studentNo=b.studentNo 
+    and c.studentNo=b.studentNo and a.studentNo=#{studentNo};
+  					
+  </select>
+ </mapper>

@@ -63,7 +63,7 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 
 		String checkScore = tools.checkScoreHeFa(scholarShips);
 		if (checkScore != null) {
-			throw new ParameterNotMatchException("checkScore");
+			throw new ParameterNotMatchException(checkScore);
 		}
 		// 核对是不是有重复的学号
 		String checkIsDuipt = tools.checkStudentNoIsDulipe(scholarShips);
@@ -84,6 +84,11 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 			if (!tools.checkTeacherIsClassLoader(student.getClassName(),
 					classes)) {
 				throw new ParameterNotMatchException("你已班主任身份登陆，没有权限去修改其它班级");
+			}else{
+				
+				for(ScholarShip ship:scholarShips){
+					ship.setExameState("院级审核中");
+				}
 			}
 
 		} else {
@@ -93,6 +98,14 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 			if (!(student.getCollege().equals(college) && student
 					.getClassName().equals(className))) {
 				throw new ParameterNotMatchException("你需要添加的班级和你选择的班级不一致，请重新选择");
+			}else if(tools.getHighLevelRole(roleInfos).equals("院级工作人员")) {
+				for(ScholarShip ship:scholarShips){
+					ship.setExameState("校级审核中");
+				}
+			}else if(tools.getHighLevelRole(roleInfos).equals("校级工作人员")){
+				for(ScholarShip ship:scholarShips){
+					ship.setExameState("通过");
+				}
 			}
 
 		}
@@ -425,6 +438,28 @@ public class ScholarShipServiceImpl extends AbstractionService implements
 			String roleId, String level) {
 	
 		return 0;
+	}
+
+	@Override
+	public List<ScholarShip> queryByGaoJi(Map<String, Object> params,PageVo pagevo) {
+		params.put("firstIndex", pagevo.getFirstIndex());
+		params.put("size", pagevo.getSize());
+		List<ScholarShip> ships = dao.select(namespace+"selectScholarShipByGaoJiCondition", params);
+		long count = dao.selectOne(namespace+"selectScholarShipByGaoJiConditionNums", params);
+		pagevo.setCount(count);
+		return ships;
+	}
+
+	@Override
+	public List<ScholarShip> searchOneClassByOneStudent(String studentNo,PageVo pagevo,String term) {
+		Map<String,Object> params = new HashMap<String,Object>(1);
+		params.put("studentNo",studentNo );
+		 String className=dao.selectOne(namespace+"getClassNameByStudentNo",params);
+		Map<String,Object>  data = new HashMap<String,Object>(2);
+		data.put("className",className);
+		data.put("term",term);
+		return  this.Search(data, pagevo, 0);
+		 
 	}
 
 }

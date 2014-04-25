@@ -12,6 +12,27 @@
 	<package name="hosInsuranceInfo" namespace="/" extends="struts-default">
 
 		<!-- 配置属于医保的拦截器 -->
+		<interceptors>
+        	<!-- 声明拦截器 -->
+        	<interceptor name="CheckPurview" class="jxau.sms.lyx.sysPurviewConfig.Interceptor.CheckPurviewInterceptor"></interceptor>
+        
+        	<interceptor-stack name="myStack">
+        		<interceptor-ref name="CheckPurview"></interceptor-ref>
+        		<interceptor-ref name="defaultStack"></interceptor-ref>
+        	</interceptor-stack>
+        
+        </interceptors>
+        
+        <!-- 指定默认使用的拦截器集合 -->
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+        
+        <!-- 定义全局结果 -->
+        <global-results>
+        	<result name="loginUI">/login.jsp</result>
+        	<result name="purviewErrorUI">/purviewError.jsp</result>
+        </global-results>
+
+
 
 
 		<action name="hosInsuranceInfo" class="jxau.sms.anping.action.YiBaoAction">
@@ -55,10 +76,33 @@
 			<result name="success">/files/college/dept_scholarshipAssess.jsp
 			</result>
 			<result name="error">/error.html</result>
+			
+			<result name="gaoJiquery">/files/college/dept_scholarshipAssessQuery.jsp</result>
+		</action>
+
+	</package>
+	
+	<package name="scholarShipAjxa" namespace="/" extends="json-default">
+
+		<!-- 配置属于的拦截器 -->
+		<action name="scholarShipAjxa" class="jxau.sms.anping.action.ScholarShipByAJAX">
+				<result type="json" />
+		 
 		</action>
 
 	</package>
 
+   <package name="scholarShipUpdate" namespace="/" extends="struts-default">
+
+		<!-- 配置属于的拦截器 -->
+		<action name="scholarShipUpdate" class="jxau.sms.anping.action.ScholarShipOpreation">
+			<result name="success">/files/college/dept_scholarshipAssess.jsp
+			</result>
+			<result name="error">/error.html</result>
+			 <result name="input">/error.html</result>
+		</action>
+
+	</package>
 
 	<package name="hosInsurance" namespace="/" extends="json-default">
 

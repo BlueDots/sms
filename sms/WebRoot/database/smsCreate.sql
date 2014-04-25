@@ -69,7 +69,7 @@ create table act_info
 	activityLevel varchar(30) not null,
 	sponsor varchar(60) not null,
 	organize varchar(60) not null,
-	teacherNo char(4) not null,
+	teacherNo char(4),
 	studentName varchar(30),
 	createTime date not null,
 	info varchar(150),
@@ -316,7 +316,7 @@ alter table hos_insurance_info
 add  foreign key (studentNo) references  stu_basic_info(studentNo)
 on  delete no action on update  cascade;
  
-##李易翔
+##李轶翔
 
 create unique index teacherNo_index on tec_basic_info(teacherNo);
 create index teacherName_index on tec_basic_info(teacherName,tecState);
@@ -340,7 +340,7 @@ create table purview_info(
 	foreign key(pid) references purview_info(id)
 );
 
-create unique index purviewUrl_index on purview_info(purviewUrl);
+create index purviewUrl_index on purview_info(purviewUrl);
 
 ##角色信息表18
 create table role_info(

@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<td width="538">
 											
 											<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
-												<s:if test="'hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher' in {#purviewList.purviewUrl}">												
+												<s:if test="'/hosInsuranceQuery!getAllHosByTeacher' in {#purviewList.purviewUrl}">												
 													<form action="<%=basePath%>hosInsuranceInfo/hosInsuranceQuery!getAllHosByTeacher" id="collegeList" method="post">
 														 <input type="submit" value="查询" id="accurateSearch">
 													</form>
@@ -72,10 +72,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<ul>
 																
 																<li>
-																	<a>录入</a>
-																		<ul>
 																	<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
-																		<s:if test="'hosInsuranceInfo/hosInsuranceInfo!updateHoss' in {#purviewList.purviewUrl}">
+																		<s:if test="'/hosInsuranceInfo!updateHoss' in {#purviewList.purviewUrl}">
+																		<a>录入</a>
+																			<ul>
+																	
 																			<li>
 																			<!-- popup('#medicareDiv', '#acceptResultDiv', '#btnCloseacceptResult') -->
 																				<a onclick="updateDataAboutAcceptResult()">录入受理结果</a>
@@ -88,10 +89,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 																			<!--popup('#medicareDiv', '#acceptMoney', '#btnCloseMoney')  -->
 																				<a onclick="updateDataAboutCompany()">录入商业理赔结果</a>
 																				
-																			</li>
+																			</li>			
+																		</ul>
 																		</s:if>
 																	</s:iterator>
-																		</ul>
 																</li>
 																<li>
 																	<a href="">导入</a>
@@ -138,15 +139,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													<th class="tablestyle_title">
 														当前位置:<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher">首页</a>---><font color="red">学生医保信息查询</font>
 													
-											<s:iterator value="#session.sessionPurview.purviewInfo" id="purviewList">								
-												<s:if test="'hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher' in {#purviewList.purviewUrl}">												
+																							
 														<span style="position:relative;left:600px">														
 														<a href="<%=basePath%>hosInsuranceInfo/hosInsuranceInfo!getAllHosByTeacher?hosState=<%=URLEncoder.encode(URLEncoder.encode("校级审核中","utf-8"),"utf-8")%>">
 														<font color = "red" >待审核信息</font>
 														</a>(<s:property value="#request.nocheckNum"/>)
 														</span>
-												</s:if>	
-											</s:iterator>	
+													
 														
 														
 														

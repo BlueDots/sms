@@ -33,5 +33,10 @@
 			values (#{roleNo},#{roleName},#{createTime},#{roleDescription})		
 	</insert>
 	
+	<select id="checkLoginRole" resultType="java.lang.Integer">
+		select count(*) from teacher_role tr,role_info r 
+		where tr.roleNo = r.roleNo and tr.teacherNo = #{teacherNo} and r.roleName like Concat('%',#{roleName},'%');
+	</select>
+	
 	
 </mapper>

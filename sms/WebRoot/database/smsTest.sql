@@ -357,3 +357,60 @@ insert into dep_info(departNo,department,departBrief,departInfo)
 insert into dep_info(departNo,department,departBrief,departInfo) 
 	values('1120','商学院','','');
 	
+<<<<<<< HEAD
+=======
+##权限信息
+
+insert into purview_info values(1,null,'功能模块','null');
+insert into purview_info values(2,1,'学生基本信息模块','/StuBasicInfoAction!loadTeacher');
+insert into purview_info values(3,1,'教师基本信息模块','/files/university/sch_teacherBasicInfo.jsp');
+insert into purview_info values(4,1,'评优评先模块','/class_advanceInfo.jsp');
+insert into purview_info values(5,1,'奖助学信息模块','/files/university/sch_scholarshipInfo.html');
+insert into purview_info values(6,1,'学生参与活动模块','/files/university/sch_activityInfo.html');
+insert into purview_info values(7,1,'活动管理模块','/files/university/sch_activityManage.html');
+insert into purview_info values(8,1,'班级奖学金模块','');
+insert into purview_info values(9,1,'医保信息模块','/hosInsuranceInfo!getAllHosByTeacher');
+insert into purview_info values(10,1,'贫困生建档模块','/files/university/sch_jiandang.html');
+insert into purview_info values(11,1,'个人简历模块','');
+insert into purview_info values(12,1,'学生就业信息模块','');
+insert into purview_info values(13,1,'处分信息模块','/files/university/sch_punishInfo.html');
+insert into purview_info values(14,1,'学籍变动信息模块','');
+insert into purview_info values(15,1,'角色管理模块','/role!roleExecute');
+insert into purview_info values(16,1,'分配角色管理模块','/allocation!tecRoleDisplay');
+insert into purview_info values(17,1,'分配权限模块','');
+insert into purview_info values(18,1,'院系专业班级管理模块','');
+insert into purview_info values(19,15,'添加角色','');
+insert into purview_info values(20,15,'删除角色','');
+insert into purview_info values(21,15,'查看角色权限','');
+insert into purview_info values(22,16,'查询教师角色信息','');
+insert into purview_info values(23,16,'教师分配角色','');
+insert into purview_info values(24,16,'教师移除角色','');
+insert into purview_info values(25,2,'学生基本信息审核','/StuBasicInfoVerifyAction!gainWaitingForClassName');
+insert into purview_info values(26,2,'录入学生基本信息','/StuBasicInfoAction!entryStuBasicInfoLists');
+insert into purview_info values(27,9,'查询医保信息','/hosInsuranceQuery!getAllHosByTeacher');
+insert into purview_info values(28,9,'录入医保信息','/hosInsuranceInfo!updateHoss');
+insert into purview_info values(29,9,'审核医保','/hosInsuranceInfo!checkHosByTeacher');
+insert into purview_info values(30,4,'导入评优评先信息','');
+insert into purview_info values(31,4,'导出评优评先信息','');
+insert into purview_info values(32,4,'比例分配','');
+insert into purview_info values(33,4,'添加评优评先记录','');
+insert into purview_info values(34,2,'修改学生基本信息','');
+insert into purview_info values(35,3,'导入教师基本信息','');
+insert into purview_info values(36,3,'审核教师基本信息','');
+insert into purview_info values(37,8,'查询学生奖学金信息','');
+insert into purview_info values(38,8,'添加班级奖学金信息','');
+insert into purview_info values(39,5,'添加奖学金项目','');
+insert into purview_info values(40,10,'班级贫困生比例分配','');
+##角色信息
+insert into role_info values(null,'校级管理员',now(),'校级管理员角色,默认拥有系统所有权限');
+insert into role_info values(null,'学生',now(),'学生角色，固定权限');
+insert into role_info values(null,'班主任',now(),'班主任角色，负责某班级');
+insert into role_info values(null,'院级工作人员1',now(),'院级工作人员之一，主要负责某院系贫困生建档等');
+insert into role_info values(null,'院级工作人员2',now(),'院级工作人员之一，主要负责某院系奖惩信息');
+insert into role_info values(null,'院级工作人员3',now(),'院级工作人员之一，主要负责某院系基本信息管理');
+insert into role_info values(null,'校级工作人员1',now(),'校级工作人员之一，主要负责全校医保等');
+insert into role_info values(null,'校级工作人员2',now(),'校级工作人员之一，主要负责全校系奖惩信息');
+insert into role_info values(null,'校级工作人员3',now(),'校级工作人员之一，主要负责全校系基本信息管理');
+insert into role_info values(null,'院级管理员',now(),'院级管理员角色，每院有且只有一名');
+insert into role_info values(null,'活动负责人',now(),'活动管理中的特殊角色');
+>>>>>>> 33a82fb02d9d9163289ad5b7d3196b7d90b4c081

@@ -14,11 +14,11 @@
         </action>
         
         <action name="rolePurview" class="jxau.sms.lyx.role.action.RoleAction">  
-            <result name="success">/files/college_admin/admin_addRole.jsp</result>  
+            <result name="success">/success.jsp</result>  
         </action>
         
         <action name="addRole" class="jxau.sms.lyx.role.action.RoleAction">  
-            <result name="success">/files/college_admin/admin_addRole.jsp</result>  
+            <result name="success">/success.jsp</result>  
         </action>  
     </package> 
     
@@ -28,11 +28,11 @@
         </action>
         
         <action name="updateRolePurview" class="jxau.sms.lyx.purview.action.RoleSystemPurviewAction">  
-            <result name="success">/files/college_admin/admin_systemPurview.jsp</result>  
+            <result name="success">/success.jsp</result>  
         </action>
         
         <action name="updateUserPurview" class="jxau.sms.lyx.purview.action.UserSystemPurviewAction">  
-            <result name="success">/files/college_admin/admin_systemPurview.jsp</result>  
+            <result name="success">/success.jsp</result>  
         </action>          
     </package>
     
@@ -46,7 +46,7 @@
         </action>
         
         <action name="addTecRole" class="jxau.sms.lyx.allocationRole.action.AllocationRoleAction">
-        	<result name="success">/files/college_admin/admin_userRole.jsp</result>  
+        	<result name="success">/success.jsp</result>  
         	<result name="error">/files/college_admin/admin_error.jsp</result>  
         </action>
         

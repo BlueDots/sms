@@ -31,6 +31,12 @@
 .demo{border:solid 1px #D5D5D5;border-collapse:collapse;width:100%;}
 .demo td{border:1px solid #D5D5D5;font-size:12px;padding:7px 5px;}
 .demo th{background-color:#EEE;border-right:1px solid #D5D5D5;font-size:13.5px;line-height:120%;font-weight:bold;padding:8px 5px;text-align:left;
+<!--只读形式-->
+.readonly{
+border:none; 
+background-color:inherit;
+width:50px;
+}
 }
  
 </style>
@@ -473,58 +479,58 @@
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>学号</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="studentNo"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="studentNo" class="readonly"></td>
 								<td width="6%"><b>姓名</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="studentName"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="studentName" class="readonly"></td>
 								<td width="6%" ><b>性别</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="sex"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="sex" class="readonly"></td>
 								<td width="8%" rowspan="4"><img src="" id="photo"></td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="6%"><b>学院</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="college"/></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="college" class="readonly"/></td>
 								<td width="6%"><b>专业</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="major_detail"/></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="major_detail" class="readonly"/></td>
 								<td width="6%"><b>班级</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="className_detail"/></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="className_detail" class="readonly"/></td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>出生日期</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="birthday"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="birthday" class="readonly"></td>
 								<td width="6%"><b>民族</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="nation"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="nation" class="readonly"></td>
 								<td width="6%"><b>籍贯</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="hometown"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="hometown" class="readonly"></td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="6%" colspan="3"><b>政治面貌</b></td>
-								<td width="6%" colspan="3" ><input type="text" readonly="readonly" id="political"></td>
+								<td width="6%" colspan="3" ><input type="text" readonly="readonly" id="political" class="readonly"></td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>手机号码</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="telephone"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="telephone" class="readonly"></td>
 								<td width="6%"><b>银行卡号</b></td>
-								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="bankCard"></td>
+								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="bankCard" class="readonly"></td>
 								<td width="6%"><b>身份证号</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="idCard"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="idCard" class="readonly"></td>
 							</tr>
 							<tr bgcolor="#EEEEEE">
 								<td width="6%"><b>家庭联系人</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="family"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="family" class="readonly"></td>
 								<td width="6%"><b>家庭现住址</b></td>
-								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="address"></td>
+								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="address" class="readonly"></td>
 								<td width="6%"><b>家庭联系电话</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="fphone"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="fphone" class="readonly"></td>
 							</tr>
 							<tr bgcolor="#FFFFFF">
 								<td width="6%"><b>英语等级</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="englishlevel"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="englishlevel" class="readonly"></td>
 								<td width="6%"><b>个人邮箱</b></td>
-								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="email"></td>
+								<td colspan="2" width="6%" ><input type="text" readonly="readonly" id="email" class="readonly"></td>
 								<td width="6%"><b>学历</b></td>
-								<td width="6%" ><input type="text" readonly="readonly" id="eduBackground"></td>
+								<td width="6%" ><input type="text" readonly="readonly" id="eduBackground" class="readonly"></td>
 							</tr>
-							<tr bgcolor="#EEEEEE" align="center" style="display:none" id="updateStuBasicInfoSubmitTr">
+							<tr bgcolor="#EEEEEE" align="center" style="display:none" id="updateStuBasicInfoSubmitTr" class="readonly">
 								<td colspan="7">
 									<input type="submit" value="提交">
 									<input type="reset" value="重置">

@@ -491,6 +491,9 @@ function getTutorWatingForUpdate(teacherNo,currentPage) {
 function updateStuBasicInfo(roleId){
 	alert(roleId);
 	var inputLists = $("#stuBasicInfo input");
-	alert(inputLists.length);
+	alert(inputLists[0].type);
+	for(var i=0;i<inputLists.length;i++){
+		
+	}
 }
 
